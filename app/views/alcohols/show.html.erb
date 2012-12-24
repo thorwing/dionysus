@@ -1,0 +1,44 @@
+<% title @alcohol.full_name %>
+
+<div class="row">
+    <div class="span8">
+        <div class="box box-shadow p10 clearfix">
+            <div class="pull-left">
+                <%= link_to image_tag(@alcohol.pic_url), @alcohol %>
+            </div>
+
+            <div class="pull-left ml20">
+                <p>
+                    <%= content_tag :b, "AOC", class: "mr20" %>
+                    <%= content_tag :span, @alcohol.aoc %>
+                </p>
+
+                <p>
+                    <%= content_tag :b, "AOC分级", class: "mr20" %>
+                    <%= content_tag :span, @alcohol.aoc_level %>
+                </p>
+
+                <p>
+                    <%= content_tag :b, "度数", class: "mr20" %>
+                    <%= content_tag :span, "#{@alcohol.degree.to_i}%"  %>
+                </p>
+
+                <p>
+                    <%= content_tag :b, "容量", class: "mr20" %>
+                    <%= content_tag :span, @alcohol.milliliter %>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="span4">
+        <div class="box box-shadow p10">
+            <%= link_to @alcohol.region.full_name, @alcohol.region %>
+        </div>
+    </div>
+
+</div>
+
+
+<%= link_to 'Edit', edit_alcohol_path(@alcohol) %> |
+<%= link_to 'Back', alcohols_path %>

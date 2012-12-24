@@ -1,0 +1,10 @@
+-
+  en_name: Bordeaux
+  cn_name: 波尔多
+  country: 法国
+
+-
+  en_name: Médoc
+  cn_name: 梅多克
+  country: 法国
+  parent: Bordeaux

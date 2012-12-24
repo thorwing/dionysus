@@ -1,14 +1,82 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Dionysus</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tag %>
 
-<%= yield %>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <% if has_meta_tag? %>
+        <meta name="description" content="<%= @meta_tag %>" />
+    <% end %>
+    <% if has_keywords? %>
+        <meta name="Keywords" content="<%= @keywords %>" />
+    <% end %>
+    <title>
+        <% if @content_for_title %>
+            <%= @content_for_title + " - " +  t("site.name") %>
+        <% else home_page? %>
+            <%= t("site.name") + " - " + "#{t("site.sologan")}" %>
+        <% end %>
+    </title>
+    <!--<link href='http://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css'>-->
+</head>
+
+<!--id = top is for back-to-top-->
+<body id="top" style="<%= 'padding-top: 60px;' unless is_mobile_client %>">
+
+<%= render 'shared/header' %>
+
+<div class="container" style="min-height: 580px;">
+    <% flash.each do |name, msg| %>
+        <div class="row">
+            <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+                <a class="close" data-dismiss="alert">×</a>
+                <%= msg %>
+            </div>
+        </div>
+    <% end %>
+
+  <% if (users_browser.include? "ie6") %>
+      <div class="alert alert-error">
+        你的浏览器内核为IE6。为了正常浏览本站，请使用IE7以上版本，或者Google/火狐等浏览器
+      </div>
+  <% end %>
+
+
+  <% if show_title? %>
+      <div class="page-header">
+          <%= content_tag(:h1, @content_for_title, id: "page_title") %>
+      </div>
+  <% end %>
+
+  <div class="row">
+      <%= yield %>
+  </div>
+
+  <p id="back-to-top"><%= link_to content_tag(:span, "") +  "返回顶部", "#top", :id => "backToTop" %></p>
+  <!--<= link_to content_tag(:i, '', class: 'icon-arrow-up icon-white') + " 返回顶部", "#", :id => "backToTop", class: "btn btn-info hide" %>-->
+
+</div>
+
+<!--footer-->
+<%= render 'shared/footer' %>
+
+<%= javascript_include_tag "application" %>
+
+<%= yield :foot if content_for?(:foot) %>
+
+<script type="text/javascript">
+    // now scroll to element with that id
+    //    $('html, body').animate({ scrollTop: $(hash).offset().top });
+
+    <!--< if current_user %>-->
+//        $.getScript('/notifications/count');
+//        setInterval(function(){
+//            $.getScript('/notifications/count');
+//        }, 10000);
+    <!--< end %>-->
+</script>
 
 </body>
 </html>
+

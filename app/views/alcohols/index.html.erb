@@ -1,0 +1,9 @@
+<% title "酒", false %>
+
+<div>
+    <% @alcohols.each do |alcohol| %>
+        <%= render alcohol %>
+    <% end %>
+</div>
+
+<%= link_to 'New Alcohol', new_alcohol_path %>

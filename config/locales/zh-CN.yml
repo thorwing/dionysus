@@ -1,0 +1,29 @@
+zh-CN:
+  site:
+    name: 关于酒
+    sologan: 关于酒
+    description: Shop better
+    keywords: "关于酒"
+
+  general:
+    are_you_sure_to_delete: 确定要删除吗？
+    are_you_sure_to_cancel: 确定要取消吗？
+    are_you_sure_to_ignore: 确定要忽略吗？
+    add: 添加
+    reply: 回复
+    follow_user: 关注Ta
+    follow_question: 关注问题
+    follow_plan: 关注清单
+    publish: 发表
+    answer: 回答
+    finish: 完成
+    confirm: 确定
+    ask: 提问
+    post: 回应
+    done: 达成
+    send: 发送
+    update: 更新
+    show: 查看
+    create: 创建
+    unfollow: 取消关注
+    anonymous_user: 匿名用户

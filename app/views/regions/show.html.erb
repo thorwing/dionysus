@@ -1,0 +1,16 @@
+<% title @region.full_name %>
+
+<div id="breadcrumbs">
+  <% @region.ancestors.each do |region| %>
+    <%= link_to region.full_name, region %> &gt;
+  <% end %>
+</div>
+
+<div class="row">
+    <% @region.alcohols.each do |alcohol| %>
+        <%= render alcohol %>
+    <% end %>
+</div>
+
+<%= link_to 'Edit', edit_region_path(@region) %> |
+<%= link_to 'Back', regions_path %>

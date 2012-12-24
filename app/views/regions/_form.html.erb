@@ -1,0 +1,11 @@
+<%= simple_form_for(@region) do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :en_name %>
+    <%= f.input :cn_name %>
+    <%= f.collection_select :parent_id, Region.all, :id, :full_name %>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
