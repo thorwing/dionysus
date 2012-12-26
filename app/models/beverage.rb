@@ -6,10 +6,10 @@ class Beverage < ActiveRecord::Base
   belongs_to :rank
   belongs_to :brand
 
-  has_many :vinifications
-  has_many :ingredients, through: :vinifications
   has_many :containers
   has_many :cups, through: :containers
+  has_many :vinifications
+  has_many :grapes, through: :vinifications
 
   def full_name
     "#{en_title} / #{cn_title}"

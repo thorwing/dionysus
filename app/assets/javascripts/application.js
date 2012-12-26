@@ -13,3 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(function() {
+    $('.hover_area').hover(
+        function(){
+            $(this).find(".display_on_hover").show();
+        },
+        function(){
+            $(this).find(".display_on_hover").hide();
+        }
+    );
+});
+

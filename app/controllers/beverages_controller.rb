@@ -2,7 +2,26 @@ class BeveragesController < ApplicationController
   # GET /beverages
   # GET /beverages.json
   def index
+    @filters = session[:beverage_filters] || []
+
+    if params[:filter].present?
+      @filters.reject!{|f| f[:filter] == params[:filter]}
+      if params[:delta] == "1"
+        @filters |= [{filter: params[:filter], value: params[:value]}]
+      end
+      session[:beverage_filters] = @filters
+    end
+
     criteria = Beverage.scoped
+
+    @filters.each do |filter|
+      case filter[:filter]
+        when "country"
+          country = Country.find_by_name(filter[:value])
+          regions = country.regions
+          criteria = criteria.where(region_id: regions.map(&:id))
+      end
+    end
 
     if params[:type].present?
       criteria = criteria.where(type: params[:type])

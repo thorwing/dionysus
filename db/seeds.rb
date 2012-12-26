@@ -56,6 +56,14 @@ aocs.each do |a|
   aoc.save!
 end
 
+p "generating grapes"
+records = YAML::load(File.open("db/seeds/grapes.yml"))
+records.each do |record|
+  Grape.create! do |grape|
+    grape.name = record
+  end
+end
+
 p 'generating wine'
 records = YAML::load(File.open("db/seeds/wine.yml"))
 records.each do |record|
@@ -64,6 +72,7 @@ records.each do |record|
   wine.region = Region.find_by_en_name(record["region"])
   wine.rank = Rank.find_by_en_name(record["rank"]) if record['rank'].present?
   wine.aoc = Aoc.find_by_en_name(record['aoc']) if record['aoc'].present?
+  wine.grapes = Grape.where(name: record['grapes']) if record['grapes'].present?
   wine.save!
 end
 

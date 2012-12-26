@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def get_categories(type = nil)
+  def get_styles(type = nil)
     #Rails.cache.fetch('beverage_categories', expires_in: 1.hours) {
-      records = YAML::load(File.open("db/seeds/categories.yml"))
+      records = YAML::load(File.open("db/seeds/styles.yml"))
     #}
     records = records[type.downcase] if type.present?
     records

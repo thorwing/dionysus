@@ -9,6 +9,15 @@ wine:
         -
           en_name: half_dry_red_wine
           cn_name: 半干红
+        -
+          en_name: half_sweet_red_wine
+          cn_name: 半甜红
+        -
+          en_name: sweet_red_wine
+          cn_name: 甜红
+        -
+          en_name: half_sweet_mix_red_wine
+          cn_name: 干甜搭
 
     -
       en_name: white_wine
@@ -17,6 +26,39 @@ wine:
         -
           en_name: dry_white_wine
           cn_name: 干白
+        -
+          en_name: half_dry_white_wine
+          cn_name: 半干白
+        -
+          en_name: half_sweet_white_wine
+          cn_name: 半甜白
+        -
+          en_name: sweet_white_wine
+          cn_name: 甜白
+        -
+          en_name: botrytised_wine
+          cn_name: 贵腐
+        -
+          en_name: dry_sweet_mix_white_wine
+          cn_name: 干甜搭
+    -
+      en_name: rose_wine
+      cn_name: 桃红葡萄酒
+
+    -
+      en_name: sparking_wine
+      cn_name: 起泡酒
+
+    -
+      en_name: fortified_wine
+      cn_name: 加强葡萄酒
+
+
+
+
+
+
+
 
 #-
 #  en_name: wine

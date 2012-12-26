@@ -15,7 +15,7 @@
                     </p>
                 <% end %>
 
-                <% if @beverage.aoc %>
+                <% if @beverage.is_a?(Wine) && @beverage.aoc %>
                     <p>
                         <%= content_tag :b, "AOC", class: "mr20" %>
                         <%= link_to "#{@beverage.aoc.full_name}", @beverage.aoc %>
@@ -24,12 +24,12 @@
 
                 <p>
                     <%= content_tag :b, "度数", class: "mr20" %>
-                    <%= content_tag :span, "#{@beverage.degree.to_i}%"  %>
+                    <%= content_tag :span, "#{@beverage.alcohol.to_i}%"  %>
                 </p>
 
                 <p>
                     <%= content_tag :b, "容量", class: "mr20" %>
-                    <%= content_tag :span, @beverage.milliliter %>
+                    <%= content_tag :span, @beverage.volume %>
                 </p>
             </div>
         </div>
@@ -37,7 +37,7 @@
 
     <div class="span4">
         <div class="box box-shadow p10">
-            <%= link_to @beverage.region.full_name, @beverage.region %>
+            <%= link_to @beverage.region.full_name, @beverage.region if @beverage.region %>
         </div>
     </div>
 

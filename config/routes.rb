@@ -3,7 +3,7 @@ Dionysus::Application.routes.draw do
 
   resources :regions
 
-  resources :ingredients
+  resources :grapes
 
   resources :wines, controller: :beverages, type: "Wine"
   resources :beer, controller: :beverages, type: "Beer"

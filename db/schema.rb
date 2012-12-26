@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226110249) do
+ActiveRecord::Schema.define(:version => 20121226121610) do
 
   create_table "aocs", :force => true do |t|
     t.string   "en_name"
@@ -73,7 +73,8 @@ ActiveRecord::Schema.define(:version => 20121226110249) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "ingredients", :force => true do |t|
+  create_table "grapes", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -114,13 +115,13 @@ ActiveRecord::Schema.define(:version => 20121226110249) do
 
   create_table "vinifications", :force => true do |t|
     t.integer  "beverage_id"
-    t.integer  "ingredient_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "grape_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "vinifications", ["beverage_id", "ingredient_id"], :name => "index_vinifications_on_beverage_id_and_ingredient_id"
-  add_index "vinifications", ["ingredient_id", "beverage_id"], :name => "index_vinifications_on_ingredient_id_and_beverage_id"
+  add_index "vinifications", ["beverage_id", "grape_id"], :name => "index_vinifications_on_beverage_id_and_grape_id"
+  add_index "vinifications", ["grape_id", "beverage_id"], :name => "index_vinifications_on_grape_id_and_beverage_id"
 
   create_table "whiskies", :force => true do |t|
     t.datetime "created_at", :null => false
