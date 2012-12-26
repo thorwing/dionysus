@@ -34,19 +34,48 @@ regions.each do |r|
   region.save!
 end
 
+p "generating categories"
+categories = YAML::load(File.open("db/seeds/categories.yml"))
+categories.each do |c|
+  category = Category.new do |new_category|
+    new_category.en_name= c["en_name"]
+    new_category.cn_name= c["cn_name"]
+  end
+  category.parent = Category.find_by_en_name(c["parent"]) if c["parent"].present?
+  category.save!
+end
+
+p "generating ranks"
+ranks = YAML::load(File.open("db/seeds/ranks.yml"))
+ranks.each do |r|
+  #rank = Rank.new(Rank.accessible_attributes & r)
+  rank = Rank.new do |new_rank|
+    new_rank.en_name = r['en_name']
+    new_rank.cn_name = r['cn_name']
+    new_rank.category = Category.find_by_en_name(r["category"]) if r["category"].present?
+  end
+  rank.save!
+end
+
+p "generating aoc"
+aocs = YAML::load(File.open("db/seeds/aoc.yml"))
+aocs.each do |a|
+  aoc = Aoc.new do |new_aoc|
+    new_aoc.en_name = a['en_name']
+    new_aoc.cn_name = a['cn_name']
+  end
+  aoc.save!
+end
+
+
 p "generating alcohols"
 alcohols = YAML::load(File.open("db/seeds/alcohols.yml"))
 alcohols.each do |a|
-  alcohol = Alcohol.new do |new_alcohol|
-    new_alcohol.en_title = a["en_title"]
-    new_alcohol.cn_title = a["cn_title"]
-    new_alcohol.aoc = a["aoc"]
-    new_alcohol.aoc_level = a["aoc_level"]
-    new_alcohol.milliliter = a["milliliter"]
-    new_alcohol.year = a["year"]
-    new_alcohol.degree = a["degree"]
-    new_alcohol.pic_url = a["pic_url"]
-  end
+  alcohol = Alcohol.new
+  alcohol.attributes = a.slice(*Alcohol.accessible_attributes)
   alcohol.region = Region.find_by_en_name(a["region"])
+  alcohol.rank = Rank.find_by_en_name(a["rank"]) if a['rank'].present?
+  alcohol.aoc = Aoc.find_by_en_name(a['aoc']) if a['aoc'].present?
   alcohol.save!
 end
+

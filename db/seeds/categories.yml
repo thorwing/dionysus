@@ -1,0 +1,12 @@
+-
+  en_name: wine
+  cn_name: 葡萄酒
+
+-
+  en_name: "dry wine"
+  cn_name: 干红葡萄酒
+  parent: wine
+
+-
+  en_name: beer
+  cn_name: 啤酒

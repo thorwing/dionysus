@@ -1,9 +1,12 @@
 <% title "酒", false %>
 
+<div class="row mb50">
+  <%= link_to '添加酒', new_alcohol_path, class: 'btn' %>
+</div>
+
 <div>
     <% @alcohols.each do |alcohol| %>
         <%= render alcohol %>
     <% end %>
 </div>
 
-<%= link_to 'New Alcohol', new_alcohol_path %>

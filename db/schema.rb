@@ -11,13 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224081408) do
+ActiveRecord::Schema.define(:version => 20121226041137) do
 
   create_table "alcohols", :force => true do |t|
     t.string   "en_title"
     t.string   "cn_title"
-    t.string   "aoc"
-    t.string   "aoc_level"
     t.integer  "year"
     t.integer  "milliliter"
     t.float    "degree"
@@ -25,11 +23,23 @@ ActiveRecord::Schema.define(:version => 20121224081408) do
     t.integer  "region_id"
     t.integer  "category_id"
     t.integer  "producer_id"
+    t.integer  "rank_id"
+    t.integer  "aoc_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "aocs", :force => true do |t|
+    t.string   "en_name"
+    t.string   "cn_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "categories", :force => true do |t|
+    t.string   "en_name"
+    t.string   "cn_name"
+    t.string   "ancestry"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -49,6 +59,14 @@ ActiveRecord::Schema.define(:version => 20121224081408) do
     t.integer  "region_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "ranks", :force => true do |t|
+    t.string   "en_name"
+    t.string   "cn_name"
+    t.string   "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "regions", :force => true do |t|

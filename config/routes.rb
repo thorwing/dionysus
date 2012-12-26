@@ -7,6 +7,10 @@ Dionysus::Application.routes.draw do
 
   resources :users
 
+  resources :ranks
+
+  resources :aocs
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -8,15 +8,23 @@
             </div>
 
             <div class="pull-left ml20">
-                <p>
-                    <%= content_tag :b, "AOC", class: "mr20" %>
-                    <%= content_tag :span, @alcohol.aoc %>
-                </p>
+                <!--<p>-->
+                    <!--<= content_tag :b, "AOC分级", class: "mr20" %>-->
+                    <!--<= content_tag :span, @alcohol.aoc_level %>-->
+                <!--</p>-->
+                <% if @alcohol.rank %>
+                    <p>
+                        <%= content_tag :b, "评级", class: "mr20" %>
+                        <%= link_to "#{@alcohol.rank.full_name}", @alcohol.rank %>
+                    </p>
+                <% end %>
 
-                <p>
-                    <%= content_tag :b, "AOC分级", class: "mr20" %>
-                    <%= content_tag :span, @alcohol.aoc_level %>
-                </p>
+                <% if @alcohol.aoc %>
+                    <p>
+                        <%= content_tag :b, "AOC", class: "mr20" %>
+                        <%= link_to "#{@alcohol.aoc.full_name}", @alcohol.aoc %>
+                    </p>
+                <% end %>
 
                 <p>
                     <%= content_tag :b, "度数", class: "mr20" %>
