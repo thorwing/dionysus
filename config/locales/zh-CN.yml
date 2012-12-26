@@ -27,3 +27,23 @@ zh-CN:
     create: 创建
     unfollow: 取消关注
     anonymous_user: 匿名用户
+
+
+  beverages:
+    categories:
+      Wine: 葡萄酒
+      Whisky: 威士忌
+      Vodka: 伏特加
+      Tequila: 龙舌兰
+      Rum: 朗姆酒
+      Brandy: 白兰地
+      Liquor: 利口酒
+      Gin: 杜松子酒/金酒
+      Beer: 啤酒
+      ChineseSpirits: 中式烈酒
+      ChineseLiquor: 露酒
+      RiceWine: 黄酒/米酒
+      Sake: 清酒
+
+
+

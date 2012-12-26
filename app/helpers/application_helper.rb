@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def get_categories(type = nil)
+    #Rails.cache.fetch('beverage_categories', expires_in: 1.hours) {
+      records = YAML::load(File.open("db/seeds/categories.yml"))
+    #}
+    records = records[type.downcase] if type.present?
+    records
+  end
+
   def is_mobile_client
     (/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/.match request.env['HTTP_USER_AGENT'].downcase).present?
   end

@@ -13,10 +13,10 @@
 #end
 
 p "generating countries"
-countries = YAML::load(File.open("db/seeds/countries.yml"))
-countries.each do |c|
+records = YAML::load(File.open("db/seeds/countries.yml"))
+records.each do |record|
   Country.create! do |country|
-    country.name = c
+    country.name = record
   end
 end
 
@@ -34,17 +34,6 @@ regions.each do |r|
   region.save!
 end
 
-p "generating categories"
-categories = YAML::load(File.open("db/seeds/categories.yml"))
-categories.each do |c|
-  category = Category.new do |new_category|
-    new_category.en_name= c["en_name"]
-    new_category.cn_name= c["cn_name"]
-  end
-  category.parent = Category.find_by_en_name(c["parent"]) if c["parent"].present?
-  category.save!
-end
-
 p "generating ranks"
 ranks = YAML::load(File.open("db/seeds/ranks.yml"))
 ranks.each do |r|
@@ -52,7 +41,7 @@ ranks.each do |r|
   rank = Rank.new do |new_rank|
     new_rank.en_name = r['en_name']
     new_rank.cn_name = r['cn_name']
-    new_rank.category = Category.find_by_en_name(r["category"]) if r["category"].present?
+    new_rank.category = r["category"]
   end
   rank.save!
 end
@@ -67,15 +56,29 @@ aocs.each do |a|
   aoc.save!
 end
 
-
-p "generating alcohols"
-alcohols = YAML::load(File.open("db/seeds/alcohols.yml"))
-alcohols.each do |a|
-  alcohol = Alcohol.new
-  alcohol.attributes = a.slice(*Alcohol.accessible_attributes)
-  alcohol.region = Region.find_by_en_name(a["region"])
-  alcohol.rank = Rank.find_by_en_name(a["rank"]) if a['rank'].present?
-  alcohol.aoc = Aoc.find_by_en_name(a['aoc']) if a['aoc'].present?
-  alcohol.save!
+p 'generating wine'
+records = YAML::load(File.open("db/seeds/wine.yml"))
+records.each do |record|
+  wine = Wine.new
+  wine.attributes = record.slice(*Wine.accessible_attributes)
+  wine.region = Region.find_by_en_name(record["region"])
+  wine.rank = Rank.find_by_en_name(record["rank"]) if record['rank'].present?
+  wine.aoc = Aoc.find_by_en_name(record['aoc']) if record['aoc'].present?
+  wine.save!
 end
 
+p 'generating beer'
+records = YAML::load(File.open("db/seeds/beer.yml"))
+records.each do |record|
+  beer = Beer.new
+  beer.attributes = record.slice(*Beer.accessible_attributes)
+  beer.save!
+end
+
+p 'generating whisky'
+records = YAML::load(File.open("db/seeds/whisky.yml"))
+records.each do |record|
+  whisky = Whisky.new
+  whisky.attributes = record.slice(*Whisky.accessible_attributes)
+  whisky.save!
+end

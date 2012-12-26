@@ -1,9 +1,13 @@
 Dionysus::Application.routes.draw do
+  resources :beverages
+
   resources :regions
 
   resources :ingredients
 
-  resources :alcohols
+  resources :wines, controller: :beverages, type: "Wine"
+  resources :beer, controller: :beverages, type: "Beer"
+  resources :whisky, controller: :beverages, type: "Whisky"
 
   resources :users
 

@@ -1,0 +1,27 @@
+<% title "酒", false %>
+
+<div class="box box-shadow p10 mb50">
+    <div>
+        <% Country.all.each do |country| %>
+            <%= link_to country.name, "", class: "mr10" %>
+        <% end %>
+    </div>
+
+    <% if @type %>
+        <% get_categories(@type).each do |category| %>
+            <%= link_to category['cn_name'], "", class: "mr10" %>
+        <% end %>
+    <% end %>
+
+    <hr/>
+    <div class="clearfix">
+        <%= link_to '添加酒', new_beverage_path, class: 'btn btn-primary pull-right' %>
+    </div>
+</div>
+
+<div>
+    <% @beverages.each do |beverage| %>
+        <%= render "beverages/beverage", beverage: beverage %>
+    <% end %>
+</div>
+

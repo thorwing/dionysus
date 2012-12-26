@@ -1,39 +1,35 @@
-<% title @alcohol.full_name %>
+<% title @beverage.full_name %>
 
 <div class="row">
     <div class="span8">
         <div class="box box-shadow p10 clearfix">
             <div class="pull-left">
-                <%= link_to image_tag(@alcohol.pic_url), @alcohol %>
+                <%= link_to image_tag(@beverage.pic_url), @beverage %>
             </div>
 
             <div class="pull-left ml20">
-                <!--<p>-->
-                    <!--<= content_tag :b, "AOC分级", class: "mr20" %>-->
-                    <!--<= content_tag :span, @alcohol.aoc_level %>-->
-                <!--</p>-->
-                <% if @alcohol.rank %>
+                <% if @beverage.rank %>
                     <p>
                         <%= content_tag :b, "评级", class: "mr20" %>
-                        <%= link_to "#{@alcohol.rank.full_name}", @alcohol.rank %>
+                        <%= link_to "#{@beverage.rank.full_name}", @beverage.rank %>
                     </p>
                 <% end %>
 
-                <% if @alcohol.aoc %>
+                <% if @beverage.aoc %>
                     <p>
                         <%= content_tag :b, "AOC", class: "mr20" %>
-                        <%= link_to "#{@alcohol.aoc.full_name}", @alcohol.aoc %>
+                        <%= link_to "#{@beverage.aoc.full_name}", @beverage.aoc %>
                     </p>
                 <% end %>
 
                 <p>
                     <%= content_tag :b, "度数", class: "mr20" %>
-                    <%= content_tag :span, "#{@alcohol.degree.to_i}%"  %>
+                    <%= content_tag :span, "#{@beverage.degree.to_i}%"  %>
                 </p>
 
                 <p>
                     <%= content_tag :b, "容量", class: "mr20" %>
-                    <%= content_tag :span, @alcohol.milliliter %>
+                    <%= content_tag :span, @beverage.milliliter %>
                 </p>
             </div>
         </div>
@@ -41,12 +37,12 @@
 
     <div class="span4">
         <div class="box box-shadow p10">
-            <%= link_to @alcohol.region.full_name, @alcohol.region %>
+            <%= link_to @beverage.region.full_name, @beverage.region %>
         </div>
     </div>
 
 </div>
 
 
-<%= link_to 'Edit', edit_alcohol_path(@alcohol) %> |
-<%= link_to 'Back', alcohols_path %>
+<%= link_to 'Edit', edit_beverage_path(@beverage) %> |
+<%= link_to 'Back', beverages_path %>

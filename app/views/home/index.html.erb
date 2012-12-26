@@ -1,1 +1,34 @@
-Hello 关于酒
+<div class="row">
+    <div class="span4">
+        <div class="box box-shadow p10">
+            <ul class="unstyled">
+                <% %w(ChineseSpirits RiceWine ChineseLiquor).each do |category| %>
+                    <li class="mt5 mb5">
+                        <%= link_to t("beverages.categories.#{category}"), beverages_path(category: category), class: "jujiu-label" %>
+                    </li>
+                <% end %>
+
+                <hr class="dotted"/>
+
+                <% %w(Whisky Brandy Vodka Tequila Rum Gin Liquor).each do |category| %>
+                    <li class="mt5 mb5">
+                        <%= link_to t("beverages.categories.#{category}"), beverages_path(category: category), class: "jujiu-label" %>
+                    </li>
+                <% end %>
+
+                <hr class="dotted"/>
+
+                <% %w(Wine Beer Sake).each do |category| %>
+                    <li class="mt5 mb5">
+                        <%= link_to t("beverages.categories.#{category}"), "/#{category.downcase.pluralize}", class: "jujiu-label" %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+    <div class="span8">
+        <div class="box box-shadow p10">
+            Hello 关于酒
+        </div>
+    </div>
+</div>

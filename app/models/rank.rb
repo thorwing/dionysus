@@ -1,7 +1,6 @@
 class Rank < ActiveRecord::Base
   #relationships
-  has_many :alcohols
-  belongs_to :category
+  has_many :beverages
 
   def full_name
     "#{en_name} / #{cn_name}"

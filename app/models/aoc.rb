@@ -1,7 +1,7 @@
 class Aoc < ActiveRecord::Base
 
   #relationships
-  has_many :alcohols
+  has_many :beverages
   belongs_to :region
 
 

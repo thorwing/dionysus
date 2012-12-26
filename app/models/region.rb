@@ -4,7 +4,7 @@ class Region < ActiveRecord::Base
 
   #relationships
   belongs_to :country
-  has_many :alcohols
+  has_many :beverages
   has_many :aocs
 
   def full_name
