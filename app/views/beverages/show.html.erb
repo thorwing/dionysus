@@ -4,7 +4,7 @@
     <div class="span8">
         <div class="box box-shadow p10 clearfix">
             <div class="pull-left">
-                <%= link_to image_tag(@beverage.pic_url), @beverage %>
+                <%= link_to image_tag(@beverage.pic_url, class: "img-square-120"), @beverage %>
             </div>
 
             <div class="pull-left ml20">
@@ -38,11 +38,10 @@
     <div class="span4">
         <div class="box box-shadow p10">
             <%= link_to @beverage.region.full_name, @beverage.region if @beverage.region %>
+            <hr/>
+            <%= link_to 'Edit', edit_beverage_path(@beverage) %> |
+            <%= link_to 'Back', beverages_path %>
         </div>
     </div>
 
 </div>
-
-
-<%= link_to 'Edit', edit_beverage_path(@beverage) %> |
-<%= link_to 'Back', beverages_path %>

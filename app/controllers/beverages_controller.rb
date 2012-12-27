@@ -28,11 +28,12 @@ class BeveragesController < ApplicationController
       @type = params[:type]
     end
 
-    @beverages = criteria.all
+    @beverage_brands = criteria.where("brand_id IS NOT NULL").group_by(&:brand)
+    #raise @beverage_brands.to_yaml
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @beverages }
+      format.json { render json: @beverage_brands }
     end
   end
 

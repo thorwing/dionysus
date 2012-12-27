@@ -1,0 +1,38 @@
+-
+  type: wine
+  en_title: Château MARGAUX
+  cn_title: 玛歌庄园
+  volume: 500
+  alcohol: 12
+  region: Médoc
+  rank: Premiers Crus
+  grapes: 赤霞珠
+  aoc: Margaux
+  pic_url: http://www.junfengwines.com/wordpress/wp-content/uploads/2010/04/chateau-margaux%E7%8E%9B%E6%AD%8C%E5%BA%842006.jpg
+
+-
+  type: beer
+  en_title: Westvleteren
+  cn_title: 维斯特啤酒
+  volume: 500
+  alcohol: 12
+  pic_url: http://blogfile.ifeng.com/uploadfiles/blog_attachment/0811/56/1041756_e0000e5d71c26ed40bd26b8a4d9eb8db.jpg
+
+-
+  type: whisky
+  en_title: Chivas Regal 12Y
+  cn_title: 芝华士12年
+  brand: Chivas
+  volume: 700
+  alcohol: 40
+  pic_url: http://www.core.form-ula.com/wp-content/uploads/2008/11/chivas_bottle__tin_low.jpg
+
+-
+  type: whisky
+  en_title: Chivas Regal 25Y
+  cn_title: 芝华士25年
+  brand: Chivas
+  volume: 700
+  alcohol: 40
+  brand: Chivas
+  pic_url: http://www.moodiereport.com/Martin/wp-content/chivas-25.JPG

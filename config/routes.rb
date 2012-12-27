@@ -1,6 +1,8 @@
 Dionysus::Application.routes.draw do
   resources :beverages
 
+  resources :brands
+
   resources :regions
 
   resources :grapes

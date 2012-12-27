@@ -1,0 +1,144 @@
+.img-square-16 {
+  width: 15px;
+  height: 15px;
+}
+
+.img-square-20 {
+  width: 20px;
+  height: 20px;
+}
+
+.img-square-80 {
+  width: 80px;
+  height: 80px;
+}
+
+.img-square-120 {
+  width: 120px;
+  height: 120px;
+}
+
+.img-square-168 {
+  width: 168px;
+  height: 168px;
+}
+
+.img-round-25, .img-round-25 img{
+  width: 25px;
+  height: 25px;
+  -webkit-border-radius: 5px; /* Saf3+, Chrome */
+  border-radius: 5px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-round-30, .img-round-30 img{
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 5px; /* Saf3+, Chrome */
+  border-radius: 5px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-round-50, .img-round-50 img {
+  width: 50px;
+  height: 50px;
+  -webkit-border-radius: 5px; /* Saf3+, Chrome */
+  border-radius: 5px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-round-64, .img-round-64 img {
+  width: 64px;
+  height: 64px;
+  -webkit-border-radius: 5px; /* Saf3+, Chrome */
+  border-radius: 5px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-round-80, .img-round-80 img {
+  width: 80px;
+  height: 80px;
+  -webkit-border-radius: 10px; /* Saf3+, Chrome */
+  border-radius: 10px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-round-100, .img-round-100 img {
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 10px; /* Saf3+, Chrome */
+  border-radius: 10px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-round-120, .img-round-120 img {
+  width: 120px;
+  height: 120px;
+  -webkit-border-radius: 10px; /* Saf3+, Chrome */
+  border-radius: 10px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-circle-30, .img-circle-30 img{
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 15px; /* Saf3+, Chrome */
+  border-radius: 15px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-circle-50, .img-circle-50 img {
+  width: 50px;
+  height: 50px;
+  -webkit-border-radius: 30px; /* Saf3+, Chrome */
+  border-radius: 30px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-circle-120, .img-circle-120 img {
+  width: 120px;
+  height: 120px;
+  -webkit-border-radius: 60px; /* Saf3+, Chrome */
+  border-radius: 60px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px; Disabled for FF1+ */
+}
+
+.img-frame-border {border: 1px solid #979797;    /*c7b89e*/
+  -webkit-border-radius: 10px;  //Saf3+, Chrome
+     border-radius: 10px; // Opera 10.5, IE 9
+}
+
+/*.avatar-frame{border: 2px solid #c7b89e;}*/
+.avatar-frame,.avatar-frame img{
+  width: 50px;
+  height: 50px;
+  -webkit-border-radius: 5px;  //Saf3+, Chrome
+   border-radius: 5px; // Opera 10.5, IE 9
+  /*-moz-border-radius: 30px; Disabled for FF1+*/
+}
+
+.waterfall-frame, .waterfall-frame img{
+  -webkit-border-radius: 10px;  //Saf3+, Chrome
+    border-radius: 10px; // Opera 10.5, IE 9
+}
+
+
+.tiny-avatar-frame, .tiny-avatar-frame img{
+  width: 25px;
+  height: 28px;
+  -webkit-border-radius: 5px;  //Saf3+, Chrome
+   border-radius: 5px; // Opera 10.5, IE 9
+  /*-moz-border-radius: 30px; Disabled for FF1+*/
+}
+
+/*4 : 3*/
+.img-restricted {
+    max-width: 495px;
+    max-height: 370x;
+}
+
+.img-weibo-thumb {
+  width: 120px;
+  height: 96px;
+}
+

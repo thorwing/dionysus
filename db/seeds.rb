@@ -64,30 +64,53 @@ records.each do |record|
   end
 end
 
-p 'generating wine'
-records = YAML::load(File.open("db/seeds/wine.yml"))
+p "generating brands"
+records = YAML::load(File.open("db/seeds/brands.yml"))
 records.each do |record|
-  wine = Wine.new
-  wine.attributes = record.slice(*Wine.accessible_attributes)
-  wine.region = Region.find_by_en_name(record["region"])
-  wine.rank = Rank.find_by_en_name(record["rank"]) if record['rank'].present?
-  wine.aoc = Aoc.find_by_en_name(record['aoc']) if record['aoc'].present?
-  wine.grapes = Grape.where(name: record['grapes']) if record['grapes'].present?
-  wine.save!
+  brand = Brand.new
+  brand.attributes = record.slice(*Brand.accessible_attributes)
+  brand.save!
 end
 
-p 'generating beer'
-records = YAML::load(File.open("db/seeds/beer.yml"))
+p 'generating beverages'
+records = YAML::load(File.open("db/seeds/beverages.yml"))
 records.each do |record|
-  beer = Beer.new
-  beer.attributes = record.slice(*Beer.accessible_attributes)
-  beer.save!
+  klass = record['type'].singularize.classify.constantize
+  beverage = klass.new
+  beverage.attributes = record.slice(*klass.accessible_attributes)
+  %w(brand region rank aoc).each do |association|
+    beverage.send("#{association}=".to_sym, association.singularize.classify.constantize.find_by_en_name(record[association])) if record[association].present?
+  end
+  #for wine
+  beverage.grapes = Grape.where(name: record['grapes']) if record['grapes'].present?
+  beverage.save!
 end
 
-p 'generating whisky'
-records = YAML::load(File.open("db/seeds/whisky.yml"))
-records.each do |record|
-  whisky = Whisky.new
-  whisky.attributes = record.slice(*Whisky.accessible_attributes)
-  whisky.save!
-end
+#p 'generating wine'
+#records = YAML::load(File.open("db/seeds/wine.yml"))
+#records.each do |record|
+#  wine = Wine.new
+#  wine.attributes = record.slice(*Wine.accessible_attributes)
+#  wine.region = Region.find_by_en_name(record["region"])
+#  wine.rank = Rank.find_by_en_name(record["rank"]) if record['rank'].present?
+#  wine.aoc = Aoc.find_by_en_name(record['aoc']) if record['aoc'].present?
+#  wine.grapes = Grape.where(name: record['grapes']) if record['grapes'].present?
+#  wine.save!
+#end
+#
+#p 'generating beer'
+#records = YAML::load(File.open("db/seeds/beer.yml"))
+#records.each do |record|
+#  beer = Beer.new
+#  beer.attributes = record.slice(*Beer.accessible_attributes)
+#  beer.save!
+#end
+#
+#p 'generating whisky'
+#records = YAML::load(File.open("db/seeds/whisky.yml"))
+#records.each do |record|
+#  whisky = Whisky.new
+#  whisky.attributes = record.slice(*Whisky.accessible_attributes)
+#  whisky.region = Region.find_by_en_name(record["region"])
+#  whisky.save!
+#end

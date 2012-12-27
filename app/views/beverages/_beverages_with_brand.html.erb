@@ -1,0 +1,12 @@
+<div class="span3">
+   <div class="box box-shadow p10 clearfix">
+        <div class="pull-left">
+            <%= link_to image_tag(beverages.first.pic_url, class: "img-square-80"), brand %>
+        </div>
+
+        <div class="pull-left ml10" style="width: 110px;">
+            <p><%= link_to brand.full_name, brand, class: "jujiu-label" %></p>
+            <%= content_tag :span, "#{beverages.size}款酒", class: "trivial" %>
+       </div>
+   </div>
+</div>

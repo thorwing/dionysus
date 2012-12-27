@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20121226121610) do
   end
 
   create_table "brands", :force => true do |t|
+    t.string   "en_name"
+    t.string   "cn_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

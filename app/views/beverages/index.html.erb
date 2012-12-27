@@ -51,8 +51,8 @@
 </div>
 
 <div>
-    <% @beverages.each do |beverage| %>
-        <%= render "beverages/beverage", beverage: beverage %>
+    <% @beverage_brands.each do |brand, beverages| %>
+        <%= render "beverages/beverages_with_brand", brand: brand, beverages: beverages %>
     <% end %>
 </div>
 
