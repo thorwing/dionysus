@@ -109,8 +109,6 @@ ActiveRecord::Schema.define(:version => 20121226121610) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.integer  "role",                   :default => 1
-    t.string   "bio"
-    t.string   "avatar"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
   end

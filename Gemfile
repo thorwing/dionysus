@@ -28,8 +28,11 @@ gem 'simple_form'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'acts_as_follower'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

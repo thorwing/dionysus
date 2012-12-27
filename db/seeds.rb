@@ -8,9 +8,10 @@
 
 # encoding: utf-8
 
-#@admin = User.create!(nick: "admin", email: "admin@jujiu.us", password: "Iam1admin!", remote_avatar_url: upyun_url + 'sheldon.jpg', gender: "M") do |admin|
-#  admin.role = ADMIN_ROLE
-#end
+p "generating users"
+@admin = User.create!(nick: "admin", email: "admin@guanyu9.com", password: "guanyu9") do |admin|
+  admin.role = ADMIN_ROLE
+end
 
 p "generating countries"
 records = YAML::load(File.open("db/seeds/countries.yml"))

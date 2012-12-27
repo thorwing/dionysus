@@ -1,4 +1,10 @@
 Dionysus::Application.routes.draw do
+
+  match "logout" => "sessions#destroy"
+  match "login" => "sessions#new"
+  match "sign_up" => "users#new"
+  resource :sessions, only: [:new, :create, :destroy]
+
   resources :beverages
 
   resources :brands
@@ -16,6 +22,8 @@ Dionysus::Application.routes.draw do
   resources :ranks
 
   resources :aocs
+
+  resources :password_resets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

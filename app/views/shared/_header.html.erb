@@ -19,15 +19,39 @@
                     </ul>
 
                     <ul class="nav pull-right">
-                        <li class="dropdown" style="max-width: 160px;">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                              <%= content_tag :span, "管理" %><b class="caret"></b>
-                            </a>
+                        <% if current_user %>
+                            <% if current_user_has_permission?(:admin) %>
+                                <li class="dropdown" style="max-width: 160px;">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                        <%= content_tag :span, "管理" %><b class="caret"></b>
+                                    </a>
 
-                            <ul class="dropdown-menu">
-                              <!--<li><= link_to '管理酒', beverages_path %></li>-->
-                            </ul>
-                        </li>
+                                    <ul class="dropdown-menu">
+                                        <!--<li><= link_to '管理酒', beverages_path %></li>-->
+                                    </ul>
+                                </li>
+                            <% end %>
+
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown" style="max-width: 160px;">
+                                <a href="/users/<%= current_user.id %>" class="dropdown-toggle" data-toggle="dropdown">
+                                    <%= content_tag :span, image_tag(current_user.get_avatar(:thumb), width: 20, height: 20, class: 'mr5', style: "margin-top: -5px;") + truncate_text(current_user.nick, 6) %><b class="caret"></b>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <% if current_user_has_permission?(:admin) %>
+                                        <!--<li class="divider"></li>-->
+                                        <!--<li><= link_to content_tag(:i, '', class: 'icon-signal') + ' 控制面板', admin_root_path %></li>-->
+                                    <% end %>
+
+                                    <!--<li class="divider"></li>-->
+                                    <li><%= link_to '登出', logout_path %></li>
+                                </ul>
+                            </li>
+                        <% else %>
+                            <li><%= link_to "登录", login_path %></li>
+                            <li><%= link_to "注册", sign_up_path %></li>
+                        <% end %>
                     </ul>
                 </div><!-- /.nav-collapse -->
             <% end %>

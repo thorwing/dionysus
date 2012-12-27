@@ -2,7 +2,7 @@ zh-CN:
   site:
     name: 关于酒
     sologan: 关于酒
-    description: 关于酒的一切
+    description: 关于酒的一起
     keywords: "关于酒"
 
   general:
@@ -28,6 +28,26 @@ zh-CN:
     unfollow: 取消关注
     anonymous_user: 匿名用户
 
+  authentication:
+    logout: 登出
+    login: 登录
+    quick_login: "快速登录："
+    sign_up: "注册"
+    email: "邮箱地址"
+    login_name: 昵称
+    password: "密码"
+    password_confirmation: "确认密码"
+    invitation_code: "邀请码"
+    forgot_password: "忘记密码了?"
+    update_password: 更新密码
+    please_login: "请登入。"
+    invalid_usr_pwd: "邮件地址或密码无效，请再试一次。"
+    no_such_user: "不存在该用户。"
+    pwd_confirmation_not_match: "确认用的密码不符合您第一次输入的密码，请再试一次。"
+    remember_me: "记住我"
+    other_logins: "您还可以用站外账号登录:"
+    to_reset_your_password: "您好，请点击下方的链接来重置您的密码"
+    captcha_failed: "噢，验证码没有输对"
 
   beverages:
     categories:

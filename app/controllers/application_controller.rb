@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     elsif cookies[:auth_token]
       @current_user = User.of_auth_token(cookies[:auth_token])
       if @current_user
-        @current_user.last_shown = Time.now
         @current_user.save
       end
       @current_user
@@ -17,5 +16,22 @@ class ApplicationController < ActionController::Base
       nil
     end
     #@current_user ||= User.of_auth_token(cookies[:auth_token]) if cookies[:auth_token]
+  end
+
+  # redirect somewhere that will eventually return back to here
+  def redirect_away(*params)
+    session[:original_uri] = request.fullpath
+    redirect_to(*params)
+  end
+
+  # returns the person to either the original url from a redirect_away or to a default url
+  def redirect_back(*params)
+    uri = session[:original_uri]
+    session[:original_uri] = nil
+    if uri
+      redirect_to uri
+    else
+      redirect_to(*params)
+    end
   end
 end

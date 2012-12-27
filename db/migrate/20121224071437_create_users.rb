@@ -9,8 +9,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_reset_token
       t.datetime :password_reset_sent_at
       t.integer :role, default: NORMAL_USER_ROLE
-      t.string :bio
-      t.string :avatar
 
       t.timestamps
     end
