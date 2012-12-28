@@ -1,0 +1,14 @@
+<%= simple_form_for(@review) do |f| %>
+    <%= f.error_notification %>
+
+    <% if @review.beverage %>
+        <%= f.hidden_field :beverage_id %>
+        <p><%= link_to @review.beverage.full_name, @review.beverage %></p>
+    <% end %>
+
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.input :score %>
+
+    <%= f.submit %>
+<% end %>

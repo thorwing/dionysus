@@ -1,4 +1,6 @@
-<% title @type ? t("beverages.categories.#{@type}") : "酒" %>
+<% current_beverage = t("beverages.categories.#{@type}") %>
+
+<% title @type ? current_beverage : "酒", false %>
 
 <div class="box box-shadow p10 mb50">
     <% @filters.each do |filter| %>
@@ -9,6 +11,11 @@
     <% end %>
 
     <div class="mb10">
+        <p>
+            <%= link_to "首页", root_path, class: "f16" %>
+            <%= content_tag :span, " < ", class: "ml10" %>
+            <%= content_tag :span, current_beverage, class: "ml10" %>
+        </p>
         <%= content_tag :span, "国家:", class: 'b' %><br/>
         <% Country.all.each do |country| %>
             <%= link_to country.name, "#{request.env['PATH_INFO']}?filter=country&value=#{country.name}&delta=1", class: "mr10" %>

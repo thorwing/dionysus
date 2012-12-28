@@ -34,4 +34,17 @@ class ApplicationController < ActionController::Base
       redirect_to(*params)
     end
   end
+
+  def require_permission(permission)
+    if current_user && current_user.has_permission?(permission)
+      true
+    else
+      if current_user
+        redirect_to :back, :alert => t("alerts.need_permission_not_logged", :permission => t("roles.#{permission.to_s}") )
+      else
+        redirect_away :login, :alert => t("alerts.need_permission_logged", :permission => permission)
+      end
+      false
+    end
+  end
 end

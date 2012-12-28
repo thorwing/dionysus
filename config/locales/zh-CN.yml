@@ -28,6 +28,10 @@ zh-CN:
     unfollow: 取消关注
     anonymous_user: 匿名用户
 
+  alerts:
+    need_permission_logged: "请登录，或注册一个帐号。"
+    need_permission_not_logged: "此操作需要%{permission}的权限。"
+
   authentication:
     logout: 登出
     login: 登录

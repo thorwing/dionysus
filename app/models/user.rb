@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :nick, :password, :password_confirmation, :old_password, :updating_password
 
   #Relationships
+  has_many :revies, foreign_key: 'author_id'
+  has_many :wishes, foreign_key: 'author_id'
+  has_many :checks, foreign_key: 'author_id'
 
   #Validators
   validates :email,

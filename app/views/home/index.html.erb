@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="span4">
+    <div class="span3">
         <div class="box box-shadow p10">
             <ul class="unstyled">
                 <% %w(ChineseSpirits RiceWine ChineseLiquor).each do |category| %>
@@ -26,8 +26,7 @@
             </ul>
         </div>
     </div>
-    <div class="span8">
-
+    <div class="span9">
         <div class="hero-unit">
             <%= content_tag :h1, t("site.name") %>
             <%= content_tag :p, t("site.description") %>
@@ -37,8 +36,8 @@
         </div>
 
         <ul class="thumbnails">
-            <% 1.upto(4) do %>
-                <li class="span4">
+            <% 1.upto(6) do %>
+                <li class="span3">
                     <div class="thumbnail">
                         <img data-src="holder.js/300x200" alt="">
                             <h3>Thumbnail label</h3>

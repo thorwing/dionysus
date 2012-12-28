@@ -1,41 +1,38 @@
-<% title @beverage.full_name %>
+<% title @beverage.full_name, false %>
 
 <div class="row">
-    <div class="span8">
-        <div class="box box-shadow p10 clearfix">
-            <div class="pull-left">
-                <%= link_to image_tag(@beverage.pic_url, class: "img-square-120"), @beverage %>
+    <div class="span2">
+        <%= image_tag @beverage.pic_url, width: 120 %>
+    </div>
+
+    <div class="span7">
+        <p>
+            <%= content_tag :span, @beverage.en_name, class: "b f18" %>
+            <%= content_tag :span, @beverage.cn_name, class: "b f18 ml20" %>
+            <%= content_tag :span, "#{@beverage.reviews.size}篇酒评", class: "ml30 trivial f12" %>
+        </p>
+
+        <div class="mt30 clearfix">
+            <div class="pull-left text-center" >
+                <div class="p20" style="width: 100px; background: #339999;">
+                    <%= content_tag :span, @beverage.reviews_score, class: "white f18" %>
+                </div>
+                <div class="mt10 clearfix">
+                    <% if current_user %>
+                        <%= link_to "想喝", new_wish_path(beverage_id: @beverage.id), class: "pull-left btn btn-small btn-warning" %>
+                        <%= link_to "喝过", new_check_path(beverage_id: @beverage.id), class: "pull-right btn btn-small btn-danger" %>
+                    <% end %>
+                </div>
             </div>
 
-            <div class="pull-left ml20">
-                <% if @beverage.rank %>
-                    <p>
-                        <%= content_tag :b, "评级", class: "mr20" %>
-                        <%= link_to "#{@beverage.rank.full_name}", @beverage.rank %>
-                    </p>
-                <% end %>
-
-                <% if @beverage.is_a?(Wine) && @beverage.aoc %>
-                    <p>
-                        <%= content_tag :b, "AOC", class: "mr20" %>
-                        <%= link_to "#{@beverage.aoc.full_name}", @beverage.aoc %>
-                    </p>
-                <% end %>
-
-                <p>
-                    <%= content_tag :b, "度数", class: "mr20" %>
-                    <%= content_tag :span, "#{@beverage.alcohol.to_i}%"  %>
-                </p>
-
-                <p>
-                    <%= content_tag :b, "容量", class: "mr20" %>
-                    <%= content_tag :span, @beverage.volume %>
-                </p>
+            <div class="pull-left ml30">
+                <%= render "beverages/info", beverage: @beverage %>
             </div>
         </div>
     </div>
 
-    <div class="span4">
+
+    <div class="span3">
         <div class="box box-shadow p10">
             <%= link_to @beverage.region.full_name, @beverage.region if @beverage.region %>
             <hr/>
@@ -43,5 +40,4 @@
             <%= link_to 'Back', beverages_path %>
         </div>
     </div>
-
 </div>

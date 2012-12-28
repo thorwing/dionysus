@@ -1,5 +1,5 @@
 class Beverage < ActiveRecord::Base
-  attr_accessible :en_title, :cn_title, :volume, :alcohol, :pic_url
+  attr_accessible :en_name, :cn_name, :volume, :alcohol, :pic_url
 
   #relationships
   belongs_to :region
@@ -10,8 +10,16 @@ class Beverage < ActiveRecord::Base
   has_many :cups, through: :containers
   has_many :vinifications
   has_many :grapes, through: :vinifications
+  has_many :reviews
+  has_many :wishes
+  has_many :checks
 
   def full_name
-    "#{en_title} / #{cn_title}"
+    "#{en_name} / #{cn_name}"
   end
+
+  def reviews_score
+    98
+  end
+
 end

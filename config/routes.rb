@@ -1,5 +1,10 @@
 Dionysus::Application.routes.draw do
 
+  resources :checks
+
+  resources :reviews
+  resources :wishes
+
   match "logout" => "sessions#destroy"
   match "login" => "sessions#new"
   match "sign_up" => "users#new"

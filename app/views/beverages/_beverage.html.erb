@@ -1,10 +1,10 @@
 <div class="span4">
-    <div class="box box-shadow p10" style="width:220px;">
-        <div class="text-center">
-            <p>
-                <%= link_to image_tag(beverage.pic_url), beverage %>
-            </p>
+    <div class="box box-shadow p10 clearfix" style="width:220px;">
+        <div class="pull-left">
+            <%= link_to image_tag(beverage.pic_url, class: "img-square-80"), beverage %>
+        </div>
 
+        <div class="pull-left ml10" style="width: 110px;">
             <%= link_to beverage.full_name, beverage, class: "jujiu-label" %>
         </div>
     </div>

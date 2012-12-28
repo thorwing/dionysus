@@ -1,5 +1,23 @@
-<p id="notice"><%= notice %></p>
+<% title @user.nick, false %>
 
+<div class="span8">
+    <div class="clearfix">
+        <%= content_tag :p, "想喝:" %>
+        <% @user.wishes.each do |wish| %>
+            <%= render wish %>
+        <% end %>
+    </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <div class="clearfix">
+        <%= content_tag :p, "喝过:" %>
+        <% @user.checks.each do |check| %>
+            <%= render check %>
+        <% end %>
+    </div>
+</div>
+
+<div class="span4">
+    <div class="box box-shadow clearfix">
+        <%= render "users/user_block", user: @user %>
+    </div>
+</div>

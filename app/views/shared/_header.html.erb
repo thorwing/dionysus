@@ -8,14 +8,12 @@
                 <span class="icon-bar"></span>
             </a>
             <!-- Be sure to leave the brand out there if you want it shown -->
-            <%= link_to t("site.name"), root_path, class: "brand #{'selected' if request.env['PATH_INFO'] == root_path}", style: "padding: 8px;" %>
+            <%= link_to t("site.name"), root_path, class: "brand", style: "padding: 8px;" %>
 
             <% unless @hide_menu %>
                 <div class="nav-collapse">
                     <ul class="nav" style="margin-left: 10px;">
                         <%= render "shared/menu", caption: '首页', path: root_path %>
-                        <%= render "shared/menu", caption: '产区', path: regions_path %>
-                        <%= render "shared/menu", caption: '酒', path: beverages_path %>
                     </ul>
 
                     <ul class="nav pull-right">

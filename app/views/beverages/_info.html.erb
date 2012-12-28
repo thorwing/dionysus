@@ -1,0 +1,23 @@
+<% if beverage.rank %>
+   <p>
+       <%= content_tag :b, "评级", class: "mr20" %>
+       <%= link_to "#{beverage.rank.full_name}", beverage.rank %>
+   </p>
+<% end %>
+
+<% if beverage.is_a?(Wine) && beverage.aoc %>
+   <p>
+       <%= content_tag :b, "AOC", class: "mr20" %>
+       <%= link_to "#{beverage.aoc.full_name}", beverage.aoc %>
+   </p>
+<% end %>
+
+<p>
+   <%= content_tag :b, "度数", class: "mr20" %>
+   <%= content_tag :span, "#{beverage.alcohol.to_i}%"  %>
+</p>
+
+<p>
+   <%= content_tag :b, "容量", class: "mr20" %>
+   <%= content_tag :span, beverage.volume %>
+</p>

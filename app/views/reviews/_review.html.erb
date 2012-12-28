@@ -1,0 +1,9 @@
+<div class="clearfix">
+  <div class="pull-left">
+        <%= content_tag :span, review.title, class: "jujiu-title" %>
+        <%= content_tag :p, review.content %>
+  </div>
+  <div class="pull-right">
+        <%= link_to image_tag(current_user.get_avatar(:thumb), width: 20, height: 20, class: 'mr5', style: "margin-top: -5px;") + truncate_text(current_user.nick, 6), review.author %>
+  </div>
+</div>

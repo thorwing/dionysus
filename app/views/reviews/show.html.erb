@@ -1,0 +1,12 @@
+<% title "酒评 - #{@review.title} - #{@review.beverage.full_name}", false %>
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to @review.beverage.full_name, @review.beverage %>
+
+<%= content_tag :p, @review.title, class: "jujiu-title" %>
+<%= content_tag :p, @review.content %>
+
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>
