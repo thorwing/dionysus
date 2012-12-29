@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :revies, foreign_key: 'author_id'
   has_many :wishes, foreign_key: 'author_id'
   has_many :checks, foreign_key: 'author_id'
+  has_many :topics, foreign_key: 'author_id'
+  has_many :replies, foreign_key: 'author_id'
 
   #Validators
   validates :email,
@@ -63,8 +65,18 @@ class User < ActiveRecord::Base
   end
 
   #TODO stub
-  def get_avatar(version = nil)
+  def get_avatar(version = :thumb)
     "/assets/anonymous_m_#{version.to_s}.png"
+  end
+
+  def locked_node_ids
+    (locked_nodes_list || "").split(",")
+  end
+
+  def locked_node_ids=(ids_array)
+    if ids_array.is_a? Array
+      self.locked_nodes_list = ids_array.join(",")
+    end
   end
 
   private

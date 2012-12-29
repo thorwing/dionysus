@@ -84,4 +84,8 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)", html_options)
   end
 
+  def user_avatar_tag(user)
+    link_to image_tag(user.get_avatar), user
+  end
+
 end

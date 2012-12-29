@@ -1,0 +1,11 @@
+i.icon-locked {
+    background: url("icon-locked.png") 0 0 no-repeat;
+}
+
+i.icon-unlock {
+    background: url("icon-unlock.png") 0 0 no-repeat;
+}
+
+i.my-icon-white {
+    background-position: 0 -14px;
+}

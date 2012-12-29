@@ -15,6 +15,7 @@ zh-CN:
     follow_question: 关注问题
     follow_plan: 关注清单
     publish: 发表
+    cancel: 取消
     answer: 回答
     finish: 完成
     confirm: 确定
@@ -27,6 +28,9 @@ zh-CN:
     create: 创建
     unfollow: 取消关注
     anonymous_user: 匿名用户
+    created_at: 创建于%{time}以前
+    replied_at: 回复于%{time}以前
+    last_reply_by: 最后回复
 
   alerts:
     need_permission_logged: "请登录，或注册一个帐号。"
@@ -69,5 +73,12 @@ zh-CN:
       RiceWine: 黄酒/米酒
       Sake: 清酒
 
+  home:
+    root: 首页
 
+  topics:
+    topics: 社区
+    add_topic: 添加主题
+    create_topic: 新建主题
+    edit_topic: 编辑主题
 

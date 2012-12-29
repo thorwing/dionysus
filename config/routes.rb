@@ -1,5 +1,9 @@
 Dionysus::Application.routes.draw do
 
+  resources :replies
+
+  resources :topics
+
   resources :checks
 
   resources :reviews
@@ -9,6 +13,9 @@ Dionysus::Application.routes.draw do
   match "login" => "sessions#new"
   match "sign_up" => "users#new"
   resource :sessions, only: [:new, :create, :destroy]
+
+  put "nodes/:id/lock", to: "nodes#lock", as: :lock_node
+  put "nodes/:id/unlock", to: "nodes#unlock", as: :unlock_node
 
   resources :beverages
 

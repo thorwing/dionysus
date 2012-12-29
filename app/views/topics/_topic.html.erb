@@ -1,0 +1,22 @@
+<div class="clearfix">
+    <div class="pull-left">
+        <%= user_avatar_tag(topic.author) %>
+    </div>
+    <div class="pull-left ml20">
+        <%= link_to truncate_text(topic.title, 100), topic, title: topic.title %>
+    </div>
+    <div class="pull-right">
+        <%= link_to topic.author.nick, topic.author %>
+        <em>
+            •
+            <% if topic.last_reply_user.blank? %>
+                <%= t("general.created_at", time: time_ago_in_words(topic.created_at))%>
+            <% else %>
+                <%= t("general.last_reply_by")%> <%= link_to topic.last_reply_user.nick, topic.last_reply_user %> <%= t("common.replied_at", time: time_ago_in_words(topic.replied_at))%>
+            <% end %>
+        </em>
+    </div>
+    <div class="pull-right mr20">
+        <%= content_tag :span, topic.node.name if topic.node %>
+    </div>
+</div>

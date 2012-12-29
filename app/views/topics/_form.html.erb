@@ -1,0 +1,13 @@
+<%= simple_form_for(@topic) do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.collection_select :node_id, Node.all, :id, :name %>
+    <%= f.input :title %>
+    <%= f.input :body, as: :text, input_html: { class: "xxlarge", style: "height: 360px" }%>
+
+    <div class="actions">
+        <%= f.submit t("general.publish"), :class => "btn btn-primary" %>
+        <%= link_to(t("general.cancel"), @topic.id.blank? ? topics_path : topic_path(@topic), class: "btn")%>
+    </div>
+
+<% end %>

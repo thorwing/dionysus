@@ -5,7 +5,7 @@ class Review < ActiveRecord::Base
   acts_as_taggable_on :foods
 
   #relationships
-  belongs_to :author, :class_name => "User", foreign_key: 'author_id'
+  belongs_to :author, class_name: "User", foreign_key: 'author_id'
   belongs_to :beverage
   has_many :scores
   has_many :pieces

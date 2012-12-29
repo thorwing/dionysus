@@ -1,0 +1,41 @@
+<% title t("topics.topics") %>
+
+<div class="span8">
+    <% if current_user %>
+        <div class="clearfix">
+            <%= link_to t("topics.add_topic"), new_topic_path, class: "btn btn-info pull-right" %>
+        </div>
+        <hr/>
+    <% end %>
+
+    <% @topics.each do |topic| %>
+        <%= render topic %>
+        <hr/>
+    <% end %>
+</div>
+
+<div class="span4">
+    <div class="box box-shadow">
+        <% if params[:all].present? && params[:all] == "true" %>
+            <div class="p10">
+                <%= link_to "取消所有", topics_path %>
+            </div>
+        <% else %>
+            <div class="p10">
+                <%= link_to "所有", topics_path(all: true) %>
+            </div>
+            <% @locked_nodes.each do |node| %>
+                <div class="p10" style="background: gray;">
+                    <%= link_to content_tag(:i, '', class: "icon-locked") + " #{node.name}", unlock_node_path(node), method: :put, class: "jujiu-title" %>
+                </div>
+            <% end %>
+
+            <% @unlocked_nodes.each do |node| %>
+                <div class="p10" style="background: #f5f5f5;">
+                    <%= link_to node.name, lock_node_path(node), method: :put, class: "jujiu-title trivial" %>
+                </div>
+            <% end %>
+         <% end %>
+    </div>
+</div>
+

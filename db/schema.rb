@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228131253) do
+ActiveRecord::Schema.define(:version => 20121229074838) do
 
   create_table "aocs", :force => true do |t|
     t.string   "en_name"
@@ -90,6 +90,12 @@ ActiveRecord::Schema.define(:version => 20121228131253) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "nodes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "pieces", :force => true do |t|
     t.string   "flavor"
     t.integer  "strength"
@@ -116,6 +122,13 @@ ActiveRecord::Schema.define(:version => 20121228131253) do
   end
 
   add_index "regions", ["ancestry"], :name => "index_regions_on_ancestry"
+
+  create_table "replies", :force => true do |t|
+    t.string   "body"
+    t.string   "body_html"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "reviews", :force => true do |t|
     t.string   "title"
@@ -154,6 +167,20 @@ ActiveRecord::Schema.define(:version => 20121228131253) do
     t.string "name"
   end
 
+  create_table "topics", :force => true do |t|
+    t.string   "title"
+    t.string   "body"
+    t.string   "body_html"
+    t.datetime "replied_at"
+    t.integer  "replies_count",    :default => 0
+    t.integer  "last_active_mark"
+    t.integer  "last_reply_id"
+    t.integer  "author_id"
+    t.integer  "node_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "nick"
@@ -163,6 +190,7 @@ ActiveRecord::Schema.define(:version => 20121228131253) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.integer  "role",                   :default => 1
+    t.string   "locked_nodes_list"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
   end
