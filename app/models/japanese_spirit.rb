@@ -1,0 +1,3 @@
+class JapaneseSpirit < Beverage
+
+end

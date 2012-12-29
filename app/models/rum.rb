@@ -1,0 +1,3 @@
+class Rum < Beverage
+
+end

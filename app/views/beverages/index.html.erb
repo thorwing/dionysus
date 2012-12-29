@@ -22,7 +22,7 @@
         <% end %>
     </div>
 
-    <% if @type %>
+    <% if @type && get_styles(@type).present? %>
         <div class="clearfix mb10">
             <%= content_tag :span, "分类:", class: 'b' %><br/>
             <% get_styles(@type).each do |style| %>

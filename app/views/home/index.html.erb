@@ -2,17 +2,17 @@
     <div class="span3">
         <div class="box box-shadow p10">
             <ul class="unstyled">
-                <% %w(ChineseSpirits RiceWine ChineseLiquor).each do |category| %>
+                <% %w(WhiteSpirit RiceWine ChineseLiqueur).each do |category| %>
                     <li class="mt5 mb5">
-                        <%= link_to t("beverages.categories.#{category}"), beverages_path(category: category), class: "jujiu-label" %>
+                        <%= link_to t("beverages.categories.#{category}"), "/#{category.downcase}", class: "jujiu-label" %>
                     </li>
                 <% end %>
 
                 <hr class="dotted"/>
 
-                <% %w(Whisky Brandy Vodka Tequila Rum Gin Liquor).each do |category| %>
+                <% %w(Whisky Brandy Vodka Tequila Rum Gin Liqueur).each do |category| %>
                     <li class="mt5 mb5">
-                        <%= link_to t("beverages.categories.#{category}"), beverages_path(category: category), class: "jujiu-label" %>
+                        <%= link_to t("beverages.categories.#{category}"), "/#{category.downcase}", class: "jujiu-label" %>
                     </li>
                 <% end %>
 
@@ -20,7 +20,7 @@
 
                 <% %w(Wine Beer Sake).each do |category| %>
                     <li class="mt5 mb5">
-                        <%= link_to t("beverages.categories.#{category}"), "/#{category.downcase.pluralize}", class: "jujiu-label" %>
+                        <%= link_to t("beverages.categories.#{category}"), "/#{category.downcase}", class: "jujiu-label" %>
                     </li>
                 <% end %>
             </ul>

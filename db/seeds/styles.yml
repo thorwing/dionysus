@@ -1,118 +1,76 @@
 wine:
     -
-      en_name: red_wine
+      en_name: Redwine
       cn_name: 红葡萄酒
       sub:
         -
-          en_name: dry_red_wine
+          en_name: Dryredwine
           cn_name: 干红
         -
-          en_name: half_dry_red_wine
+          en_name: Halfdryredwine
           cn_name: 半干红
         -
-          en_name: half_sweet_red_wine
+          en_name: Halfsweetredwine
           cn_name: 半甜红
         -
-          en_name: sweet_red_wine
+          en_name: Sweetredwine
           cn_name: 甜红
         -
-          en_name: half_sweet_mix_red_wine
+          en_name: Halfsweethalfdryredwine
           cn_name: 干甜搭
 
     -
-      en_name: white_wine
+      en_name: Whitewine
       cn_name: 白葡萄酒
       sub:
         -
-          en_name: dry_white_wine
+          en_name: Drywhitewine
           cn_name: 干白
         -
-          en_name: half_dry_white_wine
+          en_name: Halfdrywhitewine
           cn_name: 半干白
         -
-          en_name: half_sweet_white_wine
+          en_name: Halfsweetwhitewine
           cn_name: 半甜白
         -
-          en_name: sweet_white_wine
+          en_name: Sweetwhitewine
           cn_name: 甜白
         -
-          en_name: botrytised_wine
+          en_name: Botrytisedwine
           cn_name: 贵腐
         -
-          en_name: dry_sweet_mix_white_wine
+          en_name: Drysweetmixwhitewine
           cn_name: 干甜搭
     -
-      en_name: rose_wine
+      en_name: Rosewine
       cn_name: 桃红葡萄酒
 
     -
-      en_name: sparking_wine
+      en_name: Sparkingwine
       cn_name: 起泡酒
 
     -
-      en_name: fortified_wine
+      en_name: Fortifiedwine
       cn_name: 加强葡萄酒
 
+WhiteSpirit:
+    -
+      en_name: Faintscent
+      cn_name: 清香型
 
+    -
+      en_name: Jiangscent
+      cn_name: 酱香型
 
+    -
+      en_name: Ricescent
+      cn_name: 米香
 
+    -
+      en_name: Aromachinese
+      cn_name: 浓香型
 
-
-
-
-#-
-#  en_name: wine
-#  cn_name: 葡萄酒
-
-#-
-#  en_name: "dry"
-#  cn_name: 干红葡萄酒
-#  parent: wine
-#
-#-
-#  en_name: "half dry"
-#  cn_name: 半干葡萄酒
-#  parent: wine
-#
-#-
-#  en_name: whisky
-#  cn_name: 威士忌
-#
-#-
-#  en_name: vodka
-#  cn_name: 伏特加
-#
-#-
-#  en_name: tequila
-#  cn_name: 龙舌兰
-#
-#-
-#  en_name: rum
-#  cn_name: 朗姆酒
-#
-#-
-#  en_name: brandy
-#  cn_name: 白兰地
-#
-#-
-#  en_name: sake
-#  cn_name: 清酒
-#
-#-
-#  en_name:
-#
-#-
-#  en_name:
-#  cn_name:
-#
-#-
-#  en_name:
-#  cn_name:
-#
-#-
-#  en_name: beer
-#  cn_name: 啤酒
-#
-
-
+    -
+      en_name: Otherchinese
+      cn_name: 其他香型
 

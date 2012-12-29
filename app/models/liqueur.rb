@@ -1,0 +1,3 @@
+class Liqueur < Beverage
+
+end

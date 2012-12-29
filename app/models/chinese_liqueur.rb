@@ -1,0 +1,3 @@
+class ChineseLiqueur < Beverage
+
+end

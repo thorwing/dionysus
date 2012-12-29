@@ -2,7 +2,8 @@
   type: Wine
   en_name: Château MARGAUX
   cn_name: 玛歌庄园
-  brand: MARGAUX
+  brand: Margaux
+  styles: Dryredwine
   volume: 500
   alcohol: 12
   region: Médoc
@@ -16,6 +17,7 @@
   en_name: Westvleteren
   cn_name: 维斯特啤酒
   brand: Westvleteren
+  styles: abt/Quadrupel
   volume: 500
   alcohol: 12
   pic_url: http://blogfile.ifeng.com/uploadfiles/blog_attachment/0811/56/1041756_e0000e5d71c26ed40bd26b8a4d9eb8db.jpg
@@ -36,5 +38,107 @@
   brand: Chivas
   volume: 700
   alcohol: 40
-  brand: Chivas
   pic_url: http://www.moodiereport.com/Martin/wp-content/chivas-25.JPG
+
+-
+  type: Whisky
+  en_name: Ardbeg Uigeadail
+  cn_name: 阿贝 乌干达
+  brand: Ardbeg
+  regions: Isly
+  volume: 700
+  alcohol: 54.2
+  pic_url: http://img.thewhiskyexchange.com/270/abgob.non2.jpg
+
+-
+  type: Vodka
+  en_name: Ultimat
+  cn_name: 终极伏特加
+  brand: Ultimat
+  volume: 700
+  alcohol: 40
+  pic_url: http://www.thefiftybest.com/content/spirits/best_vodka_2012/images/ultimat.jpg
+
+-
+  type: Rum
+  en_name: Ron Zacapa 23 yr.
+  cn_name: 扎卡帕 23年
+  brand: Zacapa
+  volume: 700
+  alcohol: 40
+  pic_url: http://www.thefiftybest.com/content/spirits/aged_rum/images/zacapa_23.jpg
+
+-
+  type: Brandy
+  en_name: Cuvée Jean Godet（VS de Luxe）
+  cn_name: 高迪特VS
+  brand: Godet
+  volume: 700
+  alcohol: 40
+  pic_url: http://www.thefiftybest.com/content/spirits/cognac/images/godet_vs.gif
+
+-
+  type: Gin
+  en_name: Hendrick's
+  cn_name: 亨利爵士金
+  brand: Hendrick's
+  volume: 500
+  alcohol: 40
+  pic_url: http://www.thefiftybest.com/content/spirits/gin/images/hendricks_gin.jpg
+
+-
+  type: Tequila
+  en_name: Luna Nueva
+  cn_name: 露那 努埃瓦
+  brand: Luna Nueva
+  volume: 700
+  alcohol: 40
+  pic_url: http://www.thefiftybest.com/content/tequila/tequila_reposado/images/luna_nueva_reposado.jpg
+
+-
+  type: Sake
+  en_name: 越後杜氏の里一斗樽 
+  cn_name: 
+  brand: 越後杜氏
+  volume: 72000
+  alcohol: 15.8
+  pic_url: http://image.rakuten.co.jp/sake-gets/cabinet/sake/img56651004.jpg
+
+-
+  type: Liqueur
+  en_name: Prucia
+  cn_name: 浮乐夏
+  brand: Prucia
+  volume: 700
+  alcohol: 15
+  pic_url: http://www.proof66.com/images/Prucia_Plum_liqueur.jpg
+
+-
+  type: JapaneseSpirit
+  en_name: 百年の孤独 
+  cn_name: 百年孤独
+  brand: 黒木本店
+  volume: 720
+  alcohol: 40
+  pic_url: http://thumbnail.image.rakuten.co.jp/s/?@0_mall/newyork1989/cabinet/02438720/212000720019.jpg
+
+-
+  type: WhiteSpirit
+  en_name: 
+  cn_name: 山西[汾酒]汾酒牧童牛清香型48度750ml
+  brand: 汾酒
+  style: Faintscent
+  region: 
+  volume: 750
+  alcohol: 48
+  pic_url: http://rs1.in.itc.cn/api_upload/wine_hash/79/10/3b1634c7aea137735409010a7ba8479c_310x310.jpg
+
+-
+  type: ChineseLiqueur
+  en_name: 
+  cn_name: 竹叶青桶装国宝38度 475ml
+  brand: 竹叶青
+  volume: 475
+  alcohol: 38
+  region: 山西
+  pic_url: http://img30.360buyimg.com/erpWareDetail/9L670xNMeioPS8JO.jpg

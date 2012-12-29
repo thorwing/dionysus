@@ -1,0 +1,3 @@
+class Tequila < Beverage
+
+end

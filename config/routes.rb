@@ -25,9 +25,18 @@ Dionysus::Application.routes.draw do
 
   resources :grapes
 
-  resources :wines, controller: :beverages, type: "Wine"
+  resources :wine, controller: :beverages, type: "Wine"
   resources :beer, controller: :beverages, type: "Beer"
   resources :whisky, controller: :beverages, type: "Whisky"
+  resources :rum,  controller: :beverages, type: "Rum"
+  resources :brandy,  controller: :beverages, type: "Brandy"
+  resources :vodka,  controller: :beverages, type: "Vodka"
+  resources :gin,  controller: :beverages, type: "Gin"
+  resources :tequila,  controller: :beverages, type: "Tequila"
+  resources :sake,  controller: :beverages, type: "Sake"
+  resources :liqueur,  controller: :beverages, type: "Liqueur"
+  resources :chineseliqueur,  controller: :beverages, type: "ChineseLiqueur"
+  resources :whitespirit, controller: :beverages, type: "WhiteSpirit"
 
   resources :users
 

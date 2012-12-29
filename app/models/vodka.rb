@@ -1,0 +1,3 @@
+class Vodka < Beverage
+
+end

@@ -1,0 +1,3 @@
+class WhiteSpirit < Beverage
+
+end

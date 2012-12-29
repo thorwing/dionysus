@@ -1,0 +1,3 @@
+class Brandy < Beverage
+
+end
