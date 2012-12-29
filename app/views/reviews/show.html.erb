@@ -2,11 +2,32 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= link_to @review.beverage.full_name, @review.beverage %>
+<div class="row">
+    <div class="span9">
+        <div class="clearfix">
+            <div class="pull-left">
+                <%= render "votes/vote_fields", item: @review %>
+            </div>
 
-<%= content_tag :p, @review.title, class: "jujiu-title" %>
-<%= content_tag :p, @review.content %>
+            <div class="pull-left ml30 clearfix" style="width: 550px;">
+                <%= content_tag :p, @review.title, class: "jujiu-title" %>
+                <%= content_tag :p, @review.content %>
 
+                <% @review.pieces.each do |piece| %>
+                    <%= content_tag :span, piece.flavor, class: "b" %>
+                <% end %>
+          </div>
+      </div>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+      <div>
+        <%= link_to 'Edit', edit_review_path(@review) %> |
+        <%= link_to 'Back', reviews_path %>
+      </div>
+    </div>
+
+    <div class="span3">
+        <%= link_to @review.beverage.full_name %>
+        <%= link_to image_tag(@review.beverage.pic_url), @review.beverage, width: 120 %>
+        <%= render "beverages/info", beverage: @review.beverage %>
+    </div>
+</div>

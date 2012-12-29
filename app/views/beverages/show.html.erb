@@ -29,6 +29,17 @@
                 <%= render "beverages/info", beverage: @beverage %>
             </div>
         </div>
+
+        <hr/>
+
+        <div class="clearfix">
+            <%= content_tag :span, "酒评", class: "pull-left jujiu-label" %>
+            <%= link_to content_tag(:span, '', class: 'icon-pencil icon-white') + " 写酒评", new_review_path(beverage_id: @beverage.id), class: "btn btn-info pull-right" %>
+        </div>
+
+        <% @beverage.reviews.each do |review| %>
+            <%= render review %>
+        <% end %>
     </div>
 
 

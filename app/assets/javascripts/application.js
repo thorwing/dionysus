@@ -24,5 +24,21 @@ $(function() {
             $(this).find(".display_on_hover").hide();
         }
     );
+
+    $('.piece_flavor').focus(function(){
+        $(this).parents(".removable_fields").find(".display_on_focus").show();
+    });
 });
+//Add fields to DOM
+function add_fields(link, association, content, selector) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+    $(selector).append(content.replace(regexp, new_id));
+}
+
+//Remove fields from DOM
+function remove_fields(link) {
+    $(link).prev("input[type=hidden]").val("1");
+    $(link).parent(".removable_fields").remove();
+}
 

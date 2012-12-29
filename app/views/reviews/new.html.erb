@@ -1,5 +1,13 @@
-<h1>New review</h1>
+<% title "评酒" %>
 
-<%= render 'form' %>
+<div class="row">
+    <div class="span9">
+        <%= render 'form' %>
+    </div>
 
-<%= link_to 'Back', reviews_path %>
+    <div class="span3">
+        <%= link_to @review.beverage.full_name %>
+        <%= link_to image_tag(@review.beverage.pic_url), @review.beverage, width: 120 %>
+    </div>
+</div>
+

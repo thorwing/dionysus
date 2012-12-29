@@ -1,4 +1,9 @@
 <div class="clearfix">
-    <%= link_to check.beverage.full_name %><br/>
-    <%= check.remark %>
+    <div class="pull-left">
+        <%= link_to image_tag(check.beverage.pic_url, class: "img-square-120"), check.beverage %>
+    </div>
+    <div class="pull-left ml20">
+        <%= link_to check.beverage.full_name, check.beverage %><br/>
+        <%= check.remark %>
+    </div>
 </div>

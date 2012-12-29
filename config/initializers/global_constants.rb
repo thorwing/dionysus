@@ -2,6 +2,8 @@
 # also notice the call to 'freeze'
 #default
 
+GLOBAL_INPUT_MAX_LENGTH = 10000
+
 INACTIVE_USER_ROLE = -1
 NORMAL_USER_ROLE = 1
 MASTER_ROLE = 3

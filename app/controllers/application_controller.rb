@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper :external_link, :layout
-  helper_method :current_user
+  helper :application, :layout, :external_link
+  include ApplicationHelper
+  helper_method :current_user, :the_author_himself
 
   def current_user
     if @current_user
@@ -46,5 +47,24 @@ class ApplicationController < ActionController::Base
       end
       false
     end
+  end
+
+  def the_author_himself(item, or_admin = false, is_redirect = false)
+    has_permission = false
+
+    if (or_admin == true && current_user_has_permission?(:admin))
+      has_permission = true
+    elsif current_user_has_permission?(:normal_user)
+      begin
+        has_permission = (item && item.respond_to?(:author_id)) ? (item.author_id == current_user.id) : false
+      rescue
+      end
+    end
+
+    if !has_permission && is_redirect
+      redirect_to :back, :alert => t("alerts.only_author_self")
+    end
+
+    has_permission
   end
 end

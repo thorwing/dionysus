@@ -27,6 +27,10 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @review.beverage = Beverage.find_by_id(params[:beverage_id]) if params[:beverage_id].present?
 
+    1.upto(3) {
+      @review.pieces.build
+    }
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @review }

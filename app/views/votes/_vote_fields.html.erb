@@ -1,0 +1,10 @@
+<div class="text-center" style="width: 20px;"  id="vote_<%= item.class.name.downcase %>_<%= item.id %>">
+    <%= link_to t("votes.up"), like_path(:item_id => item.id, :item_type => item.class.name), remote: true,
+    class: "vote vote_up #{ "voted" if current_user.up_voted?(item)}", title: (current_user.up_voted?(item) ? "取消赞" : "赞") if current_user && !the_author_himself(item) %>
+    <div class="pull-left ml4 mt2 mb1 f20">
+        <%= content_tag :b, item.votes,  class: "votes_count" %>
+    </div>
+    <div class="clearfix"></div>
+    <%= link_to t("votes.down"), hate_path(:item_id => item.id, :item_type => item.class.name), remote: true,
+    class: "vote vote_down #{ "voted" if current_user.down_voted?(item)}", title: (current_user.down_voted?(item) ? "取消贬" : "贬") if current_user && !the_author_himself(item) %>
+</div>

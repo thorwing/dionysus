@@ -1,14 +1,14 @@
 <% title @user.nick, false %>
 
 <div class="span8">
-    <div class="clearfix">
+    <div class="clearfix box box-shadow p10">
         <%= content_tag :p, "想喝:" %>
         <% @user.wishes.each do |wish| %>
             <%= render wish %>
         <% end %>
     </div>
 
-    <div class="clearfix">
+    <div class="clearfix box box-shadow p10 mt30">
         <%= content_tag :p, "喝过:" %>
         <% @user.checks.each do |check| %>
             <%= render check %>

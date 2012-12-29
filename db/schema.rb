@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228085325) do
+ActiveRecord::Schema.define(:version => 20121228131253) do
 
   create_table "aocs", :force => true do |t|
     t.string   "en_name"
@@ -90,6 +90,14 @@ ActiveRecord::Schema.define(:version => 20121228085325) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "pieces", :force => true do |t|
+    t.string   "flavor"
+    t.integer  "strength"
+    t.integer  "review_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "ranks", :force => true do |t|
     t.string   "en_name"
     t.string   "cn_name"
@@ -112,11 +120,21 @@ ActiveRecord::Schema.define(:version => 20121228085325) do
   create_table "reviews", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "score"
+    t.integer  "points"
+    t.integer  "up_votes",    :default => 0, :null => false
+    t.integer  "down_votes",  :default => 0, :null => false
     t.integer  "author_id"
     t.integer  "beverage_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "scores", :force => true do |t|
+    t.string   "type"
+    t.string   "points"
+    t.integer  "review_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "taggings", :force => true do |t|
@@ -158,6 +176,20 @@ ActiveRecord::Schema.define(:version => 20121228085325) do
 
   add_index "vinifications", ["beverage_id", "grape_id"], :name => "index_vinifications_on_beverage_id_and_grape_id"
   add_index "vinifications", ["grape_id", "beverage_id"], :name => "index_vinifications_on_grape_id_and_beverage_id"
+
+  create_table "votings", :force => true do |t|
+    t.string   "voteable_type"
+    t.integer  "voteable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "up_vote",       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "votings", ["voteable_type", "voteable_id", "voter_type", "voter_id"], :name => "unique_voters", :unique => true
+  add_index "votings", ["voteable_type", "voteable_id"], :name => "index_votings_on_voteable_type_and_voteable_id"
+  add_index "votings", ["voter_type", "voter_id"], :name => "index_votings_on_voter_type_and_voter_id"
 
   create_table "whiskies", :force => true do |t|
     t.datetime "created_at", :null => false
