@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :checks, foreign_key: 'author_id'
   has_many :topics, foreign_key: 'author_id'
   has_many :replies, foreign_key: 'author_id'
+  has_many :recipes, foreign_key: 'author_id'
 
   #Validators
   validates :email,

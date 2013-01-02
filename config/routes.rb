@@ -1,5 +1,7 @@
 Dionysus::Application.routes.draw do
 
+  resources :recipes
+
   resources :replies
 
   resources :topics

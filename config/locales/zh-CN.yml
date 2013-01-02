@@ -19,6 +19,8 @@ zh-CN:
     answer: 回答
     finish: 完成
     confirm: 确定
+    edit: 编辑
+    delete: 删除
     ask: 提问
     post: 回应
     done: 达成
@@ -82,3 +84,11 @@ zh-CN:
     create_topic: 新建主题
     edit_topic: 编辑主题
 
+
+  recipes:
+    ingredients: 配料
+    ingredients_amount: 量
+    add_ingredient: +添加配料
+
+  cocktails:
+    cocktails: 鸡尾酒

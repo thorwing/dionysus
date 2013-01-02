@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-
+//= require jquery.masonry
 
 $(function() {
     $('.hover_area').hover(
@@ -42,3 +41,14 @@ function remove_fields(link) {
     $(link).parent(".removable_fields").remove();
 }
 
+
+
+$(function(){
+    var $container = $('#masonryContainer');
+
+    $container.imagesLoaded(function(){
+        $container.masonry({
+            itemSelector: '.masonary_item'
+        }); //.masonry('reload');
+    });
+});

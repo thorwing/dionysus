@@ -1,0 +1,37 @@
+<% title @recipe.title %>
+
+<div class="span9">
+    <div class="box_shadow p10 clearfix">
+        <div class="pull-left mr10" style="width: 200px;">
+            <%= image_tag(@recipe.pic_url) %>
+        </div>
+
+        <div class="pull-left ml10 clearfix" style="width: 460px;">
+            <div>
+                <% if the_author_himself(@recipe) %>
+                    <%= link_to t("general.edit"), edit_recipe_path(@recipe) %> |
+                    <%= link_to t("general.delete"), @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn-inverse" %>
+                <% end %>
+            </div>
+
+            <div class="mt10">
+                <div class="clearfix">
+                    <ul>
+                        <% @recipe.ingredients.each do |i|%>
+                            <li class="fl" style="width:50%;"> <%= i.name %>  <span class="trivial"><%= i.amount %></span></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt5">
+            <span class="berry_pink"><%= t_with_colon("recipes.notice") %></span>
+            <%= @recipe.remark %>
+        </div>
+    </div>
+</div>
+
+<div class="span3">
+
+</div>

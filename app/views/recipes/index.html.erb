@@ -1,0 +1,13 @@
+<% title t("cocktails.cocktails") %>
+
+<% if current_user %>
+    <%= link_to 'New Recipe', new_recipe_path %>
+<% end %>
+
+<br />
+
+<div id="masonryContainer">
+    <% @recipes.each do |recipe| %>
+        <%= render recipe %>
+    <% end %>
+</div>

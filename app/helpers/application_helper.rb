@@ -68,7 +68,7 @@ module ApplicationHelper
     end
   end
 
-    # example: <%= link_to_add_fields( t("recipes.add"), f, :ingredients, ".steps" ) %>
+  # example: <%= link_to_add_fields( t("recipes.add"), f, :ingredients, ".steps" ) %>
   # name:  the words displayed on the add field link
   # max_len: the max num for the added item
   # divname: the position inside which to insert the item
@@ -80,7 +80,7 @@ module ApplicationHelper
     link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{selector}\")")
   end
 
-  def link_to_remove_fields(name, f, html_options)
+  def link_to_remove_fields(name, f, html_options = {})
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)", html_options)
   end
 

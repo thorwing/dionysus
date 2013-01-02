@@ -1,0 +1,10 @@
+<tr>
+    <!--<= f.hidden_field :id unless f.object.new_record? %>-->
+    <td><%= f.text_field :name, :maxlength => get_max_length(Ingredient, :name) %></td>
+    <td><%= f.text_field :amount, :maxlength => get_max_length(Ingredient, :amount) %></td>
+    <% html_options= { class: "btn btn_delete_x", tabindex: -1 } %>
+    <td><%= link_to_remove_fields( "x", f) %></td>
+</tr>
+
+
+

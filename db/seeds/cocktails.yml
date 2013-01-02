@@ -1,0 +1,44 @@
+-
+  title: 天使之吻鸡尾酒 Angel’s Kiss
+  remark: 将可可甜酒倒入利口酒杯中，慢慢倒入鲜奶油，用鸡尾酒针将樱桃串起来，横放在杯口上。
+  pic_url: http://i0.sinaimg.cn/lx/2010/0121/S9140T1264068975872.jpg
+  ingredients_attributes:
+    -
+      name: 可可甜酒
+      amount: 4/5
+    -
+      name: 鲜奶油
+      amount: 1/5
+    -
+      name: 樱桃
+      amount: 1个
+
+-
+  title: 玛格丽特 Margartia Cocktail
+  remark: 将盐以外的材料倒入雪克杯中摇和，将摇和好的酒倒入沾了盐边的香槟酒杯中。
+  pic_url: http://i2.sinaimg.cn/lx/taste/wine/2010-01-21/U1205P622T1D55471F15DT20100121160304.jpg
+  ingredients_attributes:
+    -
+      name: 龙舌兰酒
+      amount: 1/2
+    -
+      name: 白色柑香酒
+      amount: 1/4
+    -
+      name: 青柠汁
+      amount: 1/4
+
+-
+  title: 新加坡司令 Singapore Sling
+  remark: 将所有的配料倒入摇酒器中与冰块同摇，滤入司令杯中的冰块上，再以菠萝、樱桃作为装饰。
+  pic_url: http://i0.sinaimg.cn/lx/2010/0121/S9140T1264069345814.jpg
+  ingredients_attributes:
+    -
+      name: 金酒
+      amount: 1份
+    -
+      name: 樱桃白兰地
+      amount: 0.5份
+    -
+      name: 君度利口酒
+      amount: 0.25份

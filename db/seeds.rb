@@ -87,6 +87,14 @@ records.each do |record|
   beverage.save!
 end
 
+p 'generating cocktails'
+records = YAML::load(File.open("db/seeds/cocktails.yml"))
+records.each do |record|
+  brand = Recipe.new
+  brand.attributes = record.slice(*Recipe.accessible_attributes)
+  brand.save!
+end
+
 p 'generating nodes'
 records = YAML::load(File.open("db/seeds/nodes.yml"))
 records.each do |record|
