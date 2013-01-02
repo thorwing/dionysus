@@ -22,16 +22,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'ancestry'
-
-gem 'simple_form'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
-
-gem 'acts-as-taggable-on', '~> 2.2.2'
-gem 'make_voteable'
-gem 'acts_as_follower'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 gem "bcrypt-ruby", :require => "bcrypt"
@@ -47,3 +37,19 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+#model
+gem 'ancestry'
+gem 'acts-as-taggable-on', '~> 2.2.2'
+gem 'make_voteable'
+gem 'acts_as_follower'
+
+#form
+gem 'simple_form'
+
+#paginate
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
+#scrape
+gem 'mechanize'

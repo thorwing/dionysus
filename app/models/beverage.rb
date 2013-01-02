@@ -13,6 +13,7 @@ class Beverage < ActiveRecord::Base
   has_many :reviews
   has_many :wishes
   has_many :checks
+  has_many :products
 
   def full_name
     "#{en_name} / #{cn_name}"

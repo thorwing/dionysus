@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229074838) do
+ActiveRecord::Schema.define(:version => 20130101080351) do
 
   create_table "aocs", :force => true do |t|
     t.string   "en_name"
@@ -102,6 +102,19 @@ ActiveRecord::Schema.define(:version => 20121229074838) do
     t.integer  "review_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.float    "price"
+    t.integer  "currency"
+    t.string   "source"
+    t.string   "source_id"
+    t.text     "source_url"
+    t.integer  "beverage_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "ranks", :force => true do |t|
