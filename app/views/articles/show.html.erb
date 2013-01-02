@@ -1,0 +1,10 @@
+<% title @article.title %>
+
+<div class="span9">
+    <%= content_tag :p, @article.body %>
+</div>
+
+<div class="span3">
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Back', articles_path %>
+</div>

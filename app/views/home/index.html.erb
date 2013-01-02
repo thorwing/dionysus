@@ -42,12 +42,16 @@
         </div>
 
         <ul class="thumbnails">
-            <% 1.upto(6) do %>
+            <% @hot_articles.each do |article| %>
                 <li class="span3">
                     <div class="thumbnail">
-                        <img data-src="holder.js/300x200" alt="">
-                            <h3>Thumbnail label</h3>
-                            <p>Thumbnail caption...</p>
+                        <div class="p10">
+                            <h3><%= article.title %></h3>
+                            <p>
+                               <%= content_tag :span, truncate_text(article.body, 140) %>
+                                <%= link_to t("general.more_detail"), article, class: "ml5" %>
+                            </p>
+                        </div>
                     </div>
                 </li>
             <% end %>

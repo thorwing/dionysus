@@ -33,6 +33,7 @@ zh-CN:
     created_at: 创建于%{time}以前
     replied_at: 回复于%{time}以前
     last_reply_by: 最后回复
+    more_detail: 详细 »
 
   alerts:
     need_permission_logged: "请登录，或注册一个帐号。"
@@ -84,6 +85,8 @@ zh-CN:
     create_topic: 新建主题
     edit_topic: 编辑主题
 
+  articles:
+    articles: 文章
 
   recipes:
     ingredients: 配料
@@ -92,3 +95,4 @@ zh-CN:
 
   cocktails:
     cocktails: 鸡尾酒
+
