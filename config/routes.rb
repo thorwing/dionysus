@@ -1,6 +1,6 @@
 Dionysus::Application.routes.draw do
 
-  resources :articles
+  resources :articles, only: [:show, :index]
 
   resources :recipes
 
@@ -92,6 +92,8 @@ Dionysus::Application.routes.draw do
 
   namespace :admin do
     root :to => "base#index"
+
+    resources :articles
   end
 
   # You can have the root of your site routed with "root"

@@ -43,17 +43,7 @@
 
         <ul class="thumbnails">
             <% @hot_articles.each do |article| %>
-                <li class="span3">
-                    <div class="thumbnail">
-                        <div class="p10">
-                            <h3><%= article.title %></h3>
-                            <p>
-                               <%= content_tag :span, truncate_text(article.body, 140) %>
-                                <%= link_to t("general.more_detail"), article, class: "ml5" %>
-                            </p>
-                        </div>
-                    </div>
-                </li>
+                <%= render article %>
             <% end %>
         </ul>
     </div>
