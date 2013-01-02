@@ -23,11 +23,11 @@
                             <% if current_user_has_permission?(:admin) %>
                                 <li class="dropdown" style="max-width: 160px;">
                                     <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                        <%= content_tag :span, "管理" %><b class="caret"></b>
+                                        <%= content_tag :span, "+新建" %><b class="caret"></b>
                                     </a>
 
                                     <ul class="dropdown-menu">
-                                        <!--<li><= link_to '管理酒', beverages_path %></li>-->
+                                        <li><%= link_to '文章', new_admin_article_path %></li>
                                     </ul>
                                 </li>
                             <% end %>
@@ -40,11 +40,10 @@
 
                                 <ul class="dropdown-menu">
                                     <% if current_user_has_permission?(:admin) %>
-                                        <!--<li class="divider"></li>-->
-                                        <!--<li><= link_to content_tag(:i, '', class: 'icon-signal') + ' 控制面板', admin_root_path %></li>-->
+                                        <li><%= link_to content_tag(:i, '', class: 'icon-signal') + ' 控制面板', admin_root_path %></li>
+                                        <li class="divider"></li>
                                     <% end %>
 
-                                    <!--<li class="divider"></li>-->
                                     <li><%= link_to '登出', logout_path %></li>
                                 </ul>
                             </li>

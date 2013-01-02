@@ -102,3 +102,11 @@ records.each do |record|
     node.name = record
   end
 end
+
+p 'generating articles'
+records = YAML::load(File.open("db/seeds/articles.yml"))
+records.each do |record|
+  brand = Article.new
+  brand.attributes = record.slice(*Article.accessible_attributes)
+  brand.save!
+end

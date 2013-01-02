@@ -1,0 +1,10 @@
+    <% title t("admin.control_panel") %>
+
+
+<div class="box box-shadow p10">
+    <p><%= link_to "#{User.all.size} 用户", "", class: "f18 green" %></p>
+    <p><%= link_to "#{Article.all.size} 文章", "", class: "f18 red" %></p>
+    <p><%= link_to "#{Beverage.all.size} 酒", "", class: "f18 orange" %></p>
+    <p><%= link_to "#{Recipe.all.size} 鸡尾酒", "", class: "f18 brown" %></p>
+    <p><%= link_to "#{Review.all.size} 酒评", "", class: "f18 blue" %></p>
+</div>

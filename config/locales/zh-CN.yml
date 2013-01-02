@@ -2,7 +2,7 @@ zh-CN:
   site:
     name: 关于酒
     sologan: 关于酒
-    description: 关于酒的一起
+    description: 关于酒的一切
     keywords: "关于酒"
 
   general:
@@ -96,3 +96,6 @@ zh-CN:
   cocktails:
     cocktails: 鸡尾酒
 
+
+  admin:
+    control_panel: 控制面板
