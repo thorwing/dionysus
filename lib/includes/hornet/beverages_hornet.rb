@@ -25,13 +25,22 @@ class Hornet::BeveragesHornet
             w.en_name = name
             #w.region = Region.find_by_en_name(agent.page.at("#ctl00_ContentPlaceHolder1_ctl01_ctl01_wdRegion a").text.strip)
             w.pic_url = agent.page.at("#ctl00_ContentPlaceHolder1_ctl01_imgProductBig").attributes["src"].text
-            brand_name = agent.page.at("#ctl00_ContentPlaceHolder1_ctl01_ctl01_wdBottler span:nth-child(2)").text.strip
-            brand = Brand.find_or_initialize_by_en_name(brand_name)
-            brand.save! if brand.new_record?
-            w.brand = brand
-            vol_and_alc_string = agent.page.at("#ctl00_ContentPlaceHolder1_pageH1ClAbv").text.strip
-            w.volume = vol_and_alc_string.split(',')[0].gsub("^[0-9]", '')
-            w.alcohol = vol_and_alc_string.split(',')[1].gsub("^[0-9]", '')
+
+            brand_selectors = ["#ctl00_ContentPlaceHolder1_ctl01_ctl00_wdBottler span:nth-child(2)", "#ctl00_ContentPlaceHolder1_ctl01_ctl01_wdBottler span:nth-child(2)"]
+            brand_selectors.each do |selector|
+              brand_element = agent.page.at(selector)
+              if brand_element.present?
+                brand_name = brand_element.text.strip
+                brand = Brand.find_or_initialize_by_en_name(brand_name)
+                brand.save! if brand.new_record?
+                w.brand = brand
+                break
+              end
+            end
+
+            vol_and_alc_string = agent.page.at("#ctl00_ContentPlaceHolder1_pageH1ClAbv").text.strip.gsub(/[%()cl]/, '')
+            w.volume = vol_and_alc_string.split(',')[0]
+            w.alcohol = vol_and_alc_string.split(',')[1]
           end
         end
 

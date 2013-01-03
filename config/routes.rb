@@ -1,5 +1,9 @@
 Dionysus::Application.routes.draw do
 
+  resources :cocktails
+
+  resources :deals
+
   resources :articles, only: [:show, :index]
 
   resources :recipes

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130102075026) do
+ActiveRecord::Schema.define(:version => 20130102092526) do
 
   create_table "aocs", :force => true do |t|
     t.string   "en_name"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20130102075026) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
-    t.string   "body"
-    t.string   "body_html"
+    t.text     "body"
+    t.text     "body_html"
     t.integer  "author_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -72,6 +72,11 @@ ActiveRecord::Schema.define(:version => 20130102075026) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "cocktails", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "containers", :force => true do |t|
     t.integer  "beverage_id"
     t.integer  "cup_id"
@@ -93,6 +98,11 @@ ActiveRecord::Schema.define(:version => 20130102075026) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "deals", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "grapes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -103,6 +113,11 @@ ActiveRecord::Schema.define(:version => 20130102075026) do
     t.string   "name"
     t.string   "amount"
     t.integer  "recipe_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "merchants", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -208,8 +223,8 @@ ActiveRecord::Schema.define(:version => 20130102075026) do
 
   create_table "topics", :force => true do |t|
     t.string   "title"
-    t.string   "body"
-    t.string   "body_html"
+    t.text     "body"
+    t.text     "body_html"
     t.datetime "replied_at"
     t.integer  "replies_count",    :default => 0
     t.integer  "last_active_mark"
