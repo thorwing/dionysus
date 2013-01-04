@@ -1,8 +1,5 @@
 class TopicsController < ApplicationController
   before_filter :preload
-  before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(@topic, false, true)}
-  before_filter(:only => [:delete]) {|c| c.the_author_himself(@topic, false, true)}
 
   # GET /topics
   # GET /topics.json

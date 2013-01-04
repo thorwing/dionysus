@@ -9,9 +9,9 @@
 # encoding: utf-8
 
 p "generating users"
-@admin = User.create!(email: "admin@guanyu9.com", password: "guanyu9") do |admin|
-  admin.roles = %w(admin)
-  admin.nick = "administrator"
+User.create!(email: "tester@guanyu9.com", password: "guanyu9") do |user|
+  user.roles = %w(author)
+  user.nick = "tester"
 end
 
 p "generating countries"

@@ -42,6 +42,9 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem 'devise'
 gem 'cancan'
 
+#admin
+gem 'activeadmin'
+
 #model
 gem 'ancestry'
 gem 'acts-as-taggable-on', '~> 2.2.2'
@@ -53,8 +56,7 @@ gem 'simple_form'
 gem 'redactor-rails', git: "git://github.com/SammyLin/redactor-rails.git"
 
 #paginate
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'kaminari'
 
 #scrape
 gem 'mechanize'
