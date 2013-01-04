@@ -2,7 +2,7 @@
     <%= f.error_notification %>
 
     <%= f.input :title %>
-    <%= f.input :body, as: :text %>
+    <%= f.input :body, as: :text, input_html: { class: "redactor", :rows => 40, :cols => 120 }%>
 
     <div class="actions">
         <%= f.submit %>

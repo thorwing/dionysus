@@ -3,7 +3,7 @@
 
     <%= f.collection_select :node_id, Node.all, :id, :name %>
     <%= f.input :title %>
-    <%= f.input :body, as: :text, input_html: { class: "xxlarge", style: "height: 360px" }%>
+    <%= f.input :body, as: :text, input_html: { class: "redactor", :rows => 40, :cols => 120 }%>
 
     <div class="actions">
         <%= f.submit t("general.publish"), :class => "btn btn-primary" %>

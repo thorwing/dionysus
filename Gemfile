@@ -46,6 +46,7 @@ gem 'acts_as_follower'
 
 #form
 gem 'simple_form'
+gem 'redactor-rails'
 
 #paginate
 gem 'will_paginate'
@@ -55,7 +56,8 @@ gem 'bootstrap-will_paginate'
 gem 'mechanize'
 
 #upload images
-gem "rmagick", "2.12.0", :require => 'RMagick'
+#gem "rmagick", "2.12.0", :require => 'RMagick'
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'rest-client'
 gem 'carrierwave-upyun'

@@ -1,5 +1,7 @@
 Dionysus::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
+
   resources :cocktails
 
   resources :deals

@@ -1,5 +1,11 @@
-<p id="notice"><%= notice %></p>
+<% title @topic.title %>
 
+<div class="span8">
+    <%= raw @topic.body %>
+</div>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<div class="span4">
+    <%= link_to 'Edit', edit_topic_path(@topic) %> |
+    <%= link_to 'Back', topics_path %>
+</div>
+
