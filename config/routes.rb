@@ -1,4 +1,7 @@
 Dionysus::Application.routes.draw do
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  match "sign_up" => "users#new"
+  resources :users
 
   mount RedactorRails::Engine => '/redactor_rails'
 
@@ -6,7 +9,7 @@ Dionysus::Application.routes.draw do
 
   resources :deals
 
-  resources :articles, only: [:show, :index]
+  resources :articles
 
   resources :recipes
 
@@ -18,28 +21,6 @@ Dionysus::Application.routes.draw do
 
   resources :reviews
   resources :wishes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  match "logout" => "sessions#destroy"
-  match "login" => "sessions#new"
-  match "sign_up" => "users#new"
-  resource :sessions, only: [:new, :create, :destroy]
 
   put "nodes/:id/lock", to: "nodes#lock", as: :lock_node
   put "nodes/:id/unlock", to: "nodes#unlock", as: :unlock_node
@@ -64,8 +45,6 @@ Dionysus::Application.routes.draw do
   resources :liqueur,  controller: :beverages, type: "Liqueur"
   resources :chineseliqueur,  controller: :beverages, type: "ChineseLiqueur"
   resources :whitespirit, controller: :beverages, type: "WhiteSpirit"
-
-  resources :users
 
   resources :ranks
 

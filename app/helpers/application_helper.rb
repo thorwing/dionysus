@@ -1,11 +1,4 @@
 module ApplicationHelper
-  def current_user_has_permission?(permission)
-    if current_user.present? && current_user.has_permission?(permission)
-      true
-    else
-      false
-    end
-  end
 
   def get_styles(type = nil)
     #Rails.cache.fetch('beverage_categories', expires_in: 1.hours) {

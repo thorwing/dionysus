@@ -1,8 +1,8 @@
 <% title t("articles.articles") %>
 
-<% if current_user_has_permission? :editor %>
+<% if can? :create, Article %>
     <div>
-        <%= link_to "+新文章", new_admin_article_path %>
+        <%= link_to "+新文章", new_article_path %>
     </div>
 <% end %>
 

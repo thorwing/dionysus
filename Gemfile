@@ -38,6 +38,10 @@ gem "bcrypt-ruby", :require => "bcrypt"
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+#authentication
+gem 'devise'
+gem 'cancan'
+
 #model
 gem 'ancestry'
 gem 'acts-as-taggable-on', '~> 2.2.2'
