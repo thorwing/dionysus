@@ -53,3 +53,9 @@ gem 'bootstrap-will_paginate'
 
 #scrape
 gem 'mechanize'
+
+#upload images
+gem "rmagick", "2.12.0", :require => 'RMagick'
+gem 'carrierwave'
+gem 'rest-client'
+gem 'carrierwave-upyun'

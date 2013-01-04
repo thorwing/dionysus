@@ -3,7 +3,7 @@
 <div class="span9">
     <div class="box_shadow p10 clearfix">
         <div class="pull-left mr10" style="width: 200px;">
-            <%= image_tag(@recipe.pic_url) %>
+            <%= image_tag(@recipe.picture_url) if @recipe.picture? %>
         </div>
 
         <div class="pull-left ml10 clearfix" style="width: 460px;">

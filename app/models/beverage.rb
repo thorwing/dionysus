@@ -14,6 +14,7 @@ class Beverage < ActiveRecord::Base
   has_many :wishes
   has_many :checks
   has_many :products
+  has_many :deals
 
   def full_name
     "#{en_name} / #{cn_name}"

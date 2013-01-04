@@ -17,6 +17,23 @@ Dionysus::Application.routes.draw do
   resources :reviews
   resources :wishes
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   match "logout" => "sessions#destroy"
   match "login" => "sessions#new"
   match "sign_up" => "users#new"

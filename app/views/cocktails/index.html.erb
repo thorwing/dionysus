@@ -1,0 +1,21 @@
+<h1>Listing cocktails</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cocktails.each do |cocktail| %>
+  <tr>
+    <td><%= link_to 'Show', cocktail %></td>
+    <td><%= link_to 'Edit', edit_cocktail_path(cocktail) %></td>
+    <td><%= link_to 'Destroy', cocktail, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cocktail', new_cocktail_path %>

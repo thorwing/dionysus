@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
-  attr_accessible  :title, :remark, :pic_url, :ingredients_attributes
+  mount_uploader :picture, PictureUploader
+  attr_accessible  :title, :remark, :picture, :ingredients_attributes
 
   #relationships
   belongs_to :author, class_name: "User", foreign_key: 'author_id'

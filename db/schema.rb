@@ -99,8 +99,13 @@ ActiveRecord::Schema.define(:version => 20130102092526) do
   end
 
   create_table "deals", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "beverage_id"
+    t.integer  "seller_id"
+    t.integer  "amount"
+    t.float    "price"
+    t.string   "remark"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "grapes", :force => true do |t|
@@ -160,7 +165,7 @@ ActiveRecord::Schema.define(:version => 20130102092526) do
   create_table "recipes", :force => true do |t|
     t.string   "title"
     t.string   "remark"
-    t.text     "pic_url"
+    t.string   "picture"
     t.integer  "author_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

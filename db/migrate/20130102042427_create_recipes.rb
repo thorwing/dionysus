@@ -3,7 +3,7 @@ class CreateRecipes < ActiveRecord::Migration
     create_table :recipes do |t|
       t.string :title
       t.string :remark
-      t.text :pic_url
+      t.string :picture
 
       t.integer :author_id
 
