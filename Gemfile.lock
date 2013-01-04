@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/SammyLin/redactor-rails.git
+  revision: b55dafd5b111a14a4320a5715888e7639efed080
+  specs:
+    redactor-rails (0.3.2)
+      devise
+      mime-types
+      orm_adapter
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -128,9 +137,6 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
-    redactor-rails (0.3.2)
-      mime-types
-      orm_adapter
     rest-client (1.6.7)
       mime-types (>= 1.16)
     sass (3.2.4)
@@ -186,7 +192,7 @@ DEPENDENCIES
   mini_magick
   pg
   rails (= 3.2.0)
-  redactor-rails
+  redactor-rails!
   rest-client
   sass-rails (~> 3.2.3)
   simple_form

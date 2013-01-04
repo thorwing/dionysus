@@ -50,7 +50,7 @@ gem 'acts_as_follower'
 
 #form
 gem 'simple_form'
-gem 'redactor-rails'
+gem 'redactor-rails', git: "git://github.com/SammyLin/redactor-rails.git"
 
 #paginate
 gem 'will_paginate'
