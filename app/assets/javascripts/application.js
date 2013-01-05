@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.masonry
- //= require redactor-rails
+//= require redactor-rails
+//= require raphael
+//= require morris
 
 $(function() {
     $('.hover_area').hover(

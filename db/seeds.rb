@@ -110,5 +110,7 @@ records.each do |record|
   article = Article.new
   article.author = tester
   article.attributes = record.slice(*Article.accessible_attributes)
+  article.released_at = (1 + rand(3)).weeks.ago
+  article.view_count = rand(100)
   article.save!
 end

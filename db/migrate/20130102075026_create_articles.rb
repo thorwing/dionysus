@@ -5,6 +5,7 @@ class CreateArticles < ActiveRecord::Migration
       t.text :body
       t.text :body_html
       t.datetime :released_at
+      t.integer :view_count
 
       t.integer :author_id
 
