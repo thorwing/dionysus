@@ -9,7 +9,7 @@
 # encoding: utf-8
 
 p "generating users"
-User.create!(email: "tester@guanyu9.com", password: "guanyu9") do |user|
+tester = User.create!(email: "tester@guanyu9.com", password: "guanyu9") do |user|
   user.roles = %w(author)
   user.nick = "tester"
 end
@@ -107,7 +107,8 @@ end
 p 'generating articles'
 records = YAML::load(File.open("db/seeds/articles.yml"))
 records.each do |record|
-  brand = Article.new
-  brand.attributes = record.slice(*Article.accessible_attributes)
-  brand.save!
+  article = Article.new
+  article.author = tester
+  article.attributes = record.slice(*Article.accessible_attributes)
+  article.save!
 end

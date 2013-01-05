@@ -1,5 +1,4 @@
 ActiveAdmin.register_page "Dashboard" do
-
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
@@ -9,6 +8,29 @@ ActiveAdmin.register_page "Dashboard" do
         small I18n.t("active_admin.dashboard_welcome.call_to_action")
       end
     end
+
+    columns do
+      column do
+        panel "Recent Articles" do
+          table_for Article.order("released_at desc").limit(5) do
+            column :title do |article|
+              link_to(article.title, admin_article_path(article))
+            end
+            column :released_at
+          end
+          strong { link_to "View All Articles", admin_articles_path }
+       end
+      end
+
+      column do
+        panel "Recent Reviews" do
+          table_for Review.order("created_at desc").limit(5) do
+            column :title
+          end
+        end
+      end
+    end
+
 
     # Here is an example of a simple dashboard with columns and panels.
     #

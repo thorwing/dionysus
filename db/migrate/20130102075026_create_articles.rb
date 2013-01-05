@@ -4,6 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.text :body_html
+      t.datetime :released_at
 
       t.integer :author_id
 

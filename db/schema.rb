@@ -57,9 +57,10 @@ ActiveRecord::Schema.define(:version => 20130104220409) do
     t.string   "title"
     t.text     "body"
     t.text     "body_html"
+    t.datetime "released_at"
     t.integer  "author_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "beers", :force => true do |t|
@@ -293,6 +294,7 @@ ActiveRecord::Schema.define(:version => 20130104220409) do
   create_table "users", :force => true do |t|
     t.string   "nick"
     t.integer  "roles_mask"
+    t.string   "locked_nodes_list"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
