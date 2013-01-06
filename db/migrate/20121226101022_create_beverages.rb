@@ -13,6 +13,7 @@ class CreateBeverages < ActiveRecord::Migration
       t.string :style
       t.string :sub_style
       t.integer :age
+      t.string :picture
       t.text :pic_url
 
       t.integer :region_id

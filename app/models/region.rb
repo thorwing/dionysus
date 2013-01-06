@@ -1,6 +1,6 @@
 class Region < ActiveRecord::Base
   include Translatable
-  attr_accessible :parent_id, :en_name, :cn_name
+  attr_accessible :parent_id, :name, :trans_name
   has_ancestry
 
   #relationships

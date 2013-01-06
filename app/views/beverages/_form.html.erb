@@ -1,11 +1,15 @@
 <%= simple_form_for(@beverage) do |f| %>
     <%= f.error_notification %>
 
-    <%= f.input :en_name %>
-    <%= f.input :cn_name %>
+    <%= f.hidden_field :type %>
+    <%= f.input :name, label: t("beverages.name") %>
+    <%= f.input :picture, label: t("pictures.upload") %>
+    <%= f.label t("regions.region"), :region_id %>
     <%= f.collection_select :region_id, Region.all, :id, :full_name %>
+    <%= f.input :alcohol, label: t("beverages.alcohol") %>
+    <%= f.input :volume, label: t("beverages.volume") %>
 
     <div class="actions">
-        <%= f.submit %>
+        <%= f.submit f.object.new_record? ? t("general.confirm") : t("general.update"), class: 'btn btn-primary' %>
     </div>
 <% end %>

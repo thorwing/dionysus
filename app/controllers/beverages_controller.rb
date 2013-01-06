@@ -51,7 +51,7 @@ class BeveragesController < ApplicationController
   # GET /beverages/new
   # GET /beverages/new.json
   def new
-    @beverage = Beverage.new
+    @beverage = Beverage.new(type: params[:type])
 
     respond_to do |format|
       format.html # new.html.erb

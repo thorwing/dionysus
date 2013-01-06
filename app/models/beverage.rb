@@ -1,6 +1,7 @@
 class Beverage < ActiveRecord::Base
+  mount_uploader :picture, PictureUploader
   include Translatable
-  attr_accessible :name, :trans_name, :volume, :alcohol, :pic_url
+  attr_accessible :type, :name, :trans_name, :region_id, :volume, :alcohol, :picture, :pic_url
 
   #relationships
   belongs_to :region
@@ -17,6 +18,9 @@ class Beverage < ActiveRecord::Base
   has_many :products
   has_many :deals
 
+  #validations
+  validates :name,
+      presence: true
 
   def reviews_score
     98
