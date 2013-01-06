@@ -7,8 +7,7 @@
 
     <div class="span7">
         <p>
-            <%= content_tag :span, @beverage.en_name, class: "b f18" %>
-            <%= content_tag :span, @beverage.cn_name, class: "b f18 ml20" %>
+            <%= content_tag :span, @beverage.full_name, class: "b f18" %>
             <%= content_tag :span, "#{@beverage.reviews.size}篇酒评", class: "ml30 trivial f12" %>
         </p>
 

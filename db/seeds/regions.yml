@@ -1,20 +1,20 @@
 -
-  en_name: Bordeaux
-  cn_name: 波尔多
+  name: Bordeaux
+  trans_name: 波尔多
   country: 法国
 
 -
-  en_name: Médoc
-  cn_name: 梅多克
+  name: Médoc
+  trans_name: 梅多克
   country: 法国
   parent: Bordeaux
 
 -
-  en_name: Isly
-  cn_name: 艾雷岛
+  name: Isly
+  trans_name: 艾雷岛
   country: 苏格兰
 
 -
-  en_name: Shanxi2
-  cn_name: 山西
+  name: Shanxi2
+  trans_name: 山西
   country: 中国

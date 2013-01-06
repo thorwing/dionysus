@@ -26,11 +26,11 @@ p "generating regions"
 regions = YAML::load(File.open("db/seeds/regions.yml"))
 regions.each do |r|
   region = Region.new do |new_region|
-    new_region.en_name = r['en_name']
-    new_region.cn_name = r['cn_name']
+    new_region.name = r['en_name']
+    new_region.trans_name = r['trans_name']
   end
   if r["parent"].present?
-    region.parent = Region.find_by_en_name(r['parent'])
+    region.parent = Region.find_by_name(r['parent'])
   end
   region.country = Country.find_by_name(r["country"])
   region.save!
@@ -41,8 +41,8 @@ ranks = YAML::load(File.open("db/seeds/ranks.yml"))
 ranks.each do |r|
   #rank = Rank.new(Rank.accessible_attributes & r)
   rank = Rank.new do |new_rank|
-    new_rank.en_name = r['en_name']
-    new_rank.cn_name = r['cn_name']
+    new_rank.name = r['name']
+    new_rank.trans_name = r['trans_name']
     new_rank.category = r["category"]
   end
   rank.save!
@@ -52,8 +52,8 @@ p "generating aoc"
 aocs = YAML::load(File.open("db/seeds/aoc.yml"))
 aocs.each do |a|
   aoc = Aoc.new do |new_aoc|
-    new_aoc.en_name = a['en_name']
-    new_aoc.cn_name = a['cn_name']
+    new_aoc.name = a['name']
+    new_aoc.trans_name = a['trans_name']
   end
   aoc.save!
 end
@@ -81,7 +81,7 @@ records.each do |record|
   beverage = klass.new
   beverage.attributes = record.slice(*klass.accessible_attributes)
   %w(brand region rank aoc).each do |association|
-    beverage.send("#{association}=".to_sym, association.singularize.classify.constantize.find_by_en_name(record[association])) if record[association].present?
+    beverage.send("#{association}=".to_sym, association.singularize.classify.constantize.find_by_name(record[association])) if record[association].present?
   end
   #for wine
   beverage.grapes = Grape.where(name: record['grapes']) if record['grapes'].present?

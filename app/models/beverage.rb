@@ -1,5 +1,6 @@
 class Beverage < ActiveRecord::Base
-  attr_accessible :en_name, :cn_name, :volume, :alcohol, :pic_url
+  include Translatable
+  attr_accessible :name, :trans_name, :volume, :alcohol, :pic_url
 
   #relationships
   belongs_to :region
@@ -16,9 +17,6 @@ class Beverage < ActiveRecord::Base
   has_many :products
   has_many :deals
 
-  def full_name
-    "#{en_name} / #{cn_name}"
-  end
 
   def reviews_score
     98

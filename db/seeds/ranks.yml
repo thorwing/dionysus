@@ -1,6 +1,6 @@
 -
-  en_name: "Premiers Crus"
-  cn_name: 一级酒庄
+  name: "Premiers Crus"
+  trans_name: 一级酒庄
   category: Wine
 
 

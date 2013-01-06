@@ -1,8 +1,7 @@
 class Rank < ActiveRecord::Base
+  include Translatable
+
   #relationships
   has_many :beverages
 
-  def full_name
-    "#{en_name} / #{cn_name}"
-  end
 end

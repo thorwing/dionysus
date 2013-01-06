@@ -2,8 +2,8 @@ class CreateBeverages < ActiveRecord::Migration
   def change
     create_table :beverages do |t|
       t.string :type
-      t.string :en_name
-      t.string :cn_name
+      t.string :name
+      t.string :trans_name
       t.float :alcohol
       t.integer :volume
       t.string :flavor

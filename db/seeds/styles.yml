@@ -1,76 +1,76 @@
 wine:
     -
-      en_name: Redwine
-      cn_name: 红葡萄酒
+      name: Redwine
+      trans_name: 红葡萄酒
       sub:
         -
-          en_name: Dryredwine
-          cn_name: 干红
+          name: Dryredwine
+          trans_name: 干红
         -
-          en_name: Halfdryredwine
-          cn_name: 半干红
+          name: Halfdryredwine
+          trans_name: 半干红
         -
-          en_name: Halfsweetredwine
-          cn_name: 半甜红
+          name: Halfsweetredwine
+          trans_name: 半甜红
         -
-          en_name: Sweetredwine
-          cn_name: 甜红
+          name: Sweetredwine
+          trans_name: 甜红
         -
-          en_name: Halfsweethalfdryredwine
-          cn_name: 干甜搭
+          name: Halfsweethalfdryredwine
+          trans_name: 干甜搭
 
     -
-      en_name: Whitewine
-      cn_name: 白葡萄酒
+      name: Whitewine
+      trans_name: 白葡萄酒
       sub:
         -
-          en_name: Drywhitewine
-          cn_name: 干白
+          name: Drywhitewine
+          trans_name: 干白
         -
-          en_name: Halfdrywhitewine
-          cn_name: 半干白
+          name: Halfdrywhitewine
+          trans_name: 半干白
         -
-          en_name: Halfsweetwhitewine
-          cn_name: 半甜白
+          name: Halfsweetwhitewine
+          trans_name: 半甜白
         -
-          en_name: Sweetwhitewine
-          cn_name: 甜白
+          name: Sweetwhitewine
+          trans_name: 甜白
         -
-          en_name: Botrytisedwine
-          cn_name: 贵腐
+          name: Botrytisedwine
+          trans_name: 贵腐
         -
-          en_name: Drysweetmixwhitewine
-          cn_name: 干甜搭
+          name: Drysweetmixwhitewine
+          trans_name: 干甜搭
     -
-      en_name: Rosewine
-      cn_name: 桃红葡萄酒
+      name: Rosewine
+      trans_name: 桃红葡萄酒
 
     -
-      en_name: Sparkingwine
-      cn_name: 起泡酒
+      name: Sparkingwine
+      trans_name: 起泡酒
 
     -
-      en_name: Fortifiedwine
-      cn_name: 加强葡萄酒
+      name: Fortifiedwine
+      trans_name: 加强葡萄酒
 
 WhiteSpirit:
     -
-      en_name: Faintscent
-      cn_name: 清香型
+      name: Faintscent
+      trans_name: 清香型
 
     -
-      en_name: Jiangscent
-      cn_name: 酱香型
+      name: Jiangscent
+      trans_name: 酱香型
 
     -
-      en_name: Ricescent
-      cn_name: 米香
+      name: Ricescent
+      trans_name: 米香
 
     -
-      en_name: Aromachinese
-      cn_name: 浓香型
+      name: Aromachinese
+      trans_name: 浓香型
 
     -
-      en_name: Otherchinese
-      cn_name: 其他香型
+      name: Otherchinese
+      trans_name: 其他香型
 

@@ -1,7 +1,7 @@
 namespace :dionysus do
   desc "fetch whiskies"
   task :fetch_whiskies => :environment do
-    Hornet::BeveragesHornet.new.fetch
+    SilverHornet::Hornet.fetch("TheWhiskyExchange")
   end
 end
 

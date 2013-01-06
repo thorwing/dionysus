@@ -1,8 +1,8 @@
 class CreateAocs < ActiveRecord::Migration
   def change
     create_table :aocs do |t|
-      t.string :en_name
-      t.string :cn_name
+      t.string :name
+      t.string :trans_name
 
       t.timestamps
     end
