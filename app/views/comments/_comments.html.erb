@@ -1,0 +1,18 @@
+<div class="comments">
+    <div id="comments_container_<%= item.id %>" class="mt10">
+        <%= nested_comments(item.comments.arrange(:order => :created_at)) %>
+    </div>
+
+    <% if can? :create, Comment %>
+        <div class="comment_form visible_comment_form mt10">
+            <%= content_tag :p, "你的评论 · · · · · ·", class: "jujiu-label" %>
+            <%= render "comments/form", comment: item.comments.new %>
+        </div>
+    <% else %>
+        <%= content_tag :span, '想说两句？', class: 'trivial' %><%= link_to "立即登录", new_user_session_path %>
+    <% end %>
+
+    <!--<div class="mt10">-->
+        <!--<= link_to_function "« 收起评论", '', "data-toggle" => "collapse", "data-target" => "#comments_#{item.class.name.downcase}_#{item.id}" %>-->
+    <!--</div>-->
+</div>

@@ -114,8 +114,13 @@ zh-CN:
       finish: 余味
       balance: 平衡
 
+  nodes:
+    node: 话题节点
+
   topics:
     topics: 社区
+    title: 标题
+    body: 正文
     add_topic: 添加主题
     create_topic: 新建主题
     edit_topic: 编辑主题

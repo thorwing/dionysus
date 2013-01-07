@@ -3,7 +3,6 @@ class CreateArticles < ActiveRecord::Migration
     create_table :articles do |t|
       t.string :title
       t.text :body
-      t.text :body_html
       t.datetime :released_at
       t.integer :view_count
 

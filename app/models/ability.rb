@@ -15,6 +15,10 @@ class Ability
       can [:update, :destroy], Review do |review|
         review.author == user
       end
+      can :create, Comment
+      can [:update, :destroy], Comment do |comment|
+        comment.author == user
+      end
     else
       can :read, :all
       can :create, Beverage

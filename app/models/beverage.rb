@@ -31,7 +31,7 @@ class Beverage < ActiveRecord::Base
   end
 
   def reviews_score
-    98
+    reviews.first.try(:score) || 98
   end
 
   #TODO stub

@@ -7,4 +7,8 @@
     <%= render "tags/tags_form", f: f, tags: [] %>
 
     <%= f.input :remark, as: :text, label: t("wishes.remark"), input_html: {rows: 3, class: 'input-xlarge', maxlength: 140} %>
+
+    <div class="actions">
+        <%= f.submit t("general.save"), class: 'btn btn-primary' %>
+    </div>
 <% end %>

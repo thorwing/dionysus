@@ -44,11 +44,15 @@
                 <% @review.pieces.each do |piece| %>
                     <%= content_tag :span, piece.flavor, class: "b" %>
                 <% end %>
-          </div>
-      </div>
+            </div>
+        </div>
 
         <div>
             <%= link_to t("general.edit"), edit_review_path(@review) if can? :update, @review %>
+        </div>
+
+        <div class="mt20">
+            <%= render "comments/comments", item: @review %>
         </div>
     </div>
 

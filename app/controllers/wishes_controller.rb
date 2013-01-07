@@ -7,7 +7,7 @@ class WishesController < ApplicationController
 
   def create
     @wish = Wish.new(params[:wish])
-    @wish.author = current_user
+    @wish.user = current_user
 
     respond_to do |format|
       if @wish.save

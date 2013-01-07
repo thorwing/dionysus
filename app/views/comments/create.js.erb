@@ -1,0 +1,23 @@
+<% if @comment %>
+    <% if params[:simple] == "true" %>
+        var child = '<%= escape_javascript(render "comments/simple_comment", comment: @comment) %>';
+        $("#comments_container_<%= @comment.commentable_id %>").append(child);
+    <% else %>
+        var child = '<%= escape_javascript(render @comment) %>';
+        <% if @parent %>
+            $("#commentForm_<%= @parent.id %>").collapse("hide");
+            $('#comment_<%= @parent.id.to_s %>').nextAll('.nested_comments:first').append(child);
+        <% else %>
+            $("#comments_container_<%= @comment.commentable_id %>").append(child);
+        <% end %>
+    <% end %>
+
+    //reset input
+    $('textarea[id="comment_content"]:visible').val('');
+//    $('.comment_form:visible').hide();
+    $("#commentable_<%= @comment.commentable_type %>_<%= @comment.commentable_id %> .comments_counter").text("评论(<%= @comment.commentable.comments.size %>)");
+
+
+<% elsif @over_limit %>
+    alert('<%= t("alerts.posted_comment_too_ofen") %>');
+<% end %>

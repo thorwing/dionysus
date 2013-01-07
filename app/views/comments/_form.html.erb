@@ -1,0 +1,11 @@
+<%= simple_form_for comment, html: {class: "ajax-form clearfix", style: "margin: 0 0 10px;"}, remote: true do |f| %>
+    <%= f.hidden_field :parent_id %>
+    <%= f.hidden_field :commentable_id %>
+    <%= f.hidden_field :commentable_type %>
+
+    <div class="clearfix">
+        <%= f.input :content, label: false, placeholder: "评论..", input_html: {rows: 3, class: "input-xxlarge", id: "comment_content"} %>
+        <%= f.submit t("general.add"), onclick: "return review_comment(this);", class: 'btn btn-mini n-mt5' %>
+    </div>
+<% end %>
+

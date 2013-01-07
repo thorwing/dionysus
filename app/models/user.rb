@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :replies, foreign_key: 'author_id'
   has_many :recipes, foreign_key: 'author_id'
   has_many :beverages, foreign_key: 'author_id'
+  has_many :comments, foreign_key: 'author_id'
 
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 

@@ -3,7 +3,6 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.string :title
       t.text :body
-      t.text :body_html
       t.datetime :replied_at
       t.integer :replies_count, default: 0
       t.integer :last_active_mark

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104220409) do
+ActiveRecord::Schema.define(:version => 20130107143849) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(:version => 20130104220409) do
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.text     "body_html"
     t.datetime "released_at"
     t.integer  "view_count"
     t.integer  "author_id"
@@ -113,6 +112,19 @@ ActiveRecord::Schema.define(:version => 20130104220409) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.string   "ancestry"
+    t.integer  "author_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
+  add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
 
   create_table "containers", :force => true do |t|
     t.integer  "beverage_id"
@@ -204,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20130104220409) do
     t.string   "remark"
     t.string   "picture"
     t.integer  "author_id"
+    t.integer  "topic_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -238,7 +251,6 @@ ActiveRecord::Schema.define(:version => 20130104220409) do
 
   create_table "replies", :force => true do |t|
     t.string   "body"
-    t.string   "body_html"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -292,7 +304,6 @@ ActiveRecord::Schema.define(:version => 20130104220409) do
   create_table "topics", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.text     "body_html"
     t.datetime "replied_at"
     t.integer  "replies_count",    :default => 0
     t.integer  "last_active_mark"

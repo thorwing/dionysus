@@ -8,6 +8,7 @@ class Review < ActiveRecord::Base
   belongs_to :beverage
   has_many :scores
   has_many :pieces
+  has_many :comments, as: :commentable
 
   accepts_nested_attributes_for :pieces, :reject_if => lambda { |p| p[:flavor].blank?}, :allow_destroy => true
 

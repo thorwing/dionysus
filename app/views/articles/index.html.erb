@@ -1,11 +1,5 @@
 <% title t("articles.articles") %>
 
-<% if can? :create, Article %>
-    <div>
-        <%= link_to "+新文章", new_article_path %>
-    </div>
-<% end %>
-
 <div class="span8">
     <% @articles.each do |article| %>
         <%= render article %>
@@ -14,5 +8,9 @@
 </div>
 
 <div class="span4">
-
+  <% if can? :create, Article %>
+      <div>
+          <%= link_to "+新文章", new_article_path %>
+      </div>
+  <% end %>
 </div>
