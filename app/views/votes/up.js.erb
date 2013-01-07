@@ -1,0 +1,27 @@
+var $vote_fields = $('#vote_<%= @item.class.name.downcase %>_<%= @item.id %>');
+
+$votes_count = $vote_fields.find(".votes_count");
+$votes_count.text("<%= @item.votes %>");
+
+var $up_vote_btn = $vote_fields.children(".btn");
+if($up_vote_btn.length > 0) {
+    <% unless @voted %>
+        $up_vote_btn.addClass("btn-primary");
+        $up_vote_btn.removeClass("disabled");
+        $up_vote_btn.children("i").addClass('my-icon-white');
+    <% else %>
+        $up_vote_btn.removeClass("btn-primary");
+        $up_vote_btn.addClass("disabled");
+        $up_vote_btn.children("i").removeClass('my-icon-white');
+    <% end %>
+}
+
+var $up_vote_label = $vote_fields.children(".vote.vote_up");
+if($up_vote_label.length > 0) {
+    <% if @voted %>
+        $up_vote_label.addClass("voted");
+        $vote_fields.find(".vote.vote_down").removeClass("voted");
+    <% else %>
+        $up_vote_label.removeClass("voted");
+    <% end %>
+}

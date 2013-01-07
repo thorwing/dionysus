@@ -15,22 +15,23 @@
                     <ul class="nav" style="margin-left: 10px;">
                         <%= render "shared/menu", caption: '首页', path: root_path %>
                         <%= render "shared/menu", caption: t("articles.articles"), path: articles_path %>
+                        <%= render "shared/menu", caption: t("reviews.reviews"), path: reviews_path %>
                         <%= render "shared/menu", caption: t("topics.topics"), path: topics_path %>
                     </ul>
 
                     <ul class="nav pull-right">
                         <% if current_user %>
-                            <% if can? :create, Article %>
-                                <li class="dropdown" style="max-width: 160px;">
-                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                        <%= content_tag :span, "+新建" %><b class="caret"></b>
-                                    </a>
+                            <li class="dropdown" style="max-width: 160px;">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                    <%= content_tag :span, "+#{t("general.add")}" %><b class="caret"></b>
+                                </a>
 
-                                    <ul class="dropdown-menu">
+                                <ul class="dropdown-menu">
+                                    <% if can? :create, Article %>
                                         <li><%= link_to '文章', new_article_path %></li>
-                                    </ul>
-                                </li>
-                            <% end %>
+                                    <% end %>
+                                </ul>
+                            </li>
 
                             <li class="divider-vertical"></li>
                             <li class="dropdown" style="max-width: 160px;">

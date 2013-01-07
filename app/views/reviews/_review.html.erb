@@ -1,9 +1,13 @@
 <div class="clearfix">
-  <div class="pull-left">
-        <%= content_tag :span, review.title, class: "jujiu-title" %>
+    <div class="pull-left">
+        <%= user_avatar_tag(review.author) %>
+    </div>
+    <div class="pull-right">
+        <%= link_to review.title, review %>
+        <div>
+            <%= link_to review.author.nick, review.author %>
+            <%= content_tag :span, review.score, class: "ml5" %>
+        </div>
         <%= content_tag :p, review.content %>
-  </div>
-  <div class="pull-right">
-        <%= link_to image_tag(current_user.get_avatar(:thumb), width: 20, height: 20, class: 'mr5', style: "margin-top: -5px;") + truncate_text(current_user.nick, 6), review.author %>
   </div>
 </div>

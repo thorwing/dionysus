@@ -24,11 +24,11 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.json
   def new
-    @review = Review.new
+    @review = Review.new(score: 88, nose_score: 22, taste_score: 22, finish_score: 22, balance_score: 22)
     @review.beverage = Beverage.find_by_id(params[:beverage_id]) if params[:beverage_id].present?
 
     1.upto(3) {
-      @review.pieces.build
+      @review.pieces.build(strength: 3)
     }
 
     respond_to do |format|

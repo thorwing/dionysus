@@ -21,6 +21,7 @@ zh-CN:
     confirm: 确定
     edit: 编辑
     delete: 删除
+    close: 关闭
     ask: 提问
     post: 回应
     done: 达成
@@ -28,6 +29,7 @@ zh-CN:
     update: 更新
     show: 查看
     create: 创建
+    save: 保存
     unfollow: 取消关注
     anonymous_user: 匿名用户
     created_at: 创建于%{time}以前
@@ -61,10 +63,17 @@ zh-CN:
     captcha_failed: "噢，验证码没有输对"
 
   beverages:
+    beverage: 酒
+    type: 种类
     new_beverage: 添加酒
     name: 名称
     alcohol: 酒精(%)
     volume: 容量(cl)
+    age: 窖藏年份
+    distillation_method: 蒸馏方法
+    barrel_cask: 装桶
+    style: 分类
+    add_it: 添加了这瓶酒
     categories:
       Wine: 葡萄酒
       Whisky: 威士忌
@@ -83,14 +92,37 @@ zh-CN:
   regions:
     region: 产区
 
+  ranks:
+    rank: 评级
+
   home:
     root: 首页
+
+  wishes:
+    add: 添加到收藏
+    remark: 简短附注
+
+  reviews:
+    title: 标题
+    content: 内容
+    foods: 搭配食物
+    score: 分数
+    reviews: 酒评
+    scores:
+      nose: 闻起来
+      taste: 尝起来
+      finish: 余味
+      balance: 平衡
 
   topics:
     topics: 社区
     add_topic: 添加主题
     create_topic: 新建主题
     edit_topic: 编辑主题
+
+  tags:
+    form_label: 标签(多个标签用空格分隔)
+    separated_by_commas: (多个标签用空格分隔)
 
   articles:
     articles: 文章
@@ -108,3 +140,4 @@ zh-CN:
 
   admin:
     control_panel: 控制面板
+

@@ -1,4 +1,4 @@
-<% title t("general.add") + t("beverages.categories.#{@beverage.type}") %>
+<% title t("general.add") + (@beverage.type.present? ? t("beverages.categories.#{@beverage.type}") : t("beverages.beverage")) %>
 
 <%= render 'form' %>
 

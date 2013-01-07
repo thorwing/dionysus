@@ -4,14 +4,15 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  make_voter
 
   #Relationships
-  has_many :revies, foreign_key: 'author_id'
-  has_many :wishes, foreign_key: 'author_id'
-  has_many :checks, foreign_key: 'author_id'
+  has_many :wishes
+  has_many :reviews, foreign_key: 'author_id'
   has_many :topics, foreign_key: 'author_id'
   has_many :replies, foreign_key: 'author_id'
   has_many :recipes, foreign_key: 'author_id'
+  has_many :beverages, foreign_key: 'author_id'
 
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
@@ -46,6 +47,18 @@ class User < ActiveRecord::Base
     if ids_array.is_a? Array
       self.locked_nodes_list = ids_array.join(",")
     end
+  end
+
+  def want?(beverage)
+    self.wishes.where(beverage_id: beverage.id, accomplished: false).exists?
+  end
+
+  def had?(beverage)
+    self.wishes.where(beverage_id: beverage.id, accomplished: true).exists?
+  end
+
+  def get_wish(beverage)
+    self.wishes.where(beverage_id: beverage.id, accomplished: false).first
   end
 
 end

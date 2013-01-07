@@ -1,17 +1,15 @@
 <div id="tagsForm">
-    <%= f.input :tag_list %>
+    <%= f.input :tag_list, label: t("tags.form_label") %>
 
-    <p>
-        <%= content_tag :span, "点击下列标签以选择" , class: 'trivial' %>
-    </p>
+    <% if tags && tags.size > 0 %>
+        <%= content_tag :p, "点击下列标签以选择" , class: 'trivial' %>
 
-
-
-    <% tags.each do |tag| %>
-        <div class="mt10">
-            <% tags.each do |t| %>
-                <%= link_to_function t, "pick_tag(this, '#wish_tag_list');", class: 'tag' %>
-            <% end %>
-        </div>
+        <% tags.each do |tag| %>
+            <div class="mt10">
+                <% tags.each do |t| %>
+                    <%= link_to_function t, "pick_tag(this, '#wish_tag_list');", class: 'tag' %>
+                <% end %>
+            </div>
+        <% end %>
     <% end %>
 </div>

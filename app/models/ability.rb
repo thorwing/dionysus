@@ -6,9 +6,18 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     if user.role? :admin
-     can :manage, :all
+      can :manage, :all
+    elsif user.role? :author
+      can :create, Article
+      can :like, Vote
+      can :hate, Vote
+      can :create, Review
+      can [:update, :destroy], Review do |review|
+        review.author == user
+      end
     else
-     can :read, :all
+      can :read, :all
+      can :create, Beverage
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

@@ -1,13 +1,3 @@
-<% title "评酒" %>
+<% title "评论 #{@review.beverage.full_name}" %>
 
-<div class="row">
-    <div class="span9">
-        <%= render 'form' %>
-    </div>
-
-    <div class="span3">
-        <%= link_to @review.beverage.full_name %>
-        <%= link_to image_tag(@review.beverage.pic_url), @review.beverage, width: 120 %>
-    </div>
-</div>
-
+<%= render 'form' %>

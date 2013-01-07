@@ -1,0 +1,13 @@
+<div id="wishDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Wish" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <%= content_tag :h3, t("wishes.add"), id: "wishDialogLabel" %>
+    </div>
+    <div class="modal-body">
+        <%= render "wishes/form", wish: wish %>
+    </div>
+    <div class="modal-footer">
+        <%= content_tag :button, t("general.close"), 'data-dismiss' => "modal", 'aria-hidden' => "true", class: "btn" %>
+        <%= content_tag :button, t("general.save"), class: "btn btn-primary" %>
+    </div>
+</div>

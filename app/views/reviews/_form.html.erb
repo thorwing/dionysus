@@ -1,32 +1,51 @@
-<%= simple_form_for(@review, html: {class: 'form-horizontal'}) do |f| %>
-    <%= f.error_notification %>
+<div class="row">
+    <div class="span9">
+        <%= simple_form_for(@review, html: {class: 'form-horizontal'}) do |f| %>
+            <%= f.error_notification %>
 
-    <div class="box box-shadow p10">
-        <%= f.hidden_field :beverage_id %>
+            <%= f.hidden_field :beverage_id %>
+            <%= f.input :title, label: t("reviews.title"), input_html: {class: "input-xlarge"} %>
+            <%= f.input :content, label: t("reviews.content"), input_html: {class: "input-xlarge", rows: 5} %>
+            <%= f.input :food_list, label: "#{t("reviews.foods")}#{t("tags.separated_by_commas")}" %>
 
-        <%= f.input :title %>
-        <%= f.input :content %>
-        <%= f.input :food_list %>
+            <div class="mt20 box box-shadow p10">
+                <%= f.input :score, as: :string, label: t("reviews.score"), input_html: {class: "input-mini"} %>
+
+                <% %w(Nose Taste Finish Balance).each do |item| %>
+                    <div class="mb20">
+                        <%= f.input "#{item.downcase}_list".to_sym, label: t("reviews.scores.#{item.downcase}") %>
+
+                        <div class="score_fields clearfix">
+                            <div class='slider pull-left' style='width: 150px; margin-left: 180px;'></div>
+                            <div class="pull-left ml20" style="margin-top: -5px;">
+                                <%= f.hidden_field "#{item.downcase}_score".to_sym, class: "score_input" %>
+                                <%= content_tag :span, f.object.try("#{item.downcase}_score".to_sym), class: 'score b' %>  <%= content_tag :span, " / 25" , class: 'ml5' %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="box box-shadow p10 mt20">
+                <%= content_tag :span, "芳香轮" %><br/>
+                <ul id="flavorPieces" class="unstyled">
+                    <%= f.fields_for :pieces  do |builder| %>
+                        <%= render "piece_fields", f: builder %>
+                    <% end %>
+                </ul>
+
+                <%= link_to_add_fields("+ 添加一条", f, :pieces, "#flavorPieces") %>
+            </div>
+
+
+          <div class="mt20 clearfix">
+              <%= f.submit t("general.publish"), class: "pull-right btn btn-primary" %>
+          </div>
+      <% end %>
     </div>
 
-    <div class="box box-shadow p10 mt20">
-        <%= content_tag :span, "分数" %>
-        <%= content_tag :span, 0 %>
+    <div class="span3">
+        <%= render "beverages/sidebar", beverage: @review.beverage %>
     </div>
+</div>
 
-    <div class="box box-shadow p10 mt20">
-        <%= content_tag :span, "芳香轮" %><br/>
-        <ul id="flavorPieces" class="unstyled">
-            <%= f.fields_for :pieces  do |builder| %>
-                <%= render "piece_fields", f: builder %>
-            <% end %>
-        </ul>
-
-        <%= link_to_add_fields("+ 添加一条", f, :pieces, "#flavorPieces") %>
-    </div>
-
-
-    <div class="mt20 clearfix">
-        <%= f.submit t("general.publish"), class: "pull-right" %>
-    </div>
-<% end %>

@@ -1,0 +1,23 @@
+.vote {
+    display: block;
+    border:0 none;
+    background: url("vote_buttons.png") 0 0 no-repeat;
+    text-indent:-9999px;
+    text-transform: capitalize;
+}
+
+.vote.vote_up, .vote.vote_up.voted:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -24px 0;
+}
+
+.vote.vote_up.voted, .vote.vote_up:hover { background-position: -24px -23px; }
+
+.vote.vote_down, .vote.vote_down.voted:hover {
+    width: 20px;
+    height: 20px;
+    background-position: 0 0;
+}
+
+.vote.vote_down.voted, .vote.vote_down:hover { background-position: 0 -23px; }

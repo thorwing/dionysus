@@ -22,6 +22,8 @@ class CreateBeverages < ActiveRecord::Migration
       #wine
       t.integer :aoc_id
 
+      t.integer :author_id
+
       t.timestamps
     end
   end

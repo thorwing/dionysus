@@ -1,0 +1,5 @@
+<%= link_to "> 去 #{beverage.full_name} 的页面" , beverage %><br/>
+<%= link_to image_tag(beverage.pic_url, class: "beverage-frame"), beverage %>
+<div class="mt10">
+    <%= render "beverages/info", beverage: beverage %>
+</div>

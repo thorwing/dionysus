@@ -21,8 +21,6 @@ Dionysus::Application.routes.draw do
 
   resources :topics
 
-  resources :checks
-
   resources :reviews
   resources :wishes
 
@@ -55,6 +53,13 @@ Dionysus::Application.routes.draw do
   resources :aocs
 
   resources :password_resets
+
+  resources :votes do
+    collection do
+      put :up
+      put :down
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

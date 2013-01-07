@@ -1,53 +1,72 @@
 <% title @beverage.full_name, false %>
 
-<div class="row">
-    <div class="span2">
-        <%= image_tag @beverage.pic_url, width: 120 %>
+<div class="span9">
+    <div class="row">
+        <div class="span2">
+            <%= image_tag @beverage.get_picture, class: "beverage-frame" %>
+        </div>
+
+        <div class="span7">
+            <%= content_tag :p, @beverage.full_name, class: "b f18" %>
+
+            <div class="mt10 clearfix">
+                <div class="pull-left">
+                    <%= render "beverages/info", beverage: @beverage %>
+                </div>
+                <div class="pull-right text-center" >
+                    <div class="p20" style="width: 100px; background: #339999;">
+                        <%= content_tag :span, @beverage.reviews_score, class: "white f18" %>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="span7">
-        <p>
-            <%= content_tag :span, @beverage.full_name, class: "b f18" %>
-            <%= content_tag :span, "#{@beverage.reviews.size}篇酒评", class: "ml30 trivial f12" %>
-        </p>
+    <div class="mt20">
+        <% if current_user %>
+            <div class="clearfix">
+                <% if current_user.want? @beverage %>
+                    <%= content_tag :span, "想喝 | ", class: "pull-left" %>
+                    <%= link_to "取消想喝", wish_path(current_user.get_wish(@beverage)), method: :delete, confirm: t("general.are_you_sure_to_cancel"), class: "pull-left ml5 trivial" %>
+                <% else %>
+                    <%= link_to "想喝", "#wishDialog", 'data-toggle' => "modal", class: "pull-left btn btn-mini btn-warning" %>
+                <% end %>
+                <% if current_user.had? @beverage %>
+                    <%= content_tag :span, "喝过 | ", class: "pull-left ml10" %>
+                <% else %>
+                    <%= link_to "喝过", "#wishDialog", 'data-toggle' => "modal", class: "pull-left btn btn-mini btn-danger ml10" %>
+                <% end %>
 
-        <div class="mt30 clearfix">
-            <div class="pull-left text-center" >
-                <div class="p20" style="width: 100px; background: #339999;">
-                    <%= content_tag :span, @beverage.reviews_score, class: "white f18" %>
-                </div>
-                <div class="mt10 clearfix">
-                    <% if current_user %>
-                        <%= link_to "想喝", new_wish_path(beverage_id: @beverage.id), class: "pull-left btn btn-small btn-warning" %>
-                        <%= link_to "喝过", new_check_path(beverage_id: @beverage.id), class: "pull-right btn btn-small btn-danger" %>
-                    <% end %>
-                </div>
+                <%= render "wishes/dialog", wish: @wish %>
             </div>
 
-            <div class="pull-left ml30">
-                <%= render "beverages/info", beverage: @beverage %>
+            <div class="mt20">
+                <%= link_to content_tag(:span, '', class: 'icon-pencil') + " 写酒评", new_review_path(beverage_id: @beverage.id) %>
             </div>
-        </div>
+        <% end %>
+    </div>
 
-        <hr/>
-
-        <div class="clearfix">
-            <%= content_tag :span, "酒评", class: "pull-left jujiu-label" %>
-            <%= link_to content_tag(:span, '', class: 'icon-pencil icon-white') + " 写酒评", new_review_path(beverage_id: @beverage.id), class: "btn btn-info pull-right" %>
-        </div>
+    <div class="mt20">
+        <%= content_tag :span, "酒评", class: "jujiu-label" %>
+        <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
+        <%= content_tag :span, "(#{@beverage.reviews.size}共篇)", class: "trivial f12" %>
 
         <% @beverage.reviews.each do |review| %>
             <%= render review %>
         <% end %>
     </div>
+</div>
 
+<div class="span3">
+    <% if @beverage.author %>
+        <p>
+          <%= link_to @beverage.author.nick, @beverage.author %><%= t("beverages.add_it") %>
+        </p>
+    <% end %>
 
-    <div class="span3">
-        <div class="box box-shadow p10">
-            <%= link_to @beverage.region.full_name, @beverage.region if @beverage.region %>
-            <hr/>
-            <%= link_to 'Edit', edit_beverage_path(@beverage) %> |
-            <%= link_to 'Back', beverages_path %>
-        </div>
-    </div>
+    <hr/>
+
+    <% if can? :edit, @beverage %>
+        <%= link_to t(:general.edit), edit_beverage_path(@beverage) %>
+    <% end %>
 </div>

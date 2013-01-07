@@ -1,23 +1,59 @@
+<%= content_tag :p, t("beverages.categories.#{beverage.type}"), class: 'b' %>
+
 <% if beverage.rank %>
-   <p>
-       <%= content_tag :b, "评级", class: "mr20" %>
+    <p xmlns="http://www.w3.org/1999/html">
+       <%= content_tag :span, "评级", class: "mr20" %>
        <%= link_to "#{beverage.rank.full_name}", beverage.rank %>
    </p>
 <% end %>
 
 <% if beverage.is_a?(Wine) && beverage.aoc %>
    <p>
-       <%= content_tag :b, "AOC", class: "mr20" %>
+       <%= content_tag :span, "AOC", class: "mr20" %>
        <%= link_to "#{beverage.aoc.full_name}", beverage.aoc %>
    </p>
 <% end %>
 
+<% if beverage.region %>
+   <p>
+       <%= content_tag :span, t("regions.region"), class: "mr20" %>
+       <%= link_to "#{beverage.region.full_name}", beverage.region %>
+   </p>
+<% end %>
+
 <p>
-   <%= content_tag :b, "度数", class: "mr20" %>
-   <%= content_tag :span, "#{beverage.alcohol.to_i}%"  %>
+    <%= content_tag :span, t("beverages.style"), class: "mr20" %>
+    <%= content_tag :span, beverage.style %>
 </p>
 
 <p>
-   <%= content_tag :b, "容量", class: "mr20" %>
-   <%= content_tag :span, beverage.volume %>
+    <%= content_tag :span, t("beverages.alcohol"), class: "mr20" %>
+    <%= content_tag :span, "#{beverage.alcohol.to_i}%"  %>
 </p>
+
+<p>
+    <%= content_tag :span, t("beverages.volume"), class: "mr20" %>
+    <%= content_tag :span, beverage.volume %>
+</p>
+
+
+<% if beverage.age.present? %>
+    <p>
+        <%= content_tag :span, t("beverages.age"), class: "mr20" %>
+        <%= content_tag :span, beverage.age %>
+    </p>
+<% end %>
+
+<% if beverage.distillation_method.present? %>
+    <p>
+        <%= content_tag :span, t("beverages.distillation_method"), class: "mr20" %>
+        <%= content_tag :span, beverage.distillation_method %>
+    </p>
+<% end %>
+
+<% if beverage.barrel_cask %>
+    <p>
+        <%= content_tag :span, t("beverages.barrel_cask"), class: "mr20" %>
+        <%= content_tag :span, beverage.barrel_cask %>
+    </p>
+<% end %>

@@ -1,11 +1,7 @@
-<li class="span3">
-    <div class="thumbnail">
-        <div class="p10">
-            <h3><%= article.title %></h3>
-            <p>
-               <%= content_tag :span, truncate_text(article.body, 140) %>
-                <%= link_to t("general.more_detail"), article, class: "ml5" %>
-            </p>
-        </div>
-    </div>
-</li>
+<div class="clearfix p10">
+    <h3><%= article.title %></h3>
+    <p>
+        <%= content_tag :span, truncate_text(article.body, 140) %>
+        <%= link_to t("general.more_detail"), article, class: "ml5" %>
+    </p>
+</div>

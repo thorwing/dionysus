@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105085745) do
+ActiveRecord::Schema.define(:version => 20130104220409) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -82,11 +82,13 @@ ActiveRecord::Schema.define(:version => 20130105085745) do
     t.string   "style"
     t.string   "sub_style"
     t.integer  "age"
+    t.string   "picture"
     t.text     "pic_url"
     t.integer  "region_id"
     t.integer  "brand_id"
     t.integer  "rank_id"
     t.integer  "aoc_id"
+    t.integer  "author_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
@@ -244,13 +246,22 @@ ActiveRecord::Schema.define(:version => 20130105085745) do
   create_table "reviews", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "points"
-    t.integer  "up_votes",    :default => 0, :null => false
-    t.integer  "down_votes",  :default => 0, :null => false
+    t.integer  "score"
+    t.integer  "nose_score"
+    t.string   "nose_list"
+    t.integer  "taste_score"
+    t.string   "taste_list"
+    t.integer  "finish_score"
+    t.string   "finish_list"
+    t.integer  "balance_score"
+    t.string   "balance_list"
+    t.string   "food_list"
+    t.integer  "up_votes",      :default => 0, :null => false
+    t.integer  "down_votes",    :default => 0, :null => false
     t.integer  "author_id"
     t.integer  "beverage_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "scores", :force => true do |t|
@@ -290,11 +301,6 @@ ActiveRecord::Schema.define(:version => 20130105085745) do
     t.integer  "node_id"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-  end
-
-  create_table "trails", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -357,10 +363,11 @@ ActiveRecord::Schema.define(:version => 20130105085745) do
 
   create_table "wishes", :force => true do |t|
     t.string   "remark"
-    t.integer  "author_id"
+    t.boolean  "accomplished", :default => false
+    t.integer  "user_id"
     t.integer  "beverage_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end

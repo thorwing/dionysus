@@ -1,8 +1,13 @@
 <%= simple_form_for(@beverage) do |f| %>
     <%= f.error_notification %>
 
-    <%= f.hidden_field :type %>
     <%= f.input :name, label: t("beverages.name") %>
+    <% if f.object.type.present? %>
+        <%= f.hidden_field :type %>
+    <% else %>
+        <%= f.label t("beverages.type"), :type %>
+        <%= f.collection_select :type, Beverage.types, :first, :last %>
+    <% end %>
     <%= f.input :picture, label: t("pictures.upload") %>
     <%= f.label t("regions.region"), :region_id %>
     <%= f.collection_select :region_id, Region.all, :id, :full_name %>

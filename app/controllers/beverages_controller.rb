@@ -41,6 +41,7 @@ class BeveragesController < ApplicationController
   # GET /beverages/1.json
   def show
     @beverage = Beverage.find(params[:id])
+    @wish = @beverage.wishes.build
 
     respond_to do |format|
       format.html # show.html.erb
@@ -68,6 +69,7 @@ class BeveragesController < ApplicationController
   # POST /beverages.json
   def create
     @beverage = Beverage.new(params[:beverage])
+    @beverage.author = current_user
 
     respond_to do |format|
       if @beverage.save

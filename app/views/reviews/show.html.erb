@@ -1,7 +1,5 @@
 <% title "酒评 - #{@review.title} - #{@review.beverage.full_name}", false %>
 
-<p id="notice"><%= notice %></p>
-
 <div class="row">
     <div class="span9">
         <div class="clearfix">
@@ -10,8 +8,38 @@
             </div>
 
             <div class="pull-left ml30 clearfix" style="width: 550px;">
-                <%= content_tag :p, @review.title, class: "jujiu-title" %>
-                <%= content_tag :p, @review.content %>
+                <div class="clearfix">
+                    <%= content_tag :h1, @review.title, class: "pull-left" %>
+                    <div class="pull-right text-center">
+                        <%= user_avatar_tag(@review.author) %><br/>
+                        <%= link_to @review.author.nick, @review.author %>
+                    </div>
+                    <%= content_tag :span, @review.score, class: "pull-right label label-info mr20" %>
+                </div>
+
+                <% if @review.up_votes > 0 %>
+                    <div>
+                        <% @review.votings.map(&:voter).each do |voter| %>
+                            <%= link_to voter.nick, voter, class: "trivial mr2" %>
+                        <% end %>
+                        <%= content_tag :span, "等#{@review.up_votes}人赞同"  %>
+                    </div>
+                <% end %>
+
+                <ul class="unstyled mt10">
+                    <% %w(Nose Taste Finish Balance).each do |item| %>
+                        <li class="mt5 mb5">
+                            <%= content_tag :span, t("reviews.scores.#{item.downcase}"), class: "mr5" %>
+                            <%= content_tag :span, "#{@review.send "#{item.downcase}_score".to_sym}/25 #{@review.send "#{item.downcase}_list".to_sym}", class: "trivial" %>
+                        </li>
+                    <% end %>
+                    <li class="mt5 mb5">
+                        <%= content_tag :span, t("reviews.foods"), class: "mr5" %>
+                        <%= content_tag :span, @review.food_list, class: "trivial" %>
+                    </li>
+                </ul>
+
+                <%= content_tag :p, @review.content, class: "mt20" %>
 
                 <% @review.pieces.each do |piece| %>
                     <%= content_tag :span, piece.flavor, class: "b" %>
@@ -19,15 +47,12 @@
           </div>
       </div>
 
-      <div>
-        <%= link_to 'Edit', edit_review_path(@review) %> |
-        <%= link_to 'Back', reviews_path %>
-      </div>
+        <div>
+            <%= link_to t("general.edit"), edit_review_path(@review) if can? :update, @review %>
+        </div>
     </div>
 
     <div class="span3">
-        <%= link_to @review.beverage.full_name %>
-        <%= link_to image_tag(@review.beverage.pic_url), @review.beverage, width: 120 %>
-        <%= render "beverages/info", beverage: @review.beverage %>
+        <%= render "beverages/sidebar", beverage: @review.beverage %>
     </div>
 </div>

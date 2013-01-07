@@ -13,6 +13,8 @@
  *= require custom
  *= require frames
  *= require icons
+ *= require votes
+ *= require jquery.ui.slider
  *= require masonary
  *= require redactor-rails
 */

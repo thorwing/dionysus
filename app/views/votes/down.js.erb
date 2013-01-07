@@ -1,0 +1,14 @@
+var $vote_fields = $('#vote_<%= @item.class.name.downcase %>_<%= @item.id %>');
+
+$votes_count = $vote_fields.find(".votes_count");
+$votes_count.text("<%= @item.votes %>");
+
+var $down_vote_label = $vote_fields.find(".vote.vote_down");
+if($down_vote_label.length > 0) {
+    <% if @voted %>
+        $down_vote_label.addClass("voted");
+        $vote_fields.find(".vote.vote_up").removeClass("voted");
+    <% else %>
+        $down_vote_label.removeClass("voted");
+    <% end %>
+}
