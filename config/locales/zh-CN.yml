@@ -154,6 +154,15 @@ zh-CN:
     new_package: 收集到榜单
     remark: 推荐理由
 
+  deals:
+    deals: 交易
+    add_deal: 添加交易
+    new_deal: 卖酒
+    seller: 卖方
+    price: 价格
+    amount: 存量
+    remark: 说明
+
   admin:
     control_panel: 控制面板
 

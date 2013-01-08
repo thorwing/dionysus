@@ -24,7 +24,7 @@ class DealsController < ApplicationController
   # GET /deals/new
   # GET /deals/new.json
   def new
-    @deal = Deal.new
+    @deal = Deal.new(beverage_id: params[:beverage_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +41,7 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = Deal.new(params[:deal])
+    @deal.seller = current_user
 
     respond_to do |format|
       if @deal.save

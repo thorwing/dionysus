@@ -1,5 +1,30 @@
-<p id="notice"><%= notice %></p>
+<% title @deal.beverage.full_name %>
+
+<div class="span9">
+    <p>
+        <%= content_tag :span, t("deals.price"), class: "mr20" %>
+        <%= content_tag :span, @deal.price %>
+    </p>
+
+     <p>
+        <%= content_tag :span, t("deals.amount"), class: "mr20" %>
+        <%= content_tag :span, @deal.amount %>
+    </p>
+
+    <%= content_tag :p, @deal.remark %>
+
+    <p>
+        <%= link_to "给卖家留言", "", class: "btn btn-warning btn-large" %>
+    </p>
+</div>
+
+<div class="span3">
+    <%= user_avatar_tag @deal.seller %>
+    <%= link_to t("general.edit"), edit_deal_path(@deal) if can? :update, @deal %>
+    <hr/>
+
+    <%= render "beverages/sidebar", beverage: @deal.beverage %>
+</div>
 
 
-<%= link_to 'Edit', edit_deal_path(@deal) %> |
-<%= link_to 'Back', deals_path %>
+

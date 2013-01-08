@@ -13,6 +13,11 @@ class Ability
       can [:update, :destroy], items do |item|
         item.author == user
       end
+
+      can :create, Deal
+      can [:update, :destroy], items do |deal|
+        deal.seller == user
+      end
     else
       can :read, :all
       can :create, Beverage

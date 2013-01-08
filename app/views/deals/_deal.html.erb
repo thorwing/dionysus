@@ -1,0 +1,20 @@
+<div class="clearfix">
+    <div class="pull-left">
+        <%= link_to image_tag(deal.beverage.get_picture, class: "img-square-168"), deal %>
+    </div>
+    <div class="pull-left ml10">
+        <p><%= link_to deal.beverage.full_name, deal %></p>
+        <p>
+            <%= content_tag :span, t("deals.seller") %>
+            <%= link_to deal.seller.nick, deal.seller, class: "ml10" %>
+        </p>
+        <p>
+            <%= content_tag :span, t("deals.amount") %>
+            <%= content_tag :span, deal.amount, class: "ml10" %>
+        </p>
+    </div>
+  
+    <div class="pull-right">
+        <%= content_tag :span, "￥#{deal.price}", class: "red p18" %>
+    </div>
+</div>

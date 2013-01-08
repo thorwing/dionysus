@@ -1,17 +1,19 @@
-<%= form_for(@deal) do |f| %>
-  <% if @deal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+<div class="span9">
+    <%= simple_form_for @deal do |f| %>
+        <%= f.error_notification %>
 
-      <ul>
-      <% @deal.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <%= f.hidden_field :beverage_id %>
+        <%= f.input :price, label: t("deals.price") %>
+        <%= f.input :amount, label: t("deals.amount") %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+        <%= f.input :remark, as: :text, label: t("deals.remark"), input_html: {rows: 5, class: "input-xlarge"} %>
+
+        <div class="mt10">
+            <%= f.submit (f.object.new_record? ? t("general.publish") : t("general.update")), class: "btn btn-primary" %>
+        </div>
+     <% end %>
+</div>
+
+<div class="span3">
+    <%= render "beverages/sidebar", beverage: @deal.beverage %>
+</div>

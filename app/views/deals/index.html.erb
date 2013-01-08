@@ -1,21 +1,13 @@
-<h1>Listing deals</h1>
+<% title t("deals.deals") %>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="span9">
+    <% @deals.each do |deal| %>
+        <%= render deal %>
+        <hr/>
+    <% end %>
+</div>
 
-<% @deals.each do |deal| %>
-  <tr>
-    <td><%= link_to 'Show', deal %></td>
-    <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
-    <td><%= link_to 'Destroy', deal, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div class="span3">
 
-<br />
+</div>
 
-<%= link_to 'New Deal', new_deal_path %>

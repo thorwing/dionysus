@@ -10,7 +10,7 @@ class Beverage < ActiveRecord::Base
 
   has_many :containers
   has_many :cups, through: :containers
-  has_many :vinifications
+  has_many :vinifications, dependent: :destroy
   has_many :grapes, through: :vinifications
   has_many :reviews
   has_many :wishes
@@ -20,6 +20,7 @@ class Beverage < ActiveRecord::Base
   belongs_to :author, class_name: "User", foreign_key: 'author_id'
   has_many :packages, dependent: :destroy
   has_many :lists, through: :packages
+  has_many :deals, dependent: :destroy
 
   #validations
   validates :name,
