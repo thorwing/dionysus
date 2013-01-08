@@ -133,11 +133,11 @@
 
                 <div class="mt20">
                     <%= content_tag :h3, "热门榜单" %>
-                    <% %w( 	人生中喝过最难喝的10瓶啤酒
-                    最适合冬天的酒
-                    聚会最棒的酒).each do |title| %>
-                      <%= link_to title, "" %><br/>
-                    <% end %>
+                    <ul class="unstyled">
+                        <% @hot_lists.each do |list| %>
+                            <%= link_to list.title, list %><br/>
+                        <% end %>
+                    </ul>
                 </div>
             </div>
         </div>

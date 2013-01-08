@@ -1,12 +1,7 @@
 <% title t("topics.topics") %>
 
 <div class="span8">
-    <% if current_user %>
-        <div class="clearfix">
-            <%= link_to t("topics.add_topic"), new_topic_path, class: "btn btn-info pull-right" %>
-        </div>
-        <hr/>
-    <% end %>
+    <%= link_to content_tag(:i, '', class: "icon-plus") + " #{t("topics.add_topic")}", new_topic_path if can? :create, Topic %>
 
     <% @topics.each do |topic| %>
         <%= render topic %>
