@@ -31,6 +31,9 @@
                                     <% if can? :create, Article %>
                                         <li><%= link_to '文章', new_article_path %></li>
                                     <% end %>
+                                    <% if can? :create, List %>
+                                        <li><%= link_to "榜单", new_list_path %></li>
+                                    <% end %>
                                 </ul>
                             </li>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107143849) do
+ActiveRecord::Schema.define(:version => 20130108045805) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -171,6 +171,16 @@ ActiveRecord::Schema.define(:version => 20130107143849) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "lists", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "author_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "lists", ["author_id"], :name => "index_lists_on_author_id"
+
   create_table "merchants", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -181,6 +191,17 @@ ActiveRecord::Schema.define(:version => 20130107143849) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "packages", :force => true do |t|
+    t.integer  "list_id"
+    t.integer  "beverage_id"
+    t.string   "remark"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "packages", ["beverage_id", "list_id"], :name => "index_packages_on_beverage_id_and_list_id"
+  add_index "packages", ["list_id", "beverage_id"], :name => "index_packages_on_list_id_and_beverage_id"
 
   create_table "pieces", :force => true do |t|
     t.string   "flavor"

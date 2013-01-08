@@ -1,10 +1,6 @@
-<%= simple_form_for(@list) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @list do |f| %>
+    <%= f.input :title, label: t("lists.title"), input_html: {class: 'input-xlarge'} %>
+    <%= f.input :description, label: t("lists.description"), input_html: {rows: '3', class: 'input-xxlarge'} %>
 
-  <div class="form-inputs">
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <%= f.button :submit, f.object.new_record? ? t("general.confirm") : t("general.update"), class: 'btn btn-primary' %>
 <% end %>

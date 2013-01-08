@@ -19,7 +19,7 @@ jQuery ->
         total += parseInt ui.value
       $("#review_score").val total
 
-
-  Morris.Donut
-    element: 'wheel'
-    data: $("#wheel").data "flavors"
+  if $("#wheel").length
+    Morris.Donut
+      element: 'wheel'
+      data: $("#wheel").data "flavors"

@@ -133,7 +133,11 @@ zh-CN:
     articles: 文章
 
   lists:
+    new_list: 新建榜单
+    new: 新榜单
     lists: 榜单
+    title: 标题
+    description: 描述
 
   recipes:
     ingredients: 配料
@@ -145,6 +149,10 @@ zh-CN:
 
   pictures:
     upload: 上传图片
+
+  packages:
+    new_package: 收集到榜单
+    remark: 推荐理由
 
   admin:
     control_panel: 控制面板

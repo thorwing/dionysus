@@ -8,16 +8,10 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :author
-      can :create, Article
-      can :like, Vote
-      can :hate, Vote
-      can :create, Review
-      can [:update, :destroy], Review do |review|
-        review.author == user
-      end
-      can :create, Comment
-      can [:update, :destroy], Comment do |comment|
-        comment.author == user
+      items = [Article, Package, Review, List, Comment, Topic]
+      can :create, items
+      can [:update, :destroy], items do |item|
+        item.author == user
       end
     else
       can :read, :all

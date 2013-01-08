@@ -9,6 +9,6 @@ class CreateLists < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :plans, :author_id
+    add_index :lists, :author_id
   end
 end

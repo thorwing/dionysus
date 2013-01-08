@@ -1,0 +1,15 @@
+<%= simple_form_for(@package) do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.collection_select :list_id, current_user.lists, :id, :title %>
+    <p>
+        <%= link_to t("lists.new_list"), new_list_path %>
+    </p>
+    <%= f.hidden_field :beverage_id %>
+    <%= f.input :remark, as: :text, label: t("packages.remark"), input_html: {rows: '3', class: 'input-xlarge'} %>
+
+    <div class="actions">
+        <%= f.submit t("general.confirm"), :class => "btn btn-primary" %>
+    </div>
+
+<% end %>

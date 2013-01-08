@@ -18,6 +18,8 @@ class Beverage < ActiveRecord::Base
   has_many :products
   has_many :deals
   belongs_to :author, class_name: "User", foreign_key: 'author_id'
+  has_many :packages, dependent: :destroy
+  has_many :lists, through: :packages
 
   #validations
   validates :name,

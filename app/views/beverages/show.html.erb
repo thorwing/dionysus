@@ -41,7 +41,8 @@
             </div>
 
             <div class="mt20">
-                <%= link_to content_tag(:span, '', class: 'icon-pencil') + " 写酒评", new_review_path(beverage_id: @beverage.id) %>
+                <%= link_to content_tag(:span, '', class: 'icon-pencil') + " 写酒评", new_review_path(beverage_id: @beverage.id) if can? :create, Review %>
+                <%= link_to content_tag(:span, '', class: 'icon-plus') + " 加入榜单", new_package_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Package %>
             </div>
         <% end %>
     </div>

@@ -1,0 +1,9 @@
+<div class="clearfix">
+    <div class="pull-left">
+        <%= link_to image_tag(package.beverage.pic_url, class: "beverage-frame"), package.beverage %><br/>
+    </div>
+    <div class="pull-left ml20">
+        <p><%= link_to package.beverage.full_name, package.beverage %></p>
+        <%= content_tag :p, package.remark %>
+    </div>
+</div>

@@ -39,6 +39,8 @@ Dionysus::Application.routes.draw do
 
   resources :grapes
 
+  resources :packages
+
   resources :wine, controller: :beverages, type: "Wine"
   resources :beer, controller: :beverages, type: "Beer"
   resources :whisky, controller: :beverages, type: "Whisky"

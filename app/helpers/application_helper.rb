@@ -78,7 +78,7 @@ module ApplicationHelper
   end
 
   def user_avatar_tag(user)
-    link_to image_tag(user.get_avatar), user
+    link_to image_tag(user.try :get_avatar), user
   end
 
 end
