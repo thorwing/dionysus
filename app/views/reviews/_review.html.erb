@@ -2,8 +2,8 @@
     <div class="pull-left">
         <%= user_avatar_tag(review.author) %>
     </div>
-    <div class="pull-right">
-        <%= link_to review.title, review %>
+    <div class="pull-left ml20">
+        <%= link_to review.title, review, class: "b f14" %>
         <div>
             <%= link_to review.author.nick, review.author %>
             <%= content_tag :span, review.score, class: "ml5" %>

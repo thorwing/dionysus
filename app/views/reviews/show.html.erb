@@ -26,24 +26,23 @@
                     </div>
                 <% end %>
 
-                <ul class="unstyled mt10">
-                    <% %w(Nose Taste Finish Balance).each do |item| %>
+                <div class="clearfix mt10">
+                    <ul class="unstyled pull-left">
+                        <% %w(Nose Taste Finish Balance).each do |item| %>
+                            <li class="mt5 mb5">
+                                <%= content_tag :span, t("reviews.scores.#{item.downcase}"), class: "mr5" %>
+                                <%= content_tag :span, "#{@review.send "#{item.downcase}_score".to_sym}/25 #{@review.send "#{item.downcase}_list".to_sym}", class: "trivial" %>
+                            </li>
+                        <% end %>
                         <li class="mt5 mb5">
-                            <%= content_tag :span, t("reviews.scores.#{item.downcase}"), class: "mr5" %>
-                            <%= content_tag :span, "#{@review.send "#{item.downcase}_score".to_sym}/25 #{@review.send "#{item.downcase}_list".to_sym}", class: "trivial" %>
+                            <%= content_tag :span, t("reviews.foods"), class: "mr5" %>
+                            <%= content_tag :span, @review.food_list, class: "trivial" %>
                         </li>
-                    <% end %>
-                    <li class="mt5 mb5">
-                        <%= content_tag :span, t("reviews.foods"), class: "mr5" %>
-                        <%= content_tag :span, @review.food_list, class: "trivial" %>
-                    </li>
-                </ul>
+                    </ul>
+                    <%= content_tag :div, "", id: "wheel", data: {flavors: @review.pieces.map{|p| {label: p.flavor, value: p.strength} }}, class: "pull-left ml30", style: "margin-top: -20px; width: 160px;height: 160px;" %>
+                </div>
 
                 <%= content_tag :p, @review.content, class: "mt20" %>
-
-                <% @review.pieces.each do |piece| %>
-                    <%= content_tag :span, piece.flavor, class: "b" %>
-                <% end %>
             </div>
         </div>
 

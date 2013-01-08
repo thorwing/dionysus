@@ -18,3 +18,8 @@ jQuery ->
       for item in $(".score_fields .score")
         total += parseInt ui.value
       $("#review_score").val total
+
+
+  Morris.Donut
+    element: 'wheel'
+    data: $("#wheel").data "flavors"

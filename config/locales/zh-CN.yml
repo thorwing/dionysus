@@ -132,6 +132,9 @@ zh-CN:
   articles:
     articles: 文章
 
+  lists:
+    lists: 榜单
+
   recipes:
     ingredients: 配料
     ingredients_amount: 量

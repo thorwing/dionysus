@@ -1,4 +1,6 @@
 Dionysus::Application.routes.draw do
+  resources :lists
+
   resources :comments
 
   ActiveAdmin.routes(self)

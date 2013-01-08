@@ -52,6 +52,7 @@
         <%= content_tag :span, "(#{@beverage.reviews.size}共篇)", class: "trivial f12" %>
 
         <% @beverage.reviews.each do |review| %>
+            <hr/>
             <%= render review %>
         <% end %>
     </div>
