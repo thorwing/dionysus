@@ -1,6 +1,8 @@
+<%= image_tag "logo_big.png", width: 200, style: "position: absolute;left: 0;top: 40px; z-index: -1;" %>
+
 <div class="row">
     <div class="span3">
-        <div class="box box-shadow p10">
+        <div class="box box-shadow p10" style="background-image: url('logo_big.png')">
             <ul class="unstyled">
                 <% %w(WhiteSpirit RiceWine ChineseLiqueur).each do |category| %>
                     <li class="mt5 mb5">
@@ -50,6 +52,15 @@
                 <% end %>
             </ol>
         </div>
+
+        <div class="box box-shadow p10 mt20">
+              <%= content_tag :h3, "热门榜单" %>
+              <ul class="unstyled">
+                  <% @hot_lists.each do |list| %>
+                      <%= link_to list.title, list %><br/>
+                  <% end %>
+              </ul>
+          </div>
     </div>
     <div class="span9">
         <div class="hero-unit">
@@ -61,86 +72,20 @@
                         <%= link_to "加入我们", new_user_registration_path, class: "btn btn-primary btn-large" %>
                     </p>
                 </div>
-                <%= image_tag "logo_big.png", width: 200, class: 'pull-right' %>
             </div>
         </div>
 
-        <div class="row">
-            <div class="span4">
-                <div>
-                    <%= content_tag :h3, "最新动态" %>
-                    <% %w( 关于酒第一届线下评酒会报名启动
-                                  国家酝酿酒类及奢侈品进口关税政策调整
-                                  调酒大师Conferan Vans进驻关于酒
-                                  [酒故事]每一杯GWT，都有一个心碎的她
-                                  Jony Walker进驻关于酒
-                                    国家酝酿酒类及奢侈品进口关税政策调整
-                                  为毛我喝威士忌感觉都一个味道呢？
-                                  有什么推荐给女生的酒呢？
-                                  关于酒第一届线下评酒会报名启动).each do |title| %>
-                        <%= link_to title, "" %><br/>
-                    <% end %>
-                </div>
 
-                <div class="mt20">
-                    <%= content_tag :h3, "最新动态" %>
-                    <% %w( 为毛我喝威士忌感觉都一个味道呢？
-                    小女子刚刚接触洋酒，有什么推荐给女生的酒呢？
-                    有没有上海的啊？一起出来活动啊~
-                    自己无聊折腾出一个新配方，不怕死的来
-                    自己无聊折腾出一个新配方，不怕死的来
-                    小女子刚刚接触洋酒，有什么推荐给女生的酒呢？
-                    有没有上海的啊？一起出来活动啊~).each do |title| %>
-                      <%= link_to title, "" %><br/>
-                    <% end %>
-                </div>
-
-
-                <div class="mt20">
-                      <%= content_tag :h3, "商家促销" %>
-                      <% %w( 	关于酒第一届线下评酒会报名启动
-                      国家酝酿酒类及奢侈品进口关税政策调整
-                      调酒大师Conferan Vans进驻关于酒
-                      [酒故事]每一杯GWT，都有一个心碎的她
-                      Jony Walker进驻关于酒
-                      	国家酝酿酒类及奢侈品进口关税政策调整
-                      为毛我喝威士忌感觉都一个味道呢？
-                      有什么推荐给女生的酒呢？
-                      关于酒第一届线下评酒会报名启动).each do |title| %>
-                        <%= link_to title, "" %><br/>
-                      <% end %>
-                  </div>
+        <div class="ml20">
+            <div class="clearfix">
+                <%= content_tag :h3, t("articles.articles"), class: "pull-left", style: "width: 200px;" %>
+                <%= link_to "全部文章 >>", articles_path, class: "pull-right" %>
             </div>
-
-            <div class="span5">
-                <div>
-                    <%= content_tag :h3, "酒趣轶事" %>
-                    <ul class="thumbnails">
-                        <% @hot_articles.each do |article| %>
-                            <%= render article %>
-                        <% end %>
-                    </ul>
-                </div>
-
-                <div class="mt20">
-                    <%= content_tag :h3, "热门酒评" %>
-                    <ul class="thumbnails">
-                        <% @hot_reviews.each do |review| %>
-                            <%= render review %>
-                        <% end %>
-                    </ul>
-                </div>
-
-                <div class="mt20">
-                    <%= content_tag :h3, "热门榜单" %>
-                    <ul class="unstyled">
-                        <% @hot_lists.each do |list| %>
-                            <%= link_to list.title, list %><br/>
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
+            <ul class="thumbnails">
+                <% @hot_articles.each do |article| %>
+                    <%= render article %>
+                <% end %>
+            </ul>
         </div>
-
     </div>
 </div>

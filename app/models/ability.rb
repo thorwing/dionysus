@@ -15,7 +15,7 @@ class Ability
       end
 
       can :create, Deal
-      can [:update, :destroy], items do |deal|
+      can [:update, :destroy], Deal do |deal|
         deal.seller == user
       end
     else

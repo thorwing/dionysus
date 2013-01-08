@@ -40,6 +40,7 @@
                         </li>
                     </ul>
                     <%= content_tag :div, "", id: "wheel", data: {flavors: @review.pieces.map{|p| {label: p.flavor, value: p.strength} }}, class: "pull-left ml30", style: "margin-top: -20px; width: 160px;height: 160px;" %>
+                    <%= content_tag :p, @review.pieces.map(&:flavor).join(" "), class: "b" %>
                 </div>
 
                 <%= content_tag :p, @review.content, class: "mt20" %>
