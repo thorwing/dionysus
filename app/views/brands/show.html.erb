@@ -1,14 +1,11 @@
 <% title @brand.full_name %>
 
-<div class="span9">
+<%= content_tag :span, "品牌简介" %>
+
+<hr/>
+
+<div id="masonryContainer">
     <% @brand.beverages.each do |beverage| %>
         <%= render "beverages/beverage", beverage: beverage %>
     <% end %>
 </div>
-
-<div class="span3">
-    <div class="box box-shadow p10">
-        <%= content_tag :span, "品牌简介" %>
-    </div>
-</div>
-

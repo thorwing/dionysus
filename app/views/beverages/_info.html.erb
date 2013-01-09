@@ -1,7 +1,14 @@
 <%= content_tag :p, t("beverages.categories.#{beverage.type}"), class: 'b' %>
 
+<% if beverage.brand %>
+    <p>
+        <%= content_tag :span, "品牌", class: "mr20" %>
+        <%= link_to "#{beverage.brand.full_name}", beverage.brand %>
+    </p>
+<% end %>
+
 <% if beverage.rank %>
-    <p xmlns="http://www.w3.org/1999/html">
+    <p>
        <%= content_tag :span, "评级", class: "mr20" %>
        <%= link_to "#{beverage.rank.full_name}", beverage.rank %>
    </p>

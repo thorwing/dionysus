@@ -12,7 +12,7 @@ class SilverHornet::Hornet
   #end
 
   def self.fetch(site_name)
-    site = SilverHornet::TheWhiskyExchange.new(Mechanize.new)
+    site = "SilverHornet::#{site_name}".constantize.new
     site.entries.each do |entry_url|
       site.visit(entry_url)
     end

@@ -58,14 +58,6 @@ aocs.each do |a|
   aoc.save!
 end
 
-p "generating grapes"
-records = YAML::load(File.open("db/seeds/grapes.yml"))
-records.each do |record|
-  Grape.create! do |grape|
-    grape.name = record
-  end
-end
-
 p "generating brands"
 records = YAML::load(File.open("db/seeds/brands.yml"))
 records.each do |record|
@@ -83,8 +75,6 @@ records.each do |record|
   %w(brand region rank aoc).each do |association|
     beverage.send("#{association}=".to_sym, association.singularize.classify.constantize.find_by_name(record[association])) if record[association].present?
   end
-  #for wine
-  beverage.grapes = Grape.where(name: record['grapes']) if record['grapes'].present?
   beverage.save!
 end
 

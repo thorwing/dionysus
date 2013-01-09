@@ -11,6 +11,7 @@
     <%= f.input :picture, label: t("pictures.upload") %>
     <%= f.label t("regions.region"), :region_id %>
     <%= f.collection_select :region_id, Region.all, :id, :full_name %>
+    <!--<= f.input :vin, label: t("beverages.alcohol") %>-->
     <%= f.input :alcohol, label: t("beverages.alcohol") %>
     <%= f.input :volume, label: t("beverages.volume") %>
 

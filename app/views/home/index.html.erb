@@ -63,26 +63,16 @@
           </div>
     </div>
     <div class="span9">
-        <div class="hero-unit">
-            <div class="clearfix">
-                <div class="pull-left">
-                    <%= content_tag :h1, t("site.name") %>
-                    <%= content_tag :p, t("site.description") %>
-                    <p>
-                        <%= link_to "加入我们", new_user_registration_path, class: "btn btn-primary btn-large" %>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-
         <div class="ml20">
             <div class="clearfix">
-                <%= content_tag :h3, t("articles.articles"), class: "pull-left", style: "width: 200px;" %>
+                <div class="pull-left" style="width: 200px;">
+                    <%= content_tag :h1, t("articles.new_articles") %>
+                </div>
                 <%= link_to "全部文章 >>", articles_path, class: "pull-right" %>
             </div>
             <ul class="thumbnails">
                 <% @hot_articles.each do |article| %>
+                    <hr/>
                     <%= render article %>
                 <% end %>
             </ul>

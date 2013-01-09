@@ -1,7 +1,8 @@
 class Beverage < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   include Translatable
-  attr_accessible :type, :name, :trans_name, :region_id, :volume, :alcohol, :picture, :pic_url
+  acts_as_taggable_on :grapes
+  attr_accessible :type, :name, :trans_name, :region_id, :volume, :alcohol, :picture, :pic_url, :grape_list
 
   #relationships
   belongs_to :region

@@ -62,14 +62,21 @@ zh-CN:
     to_reset_your_password: "您好，请点击下方的链接来重置您的密码"
     captcha_failed: "噢，验证码没有输对"
 
+  users:
+    roles:
+      author: 编辑
+      admin: 管理员
+      merchant: 商家
+
   beverages:
     beverage: 酒
     type: 种类
     new_beverage: 添加酒
     name: 名称
-    alcohol: 酒精(%)
-    volume: 容量(cl)
-    age: 窖藏年份
+    alcohol: 酒精
+    volume: 容量
+    vintage: 年份
+    age: 陈酿年份
     distillation_method: 蒸馏方法
     barrel_cask: 装桶
     style: 分类
@@ -131,6 +138,7 @@ zh-CN:
 
   articles:
     articles: 文章
+    new_articles: 新文章
 
   lists:
     new_list: 新建榜单

@@ -10,5 +10,6 @@ ActiveAdmin.register Beverage do
       "#{beverage.alcohol} #{beverage.volume}"
     end
     #column :approved
+    default_actions
   end
 end

@@ -63,26 +63,22 @@ ActiveRecord::Schema.define(:version => 20130108045805) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "beers", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "beverages", :force => true do |t|
     t.string   "type"
     t.string   "name"
     t.string   "trans_name"
-    t.float    "alcohol"
-    t.integer  "volume"
-    t.string   "flavor"
-    t.string   "color"
+    t.string   "alcohol"
+    t.string   "volume"
+    t.string   "bottler"
     t.string   "distillation_method"
     t.string   "barrel_cask"
     t.string   "style"
     t.string   "sub_style"
-    t.integer  "age"
+    t.string   "vintage"
+    t.string   "age"
     t.string   "picture"
     t.text     "pic_url"
+    t.string   "grape_list"
     t.integer  "region_id"
     t.integer  "brand_id"
     t.integer  "rank_id"
@@ -148,19 +144,13 @@ ActiveRecord::Schema.define(:version => 20130108045805) do
   end
 
   create_table "deals", :force => true do |t|
-    t.integer  "beverage_id"
-    t.integer  "seller_id"
     t.integer  "amount"
     t.float    "price"
     t.string   "remark"
+    t.integer  "beverage_id"
+    t.integer  "seller_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "grapes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "ingredients", :force => true do |t|
@@ -379,19 +369,6 @@ ActiveRecord::Schema.define(:version => 20130108045805) do
   add_index "votings", ["voteable_type", "voteable_id", "voter_type", "voter_id"], :name => "unique_voters", :unique => true
   add_index "votings", ["voteable_type", "voteable_id"], :name => "index_votings_on_voteable_type_and_voteable_id"
   add_index "votings", ["voter_type", "voter_id"], :name => "index_votings_on_voter_type_and_voter_id"
-
-  create_table "whiskies", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "wines", :force => true do |t|
-    t.string   "remark"
-    t.integer  "author_id"
-    t.integer  "beverage_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
 
   create_table "wishes", :force => true do |t|
     t.string   "remark"
