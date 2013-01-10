@@ -25,25 +25,13 @@
     <div class="mt20">
         <% if current_user %>
             <div class="clearfix">
-                <% if current_user.want? @beverage %>
-                    <%= content_tag :span, "想喝 | ", class: "pull-left" %>
-                    <%= link_to "取消想喝", wish_path(current_user.get_wish(@beverage)), method: :delete, confirm: t("general.are_you_sure_to_cancel"), class: "pull-left ml5 trivial" %>
-                <% else %>
-                    <%= link_to "想喝", "#wishDialog", 'data-toggle' => "modal", class: "pull-left btn btn-mini btn-warning" %>
-                <% end %>
-                <% if current_user.had? @beverage %>
-                    <%= content_tag :span, "喝过 | ", class: "pull-left ml10" %>
-                <% else %>
-                    <%= link_to "喝过", "#wishDialog", 'data-toggle' => "modal", class: "pull-left btn btn-mini btn-danger ml10" %>
-                <% end %>
-
-                <%= render "wishes/dialog", wish: @wish %>
+                <%= render "wishes/beverage_wish_fields", beverage: @beverage %>
             </div>
 
             <div class="mt20">
                 <%= link_to content_tag(:span, '', class: 'icon-pencil') + " 写酒评", new_review_path(beverage_id: @beverage.id) if can? :create, Review %>
                 <%= link_to content_tag(:span, '', class: 'icon-plus') + " 加入榜单", new_package_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Package %>
-                <%= link_to content_tag(:span, '', class: 'icon-dollar') + " 我要卖", new_deal_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Deal %>
+                <%= link_to content_tag(:span, '', class: 'icon-gift') + " 我要卖", new_deal_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Deal %>
             </div>
         <% end %>
     </div>

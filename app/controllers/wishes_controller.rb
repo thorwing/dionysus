@@ -20,53 +20,25 @@ class WishesController < ApplicationController
     end
   end
 
+  def update
+
+    respond_to do |format|
+      if @wish.update_attributes(params[:wish])
+        format.html { redirect_to @wish.beverage }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @wish.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @wish.destroy
 
     respond_to do |format|
       format.html { redirect_to :back }
       format.json { head :no_content }
-    end
-  end
-
-  def like
-    if current_user.up_voted?(@item)
-      current_user.unvote(@item)
-
-      @voted = false
-    else
-      if current_user.down_voted?(@item)
-        current_user.unvote(@item)
-      end
-
-      @voted = true
-    end
-
-    respond_to do |format|
-      format.html {redirect_to :back }
-      format.xml {head :ok}
-      format.js {render "votes/like", :content_type => 'text/javascript'}
-    end
-  end
-
-  def hate
-    if current_user.down_voted?(@item)
-      current_user.unvote(@item)
-      @voted = false
-    else
-      if current_user.up_voted?(@item)
-        #only to erase the awarded point
-        current_user.unvote(@item)
-      end
-
-      current_user.down_vote(@item)
-      @voted = true
-    end
-
-    respond_to do |format|
-      format.html {redirect_to :back }
-      format.xml {head :ok}
-      format.js {render "votes/hate", :content_type => 'text/javascript'}
     end
   end
 

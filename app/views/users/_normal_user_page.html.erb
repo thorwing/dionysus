@@ -1,0 +1,22 @@
+<p>
+    <%= content_tag :span, "我喝  · · · · · · · · · · ", class: 'jujiu-label' %>
+    <%= content_tag :span, "( #{@user.wishes.want.size}瓶想喝 · #{@user.wishes.want.size}瓶喝过 )" %>
+</p>
+
+<% unless @want_drinks.empty? %>
+    <div class="clearfix">
+        <%= content_tag :span, "想喝:", class: "pull-left f16 mt50" %>
+        <% @want_drinks.each do |wish| %>
+            <%= render wish %>
+        <% end %>
+    </div>
+<% end %>
+
+<% unless @done_drinks.empty? %>
+    <div class="clearfix mt20">
+        <%= content_tag :span, "喝过:", class: "pull-left f16 mt50" %>
+        <% @done_drinks.each do |wish| %>
+            <%= render wish %>
+        <% end %>
+    </div>
+<% end %>

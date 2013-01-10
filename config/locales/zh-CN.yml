@@ -20,6 +20,7 @@ zh-CN:
     finish: 完成
     confirm: 确定
     edit: 编辑
+    modify: 修改
     delete: 删除
     close: 关闭
     ask: 提问
@@ -108,6 +109,9 @@ zh-CN:
   wishes:
     add: 添加到收藏
     remark: 简短附注
+    iwish: 我%{action}这瓶酒
+    want: 想喝
+    done: 喝过
 
   reviews:
     title: 标题

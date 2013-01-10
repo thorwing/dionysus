@@ -8,4 +8,12 @@ ActiveAdmin.register User do
     column :last_sign_in_at
     default_actions
   end
+
+  form do |f|
+    f.inputs do
+      f.input :roles_mask
+    end
+
+    f.buttons
+  end
 end

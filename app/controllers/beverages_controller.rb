@@ -41,7 +41,6 @@ class BeveragesController < ApplicationController
   # GET /beverages/1.json
   def show
     @beverage = Beverage.find(params[:id])
-    @wish = @beverage.wishes.build
 
     respond_to do |format|
       format.html # show.html.erb

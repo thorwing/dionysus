@@ -15,6 +15,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    if @user.role? :merchant
+      @deals = @user.deals
+    else
+      @want_drinks = @user.wishes.want
+      @done_drinks = @user.wishes.done
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

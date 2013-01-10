@@ -52,16 +52,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def want?(beverage)
-    self.wishes.where(beverage_id: beverage.id, accomplished: false).exists?
-  end
-
-  def had?(beverage)
-    self.wishes.where(beverage_id: beverage.id, accomplished: true).exists?
+  def wished?(beverage)
+    self.wishes.where(beverage_id: beverage.id).exists?
   end
 
   def get_wish(beverage)
-    self.wishes.where(beverage_id: beverage.id, accomplished: false).first
+    self.wishes.where(beverage_id: beverage.id).first
   end
 
 end

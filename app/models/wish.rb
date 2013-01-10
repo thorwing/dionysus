@@ -6,4 +6,9 @@ class Wish < ActiveRecord::Base
   #relationships
   belongs_to :user
   belongs_to :beverage
+
+  #scopes
+  scope :want, where(accomplished: false)
+  scope :done, where(accomplished: true)
+
 end

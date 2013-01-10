@@ -41,14 +41,14 @@
             <% end %>
         </div>
 
-        <% if @type == "Wine" %>
-            <div>
-                <%= content_tag :span, "品种:", class: 'b' %><br/>
-                <% Grape.all.each do |grape| %>
-                    <%= link_to grape.name, "#{request.env['PATH_INFO']}?filter=grape&value=#{grape.name}&delta=1", class: "mr10" %>
-                <% end %>
-            </div>
-        <% end %>
+        <!--< if @type == "Wine" %>-->
+            <!--<div>-->
+                <!--<= content_tag :span, "品种:", class: 'b' %><br/>-->
+                <!--< Grape.all.each do |grape| %>-->
+                    <!--<= link_to grape.name, "#{request.env['PATH_INFO']}?filter=grape&value=#{grape.name}&delta=1", class: "mr10" %>-->
+                <!--< end %>-->
+            <!--</div>-->
+        <!--< end %>-->
     <% end %>
 
     <hr/>
