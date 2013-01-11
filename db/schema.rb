@@ -327,7 +327,7 @@ ActiveRecord::Schema.define(:version => 20130108045805) do
 
   create_table "users", :force => true do |t|
     t.string   "nick"
-    t.integer  "roles_mask"
+    t.string   "role"
     t.string   "locked_nodes_list"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

@@ -17,24 +17,26 @@ class User < ActiveRecord::Base
   has_many :comments, foreign_key: 'author_id'
   has_many :deals, foreign_key: 'seller_id'
 
-  scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
+  scope :with_role, lambda { |role| where(role: role.to_s) }
 
-  ROLES = %w[master author merchant]
-
-  def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  def self.roles
+    %w[admin author master merchant]
   end
 
-  def roles
-    ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
+  def admin?
+    role == "admin"
   end
 
-  def role_symbols
-    roles.map(&:to_sym)
+  def master?
+    role == "mater"
   end
 
-  def role?(role)
-    roles.include? role.to_s
+  def author?
+    role == "author"
+  end
+
+  def merchant?
+    role == "merchant"
   end
 
   #TODO stub

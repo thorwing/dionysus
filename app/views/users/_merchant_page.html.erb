@@ -1,8 +1,11 @@
-<% unless @deals.empty? %>
-    <div class="clearfix">
-        <%= content_tag :span, "交易:", class: "pull-left f16 mt50" %>
-        <% @deals.each do |deal| %>
-            <%= render deal %>
-        <% end %>
-    </div>
-<% end %>
+<p>
+    <%= content_tag :span, "交易  · · · · · · · · · · ", class: 'jujiu-label' %>
+    <%= content_tag :span, "( #{@user.deals.size}个交易)" %>
+</p>
+
+<div class="clearfix">
+    <% @deals.each do |deal| %>
+        <%= render deal %>
+    <% end %>
+</div>
+

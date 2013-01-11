@@ -14,6 +14,7 @@ class DealsController < ApplicationController
   # GET /deals/1.json
   def show
     @deal = Deal.find(params[:id])
+    @other_deals = @deal.seller.deals.where("id != ?", @deal.id)
 
     respond_to do |format|
       format.html # show.html.erb

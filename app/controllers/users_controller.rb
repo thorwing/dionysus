@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    if @user.role? :merchant
+    if @user.merchant?
       @deals = @user.deals
     else
       @want_drinks = @user.wishes.want

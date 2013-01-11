@@ -1,29 +1,51 @@
-<% title @deal.beverage.full_name %>
+<% title @deal.beverage.full_name, false %>
 
 <div class="span9">
-    <p>
-        <%= content_tag :span, t("deals.price"), class: "mr20" %>
-        <%= content_tag :span, @deal.price %>
-    </p>
+    <div class="clearfix">
+        <div class="pull-left">
+            <%= link_to image_tag(@deal.beverage.pic_url, class: "beverage-frame"), @deal.beverage %>
+        </div>
 
-     <p>
-        <%= content_tag :span, t("deals.amount"), class: "mr20" %>
-        <%= content_tag :span, @deal.amount %>
-    </p>
+        <div class="pull-left ml20">
+            <%= link_to @deal.beverage.full_name, @deal.beverage %><br/>
+            <%= render "beverages/info", beverage: @deal.beverage %>
+            <p>
+                <%= content_tag :span, t("deals.price"), class: "mr20" %>
+                <%= content_tag :span, @deal.price %>
+            </p>
 
-    <%= content_tag :p, @deal.remark %>
+            <p>
+                <%= content_tag :span, t("deals.amount"), class: "mr20" %>
+                <%= content_tag :span, @deal.amount %>
+            </p>
 
-    <p>
-        <%= link_to "给卖家留言", "", class: "btn btn-warning btn-large" %>
-    </p>
+            <%= content_tag :p, @deal.remark %>
+
+            <%= link_to t("general.edit"), edit_deal_path(@deal) if can? :update, @deal %>
+            <p class="clearfix">
+                <%= link_to "给卖家留言", "", class: "btn btn-warning" %>
+            </p>
+        </div>
+    </div>
+
 </div>
 
 <div class="span3">
+    <%= content_tag :p, "卖家:", class: "jujiu-label"  %>
     <%= user_avatar_tag @deal.seller %>
-    <%= link_to t("general.edit"), edit_deal_path(@deal) if can? :update, @deal %>
-    <hr/>
 
-    <%= render "beverages/sidebar", beverage: @deal.beverage %>
+    <% unless @other_deals.empty? %>
+        <hr/>
+        <%= content_tag :p, "卖家的其他交易" %>
+        <ul class="unstyled">
+            <% @other_deals.each do |deal| %>
+                <li>
+                    <%= link_to deal.beverage.full_name %>
+                    <%= content_tag :span, @deal.price, class: "ml5" %>
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
 </div>
 
 

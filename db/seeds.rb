@@ -10,7 +10,7 @@
 
 p "generating users"
 tester = User.create!(email: "tester@guanyu9.com", password: "guanyu9") do |user|
-  user.roles = %w(author)
+  user.role = "author"
   user.nick = "tester"
 end
 

@@ -1,7 +1,7 @@
 <% title @user.nick, false %>
 
 <div class="span8">
-    <% if @user.role? :merchant %>
+    <% if @user.merchant? %>
         <%= render "merchant_page" %>
     <% else %>
         <%= render "normal_user_page" %>

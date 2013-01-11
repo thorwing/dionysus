@@ -65,6 +65,7 @@ zh-CN:
 
   users:
     roles:
+      master: 达人
       author: 编辑
       admin: 管理员
       merchant: 商家
