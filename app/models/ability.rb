@@ -25,6 +25,9 @@ class Ability
       can [:update, :destroy], items do |item|
         item.author == user
       end
+
+      can :create, Message
+      can [:up, :down], Vote
     else
       can :read, :all
     end

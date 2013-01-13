@@ -9,9 +9,11 @@
 # encoding: utf-8
 
 p "generating users"
-tester = User.create!(email: "tester@guanyu9.com", password: "guanyu9") do |user|
-  user.role = "author"
-  user.nick = "tester"
+%w(user author merchant admin).each do |people|
+  User.create!(email: "#{people}@guanyu9.com", password: "guanyu9") do |user|
+    user.role = people if User.roles.include? people
+    user.nick = people
+  end
 end
 
 p "generating countries"
@@ -98,7 +100,7 @@ p 'generating articles'
 records = YAML::load(File.open("db/seeds/articles.yml"))
 records.each do |record|
   article = Article.new
-  article.author = tester
+  article.author = User.first(conditions: {role: "author"})
   article.attributes = record.slice(*Article.accessible_attributes)
   article.released_at = (1 + rand(3)).weeks.ago
   article.view_count = rand(100)

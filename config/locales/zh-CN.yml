@@ -65,10 +65,11 @@ zh-CN:
 
   users:
     roles:
+      user: 用户
       master: 达人
+      merchant: 商家
       author: 编辑
       admin: 管理员
-      merchant: 商家
 
   beverages:
     beverage: 酒
@@ -179,3 +180,16 @@ zh-CN:
   admin:
     control_panel: 控制面板
 
+  messages:
+    notifications: 消息
+    inbox: 收件箱
+    sentbox: 发件箱
+    trash: 垃圾桶
+    subject: 标题
+    body: 正文
+    participants: 参与者
+    answer: 回复
+    new_message: 新私信
+
+  time:
+    ago: "%{time}前"

@@ -1,0 +1,24 @@
+<%= div_for(message, :class => (message.is_unread?(@actor) ? 'unread' : '')) do %>
+  <div class="avatar">
+        <%= user_avatar_tag message.sender %>
+  </div>
+
+  <div class="name">
+    <%= link_to message.sender.nick, message.sender %>
+  </div>
+
+  <div class="date">
+    <%= t('time.ago', :time => time_ago_in_words(message.updated_at)) %>
+  </div>
+
+  <div class="subject">
+    <%= truncate(message.subject, :length => 70) %>
+  </div>
+      
+  <div class="word-break pre-message">
+    <%= raw(message.body) %>
+  </div>
+
+  <div class="clearfloat">
+  </div>
+<% end %>

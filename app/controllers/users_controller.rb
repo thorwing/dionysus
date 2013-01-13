@@ -87,4 +87,12 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search
+    @users = User.where("nick like ?", "%#{params[:q]}%").where('id != ?', current_user.id)
+
+    respond_to do |format|
+      format.json { render json: @users.map { |u| {:id => u.id.to_s, :name => u.nick} } }
+    end
+  end
 end

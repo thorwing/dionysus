@@ -1,0 +1,6 @@
+var container = $("#followship_<%= @followable.class.name %>_<%= @followable.id %>");
+container.find(".btn.unfollow").hide();
+container.find(".btn.follow").show();
+
+container.find(".link.unfollow").hide();
+container.find(".link.follow").show();

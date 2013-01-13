@@ -1,0 +1,27 @@
+<%= content_tag :div, "", class: "clearfix mb20 #{ 'unread ' if conversation.is_unread?(current_user)}message" do %>
+    <div class="pull-left" style="width:64px;">
+        <%= user_avatar_tag(conversation.last_sender) %><br/>
+        <%= link_to conversation.last_sender.nick, conversation.last_sender, class: "b" %>
+    </div>
+
+    <div class="pull-left box box-shadow p10 ml10 clearfix" style="width: 600px;">
+        <%= link_to truncate_text(conversation.subject, 55), conversation_path(conversation,:box => @box,:page => params[:page]), class: "b f16" %>
+        <%= content_tag :p, raw(truncate(strip_tags(conversation.last_message.body), :length => 50)) %>
+
+
+        <div class="clearfix">
+            <div class="pull-left">
+                <% unless @box.eql?'trash' %>
+                    <%= content_tag :span, "未读" unless conversation.messages.unread.empty? %>
+                    <%= content_tag :span, "#{conversation.messages.size}条消息" %>
+                    <%= link_to( t("general.delete"), conversation_path(conversation), method: :delete, confirm: t("general.are_you_sure_to_delete")) %>
+                <% end %>
+            </div>
+
+            <div class="pull-right">
+                <%= t('time.ago', :time => time_ago_in_words(conversation.updated_at)) %>
+            </div>
+        </div>
+    </div>
+<% end %>
+

@@ -9,7 +9,11 @@ Dionysus::Application.routes.draw do
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
   match "sign_up" => "users#new"
-  resources :users
+  resources :users do
+    collection do
+      get :search
+    end
+  end
 
   mount RedactorRails::Engine => '/redactor_rails'
 
@@ -30,6 +34,9 @@ Dionysus::Application.routes.draw do
 
   put "nodes/:id/lock", to: "nodes#lock", as: :lock_node
   put "nodes/:id/unlock", to: "nodes#unlock", as: :unlock_node
+
+  put "follow", to: "follows#follow", as: :follows
+  put "unfollow", to: "follows#unfollow", as: :unfollow
 
   resources :beverages
 
@@ -66,6 +73,10 @@ Dionysus::Application.routes.draw do
       put :down
     end
   end
+
+  resources :messages
+  resources :conversations
+  resources :notifications
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

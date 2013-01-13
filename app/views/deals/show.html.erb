@@ -9,6 +9,7 @@
         <div class="pull-left ml20">
             <%= link_to @deal.beverage.full_name, @deal.beverage %><br/>
             <%= render "beverages/info", beverage: @deal.beverage %>
+            <hr/>
             <p>
                 <%= content_tag :span, t("deals.price"), class: "mr20" %>
                 <%= content_tag :span, @deal.price %>
@@ -22,9 +23,9 @@
             <%= content_tag :p, @deal.remark %>
 
             <%= link_to t("general.edit"), edit_deal_path(@deal) if can? :update, @deal %>
-            <p class="clearfix">
-                <%= link_to "给卖家留言", "", class: "btn btn-warning" %>
-            </p>
+            <div class="mt20">
+                <%= link_to "给卖家留言", new_message_path(receiver_id: @deal.seller_id), class: "btn btn-warning" if can?(:create, Message) && @deal.seller != current_user %>
+            </div>
         </div>
     </div>
 

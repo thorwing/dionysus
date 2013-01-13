@@ -11,12 +11,14 @@
  *= require twitter/bootstrap
  *= require_self
  *= require custom
+ *= require conversations
  *= require frames
  *= require icons
  *= require votes
  *= require jquery.ui.slider
  *= require masonary
  *= require redactor-rails
+  *= require token-input-facebook
 */
 
 

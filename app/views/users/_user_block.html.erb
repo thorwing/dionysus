@@ -4,6 +4,13 @@
     </div>
 
     <div class="pull-left ml10" style="width: 185px;">
-        <%= link_to user.nick, user, class: "jujiu-title" %>
+        <%= link_to user.nick, user %>
     </div>
+</div>
+
+<div class="mt10">
+    <% if user != current_user %>
+        <%= render 'follows/follow_button', item: user %>
+        <%= link_to "写私信", new_message_path(receiver_id: user.id), class: "btn btn-mini btn-warning ml10" if can?(:create, Message) && user != current_user %>
+    <% end %>
 </div>

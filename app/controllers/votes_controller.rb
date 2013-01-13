@@ -13,6 +13,9 @@ class VotesController < ApplicationController
 
       current_user.up_vote(@item)
       @voted = true
+
+      @receipt = @item.author.notify("fyi", "up vote ur item")
+      #FeedsManager.new(current_user, 'like', @item).generate_for(current_user)
     end
 
     respond_to do |format|

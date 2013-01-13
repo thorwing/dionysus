@@ -69,3 +69,6 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'rest-client'
 gem 'carrierwave-upyun'
+
+#message
+gem 'mailboxer'

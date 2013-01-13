@@ -3,7 +3,7 @@ ActiveAdmin.register User do
     column :nick
     column :email
     column :role do |user|
-      I18n.t("users.roles.#{user.role}")
+      user.role ? I18n.t("users.roles.#{user.role}") : ''
     end
     column :last_sign_in_at
     default_actions

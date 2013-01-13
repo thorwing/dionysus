@@ -19,6 +19,7 @@
 //= require redactor-rails
 //= require raphael
 //= require morris
+//= require jquery.tokeninput
 
 $(function() {
     $('.hover_area').hover(
@@ -77,4 +78,26 @@ $(document).ready(function(){
             return false;
         });
     });
+});
+
+function tokenize_input(element_selector, tokenLimit) {
+    var element = $(element_selector);
+    if(element.length > 0) {
+        var data_source = element.data("source");
+        element.tokenInput(data_source, {
+            crossDomain: false,
+            preventDuplicates: true,
+            prePopulate: $(element_selector).data("load"),
+            theme: "facebook",
+            tokenLimit: tokenLimit,
+            hintText: "输入关键词",
+            noResultsText: "没有结果",
+            searchingText: "搜索中",
+            onAdd: function(item){}
+        });
+    }
+}
+
+$(function() {
+    tokenize_input("#_recipients:visible",  1);
 });

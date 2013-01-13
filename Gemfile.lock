@@ -88,6 +88,8 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     fastercsv (1.5.5)
+    foreigner (1.2.1)
+      activerecord (>= 3.0.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     has_scope (0.5.1)
@@ -119,6 +121,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailboxer (0.9.0)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (> 3.0.0)
     make_voteable (0.1.1)
       activerecord (~> 3.0)
     mechanize (2.5.1)
@@ -225,6 +231,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   less-rails-bootstrap
+  mailboxer
   make_voteable
   mechanize
   mini_magick

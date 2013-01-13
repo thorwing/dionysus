@@ -45,6 +45,26 @@
 
                     <ul class="nav pull-right">
                         <% if current_user %>
+                            <li class="dropdown" style="position: relative;">
+                                <%= content_tag(:span, current_user.mailbox.conversations(mailbox_type: "inbox", read: false).size + current_user.mailbox.notifications.size, id: "unreadSumCounter", class: "label label-info", style: "position: absolute; top: 3px; right: 8px;") %>
+                                <a href="/conversations" class="dropdown-toggle" data-toggle="dropdown">
+                                    <%= content_tag(:i, "", class: "icon-envelope icon-white") + content_tag(:b, '', class: 'caret') %>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                  <li id="newFansList">
+                                      <a href="/conversations?box=inbox">
+                                          <%= content_tag :span, "#{current_user.mailbox.conversations(mailbox_type: "inbox", read: false).size} 收件箱" %>
+                                      </a>
+                                  </li>
+                                  <li id="newNotificationsList">
+                                    <a href="/notifications">
+                                        <%= content_tag :span, "#{current_user.mailbox.notifications.size} 系统通知" %>
+                                    </a>
+                                </li>
+                                </ul>
+                            </li>
+
                             <li class="dropdown" style="max-width: 160px;">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                     <%= content_tag :span, "+#{t("general.add")}" %><b class="caret"></b>

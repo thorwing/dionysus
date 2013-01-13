@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   make_voter
+  acts_as_followable
+  acts_as_follower
+  acts_as_messageable
 
   #Relationships
   has_many :wishes
@@ -20,7 +23,7 @@ class User < ActiveRecord::Base
   scope :with_role, lambda { |role| where(role: role.to_s) }
 
   def self.roles
-    %w[admin author master merchant]
+    %w[user master merchant author admin]
   end
 
   def admin?

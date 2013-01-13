@@ -1,0 +1,16 @@
+<% title "系统通知" %>
+
+<table>
+    <tr>
+        <th>标题</th>
+        <th>内容</th>
+        <th></th>
+    </tr>
+
+    <% @notifications.each do |notification| %>
+      <tr>
+        <td><%= notification.subject %></td>
+        <td><%= notification.body %></td>
+      </tr>
+    <% end %>
+</table>

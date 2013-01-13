@@ -1,0 +1,9 @@
+<% title t("messages.new_message") %>
+
+<p>
+    <%= link_to "私信中心", conversations_path %>
+    <%= content_tag :span, ">", class: "ml5 mr5" %>
+    <%= link_to t("messages.new_message"), new_message_path %>
+</p>
+
+<%= render 'form' %>
