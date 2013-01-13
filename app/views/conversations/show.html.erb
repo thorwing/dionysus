@@ -1,17 +1,10 @@
 <% title "对话", false %>
 
-<div class="title">
-  <h2><%= @conversation.subject %></h2>
-</div>
-
 <div class="action">
-  <% unless @box.eql?'trash' %><%= link_to(t("general.delete"),
-  conversation_path(@conversation, :location => 'conversation', :box => @box),
-  :confirm => t('general.are_you_sure_to_delete', :object => @conversation.subject),
-  :method => :delete, :remote => true) %><% end %>
+  <% unless @box.eql?'trash' %>
+      <%= link_to(t("general.delete"), conversation_path(@conversation, :box => @box), :confirm => t('general.are_you_sure_to_delete', :object => @conversation.subject), :method => :delete) %>
+  <% end %>
 </div>
-
-<div class="clearfloat"></div>
 
 <div class="participants">
   <h3><%= t("messages.participants") %>:</h3>
@@ -20,39 +13,35 @@
   <% end %>
 </div>
 
+<hr/>
+
 <div class="messages">
-  <% @receipts.each do |receipt| %>
-    <%= render receipt.message %>
-  <% end %>
+    <% @receipts.each do |receipt| %>
+        <%= render receipt.message %>
+    <% end %>
 
-  <% unless @box.eql?'trash' %>
-  <br>
-  <%= form_tag conversation_path(@conversation), :method => :put, :class => "cont_conversation" do %>
-  <% if @receipt and @receipt.errors.any? %>
-  <div class="error">
-    <h2><%= pluralize(@receipt.errors.count, "error") %> prohibited this message from being sent:</h2>
-    <ul>
-      <% @receipt.errors.full_messages.each do |msg| %>
-      <li>
-        <%= msg %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+    <% unless @box.eql?'trash' %>
+        <br>
+        <%= form_tag conversation_path(@conversation), :method => :put, :class => "cont_conversation" do %>
+            <% if @receipt and @receipt.errors.any? %>
+                <div class="error">
+                    <h2><%= pluralize(@receipt.errors.count, "error") %> prohibited this message from being sent:</h2>
+                    <ul>
+                        <% @receipt.errors.full_messages.each do |msg| %>
+                            <%= content_tag :li, msg %>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
 
-  <div class="block">
-    <div class="answer">
-        <%= t("messages.answer") %>
-    </div>
+            <div>
+                <%= content_tag :span, t("messages.answer") %><br/>
+                <p>
+                    <%= text_area_tag :body, nil,:rows =>6, :cols=> 53, :class => "input-xlarge" %>
+                </p>
 
-    <div class="editor">
-        <%= text_area_tag :body, nil,:rows =>6, :cols=> 53, :class => "input-xlarge" %>
-    </div>
-    <div class="actions">
-      <%= submit_tag t('general.reply'), class: 'btn btn-primary' %>
-    </div>
-  </div>
-  <% end %>
-  <%end %>
+                <%= submit_tag t('general.reply'), :name => :reply_all,:class => "btn btn-primary" %>
+            </div>
+        <% end %>
+    <%end %>
 </div>

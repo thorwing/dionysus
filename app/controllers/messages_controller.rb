@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   # GET /messages/1.xml
   def show
     if @message = Message.find_by_id(params[:id]) and @conversation = @message.conversation
-      if @conversation.is_participant?(@actor)
+      if @conversation.is_participant?(current_user)
         redirect_to conversation_path(@conversation, :box => @box, :anchor => "message_" + @message.id.to_s)
       return
       end

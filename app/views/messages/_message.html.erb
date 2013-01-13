@@ -1,24 +1,15 @@
-<%= div_for(message, :class => (message.is_unread?(@actor) ? 'unread' : '')) do %>
-  <div class="avatar">
-        <%= user_avatar_tag message.sender %>
-  </div>
+<%= div_for(message, :class => "clearfix mb20 #{message.is_unread?(current_user) ? 'unread' : ''}" ) do %>
+    <div class="pull-left" style="width:64px;">
+        <%= user_avatar_tag(message.sender) %><br/>
+        <%= link_to message.sender.nick, message.sender, class: "b" %>
+    </div>
 
-  <div class="name">
-    <%= link_to message.sender.nick, message.sender %>
-  </div>
+    <div class="pull-left box box-shadow p10 ml10 clearfix" style="width: 600px;">
+        <%= content_tag :p, truncate(message.subject, :length => 70), class: "b f16" %>
+        <%= raw(message.body) %>
 
-  <div class="date">
-    <%= t('time.ago', :time => time_ago_in_words(message.updated_at)) %>
-  </div>
-
-  <div class="subject">
-    <%= truncate(message.subject, :length => 70) %>
-  </div>
-      
-  <div class="word-break pre-message">
-    <%= raw(message.body) %>
-  </div>
-
-  <div class="clearfloat">
-  </div>
+        <div class="clearfix">
+            <%= t('time.ago', :time => time_ago_in_words(message.updated_at)) %>
+        </div>
+    </div>
 <% end %>
