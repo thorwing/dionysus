@@ -6,8 +6,10 @@
         <%= link_to review.title, review, class: "b f14" %>
         <div>
             <%= link_to review.author.nick, review.author %>
-            <%= content_tag :span, review.score, class: "ml5" %>
+            <%= content_tag :span, "评论" %>
+            <%= link_to review.beverage.full_name, review.beverage %>
+            <%= content_tag :span, review.score, class: "label label-info ml5" %>
         </div>
         <%= content_tag :p, review.content %>
-  </div>
+    </div>
 </div>

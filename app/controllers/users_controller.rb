@@ -22,6 +22,9 @@ class UsersController < ApplicationController
       @done_drinks = @user.wishes.done
     end
 
+    @reviews = @user.reviews.order("created_at DESC").limit(3)
+    @lists = @user.lists.order("created_at DESC").limit(3)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

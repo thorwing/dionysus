@@ -1,6 +1,6 @@
 <% if current_user && current_user != item %>
     <span id="followship_<%= item.class.name %>_<%= item.id %>">
-        <%= link_to "关注此人", follow_path(item_id: item.id, item_type: item.class.name), method: :put, remote: true, class: "btn btn-mini btn-success follow #{'hide' if current_user.following? item}" %>
+        <%= link_to "关注此人",  follow_path(item_id: item.id, item_type: item.class.name), method: :put, remote: true, class: "btn btn-mini btn-success follow #{'hide' if current_user.following? item}" %>
         <% unless (defined?(no_unfollow) && no_unfollow == true) %>
             <%= link_to "已关注此人", unfollow_path(item_id: item.id, item_type: item.class.name), method: :put, remote: true, confirm: "确定要取消关注？", class: "btn btn-mini disabled unfollow #{'hide' unless current_user.following? item}" %>
         <% end %>

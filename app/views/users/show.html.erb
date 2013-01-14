@@ -6,8 +6,30 @@
     <% else %>
         <%= render "normal_user_page" %>
     <% end %>
+
+    <% unless @reviews.empty? %>
+        <p class="mt50">
+            <%= content_tag :span, "#{t("reviews.reviews")}  · · · · · · · · · · ", class: 'jujiu-label' %>
+            <%= link_to "(全部)", "" %>
+        </p>
+        <% @reviews.each do |review| %>
+            <%= render review %>
+        <% end %>
+    <% end %>
+
+    <% unless @lists.empty? %>
+        <p class="mt50">
+            <%= content_tag :span, "#{t("lists.lists")}  · · · · · · · · · · ", class: 'jujiu-label' %>
+            <%= link_to "(全部)", "" %>
+        </p>
+        <% @lists.each do |list| %>
+            <%= render list %>
+        <% end %>
+    <% end %>
 </div>
 
 <div class="span4">
     <%= render "users/user_block", user: @user %>
+
+
 </div>

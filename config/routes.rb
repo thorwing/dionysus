@@ -35,7 +35,7 @@ Dionysus::Application.routes.draw do
   put "nodes/:id/lock", to: "nodes#lock", as: :lock_node
   put "nodes/:id/unlock", to: "nodes#unlock", as: :unlock_node
 
-  put "follow", to: "follows#follow", as: :follows
+  put "follow", to: "follows#follow", as: :follow
   put "unfollow", to: "follows#unfollow", as: :unfollow
 
   resources :beverages

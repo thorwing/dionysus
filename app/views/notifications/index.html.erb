@@ -1,16 +1,21 @@
-<% title "系统通知" %>
+<% title "我的通知" %>
 
-<table>
-    <tr>
-        <th>标题</th>
-        <th>内容</th>
-        <th></th>
-    </tr>
+<div class="span9">
+    <%= render "shared/messages_tab", active_box: "notifications" %>
 
-    <% @notifications.each do |notification| %>
+    <table>
       <tr>
-        <td><%= notification.subject %></td>
-        <td><%= notification.body %></td>
+          <th>标题</th>
+          <th>内容</th>
+          <th></th>
       </tr>
-    <% end %>
-</table>
+
+      <% @notifications.each do |notification| %>
+        <tr>
+          <td><%= notification.subject %></td>
+          <td><%= notification.body %></td>
+        </tr>
+      <% end %>
+    </table>
+</div>
+

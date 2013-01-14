@@ -5,6 +5,7 @@
 
     <div class="pull-left ml10" style="width: 185px;">
         <%= link_to user.nick, user %>
+        <%= content_tag :p, "认证商家" if user.merchant? %>
     </div>
 </div>
 

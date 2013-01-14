@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+    <% %w(inbox sentbox trash).each do |box| %>
+        <li class="<%= 'active' if box == active_box %>">
+            <%= link_to t("messages.#{box}"), conversations_path(box: box) %>
+        </li>
+    <% end %>
+    <li class="<%= 'active' if active_box == "notifications" %>">
+        <%= link_to t("messages.notifications"), notifications_path %>
+    </li>
+</ul>

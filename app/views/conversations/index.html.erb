@@ -1,22 +1,20 @@
-<% title "私信", false %>
+<% title "我的#{t("messages.#{@box}")}" %>
 
 <!--<= location(link_to(t('message.' + @box), conversations_path(:box => @box),:remote => true)) %>-->
 
 <!--< toolbar :messages %>-->
-<div>
-    <%= link_to content_tag(:i, '', class: "icon-envelope") + " 写私信", new_message_path %>
-</div>
 
-<div class="mt20">
-    <ul class="nav nav-tabs">
-        <% %w(inbox sentbox trash).each do |box| %>
-            <li class="<%= 'active' if box == @box %>">
-                <%= link_to t("messages.#{box}"), conversations_path(box: box) %>
-            </li>
-        <% end %>
-    </ul>
-</div>
+<div class="span9">
+    <%= render "shared/messages_tab", active_box: @box %>
 
-<div class="conversations">
     <%= render @conversations %>
 </div>
+
+<div class="span3">
+    <div class="mt20">
+        <%= link_to content_tag(:i, '', class: "icon-envelope") + " 写私信", new_message_path %>
+    </div>
+</div>
+
+
+

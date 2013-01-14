@@ -185,11 +185,15 @@ zh-CN:
     inbox: 收件箱
     sentbox: 发件箱
     trash: 垃圾桶
+    notifications: 通知
     subject: 标题
     body: 正文
     participants: 参与者
     answer: 回复
     new_message: 新私信
+
+  notifications:
+    up_vote_review: 酒评%{link}得到了赞同
 
   time:
     ago: "%{time}前"
