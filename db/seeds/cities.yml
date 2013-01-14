@@ -1,0 +1,41 @@
+-
+  name: 上海
+  code: 1
+  areas:
+    -
+      name: 卢湾区
+      code: 1
+    -
+      name: 淮海路
+      code: 835
+      parent: 1
+    -
+      name: 新天地
+      code: 836
+      parent: 1
+    -
+      name: 徐汇区
+      code: 2
+    -
+      name: 万体馆
+      code: 866
+      parent: 2
+    -
+      name: 宝山区
+      code: 13
+    -
+      name: 大华地区
+      code: 831
+-
+  name: 北京
+  code: 2
+
+  areas:
+    -
+      name: 朝阳区
+      code: 14
+    -
+      name: 国贸
+      code: 2578
+      parent: 14
+

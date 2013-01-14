@@ -5,13 +5,12 @@ class CreateComments < ActiveRecord::Migration
       t.string :ancestry
 
       t.integer :author_id
-      t.integer :commentable_id
-      t.string :commentable_type
+      t.references :commentable, :polymorphic => true
 
       t.timestamps
     end
 
     add_index :comments, :ancestry
-    add_index :comments, [:commentable_type, :commentable_id]
+    add_index :comments, [:commentable_id, :commentable_type]
   end
 end

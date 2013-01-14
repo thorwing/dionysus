@@ -31,5 +31,7 @@
 <div class="span4">
     <%= render "users/user_block", user: @user %>
 
-
+    <% if @user.merchant? %>
+        <%= render "users/location_block", user: @user, location: @user.location %>
+    <% end %>
 </div>

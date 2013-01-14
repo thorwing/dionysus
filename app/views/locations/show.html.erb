@@ -1,0 +1,10 @@
+<div class="span9">
+    <%= link_to "编辑地址", edit_user_location_path(nil, user_id: @user.id) %>
+    <%= content_tag :p, "#{ @location.city.name} #{@location.area.name} #{@location.address}" %>
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?zoom=14&size=500x500&maptype=roadmap
+              &markers=color:blue%7Clabel:S%7C#{@location.latitude},#{@location.longitude}&sensor=false&language=zh-CN" %>
+</div>
+
+<div class="span3">
+    <%= render "users/user_block", user: @user %>
+</div>

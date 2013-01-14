@@ -1,0 +1,7 @@
+<%= simple_form_for [@user, @location] do |f| %>
+    <%= f.collection_select :city_id, City.all.map{|city | [city.code, city.name]}, :first, :last %>
+    <%= f.collection_select :area_id, Area.all.map{|area | [area.code, area.name]}, :first, :last %>
+    <%= f.input :address, label: false, placeholder: "详细地址, 如西藏中路268号来福士广场3楼301室", input_html: {class: "input-xxlarge"} %>
+
+    <%= f.submit %>
+<% end %>

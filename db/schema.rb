@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113054536) do
+ActiveRecord::Schema.define(:version => 20130114084036) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(:version => 20130113054536) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "areas", :id => false, :force => true do |t|
+    t.integer  "code"
+    t.string   "name"
+    t.string   "ancestry"
+    t.integer  "city_code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "areas", ["ancestry"], :name => "index_areas_on_ancestry"
+
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -67,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130113054536) do
     t.string   "type"
     t.string   "name"
     t.string   "trans_name"
+    t.string   "alias"
     t.string   "alcohol"
     t.string   "volume"
     t.string   "bottler"
@@ -104,6 +116,13 @@ ActiveRecord::Schema.define(:version => 20130113054536) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "cities", :id => false, :force => true do |t|
+    t.integer  "code"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "cocktails", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -120,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20130113054536) do
   end
 
   add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
-  add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
 
   create_table "containers", :force => true do |t|
     t.integer  "beverage_id"
@@ -189,6 +208,20 @@ ActiveRecord::Schema.define(:version => 20130113054536) do
   end
 
   add_index "lists", ["author_id"], :name => "index_lists_on_author_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "city_id"
+    t.integer  "area_id"
+    t.integer  "locationable_id"
+    t.string   "locationable_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "locations", ["locationable_id", "locationable_type"], :name => "index_locations_on_locationable_id_and_locationable_type"
 
   create_table "merchants", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -379,6 +412,7 @@ ActiveRecord::Schema.define(:version => 20130113054536) do
   create_table "users", :force => true do |t|
     t.string   "nick"
     t.string   "role"
+    t.text     "bio"
     t.string   "locked_nodes_list"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

@@ -10,9 +10,26 @@
 
 p "generating users"
 %w(user author merchant admin).each do |people|
-  User.create!(email: "#{people}@guanyu9.com", password: "guanyu9") do |user|
+  User.find_or_create_by_email("#{people}@guanyu9.com") do |user|
+    user.password = "guanyu9"
     user.role = people if User.roles.include? people
     user.nick = people
+  end
+end
+
+p 'generating cities'
+records = YAML::load(File.open("db/seeds/cities.yml"))
+records.each do |record|
+  city = City.new
+  city.attributes = record.slice(*City.accessible_attributes)
+  city.save!
+
+  (record["areas"] || []).each do |r|
+    area = Area.new
+    area.attributes = r.slice(*Area.accessible_attributes)
+    area.city = city
+    area.parent = Area.find_by_code(r['parent']) if r['parent'].present?
+    area.save!
   end
 end
 

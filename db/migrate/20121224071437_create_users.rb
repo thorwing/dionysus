@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :nick
       t.string :role
+      t.text :bio
       t.string :locked_nodes_list
 
       t.timestamps

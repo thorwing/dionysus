@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :lists, foreign_key: 'author_id'
   has_many :comments, foreign_key: 'author_id'
   has_many :deals, foreign_key: 'seller_id'
+  has_one :location, as: :locationable
 
   scope :with_role, lambda { |role| where(role: role.to_s) }
 

@@ -72,3 +72,6 @@ gem 'carrierwave-upyun'
 
 #message
 gem 'mailboxer'
+
+#map
+gem 'geocoder'

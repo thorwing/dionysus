@@ -4,6 +4,7 @@ class CreateBeverages < ActiveRecord::Migration
       t.string :type
       t.string :name
       t.string :trans_name
+      t.string :alias
       t.string :alcohol
       t.string :volume
       t.string :bottler
