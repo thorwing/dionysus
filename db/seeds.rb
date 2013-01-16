@@ -9,7 +9,7 @@
 # encoding: utf-8
 
 p "generating users"
-%w(user author merchant admin).each do |people|
+%w(admin author user merchant ).each do |people|
   User.find_or_create_by_email("#{people}@guanyu9.com") do |user|
     user.password = "guanyu9"
     user.role = people if User.roles.include? people

@@ -4,8 +4,7 @@ class FollowsController < ApplicationController
   def follow
     unless current_user.following?(@followable)
       current_user.follow(@followable)
-
-      #FeedsManager.new(current_user, 'follow', @followable).generate_for(current_user)
+      FeedsManager.new(current_user, 'follow', @followable).generate
       #
       #NotificationsManager.new(current_user, 'follow', @followable).generate_for(@followable) if @followable.is_a? User
     end

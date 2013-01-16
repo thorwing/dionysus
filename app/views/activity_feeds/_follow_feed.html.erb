@@ -1,0 +1,3 @@
+<div class="clearfix">
+    <%= content_tag :span, "关注了" %><%= link_to feed.data["follow_nick"], user_path(id: feed.data["follow_id"]) %>
+</div>

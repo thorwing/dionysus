@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   #Relationships
+  has_many :activity_feeds
   has_many :wishes
   has_many :reviews, foreign_key: 'author_id'
   has_many :topics, foreign_key: 'author_id'
