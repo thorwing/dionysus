@@ -53,7 +53,7 @@
 
     <hr/>
     <div class="clearfix">
-        <%= link_to content_tag(:i, "", class: "icon-plus") + ' 添加酒', new_beverage_path(type: @type) %>
+        <%= link_to content_tag(:i, "", class: "icon-plus") + ' 添加酒', new_beverage_path(type: @type) if can? :create, Beverage %>
     </div>
 </div>
 

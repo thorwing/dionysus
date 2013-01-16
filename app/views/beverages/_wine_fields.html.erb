@@ -1,0 +1,2 @@
+<%= f.label t("ranks.rank"), :brand_id %>
+<%= f.select :rank_id, Rank.tagged_with(@beverage.type).map{|r| [r.full_name, r.id]}, include_blank: true %>

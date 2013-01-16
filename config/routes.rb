@@ -64,8 +64,6 @@ Dionysus::Application.routes.draw do
 
   resources :ranks
 
-  resources :aocs
-
   resources :password_resets
 
   resources :votes do

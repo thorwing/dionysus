@@ -1,7 +1,11 @@
 -
+  name: AOC
+  type_list: Wine
+
+-
   name: "Premiers Crus"
   trans_name: 一级酒庄
-  category: Wine
+  type_list: Wine
 
 
 

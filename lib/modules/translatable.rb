@@ -8,7 +8,8 @@ module Translatable
   module InstanceMethods
     def full_name
       full_name = name || ''
-      full_name += " / #{trans_name}" if trans_name.present?
+      full_name += " / " if name.present? && trans_name.present?
+      full_name += trans_name if trans_name.present?
       full_name
     end
   end

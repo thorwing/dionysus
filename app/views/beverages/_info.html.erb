@@ -11,14 +11,7 @@
     <p>
        <%= content_tag :span, "评级", class: "mr20" %>
        <%= link_to "#{beverage.rank.full_name}", beverage.rank %>
-   </p>
-<% end %>
-
-<% if beverage.is_a?(Wine) && beverage.aoc %>
-   <p>
-       <%= content_tag :span, "AOC", class: "mr20" %>
-       <%= link_to "#{beverage.aoc.full_name}", beverage.aoc %>
-   </p>
+    </p>
 <% end %>
 
 <% if beverage.region %>

@@ -3,7 +3,8 @@ class CreateRanks < ActiveRecord::Migration
     create_table :ranks do |t|
       t.string :name
       t.string :trans_name
-      t.string :category
+      t.string :type_list
+      t.string :ancestry
 
       t.timestamps
     end

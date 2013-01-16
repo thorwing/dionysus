@@ -18,11 +18,9 @@ class CreateBeverages < ActiveRecord::Migration
       t.text :pic_url
       t.string :grape_list
 
-      t.integer :region_id
-      t.integer :brand_id
-      t.integer :rank_id
-      #wine
-      t.integer :aoc_id
+      t.references :region
+      t.references :brand
+      t.references :rank
 
       t.integer :author_id
 

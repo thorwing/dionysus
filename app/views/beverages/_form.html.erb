@@ -1,19 +1,22 @@
 <%= simple_form_for(@beverage) do |f| %>
     <%= f.error_notification %>
-
+    <%= f.hidden_field :type %>
     <%= f.input :name, label: t("beverages.name") %>
-    <% if f.object.type.present? %>
-        <%= f.hidden_field :type %>
-    <% else %>
-        <%= f.label t("beverages.type"), :type %>
-        <%= f.collection_select :type, Beverage.types, :first, :last %>
-    <% end %>
     <%= f.input :picture, label: t("pictures.upload") %>
+    <%= f.label "品牌", :brand_id %>
+    <%= f.select :brand_id, Brand.tagged_with(@beverage.type).map{|b| [b.full_name, b.id]}, include_blank: true %>
+    <%= f.input :alias, label: "别名" %>
     <%= f.label t("regions.region"), :region_id %>
-    <%= f.collection_select :region_id, Region.all, :id, :full_name %>
+    <%= f.select :region_id, Region.tagged_with(@beverage.type).map{|r| [r.full_name, r.id]}, include_blank: true %>
     <!--<= f.input :vin, label: t("beverages.alcohol") %>-->
     <%= f.input :alcohol, label: t("beverages.alcohol") %>
     <%= f.input :volume, label: t("beverages.volume") %>
+    <% case @beverage.type %>
+        <% when 'Whisky' %>
+            <%= render "beverages/whisky_fields", f: f %>
+        <% when 'Wine' %>
+            <%= render "beverages/wine_fields", f: f %>
+    <% end %>
 
     <div class="actions">
         <%= f.submit f.object.new_record? ? t("general.confirm") : t("general.update"), class: 'btn btn-primary' %>

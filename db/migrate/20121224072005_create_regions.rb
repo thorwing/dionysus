@@ -3,9 +3,10 @@ class CreateRegions < ActiveRecord::Migration
     create_table :regions do |t|
       t.string :name
       t.string :trans_name
+      t.string :type_list
       t.string :ancestry
 
-      t.integer :country_id
+      t.references :country
 
       t.timestamps
     end

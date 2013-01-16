@@ -5,7 +5,7 @@ class CreateAreas < ActiveRecord::Migration
       t.string :name
       t.string :ancestry
 
-      t.integer :city_code
+      t.references :city
 
       t.timestamps
     end

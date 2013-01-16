@@ -51,7 +51,6 @@ zh-CN:
     login_name: 昵称
     password: "密码"
     password_confirmation: "确认密码"
-    invitation_code: "邀请码"
     forgot_password: "忘记密码了?"
     update_password: 更新密码
     please_login: "请登入。"
@@ -82,6 +81,7 @@ zh-CN:
     age: 陈酿年份
     distillation_method: 蒸馏方法
     barrel_cask: 装桶
+    bottler: 灌装商
     style: 分类
     add_it: 添加了这瓶酒
     categories:
