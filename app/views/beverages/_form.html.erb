@@ -5,9 +5,10 @@
     <%= f.input :picture, label: t("pictures.upload") %>
     <%= f.label "品牌", :brand_id %>
     <%= f.select :brand_id, Brand.tagged_with(@beverage.type).map{|b| [b.full_name, b.id]}, include_blank: true %>
-    <%= f.input :alias, label: "别名" %>
     <%= f.label t("regions.region"), :region_id %>
     <%= f.select :region_id, Region.tagged_with(@beverage.type).map{|r| [r.full_name, r.id]}, include_blank: true %>
+    <%= f.label t("ranks.rank"), :brand_id %>
+    <%= f.select :rank_id, Rank.tagged_with(@beverage.type).map{|r| [r.full_name, r.id]}, include_blank: true %>
     <!--<= f.input :vin, label: t("beverages.alcohol") %>-->
     <%= f.input :alcohol, label: t("beverages.alcohol") %>
     <%= f.input :volume, label: t("beverages.volume") %>

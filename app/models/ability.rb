@@ -7,29 +7,31 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
-    elsif !user.new_record?
-      if user.author?
-        can :create, Article
-        can [:update, :destroy], Article do |item|
-          item.author == user
-        end
-      elsif user.merchant?
-        can :create, Deal
-        can [:update, :destroy], Deal do |item|
-          item.seller == user
-        end
-      end
-
-      items = [Package, Review, List, Comment, Topic, Beverage]
-      can :create, items
-      can [:update, :destroy], items do |item|
-        item.author == user
-      end
-
-      can :create, Message
-      can [:up, :down], Vote
     else
       can :read, :all
+
+      if !user.new_record?
+        if user.author?
+          can :create, Article
+          can [:update, :destroy], Article do |item|
+            item.author == user
+          end
+        elsif user.merchant?
+          can :create, Deal
+          can [:update, :destroy], Deal do |item|
+            item.seller == user
+          end
+        end
+
+        items = [Package, Review, List, Comment, Topic, Beverage]
+        can :create, items
+        can [:update, :destroy], items do |item|
+          item.author == user
+        end
+
+        can :create, Message
+        can [:up, :down], Vote
+      end
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

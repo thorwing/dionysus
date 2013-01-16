@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   helper :application, :layout, :external_link
   #include ApplicationHelper
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
 
   def find_item(type, id)
     begin
