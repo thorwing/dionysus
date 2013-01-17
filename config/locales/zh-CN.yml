@@ -154,6 +154,7 @@ zh-CN:
     description: 描述
 
   recipes:
+    new_recipe: 新鸡尾酒配方
     ingredients: 配料
     ingredients_amount: 量
     add_ingredient: +添加配料

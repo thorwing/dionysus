@@ -1,21 +1,10 @@
-<h1>Listing cocktails</h1>
+<% title "鸡尾酒" %>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="span9">
+    <% @cocktails.each do |cocktail| %>
+        <%= render cocktail %>
+    <% end %>
+</div>
 
-<% @cocktails.each do |cocktail| %>
-  <tr>
-    <td><%= link_to 'Show', cocktail %></td>
-    <td><%= link_to 'Edit', edit_cocktail_path(cocktail) %></td>
-    <td><%= link_to 'Destroy', cocktail, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Cocktail', new_cocktail_path %>

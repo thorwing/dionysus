@@ -1,0 +1,4 @@
+<div class="clearfix">
+    <%= link_to cocktail.full_name, cocktail %>
+    <%= content_tag :span, "(#{cocktail.recipes.size})个配方", class: "trivial ml10" %>
+</div>

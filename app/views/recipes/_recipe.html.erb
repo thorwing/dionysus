@@ -1,9 +1,9 @@
 <div class="masonary_item box box-shadow p10">
-    <p><%= link_to image_tag(recipe.pic_url), recipe %></p>
+    <p><%= link_to image_tag(recipe.get_picture), recipe %></p>
 
     <span>
         <%= user_avatar_tag(recipe.author) if recipe.author %>
         <%= link_to recipe.author.nick, recipe.author if recipe.author %>
     </span>
-    <span class="ml5"><%= link_to recipe.title, recipe %></span>
+    <span class="ml5"><%= link_to recipe.name, recipe %></span>
 </div>

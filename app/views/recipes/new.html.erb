@@ -1,5 +1,18 @@
-<h1>New recipe</h1>
+<% title @recipe.first_stage? ? t("recipes.new_recipe") : @recipe.name %>
 
-<%= render 'form' %>
+<%= simple_form_for @recipe, html: {multipart: true} do |f| %>
+    <%= f.error_notification %>
 
-<%= link_to 'Back', recipes_path %>
+    <div class="clearfix">
+        <%= render "#{@recipe.current_stage}_stage", f: f %>
+    </div>
+
+    <div class="mt10">
+        <%= f.submit "返回", :name => "back_button", class: "button" unless @recipe.first_stage? %>
+        <% if @recipe.last_stage? %>
+            <%= f.submit "完成", class: "btn btn-primary", id: "recipe_submit" %>
+        <% else %>
+            <%= f.submit "下一步", class: "btn btn-info", id: "recipe_next" %>
+        <% end %>
+    </div>
+<% end %>

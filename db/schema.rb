@@ -125,6 +125,8 @@ ActiveRecord::Schema.define(:version => 20130116141156) do
   end
 
   create_table "cocktails", :force => true do |t|
+    t.string   "name"
+    t.string   "trans_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -309,13 +311,14 @@ ActiveRecord::Schema.define(:version => 20130116141156) do
   add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
 
   create_table "recipes", :force => true do |t|
-    t.string   "title"
+    t.string   "name"
     t.string   "remark"
     t.string   "picture"
+    t.text     "pic_url"
+    t.integer  "cocktail_id"
     t.integer  "author_id"
-    t.integer  "topic_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "redactor_assets", :force => true do |t|

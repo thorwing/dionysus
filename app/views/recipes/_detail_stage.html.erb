@@ -1,0 +1,19 @@
+<%= f.hidden_field :name %>
+<%= f.input :picture %>
+
+<table id="ingredients">
+    <tr>
+        <th><%= t("recipes.ingredients") %></th>
+        <th><%= t("recipes.ingredients_amount") %></th>
+        <th></th>
+    </tr>
+    <%= f.fields_for :ingredients, f.object.ingredients do |builder| %>
+        <%= render "ingredient_fields", :f => builder %>
+    <% end  %>
+</table>
+
+<div class="mt5">
+    <%= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients, "#ingredients")  %>
+</div>
+
+<%= f.input :remark, as: :text %>

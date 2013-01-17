@@ -1,8 +1,5 @@
 class RecipesController < ApplicationController
   before_filter :preload
-  before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(@recipe, false, true)}
-  before_filter(:only => [:destroy]) {|c| c.the_author_himself(@recipe, false, true)}
 
   # GET /recipes
   # GET /recipes.json
@@ -28,10 +25,10 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   # GET /recipes/new.json
   def new
+    session[:recipe_stage] = nil
+    session[:recipe_params] = nil
     @recipe = Recipe.new
-    1.upto(3).each do
-      @recipe.ingredients.build
-    end
+    @recipe.current_stage = @recipe.stages.first
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,17 +44,41 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(params[:recipe])
-    @recipe.author = current_user
+    saved = false
+    notice = nil
+    session[:recipe_params] ||= {}
+    session[:recipe_params].deep_merge!(params[:recipe]) if params[:recipe]
+    @recipe = Recipe.new(session[:recipe_params]) do |r|
+      r.author = current_user
+      r.current_stage = session[:recipe_stage]
+    end
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render json: @recipe, status: :created, location: @recipe }
+    if @recipe.valid?
+      if params[:back_button]
+        @recipe.previous_stage
+      elsif @recipe.last_stage?
+        saved = @recipe.save
       else
-        format.html { render action: "new" }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        @recipe.next_stage
       end
+
+      if @recipe.current_stage == "detail"
+        @similar_recipes = Recipe.where(name: @recipe.name)
+
+        1.upto(3).each do
+          @recipe.ingredients.build
+        end
+      end
+
+      session[:recipe_stage] = @recipe.current_stage
+
+    end
+
+    if saved
+      session[:recipe_stage] =  session[:recipe_params] =  nil
+      redirect_to url_for(contriller: "recipes", action: "show", id: @recipe.id, newly_created: true), notice: t("notices.recipe_created")
+    else
+      render "new", notice: notice
     end
   end
 
