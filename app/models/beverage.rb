@@ -22,6 +22,7 @@ class Beverage < ActiveRecord::Base
   has_many :packages, dependent: :destroy
   has_many :lists, through: :packages
   has_many :deals, dependent: :destroy
+  has_many :complains, as: :complainable
 
   #validations
   validates :name,

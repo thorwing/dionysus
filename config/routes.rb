@@ -37,8 +37,6 @@ Dionysus::Application.routes.draw do
   put "follow", to: "follows#follow", as: :follow
   put "unfollow", to: "follows#unfollow", as: :unfollow
 
-  resources :beverages
-
   resources :brands
 
   resources :regions
@@ -46,6 +44,8 @@ Dionysus::Application.routes.draw do
   resources :grapes
 
   resources :packages
+
+  resources :beverages
 
   resources :wine, controller: :beverages, type: "Wine"
   resources :beer, controller: :beverages, type: "Beer"
@@ -57,8 +57,8 @@ Dionysus::Application.routes.draw do
   resources :tequila,  controller: :beverages, type: "Tequila"
   resources :sake,  controller: :beverages, type: "Sake"
   resources :liqueur,  controller: :beverages, type: "Liqueur"
-  resources :chineseliqueur,  controller: :beverages, type: "ChineseLiqueur"
-  resources :whitespirit, controller: :beverages, type: "WhiteSpirit"
+  resources :chinese_liqueur,  controller: :beverages, type: "ChineseLiqueur"
+  resources :white_spirit, controller: :beverages, type: "WhiteSpirit"
 
   resources :ranks
 
@@ -74,6 +74,9 @@ Dionysus::Application.routes.draw do
   resources :messages
   resources :conversations
   resources :notifications
+
+  resources :complains
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

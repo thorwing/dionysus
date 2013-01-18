@@ -12,6 +12,10 @@
             <div class="mt10 clearfix">
                 <div class="pull-left">
                     <%= render "beverages/info", beverage: @beverage %>
+                    <% if can? :create, Complain %>
+                        <%= link_to "纠错", "#complainDialog", 'data-toggle' => "modal" %>
+                        <%= render "complains/dialog", complain: @beverage.complains.new %>
+                    <% end %>
                 </div>
                 <div class="pull-right text-center" >
                     <div class="p20" style="width: 100px; background: #339999;">

@@ -1,0 +1,9 @@
+<div id="complainDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Complain" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <%= content_tag :h3, "纠错", id: "complainDialogLabel" %>
+    </div>
+    <div class="modal-body">
+        <%= render "complains/form", complain: complain %>
+    </div>
+</div>

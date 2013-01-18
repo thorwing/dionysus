@@ -63,6 +63,7 @@ zh-CN:
     captcha_failed: "噢，验证码没有输对"
 
   users:
+    users: 用户
     roles:
       user: 用户
       master: 达人
@@ -71,6 +72,7 @@ zh-CN:
       admin: 管理员
 
   beverages:
+    beverages: 酒
     beverage: 酒
     type: 种类
     new_beverage: 添加酒
@@ -195,6 +197,9 @@ zh-CN:
 
   notifications:
     up_vote_review: 酒评%{link}得到了赞同
+
+  complains:
+    complains: 纠错
 
   time:
     ago: "%{time}前"

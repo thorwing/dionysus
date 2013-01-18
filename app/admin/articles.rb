@@ -1,4 +1,5 @@
 ActiveAdmin.register Article do
+  menu label: I18n.t("articles.articles", locale: "zh-CN")
   scope :unreleased
 
   index do

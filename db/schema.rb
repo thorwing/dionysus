@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116141156) do
+ActiveRecord::Schema.define(:version => 20130118034043) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -143,6 +143,19 @@ ActiveRecord::Schema.define(:version => 20130116141156) do
 
   add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+
+  create_table "complains", :force => true do |t|
+    t.string   "remark"
+    t.boolean  "is_ignored",        :default => false
+    t.boolean  "is_solved",         :default => false
+    t.integer  "author_id"
+    t.integer  "complainable_id"
+    t.string   "complainable_type"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
+  add_index "complains", ["complainable_id", "complainable_type"], :name => "index_complains_on_complainable_id_and_complainable_type"
 
   create_table "containers", :force => true do |t|
     t.integer  "beverage_id"

@@ -1,4 +1,5 @@
 ActiveAdmin.register Beverage do
+  menu label: I18n.t("beverages.beverages", locale: "zh-CN")
   #scope :unproved
 
   index do

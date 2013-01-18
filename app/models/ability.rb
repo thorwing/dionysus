@@ -30,6 +30,7 @@ class Ability
         end
 
         can :create, Message
+        can :create, Complain
         can [:up, :down], Vote
       end
     end

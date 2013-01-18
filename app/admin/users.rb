@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  menu label: I18n.t("users.users", locale: "zh-CN")
+
   index do
     column :nick
     column :email

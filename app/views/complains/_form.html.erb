@@ -1,0 +1,7 @@
+<%= simple_form_for complain do |f| %>
+    <%= f.hidden_field :complainable_id %>
+    <%= f.hidden_field :complainable_type %>
+
+    <%= f.input :remark, as: :text, label: false, placeholder: "内容..", input_html: {rows: 3, class: "input-xxlarge"} %>
+    <%= f.submit t("general.confirm"), class: "btn btn-primary" %>
+<% end %>
