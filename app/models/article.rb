@@ -1,9 +1,11 @@
 class Article < ActiveRecord::Base
+  mount_uploader :picture, PictureUploader
   attr_accessible :title, :body
 
   scope :unreleased, where(released_at: nil)
 
   belongs_to :author, class_name: "User", foreign_key: 'author_id'
+  has_many :comments, as: :commentable
 
   def self.chart_data(start = 3.weeks.ago)
     total_counts = view_counts_by_day(start)
@@ -22,5 +24,10 @@ class Article < ActiveRecord::Base
     articles.each_with_object({}) do |article, counts|
       counts[article.released_at.to_date] = article.total_count
     end
+  end
+
+  def get_picture
+    doc = Nokogiri::HTML(body)
+    doc.search('img').first['src']
   end
 end

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :replies, foreign_key: 'author_id'
   has_many :recipes, foreign_key: 'author_id'
   has_many :beverages, foreign_key: 'author_id'
+  has_many :articles, foreign_key: 'author_id'
   has_many :lists, foreign_key: 'author_id'
   has_many :comments, foreign_key: 'author_id'
   has_many :deals, foreign_key: 'seller_id'

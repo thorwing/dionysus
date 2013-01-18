@@ -3,7 +3,7 @@
         <%= link_to image_tag(user.get_avatar(:profile), width: 80, height: 80), user, class: 'img-square-80 pull-left' %>
     </div>
 
-    <div class="pull-left ml10" style="width: 185px;">
+    <div class="pull-left ml10" style="width: 130px;">
         <%= link_to user.nick, user %>
         <%= content_tag :p, "认证商家" if user.merchant? %>
     </div>

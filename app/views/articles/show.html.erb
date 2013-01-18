@@ -1,10 +1,40 @@
 <% title @article.title %>
 
 <div class="span9">
-    <%= raw @article.body %>
+    <div id="articleContent">
+        <%= simple_format(@article.body) %>
+    </div>
+
+    <div class="mt20">
+        <%= render "comments/comments", item: @article %>
+    </div>
 </div>
 
 <div class="span3">
-    <%= user_avatar_tag @article.author %>
+    <%= render "users/user_block", user: @article.author %>
     <%= link_to t("general.edit"), edit_article_path(@article) if can? :update, @article %>
+
+    <div class="mt20">
+        <%= content_tag :b, "作者的其他文章" %><br/>
+        <ul>
+            <% @article.author.articles.where("id != ?", @article.id).order("created_at").limit(3).each do |article| %>
+                <li><%= link_to article.title, article %></li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="mt20">
+        <%= content_tag :b, "主题推荐" %><br/>
+        <ul>
+            <% Article.where("id != ?", @article.id).order("view_count").limit(3).each do |article| %>
+                <li><%= link_to article.title, article %></li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="mt20 text-center">
+        <%= link_to "← 上篇", article_path(id: @article.id - 1),  class: "btn btn-small" if @article.id > 1 %>
+        <%= link_to "返回首页 /", root_path, class: "btn btn-small ml5 mr5" %>
+        <%= link_to "下篇 →", article_path(id: @article.id + 1), class: "btn btn-small" %>
+    </div>
 </div>
