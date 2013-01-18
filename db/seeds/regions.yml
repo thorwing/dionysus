@@ -1,21 +1,22 @@
--
-  name: Bordeaux
-  trans_name: 波尔多
-  country: 法国
-  type_list: Wine
+Wine:
+  -
+    name: Bordeaux
+    trans_name: 波尔多
+    country: 法国
 
--
-  name: Médoc
-  trans_name: 梅多克
-  country: 法国
-  parent: Bordeaux
-  type_list: Wine
+  -
+    name: Médoc
+    trans_name: 梅多克
+    country: 法国
+    parent: Bordeaux
 
--
-  name: Isly
-  trans_name: 艾雷岛
-  country: 苏格兰
-  type_list: Whisky
+Whisky:
+  -
+    name: Isly
+    trans_name: 艾雷岛
+    country: 苏格兰
+    type_list: Whisky
+
 
 -
   name: 山西

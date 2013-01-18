@@ -81,4 +81,14 @@ module ApplicationHelper
     link_to image_tag(user.try :get_avatar), user
   end
 
+  def get_grapes
+    result = {}
+    records = YAML::load(File.open("db/seeds/grapes.yml"))
+    records.each do |key, record|
+      grapes = record.map{|r| r.split(",")}
+      result[key] = grapes
+    end
+    result
+  end
+
 end

@@ -1,2 +1,2 @@
-<%= link_to "编辑地址", edit_user_location_path(nil, user_id: user.id) if can? :update, user.location %><br/>
+<%= link_to "编辑地址", edit_user_location_path(nil, user_id: user.id)  %><br/>
 <%= render "locations/location_small", location: user.location if user.location %>

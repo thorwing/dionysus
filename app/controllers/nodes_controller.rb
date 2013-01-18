@@ -1,5 +1,4 @@
 class NodesController < ApplicationController
-  before_filter { |c| c.require_permission :normal_user }
 
   def lock
     if Node.where(id: params[:id]).exists?

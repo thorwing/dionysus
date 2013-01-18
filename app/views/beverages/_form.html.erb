@@ -10,8 +10,8 @@
     <%= f.label t("ranks.rank"), :brand_id %>
     <%= f.select :rank_id, Rank.tagged_with(@beverage.type).map{|r| [r.full_name, r.id]}, include_blank: true %>
     <!--<= f.input :vin, label: t("beverages.alcohol") %>-->
-    <%= f.input :alcohol, label: t("beverages.alcohol") %>
-    <%= f.input :volume, label: t("beverages.volume") %>
+    <%= f.input :alcohol, as: :float, label: "#{t("beverages.alcohol")}(%)" %>
+    <%= f.input :volume, as: :integer, label: "#{t("beverages.volume")}(ml)" %>
     <% case @beverage.type %>
         <% when 'Whisky' %>
             <%= render "beverages/whisky_fields", f: f %>

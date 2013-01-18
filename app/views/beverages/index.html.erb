@@ -3,19 +3,15 @@
 <% title @type ? current_beverage : "酒", false %>
 
 <div class="mb50">
-    <% @filters.each do |filter| %>
-        <span class="label label-warning mr10">
-            <%= filter[:value] %>
-            <%= link_to "x", "#{request.env['PATH_INFO']}?filter=#{filter[:filter]}&value=#{filter[:value]}", class: "b white ml2" %>
-        </span>
-    <% end %>
-
     <div class="mb10">
-        <p>
-            <%= link_to "首页", root_path, class: "f16" %>
-            <%= content_tag :span, " < ", class: "ml10" %>
-            <%= content_tag :span, current_beverage, class: "ml10" %>
-        </p>
+        <div class="clearfix">
+        <% %w(WhiteSpirit RiceWine ChineseLiqueur Whisky Brandy Vodka Tequila Rum Gin Liqueur Wine Beer Sake).each do |type| %>
+            <div class="pull-left text-center mr10" style="width:50px; height:50px;border: 1px solid; <%= 'background: orange;' if @type == type %>">
+                <%= link_to t("beverages.categories.#{type}"), "/#{type.downcase}", class: "f14" %>
+            </div>
+        <% end %>
+        </div>
+
         <%= content_tag :span, "国家:", class: 'b' %><br/>
         <% Country.all.each do |country| %>
             <%= link_to country.name, "#{request.env['PATH_INFO']}?filter=country&value=#{country.name}&delta=1", class: "mr10" %>
@@ -40,15 +36,27 @@
                 </div>
             <% end %>
         </div>
+    <% end %>
 
-        <!--< if @type == "Wine" %>-->
-            <!--<div>-->
-                <!--<= content_tag :span, "品种:", class: 'b' %><br/>-->
-                <!--< Grape.all.each do |grape| %>-->
-                    <!--<= link_to grape.name, "#{request.env['PATH_INFO']}?filter=grape&value=#{grape.name}&delta=1", class: "mr10" %>-->
-                <!--< end %>-->
-            <!--</div>-->
-        <!--< end %>-->
+    <% if @type == "Wine" %>
+        <div>
+            <%= content_tag :span, "葡萄:", class: 'b' %><br/>
+            <% get_grapes.each do |category, grapes| %>
+                <p>
+                    <%= content_tag :b, category, class: "mr10" %>
+                    <% grapes.each do |array| %>
+                        <%= link_to array[1], "#{request.env['PATH_INFO']}?filter=grape&value=#{array[1]}&delta=1", title: array[0], class: "mr10" %>
+                    <% end %>
+                </p>
+            <% end %>
+        </div>
+    <% end %>
+
+    <% @filters.each do |filter| %>
+        <span class="label label-warning mr10">
+            <%= filter[:value] %>
+            <%= link_to "x", "#{request.env['PATH_INFO']}?filter=#{filter[:filter]}&value=#{filter[:value]}", class: "b white ml2" %>
+        </span>
     <% end %>
 
     <hr/>

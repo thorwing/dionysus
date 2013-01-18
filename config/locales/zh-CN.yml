@@ -31,6 +31,7 @@ zh-CN:
     show: 查看
     create: 创建
     save: 保存
+    title: 标题
     unfollow: 取消关注
     anonymous_user: 匿名用户
     created_at: 创建于%{time}以前

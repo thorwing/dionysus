@@ -4,14 +4,14 @@ class CreateBeverages < ActiveRecord::Migration
       t.string :type
       t.string :name
       t.string :trans_name
-      t.string :alias
       t.string :alcohol
       t.string :volume
       t.string :bottler
       t.string :distillation_method
       t.string :barrel_cask
-      t.string :style
-      t.string :sub_style
+      t.string :category
+      t.string :color
+      t.string :sweetness
       t.string :vintage
       t.string :age
       t.string :picture
