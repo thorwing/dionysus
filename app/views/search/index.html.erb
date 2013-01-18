@@ -1,0 +1,16 @@
+<% title "#{params[:query]} 的搜索结果",  %>
+
+<% if @beverages.nil? || @beverages.empty? %>
+    <%= content_tag :dl, "抱歉，没有找到任何结果" %>
+<% else %>
+    <% @beverages.each_with_index do |beverage, index| %>
+        <% if index > 0 %><hr/><% end %>
+        <div class="clearfix">
+            <%= link_to image_tag(beverage.get_picture(:thumb), alt: beverage.full_name, title: beverage.full_name), beverage, class: "beverage-tiny-frame pull-left"  %>
+            <div class="pull-left ml20" style="width: 540px;">
+                <p><%= link_to beverage.full_name, beverage, class: 'jujiu-label' %></p>
+                <%= render "beverages/info", beverage: beverage %>
+            </div>
+        </div>
+    <% end %>
+<% end %>

@@ -77,6 +77,7 @@ Dionysus::Application.routes.draw do
 
   resources :complains
 
+  resources :search
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
