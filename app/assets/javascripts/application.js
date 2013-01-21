@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //=require reviews
+//= require beverages
 //= require jquery.masonry
 //= require redactor-rails
 //= require raphael

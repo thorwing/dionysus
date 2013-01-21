@@ -4,7 +4,7 @@ module ApplicationHelper
     #Rails.cache.fetch('beverage_categories', expires_in: 1.hours) {
       records = YAML::load(File.open("db/seeds/styles.yml"))
     #}
-    records = records[type.downcase] if type.present?
+    records = records[type] if type.present?
     records
   end
 

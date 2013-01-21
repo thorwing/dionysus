@@ -5,34 +5,36 @@
 <div class="mb50">
     <div class="mb10">
         <div class="clearfix">
-        <% %w(WhiteSpirit RiceWine ChineseLiqueur Whisky Brandy Vodka Tequila Rum Gin Liqueur Wine Beer Sake).each do |type| %>
-            <div class="pull-left text-center mr10" style="width:50px; height:50px;border: 1px solid; <%= 'background: orange;' if @type == type %>">
-                <%= link_to t("beverages.categories.#{type}"), "/#{type.downcase}", class: "f14" %>
-            </div>
-        <% end %>
+            <% %w(WhiteSpirit RiceWine ChineseLiqueur Whisky Brandy Vodka Tequila Rum Gin Liqueur Wine Beer Sake).each do |type| %>
+                <div class="pull-left text-center mr10" style="width:62px; height:50px;border: 1px dotted; <%= 'background: orange;' if @type == type %>">
+                    <%= link_to t("beverages.categories.#{type}"), "/#{type.downcase}", class: "f14" %>
+                </div>
+            <% end %>
         </div>
 
-        <%= content_tag :span, "国家:", class: 'b' %><br/>
-        <% Country.all.each do |country| %>
-            <%= link_to country.name, "#{request.env['PATH_INFO']}?filter=country&value=#{country.name}&delta=1", class: "mr10" %>
-        <% end %>
+        <div class="clearfix mt10">
+            <% @countries_with_regions.each do |country, regions| %>
+                <div class="pull-left mr10 p10" style="width:100px;border: 1px solid;">
+                    <%= link_to country.name, "#{request.env['PATH_INFO']}?filter=country&value=#{country.name}&delta=1", class: "b mr10" %>
+
+                    <div>
+                        <% regions.each do |region| %>
+                            <%= link_to region.trans_name, "#{request.env['PATH_INFO']}?filter=country&value=#{region.name}&delta=1", class: "mr10" %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
     </div>
 
     <% if @type && get_styles(@type).present? %>
         <div class="clearfix mb10">
             <%= content_tag :span, "分类:", class: 'b' %><br/>
             <% get_styles(@type).each do |style| %>
+                <% array = style.split(',') %>
+
                 <div class="pull-left hover_area">
-                    <%= link_to style['name'], "#{request.env['PATH_INFO']}?filter=style&value=#{style['name']}&delta=1", class: "mr10" %>
-                    <% if style["sub"]%>
-                        <div class="display_on_hover">
-                            <div class="b_baishu">
-                                <% style["sub"].each do |sub_style| %>
-                                    <%= link_to sub_style['name'], "#{request.env['PATH_INFO']}?filter=style&value=#{sub_style['name']}&delta=1", class: "mr10" %>
-                                <% end %>
-                            </div>
-                        </div>
-                    <% end %>
+                    <%= link_to_function array[0], "add_filter(this)", data: {filter: "style", value: array[0]}, class: "mr10" %>
                 </div>
             <% end %>
         </div>
@@ -40,23 +42,50 @@
 
     <% if @type == "Wine" %>
         <div>
+            <%= content_tag :span, "甜度:", class: 'b' %><br/>
+            <% Wine.sweetness.each do |sweetness| %>
+                <%= link_to_function t("beverages.sweetness.#{sweetness}"), "add_filter(this)", data: {filter: "sweetness", value: t("beverages.sweetness.#{sweetness}")}, class: "mr10" %>
+            <% end %>
+        </div>
+
+        <div>
+            <%= content_tag :span, "颜色:", class: 'b' %><br/>
+            <% Wine.colors.each do |color| %>
+                <%= link_to_function t("beverages.colors.#{color}"), "add_filter(this)", data: {filter: "color", value: t("beverages.colors.#{color}")}, class: "mr10" %>
+            <% end %>
+        </div>
+
+        <div>
             <%= content_tag :span, "葡萄:", class: 'b' %><br/>
             <% get_grapes.each do |category, grapes| %>
                 <p>
                     <%= content_tag :b, category, class: "mr10" %>
                     <% grapes.each do |array| %>
-                        <%= link_to array[1], "#{request.env['PATH_INFO']}?filter=grape&value=#{array[1]}&delta=1", title: array[0], class: "mr10" %>
+                        <%= link_to_function array[0] || array[1], "add_filter(this)", data: {filter: "grape", value: array[0]}, class: "mr10" %>
                     <% end %>
                 </p>
-            <% end %>
+          <% end %>
         </div>
+
     <% end %>
 
-    <% @filters.each do |filter| %>
-        <span class="label label-warning mr10">
-            <%= filter[:value] %>
-            <%= link_to "x", "#{request.env['PATH_INFO']}?filter=#{filter[:filter]}&value=#{filter[:value]}", class: "b white ml2" %>
-        </span>
+    <div>
+        <%= content_tag :span, "年份:", class: 'b' %><br/>
+        <% Beverage.vintages.each do |year| %>
+            <%= link_to_function year, "add_filter(this)", data: {filter: "vintage", value: year}, class: "mr10" %>
+        <% end %>
+    </div>
+
+    <%= form_tag request.env['PATH_INFO'], method: :get, id: "filterForm" do %>
+        <% @filters.each do |filter, values| %>
+            <% values.each do |value| %>
+                <%= render "filter_fields", filter: filter, value: value %>
+            <% end %>
+        <% end %>
+
+        <div class="mt10">
+            <%= submit_tag "搜索", class: "btn btn-primary btn-mini #{'hide' if @filters.empty?}" %>
+        </div>
     <% end %>
 
     <hr/>

@@ -15,10 +15,8 @@ Whisky:
     name: Isly
     trans_name: 艾雷岛
     country: 苏格兰
-    type_list: Whisky
 
-
--
-  name: 山西
-  country: 中国
-  type_list: ChineseLiqueur
+ChineseLiqueur:
+  -
+    name: 山西
+    country: 中国

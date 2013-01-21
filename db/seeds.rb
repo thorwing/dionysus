@@ -43,12 +43,15 @@ end
 
 p "generating regions"
 regions = YAML::load(File.open("db/seeds/regions.yml"))
-regions.each do |record|
-  region = Region.new
-  region.attributes = record.slice(*Region.accessible_attributes)
-  region.parent = Region.find_by_name(record['parent']) if record["parent"].present?
-  region.country = Country.find_by_name(record['country'])
-  region.save!
+regions.each do |type, records|
+  records.each do |record|
+    region = Region.new
+    region.attributes = record.slice(*Region.accessible_attributes)
+    region.parent = Region.find_by_name(record['parent']) if record["parent"].present?
+    region.country = Country.find_by_name(record['country'])
+    region.type_list = type
+    region.save!
+  end
 end
 
 p "generating ranks"

@@ -31,6 +31,10 @@ class Beverage < ActiveRecord::Base
 
   TYPES = %w[Wine Whisky Vodka Tequila Rum Brandy Liqueur Gin Beer WhiteSpirit ChineseLiqueur RiceWine Sake]
 
+  def self.vintages
+    [-1] | 1980.upto(Date.today.year).to_a
+  end
+
   def self.text_search(query)
     where("name ILIKE :p OR trans_name ILIKE :p", p: "%#{query}%")
   end

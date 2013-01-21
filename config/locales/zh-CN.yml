@@ -101,6 +101,15 @@ zh-CN:
       ChineseLiqueur: 露酒
       RiceWine: 黄酒/米酒
       Sake: 清酒
+    sweetness:
+      dry: 干
+      half_dry: 半干
+      half_sweet: 半甜
+      sweet: 甜
+    colors:
+      red: 红
+      white: 白
+      rose: 桃红
 
   regions:
     region: 产区

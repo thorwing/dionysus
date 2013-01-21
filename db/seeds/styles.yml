@@ -1,76 +1,12 @@
-wine:
-    -
-      name: Redwine
-      trans_name: 红葡萄酒
-      sub:
-        -
-          name: Dryredwine
-          trans_name: 干红
-        -
-          name: Halfdryredwine
-          trans_name: 半干红
-        -
-          name: Halfsweetredwine
-          trans_name: 半甜红
-        -
-          name: Sweetredwine
-          trans_name: 甜红
-        -
-          name: Halfsweethalfdryredwine
-          trans_name: 干甜搭
-
-    -
-      name: Whitewine
-      trans_name: 白葡萄酒
-      sub:
-        -
-          name: Drywhitewine
-          trans_name: 干白
-        -
-          name: Halfdrywhitewine
-          trans_name: 半干白
-        -
-          name: Halfsweetwhitewine
-          trans_name: 半甜白
-        -
-          name: Sweetwhitewine
-          trans_name: 甜白
-        -
-          name: Botrytisedwine
-          trans_name: 贵腐
-        -
-          name: Drysweetmixwhitewine
-          trans_name: 干甜搭
-    -
-      name: Rosewine
-      trans_name: 桃红葡萄酒
-
-    -
-      name: Sparkingwine
-      trans_name: 起泡酒
-
-    -
-      name: Fortifiedwine
-      trans_name: 加强葡萄酒
+Wine:
+  - 静态葡萄酒,Still Wine
+  - 起泡葡萄酒,Sparkling Wine
+  - 香槟酒,Champagne
+  - 雪利酒,Sherry
+  - 波特酒,Port
 
 WhiteSpirit:
-    -
-      name: Faintscent
-      trans_name: 清香型
-
-    -
-      name: Jiangscent
-      trans_name: 酱香型
-
-    -
-      name: Ricescent
-      trans_name: 米香
-
-    -
-      name: Aromachinese
-      trans_name: 浓香型
-
-    -
-      name: Otherchinese
-      trans_name: 其他香型
-
+  - 清香型,Faintscent
+  - 酱香型,Jiangscent
+  - 米香,Ricescent
+  - 浓香型,Aromachinese

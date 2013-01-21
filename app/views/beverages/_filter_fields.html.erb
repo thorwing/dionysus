@@ -1,0 +1,5 @@
+<span class="filter_fields">
+    <%= hidden_field_tag("filter[#{filter}][]", value) %>
+    <%= link_to_function "#{value} ×", "remove_filter(this);", class: "white", style: "background: orange;" %>
+</span>
+

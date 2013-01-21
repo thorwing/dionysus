@@ -4,34 +4,33 @@ class BeveragesController < ApplicationController
   # GET /beverages
   # GET /beverages.json
   def index
-    @filters = session[:beverage_filters] || []
-
-    if params[:filter].present?
-      @filters.reject!{|f| f[:filter] == params[:filter]}
-      if params[:delta] == "1"
-        @filters |= [{filter: params[:filter], value: params[:value]}]
-      end
-      session[:beverage_filters] = @filters
-    end
-
     criteria = Beverage.scoped
-
-    @filters.each do |filter|
-      case filter[:filter]
-        when "country"
-          country = Country.find_by_name(filter[:value])
-          regions = country.regions
-          criteria = criteria.where(region_id: regions.map(&:id))
-      end
-    end
 
     if params[:type].present?
       criteria = criteria.where(type: params[:type])
       @type = params[:type]
     end
 
+    @filters = params[:filter] || []
+    @filters.each do |filter, values|
+      case filter
+        when "vintage"
+          criteria = criteria.where(vintage: values)
+        when "grape"
+          criteria = criteria.tagged_with(values, on: :grape)
+        when "country"
+          country = Country.find_by_name(filter[:value])
+          criteria = criteria.where(region_id: country.regions.map(&:id)) if country
+        else
+          criteria = criteria.where(filter.to_sym => values)
+      end
+    end
+
     @beverage_brands = criteria.where("brand_id IS NOT NULL").group_by(&:brand)
     #raise @beverage_brands.to_yaml
+
+    regions = Region.tagged_with("Wine", on: :types)
+    @countries_with_regions = regions.group_by{|r| r.country}
 
     respond_to do |format|
       format.html # index.html.erb
