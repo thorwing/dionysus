@@ -1,0 +1,20 @@
+<% if beverage.age.present? %>
+    <p>
+        <%= content_tag :span, t("beverages.age"), class: "mr20" %>
+        <%= content_tag :span, beverage.age %>
+    </p>
+<% end %>
+
+<% if beverage.distillation_method.present? %>
+    <p>
+        <%= content_tag :span, t("beverages.distillation_method"), class: "mr20" %>
+        <%= content_tag :span, beverage.distillation_method %>
+    </p>
+<% end %>
+
+<% if beverage.barrel_cask %>
+    <p>
+        <%= content_tag :span, t("beverages.barrel_cask"), class: "mr20" %>
+        <%= content_tag :span, beverage.barrel_cask %>
+    </p>
+<% end %>

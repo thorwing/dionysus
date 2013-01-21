@@ -3,16 +3,18 @@
     <%= f.hidden_field :type %>
     <%= f.input :name, label: t("beverages.name") %>
     <%= f.input :picture, label: t("pictures.upload") %>
-    <%= f.label t("regions.region"), :region_id %>
-    <%= f.select :region_id, Region.of(@beverage.type).map{|r| ["#{" - " * r.ancestors.size} #{r.full_name}", r.id]}, include_blank: true %>
+    
+    <div id="regionFields">
+        <%= f.label t("regions.region"), :region_id %>
+        <%= f.select :region_id, Region.of(@beverage.type).map{|r| ["#{" - " * r.ancestors.size} #{r.full_name}", r.id]}, include_blank: true %>
+    </div>
     <%= f.label "品牌", :brand_id %>
     <%= f.select :brand_id, Brand.tagged_with(@beverage.type).map{|b| [b.full_name, b.id]}, include_blank: true %>
 
     <%= f.label t("beverages.style"), :style %>
     <%= f.select :style, @beverage.type.classify.constantize.styles.map{|style| [t("beverages.styles.#{@beverage.type}.#{style}"), style]}, include_blank: true %>
 
-    <%= f.label t("beverages.vintage"), :vintage %>
-    <%= f.select :vintage, Beverage.vintages.map{|year| [year == -1 ? t("beverages.old_vintage", year: 1980) : year, year]}, include_blank: true %>
+    <%= f.input :vintage, as: :integer, label: t("beverages.vintage"), include_blank: true %>
 
     <div class="clearfix">
         <div class="pull-left">

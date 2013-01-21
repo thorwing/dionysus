@@ -7,13 +7,6 @@
     </p>
 <% end %>
 
-<% if beverage.rank %>
-    <p>
-       <%= content_tag :span, "评级", class: "mr20" %>
-       <%= link_to "#{beverage.rank.full_name}", beverage.rank %>
-    </p>
-<% end %>
-
 <% if beverage.region %>
    <p>
        <%= content_tag :span, t("regions.region"), class: "mr20" %>
@@ -23,7 +16,12 @@
 
 <p>
     <%= content_tag :span, t("beverages.style"), class: "mr20" %>
-    <%= content_tag :span, beverage.style %>
+    <%= content_tag :span, t("beverages.styles.#{beverage.type}.#{beverage.style}") %>
+</p>
+
+<p>
+    <%= content_tag :span, t("beverages.vintage"), class: "mr20" %>
+    <%= content_tag :span, beverage.vintage %>
 </p>
 
 <p>
@@ -33,27 +31,12 @@
 
 <p>
     <%= content_tag :span, t("beverages.volume"), class: "mr20" %>
-    <%= content_tag :span, beverage.volume %>
+    <%= content_tag :span, "#{beverage.volume}ml" %>
 </p>
 
-
-<% if beverage.age.present? %>
-    <p>
-        <%= content_tag :span, t("beverages.age"), class: "mr20" %>
-        <%= content_tag :span, beverage.age %>
-    </p>
-<% end %>
-
-<% if beverage.distillation_method.present? %>
-    <p>
-        <%= content_tag :span, t("beverages.distillation_method"), class: "mr20" %>
-        <%= content_tag :span, beverage.distillation_method %>
-    </p>
-<% end %>
-
-<% if beverage.barrel_cask %>
-    <p>
-        <%= content_tag :span, t("beverages.barrel_cask"), class: "mr20" %>
-        <%= content_tag :span, beverage.barrel_cask %>
-    </p>
+<% case beverage.type %>
+    <% when 'Whisky' %>
+        <%= render "beverages/whisky_info", beverage: beverage%>
+    <% when 'Wine' %>
+        <%= render "beverages/wine_info", beverage: beverage %>
 <% end %>

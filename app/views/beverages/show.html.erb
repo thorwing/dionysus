@@ -12,10 +12,6 @@
             <div class="mt10 clearfix">
                 <div class="pull-left">
                     <%= render "beverages/info", beverage: @beverage %>
-                    <% if can? :create, Complain %>
-                        <%= link_to "纠错", "#complainDialog", 'data-toggle' => "modal" %>
-                        <%= render "complains/dialog", complain: @beverage.complains.new %>
-                    <% end %>
                 </div>
                 <div class="pull-right text-center" >
                     <div class="p20" style="width: 100px; background: #339999;">
@@ -36,6 +32,15 @@
                 <%= link_to content_tag(:span, '', class: 'icon-pencil') + " 写酒评", new_review_path(beverage_id: @beverage.id) if can? :create, Review %>
                 <%= link_to content_tag(:span, '', class: 'icon-plus') + " 加入榜单", new_package_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Package %>
                 <%= link_to content_tag(:span, '', class: 'icon-gift') + " 我要卖", new_deal_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Deal %>
+                <%= link_to t("general.edit"), edit_beverage_path(@beverage), class: "ml20" if can? :edit, @beverage %>
+            </div>
+
+            <div class="mt20">
+                <%= link_to @beverage.author.nick, @beverage.author %><%= t("beverages.add_it") if @beverage.author %>
+                <% if can? :create, Complain %>
+                    <%= link_to "纠错", "#complainDialog", 'data-toggle' => "modal", class: "ml20" %>
+                    <%= render "complains/dialog", complain: @beverage.complains.new %>
+                <% end %>
             </div>
         <% end %>
     </div>
@@ -53,15 +58,13 @@
 </div>
 
 <div class="span3">
-    <% if @beverage.author %>
-        <p>
-          <%= link_to @beverage.author.nick, @beverage.author %><%= t("beverages.add_it") %>
-        </p>
-    <% end %>
+    <div class="box box-shadow p10">
+        <%= content_tag :span, "以下榜单推荐", class: "jujiu-label" %>
+        <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
+    </div>
 
-    <hr/>
-
-    <% if can? :edit, @beverage %>
-        <%= link_to t(:general.edit), edit_beverage_path(@beverage) %>
-    <% end %>
+    <div class="mt20">
+        <%= content_tag :span, "谁卖这瓶酒", class: "jujiu-label" %>
+        <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
+    </div>
 </div>
