@@ -2,7 +2,7 @@ class Beverage < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   include Translatable
   acts_as_taggable_on :grapes
-  attr_accessible :type, :name, :trans_name, :brand_id, :region_id, :rank_id, :volume, :alcohol, :grape_list, :picture, :pic_url
+  attr_accessible :type, :name, :trans, :brand_id, :region_id, :volume, :alcohol, :year, :grape_list, :picture, :pic_url
 
   #relationships
   belongs_to :region
@@ -31,12 +31,16 @@ class Beverage < ActiveRecord::Base
 
   TYPES = %w[Wine Whisky Vodka Tequila Rum Brandy Liqueur Gin Beer WhiteSpirit ChineseLiqueur RiceWine Sake]
 
+  def self.styles
+    []
+  end
+
   def self.vintages
-    [-1] | 1980.upto(Date.today.year).to_a
+    Date.today.year.downto(1980).to_a | [-1]
   end
 
   def self.text_search(query)
-    where("name ILIKE :p OR trans_name ILIKE :p", p: "%#{query}%")
+    where("name ILIKE :p OR trans ILIKE :p", p: "%#{query}%")
   end
 
   def self.types

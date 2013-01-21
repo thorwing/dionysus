@@ -33,23 +33,14 @@ records.each do |record|
   end
 end
 
-p "generating countries"
-records = YAML::load(File.open("db/seeds/countries.yml"))
-records.each do |record|
-  Country.create! do |country|
-    country.name = record
-  end
-end
-
 p "generating regions"
-regions = YAML::load(File.open("db/seeds/regions.yml"))
-regions.each do |type, records|
+records_hash = YAML::load(File.open("db/seeds/regions.yml"))
+records_hash.each do |beverage_type, records|
   records.each do |record|
     region = Region.new
     region.attributes = record.slice(*Region.accessible_attributes)
     region.parent = Region.find_by_name(record['parent']) if record["parent"].present?
-    region.country = Country.find_by_name(record['country'])
-    region.type_list = type
+    region.beverage_type = beverage_type
     region.save!
   end
 end

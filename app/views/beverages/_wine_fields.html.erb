@@ -1,0 +1,6 @@
+<%= f.label "甜度", :sweetness %>
+<%= f.select :sweetness, Wine.sweetness.each.map{|sweetness| [t("beverages.sweetness.#{sweetness}"), sweetness]}, include_blank: true %>
+<%= f.label "颜色", :color %>
+<%= f.select :color, Wine.colors.each.map{|color| [t("beverages.colors.#{color}"), color]}, include_blank: true %>
+<%= f.label t("ranks.rank"), :brand_id %>
+<%= f.select :rank_id, Rank.tagged_with(@beverage.type).map{|r| [r.full_name, r.id]}, include_blank: true %>

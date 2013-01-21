@@ -81,7 +81,8 @@ zh-CN:
     alcohol: 酒精
     volume: 容量
     vintage: 年份
-    age: 陈酿年份
+    old_vintage: "%{year}年以前"
+    age: 陈酿年数
     distillation_method: 蒸馏方法
     barrel_cask: 装桶
     bottler: 灌装商
@@ -110,6 +111,18 @@ zh-CN:
       red: 红
       white: 白
       rose: 桃红
+    styles:
+      Wine:
+        still_wine: 静态葡萄酒
+        sparkling_wine: 起泡葡萄酒
+        champagne: 香槟酒
+        sherry: 雪利酒
+        port: 波特酒
+      WhiteSpirit:
+        faintscent: 清香型
+        jiangscent: 酱香型
+        ricescent: 米香
+        aromachinese: 浓香型
 
   regions:
     region: 产区

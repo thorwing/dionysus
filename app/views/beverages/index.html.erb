@@ -13,28 +13,20 @@
         </div>
 
         <div class="clearfix mt10">
-            <% @countries_with_regions.each do |country, regions| %>
-                <div class="pull-left mr10 p10" style="width:100px;border: 1px solid;">
-                    <%= link_to country.name, "#{request.env['PATH_INFO']}?filter=country&value=#{country.name}&delta=1", class: "b mr10" %>
-
-                    <div>
-                        <% regions.each do |region| %>
-                            <%= link_to region.trans_name, "#{request.env['PATH_INFO']}?filter=country&value=#{region.name}&delta=1", class: "mr10" %>
-                        <% end %>
-                    </div>
-                </div>
-            <% end %>
+            <div>
+                <% @regions.each do |region| %>
+                    <%= link_to region.trans, "#{request.env['PATH_INFO']}?filter=country&value=#{region.name}&delta=1", class: "mr10" %>
+                <% end %>
+            </div>
         </div>
     </div>
 
-    <% if @type && get_styles(@type).present? %>
+    <% if @type && !@type.constantize.styles.empty? %>
         <div class="clearfix mb10">
             <%= content_tag :span, "分类:", class: 'b' %><br/>
-            <% get_styles(@type).each do |style| %>
-                <% array = style.split(',') %>
-
+            <% @type.constantize.styles.each do |style| %>
                 <div class="pull-left hover_area">
-                    <%= link_to_function array[0], "add_filter(this)", data: {filter: "style", value: array[0]}, class: "mr10" %>
+                    <%= link_to_function t("beverages.styles.#{@type}.#{style}"), "add_filter(this)", data: {filter: "style", value: style}, class: "mr10" %>
                 </div>
             <% end %>
         </div>

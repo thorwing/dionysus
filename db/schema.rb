@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
   create_table "beverages", :force => true do |t|
     t.string   "type"
     t.string   "name"
-    t.string   "trans_name"
+    t.string   "trans"
     t.string   "alcohol"
     t.string   "volume"
     t.string   "bottler"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
-    t.string   "trans_name"
+    t.string   "trans"
     t.string   "type_list"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
 
   create_table "cocktails", :force => true do |t|
     t.string   "name"
-    t.string   "trans_name"
+    t.string   "trans"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -171,12 +171,6 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
     t.string   "subject",    :default => ""
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-  end
-
-  create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "cups", :force => true do |t|
@@ -302,7 +296,7 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
 
   create_table "ranks", :force => true do |t|
     t.string   "name"
-    t.string   "trans_name"
+    t.string   "trans"
     t.string   "type_list"
     t.string   "ancestry"
     t.datetime "created_at", :null => false
@@ -353,12 +347,11 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
 
   create_table "regions", :force => true do |t|
     t.string   "name"
-    t.string   "trans_name"
-    t.string   "type_list"
+    t.string   "trans"
     t.string   "ancestry"
-    t.integer  "country_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "beverage_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "regions", ["ancestry"], :name => "index_regions_on_ancestry"

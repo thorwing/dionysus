@@ -1,11 +1,11 @@
 class Region < ActiveRecord::Base
   include Translatable
-  attr_accessible :parent_id, :name, :trans_name, :type_list
+  attr_accessible :parent_id, :name, :trans
   has_ancestry
-  acts_as_taggable_on :types
+
+  scope :of, lambda { |beverage_type| where(beverage_type: beverage_type) }
 
   #relationships
-  belongs_to :country
   has_many :beverages
 
 end

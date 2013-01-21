@@ -1,22 +1,27 @@
 Wine:
   -
+    name: France
+    trans: 法国
+  -
     name: Bordeaux
-    trans_name: 波尔多
-    country: 法国
+    trans: 波尔多
+    parent: France
 
   -
     name: Médoc
-    trans_name: 梅多克
-    country: 法国
+    trans: 梅多克
     parent: Bordeaux
 
 Whisky:
   -
+    name: Scotland
+    trans: 苏格兰
+
+  -
     name: Isly
-    trans_name: 艾雷岛
-    country: 苏格兰
+    trans: 艾雷岛
+    parent: Scotland
 
 ChineseLiqueur:
   -
     name: 山西
-    country: 中国

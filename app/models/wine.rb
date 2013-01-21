@@ -1,5 +1,9 @@
 class Wine < Beverage
-  attr_accessible :color, :sweetness
+  attr_accessible :color, :sweetness, :rank_id
+
+  def self.styles
+    %w(still_wine sparkling_wine champagne sherry port)
+  end
 
   def self.colors
     %w(red white rose)

@@ -1,7 +1,7 @@
 -
   type: Wine
   name: Château MARGAUX
-  trans_name: 玛歌庄园
+  trans: 玛歌庄园
   brand: Margaux
   color: red
   sweetness: dry
@@ -15,7 +15,7 @@
 -
   type: Beer
   name: Westvleteren
-  trans_name: 维斯特啤酒
+  trans: 维斯特啤酒
   brand: Westvleteren
   styles: abt/Quadrupel
   volume: 500
@@ -25,7 +25,7 @@
 -
   type: Whisky
   name: Chivas Regal 12Y
-  trans_name: 芝华士12年
+  trans: 芝华士12年
   brand: Chivas
   volume: 700
   alcohol: 40
@@ -34,7 +34,7 @@
 -
   type: Whisky
   name: Chivas Regal 25Y
-  trans_name: 芝华士25年
+  trans: 芝华士25年
   brand: Chivas
   volume: 700
   alcohol: 40
@@ -43,7 +43,7 @@
 -
   type: Whisky
   name: Ardbeg Uigeadail
-  trans_name: 阿贝 乌干达
+  trans: 阿贝 乌干达
   brand: Ardbeg
   regions: Isly
   volume: 700
@@ -53,7 +53,7 @@
 -
   type: Vodka
   name: Ultimat
-  trans_name: 终极伏特加
+  trans: 终极伏特加
   brand: Ultimat
   volume: 700
   alcohol: 40
@@ -62,7 +62,7 @@
 -
   type: Rum
   name: Ron Zacapa 23 yr.
-  trans_name: 扎卡帕 23年
+  trans: 扎卡帕 23年
   brand: Zacapa
   volume: 700
   alcohol: 40
@@ -71,7 +71,7 @@
 -
   type: Brandy
   name: Cuvée Jean Godet（VS de Luxe）
-  trans_name: 高迪特VS
+  trans: 高迪特VS
   brand: Godet
   volume: 700
   alcohol: 40
@@ -80,7 +80,7 @@
 -
   type: Gin
   name: Hendrick's
-  trans_name: 亨利爵士金
+  trans: 亨利爵士金
   brand: Hendrick's
   volume: 500
   alcohol: 40
@@ -89,7 +89,7 @@
 -
   type: Tequila
   name: Luna Nueva
-  trans_name: 露那 努埃瓦
+  trans: 露那 努埃瓦
   brand: Luna Nueva
   volume: 700
   alcohol: 40
@@ -98,7 +98,7 @@
 -
   type: Sake
   name: 越後杜氏の里一斗樽
-  trans_name:
+  trans:
   brand: 越後杜氏
   volume: 72000
   alcohol: 15.8
@@ -107,7 +107,7 @@
 -
   type: Liqueur
   name: Prucia
-  trans_name: 浮乐夏
+  trans: 浮乐夏
   brand: Prucia
   volume: 700
   alcohol: 15
@@ -116,7 +116,7 @@
 -
   type: JapaneseSpirit
   name: 百年の孤独
-  trans_name: 百年孤独
+  trans: 百年孤独
   brand: 黒木本店
   volume: 720
   alcohol: 40

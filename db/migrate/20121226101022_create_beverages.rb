@@ -3,7 +3,7 @@ class CreateBeverages < ActiveRecord::Migration
     create_table :beverages do |t|
       t.string :type
       t.string :name
-      t.string :trans_name
+      t.string :trans
       t.string :alcohol
       t.string :volume
       t.string :bottler

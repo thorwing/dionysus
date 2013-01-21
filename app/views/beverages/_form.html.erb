@@ -3,15 +3,26 @@
     <%= f.hidden_field :type %>
     <%= f.input :name, label: t("beverages.name") %>
     <%= f.input :picture, label: t("pictures.upload") %>
+    <%= f.label t("regions.region"), :region_id %>
+    <%= f.select :region_id, Region.of(@beverage.type).map{|r| ["#{" - " * r.ancestors.size} #{r.full_name}", r.id]}, include_blank: true %>
     <%= f.label "品牌", :brand_id %>
     <%= f.select :brand_id, Brand.tagged_with(@beverage.type).map{|b| [b.full_name, b.id]}, include_blank: true %>
-    <%= f.label t("regions.region"), :region_id %>
-    <%= f.select :region_id, Region.tagged_with(@beverage.type).map{|r| [r.full_name, r.id]}, include_blank: true %>
-    <%= f.label t("ranks.rank"), :brand_id %>
-    <%= f.select :rank_id, Rank.tagged_with(@beverage.type).map{|r| [r.full_name, r.id]}, include_blank: true %>
-    <!--<= f.input :vin, label: t("beverages.alcohol") %>-->
-    <%= f.input :alcohol, as: :float, label: "#{t("beverages.alcohol")}(%)" %>
-    <%= f.input :volume, as: :integer, label: "#{t("beverages.volume")}(ml)" %>
+
+    <%= f.label t("beverages.style"), :style %>
+    <%= f.select :style, @beverage.type.classify.constantize.styles.map{|style| [t("beverages.styles.#{@beverage.type}.#{style}"), style]}, include_blank: true %>
+
+    <%= f.label t("beverages.vintage"), :vintage %>
+    <%= f.select :vintage, Beverage.vintages.map{|year| [year == -1 ? t("beverages.old_vintage", year: 1980) : year, year]}, include_blank: true %>
+
+    <div class="clearfix">
+        <div class="pull-left">
+            <%= f.input :alcohol, as: :float, label: "#{t("beverages.alcohol")}(%)", input_html: {class: "input-small"} %>
+        </div>
+        <div class="pull-left ml10">
+            <%= f.input :volume, as: :integer, label: "#{t("beverages.volume")}(ml)", input_html: {class: "input-small"} %>
+        </div>
+    </div>
+
     <% case @beverage.type %>
         <% when 'Whisky' %>
             <%= render "beverages/whisky_fields", f: f %>

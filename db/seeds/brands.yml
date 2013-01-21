@@ -1,70 +1,70 @@
 -
   name: Chivas
-  trans_name: 芝华士
+  trans: 芝华士
   type_list: Whisky
 
 -
   name: Margaux
-  trans_name: 玛歌
+  trans: 玛歌
   type_list: Wine
 
 -
   name: Westvleteren
-  trans_name: 维斯特
+  trans: 维斯特
   type_list: Beer
 
 -
   name: Hendrick's
-  trans_name: 亨利爵士金
+  trans: 亨利爵士金
   type_list: Gin
 
 -
   name: Luna Nueva
-  trans_name: 露那 努埃瓦
+  trans: 露那 努埃瓦
   type_list: Tequila
 
 -
   name: Godet
-  trans_name: 高迪特
+  trans: 高迪特
   type_list: Brandy
 
 -
   name: 越後杜氏
-  trans_name: 越後杜氏
+  trans: 越後杜氏
   type_list: Sake
 
 -
   name: Prucia
-  trans_name: 浮乐夏
+  trans: 浮乐夏
   type_list: Liqueur
 
 -
   name: 黒木本店
-  trans_name: 黒木本店
+  trans: 黒木本店
   type_list: JapaneseSpirit
 
 -
   name: Fenjiu
-  trans_name: 汾酒
+  trans: 汾酒
   type_list: WhiteSpirit
 
 -
   name: Zhuyeqing
-  trans_name: 竹叶青
+  trans: 竹叶青
   type_list: ChineseLiqueur
 
 -
   name: Zacapa
-  trans_name: 扎卡帕
+  trans: 扎卡帕
   type_list: Rum
 
 -
   name: Ultimat
-  trans_name: 终极伏特加
+  trans: 终极伏特加
   type_list: Vodka
 
 -
   name: Ardbeg
-  trans_name: 阿德贝哥
+  trans: 阿德贝哥
   type_list: Whisky
 

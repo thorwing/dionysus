@@ -29,8 +29,7 @@ class BeveragesController < ApplicationController
     @beverage_brands = criteria.where("brand_id IS NOT NULL").group_by(&:brand)
     #raise @beverage_brands.to_yaml
 
-    regions = Region.tagged_with("Wine", on: :types)
-    @countries_with_regions = regions.group_by{|r| r.country}
+    @regions = Region.of(@type)
 
     respond_to do |format|
       format.html # index.html.erb
