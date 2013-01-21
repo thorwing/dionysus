@@ -3,7 +3,8 @@
   name: Château MARGAUX
   trans_name: 玛歌庄园
   brand: Margaux
-  styles: Dryredwine
+  color: red
+  sweetness: dry
   volume: 500
   alcohol: 12
   region: Médoc

@@ -9,7 +9,7 @@ class CreateBeverages < ActiveRecord::Migration
       t.string :bottler
       t.string :distillation_method
       t.string :barrel_cask
-      t.string :category
+      t.string :style
       t.string :color
       t.string :sweetness
       t.string :vintage
