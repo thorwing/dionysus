@@ -51,6 +51,15 @@ class Beverage < ActiveRecord::Base
     reviews.first.try(:score) || 98
   end
 
+  def rating
+    wishes.empty? ? 0 :(wishes.sum(&:rating) / wishes.size)
+  end
+
+  #TODO stub
+  def tags
+    []
+  end
+
   #TODO stub
   def get_picture(version = nil)
     if picture?

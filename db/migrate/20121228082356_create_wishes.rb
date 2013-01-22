@@ -3,6 +3,7 @@ class CreateWishes < ActiveRecord::Migration
     create_table :wishes do |t|
       t.string :remark
       t.boolean :accomplished, default: false
+      t.integer :rating
 
       t.integer :user_id
       t.integer :beverage_id

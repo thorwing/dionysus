@@ -16,11 +16,13 @@
 //= require twitter/bootstrap
 //=require reviews
 //= require beverages
+//= require wishes
 //= require jquery.masonry
 //= require redactor-rails
 //= require raphael
 //= require morris
 //= require jquery.tokeninput
+//= require jquery.raty
 
 $(function() {
     $('.hover_area').hover(

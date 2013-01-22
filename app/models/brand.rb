@@ -1,5 +1,6 @@
 class Brand < ActiveRecord::Base
   include Translatable
+  mount_uploader :picture, PictureUploader
   attr_accessible :name, :trans, :type_list
   acts_as_taggable_on :types
 

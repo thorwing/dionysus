@@ -1,6 +1,9 @@
-<div class="masonary_item box box-shadow">
-    <div class="p10 clearfix text-center">
-        <%= link_to image_tag(beverage.get_picture, width: 168), beverage %><br/>
+<div class="span6 clearfix mt20" style="height: 400px;">
+    <div class="pull-left">
+        <%= link_to image_tag(beverage.get_picture, class: "beverage-frame"), beverage %>
+    </div>
+    <div class="pull-left ml20" style="width: 300px;">
         <%= link_to beverage.full_name, beverage, class: "jujiu-label" %>
+        <%= render "beverages/info", beverage: beverage %>
     </div>
 </div>

@@ -1,10 +1,21 @@
 <% title @brand.full_name %>
 
-<%= content_tag :span, "品牌简介" %>
+<div class="clearfix">
+    <div class="pull-left">
+        <%= image_tag @brand.picture_url, class: "img-square-168" if @brand.picture? %>
+    </div>
 
-<hr/>
+    <div class="pull-left ml20">
+        <%= content_tag :span, @brand.description %>
+    </div>
+</div>
 
-<div id="masonryContainer">
+<div class="mt20">
+    <%= content_tag :span, "#{@brand.beverages.size}瓶酒", class: "jujiu-label" %>
+    <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
+</div>
+
+<div>
     <% @brand.beverages.each do |beverage| %>
         <%= render "beverages/beverage", beverage: beverage %>
     <% end %>

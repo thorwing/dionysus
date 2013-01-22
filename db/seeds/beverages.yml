@@ -3,10 +3,12 @@
   name: Château MARGAUX
   trans: 玛歌庄园
   brand: Margaux
+  style: still_wine
   color: red
   sweetness: dry
   volume: 500
   alcohol: 12
+  vintage: 1988
   region: Médoc
   rank: Premiers Crus
   grape_list: 赤霞珠
@@ -17,7 +19,7 @@
   name: Westvleteren
   trans: 维斯特啤酒
   brand: Westvleteren
-  styles: abt/Quadrupel
+  style: abt/Quadrupel
   volume: 500
   alcohol: 12
   pic_url: http://blogfile.ifeng.com/uploadfiles/blog_attachment/0811/56/1041756_e0000e5d71c26ed40bd26b8a4d9eb8db.jpg
@@ -126,7 +128,7 @@
   type: WhiteSpirit
   name: 山西[汾酒]汾酒牧童牛清香型48度750ml
   brand: 汾酒
-  style: Faintscent
+  style: faintscent
   region: 
   volume: 750
   alcohol: 48

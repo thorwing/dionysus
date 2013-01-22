@@ -103,9 +103,10 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
   create_table "brands", :force => true do |t|
     t.string   "name"
     t.string   "trans"
-    t.string   "type_list"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "description"
+    t.string   "picture"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "checks", :force => true do |t|
@@ -470,6 +471,7 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
   create_table "wishes", :force => true do |t|
     t.string   "remark"
     t.boolean  "accomplished", :default => false
+    t.integer  "rating"
     t.integer  "user_id"
     t.integer  "beverage_id"
     t.datetime "created_at",                      :null => false

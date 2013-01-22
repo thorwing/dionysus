@@ -6,6 +6,8 @@
 
     <%= f.input :accomplished, label: false, collection: [[false, "想喝"], [true, "喝过"]], label_method: :last, value_method: :first, as: :radio %>
 
+    <div id='star'></div>
+
     <%= render "tags/tags_form", f: f, tags: [] %>
 
     <%= f.input :remark, as: :text, label: t("wishes.remark"), input_html: {rows: 3, class: 'input-xlarge', maxlength: 140} %>

@@ -1,5 +1,5 @@
 class Wish < ActiveRecord::Base
-  attr_accessible :beverage_id, :accomplished, :remark, :tag_list
+  attr_accessible :beverage_id, :accomplished, :remark, :rating, :tag_list
   acts_as_taggable
   acts_as_taggable_on :tags
 

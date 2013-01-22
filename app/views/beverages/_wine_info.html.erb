@@ -7,14 +7,7 @@
 
 <% if beverage.sweetness %>
     <p>
-        <%= content_tag :span, "甜度", class: "mr20" %>
-        <%= content_tag :span, t("beverages.sweetness.#{beverage.sweetness}") %>
-    </p>
-<% end %>
-
-<% if beverage.color %>
-    <p>
-        <%= content_tag :span, "颜色", class: "mr20" %>
-        <%= content_tag :span, t("beverages.colors.#{beverage.color}") %>
+        <%= content_tag :span, "甜度&颜色", class: "mr20" %>
+        <%= content_tag :span, "#{t("beverages.sweetness.#{beverage.sweetness}")}#{t("beverages.colors.#{beverage.color}")}" %>
     </p>
 <% end %>

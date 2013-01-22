@@ -3,7 +3,8 @@ class CreateBrands < ActiveRecord::Migration
     create_table :brands do |t|
       t.string :name
       t.string :trans
-      t.string :type_list
+      t.string :description
+      t.string :picture
 
       t.timestamps
     end
