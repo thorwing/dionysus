@@ -1,19 +1,24 @@
 <% title @list.title %>
 
 <div class="span9">
-    <% @list.packages.each do |package| %>
-        <%= render package %>
-        <hr/>
-    <% end %>
+    <%= content_tag :p, @list.description %>
+    <%= link_to t("general.edit"), edit_list_path(@list) if can? :update, @list %>
+    <%= link_to t("general.delete"), @list, method: :delete, confirm: t("general.are_you_sure_to_delete"), class: "ml10"  if can? :destroy, @list %>
 
     <div class="mt20">
+        <%= content_tag :p, "#{@list.packages.size}瓶酒 · · · · · ·", class: "jujiu-label" %>
+        <% @list.packages.each_with_index do |package, index| %>
+            <% if index > 0 %><hr/><% end %>
+            <%= render package %>
+        <% end %>
+    </div>
+
+    <div class="mt50">
         <%= render "comments/comments", item: @list %>
     </div>
 </div>
 
 <div class="span3">
-    <%= render "users/author_block", item: @list %>
-
-    <%= link_to t("general.edit"), edit_list_path(@list) if can? :update, @list %>
+    <%= render "users/user_block", user: @list.author %>
 </div>
 

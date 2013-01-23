@@ -1,3 +1,20 @@
 <div class="clearfix">
-    <%= link_to list.title, list %>
+    <div class="pull-left">
+        <%= user_avatar_tag(list.author) %>
+    </div>
+    <div class="pull-left ml20">
+        <%= link_to list.title, list, class: "jujiu-label" %>
+        <%= content_tag :span, "#{list.packages.size}瓶酒", class: "trivial ml10" %>
+
+        <ul class="mt10">
+            <% list.packages.limit(5).each do |package| %>
+                <li>
+                    <%= link_to package.beverage.full_name, package.beverage, class: "jujiu-label" %><br/>
+                    <blockquote>
+                        <%= content_tag :q, package.remark if package.remark %>
+                    </blockquote>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 </div>

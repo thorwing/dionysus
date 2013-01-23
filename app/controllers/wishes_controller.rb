@@ -11,7 +11,7 @@ class WishesController < ApplicationController
 
     respond_to do |format|
       if @wish.save
-        format.html { redirect_to @wish.beverage, notice: 'Wish was successfully created.' }
+        format.html { redirect_to @wish.beverage, notice: t("wishes.wish_created") }
         format.json { render json: @wish, status: :created, location: @wish }
       else
         format.html { render action: "new" }

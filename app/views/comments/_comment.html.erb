@@ -1,15 +1,15 @@
-<div class="comment clearfix gray_comments p10" id='comment_<%= comment.id %>'>
+<div class="comment clearfix p10" id='comment_<%= comment.id %>'>
     <div class="pull-left mt5" >
         <%= link_to image_tag(comment.author.get_avatar(:thumb)), comment.author, class: "tiny-avatar-frame" %>
     </div>
 
-    <div class="pull-left ml10" style="width: 340px;overflow: hidden;">
-        <%= link_to comment.author.nick, comment.author, class: "trivial" %>
-        <%= content_tag :span, " • #{comment.created_at.strftime(GENERAL_TIME_FORMAT)}", class: 'trivial' %>
+    <div class="pull-left ml20" style="width: 330px;overflow: hidden;">
+        <%= content_tag :span, comment.created_at.strftime(GENERAL_TIME_FORMAT), class: 'trivial' %>
+        <%= link_to comment.author.nick, comment.author, class: "ml10" %>
 
         <%= link_to_function t("general.reply"),  '', "data-toggle" => "collapse", "data-target" => "#commentForm_#{comment.id}", class: "trivial ml10" %>
         <%= link_to "删除", comment, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: 'trivial ml10' if can? :destroy, comment %>
-        <br/>
+        <hr class="mt3 mb3"/>
         <%= content_tag :span, comment.content %>
     </div>
 

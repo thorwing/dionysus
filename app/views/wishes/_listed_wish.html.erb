@@ -1,0 +1,12 @@
+<div class="clearfix mt5 mb5">
+    <div class="pull-left">
+        <%= user_avatar_tag(wish.user) %>
+    </div>
+    <div class="pull-left ml10" style="width: 180px;">
+        <%= link_to wish.user.nick, wish.user%><br/>
+        <%= t('time.ago', :time => time_ago_in_words(wish.updated_at)) %>
+        <%= content_tag :span, t("wishes.wish_action", action: wish.accomplished ? t("wishes.done") : t("wishes.want")) %><br/>
+        <div class="wish_rating" data-rating="<%= wish.rating %>"></div>
+        <%= content_tag :span, wish.remark, class: "trivial" %><br/>
+    </div>
+</div>

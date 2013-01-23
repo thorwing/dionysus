@@ -1,7 +1,7 @@
-<div class="span3 mb20">
+<div class="span3 clearfix mt20" style="height: 400px;">
    <div class="row clearfix">
         <div class="pull-left">
-            <%= link_to image_tag(beverages.first{|b| b.pic_url.present?}.try(:pic_url), class: "img-square-80"), brand %>
+            <%= link_to image_tag(beverages.first{|b| b.pic_url.present?}.try(:pic_url), class: "beverage-frame"), brand %>
         </div>
 
         <div class="pull-left ml10" style="width: 110px;">

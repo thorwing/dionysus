@@ -14,7 +14,7 @@ class Review < ActiveRecord::Base
 
   #validations
   validates_presence_of :title
-  validates_presence_of :content
   validates_presence_of :author
+  validates_presence_of :beverage
 
 end

@@ -9,7 +9,7 @@ $ ->
     score: ->
       return $(this).attr('data-rating')
 
-  $('#wishRating').raty
+  $('.wish_rating').raty
     readOnly: true
     score: ->
       return $(this).attr('data-rating')

@@ -1,22 +1,15 @@
 <li class="removable_fields clearfix mb10">
-    <div class="pull-right">
-        <%= link_to_remove_fields "删除", f, {class: "trivial"} %>
-    </div>
-    <div class="clearfix"></div>
     <div class="clearfix">
-        <div class="pull-left" style="width: 300px;">
-            <%= f.input :flavor, label: false, placeholder: "香味", input_html: {class: 'piece_flavor'} %>
+        <div class="pull-left">
+            <%= f.input :flavor, label: "香味", placeholder: "香味", input_html: {class: 'input-small'} %>
         </div>
-        <div class="pull-left" style="width: 100px;">
-            <%= f.input :strength, label: false, placeholder: "强度", input_html: {class: 'input-mini'} %>
+        <div class="pull-left">
+          <%= f.input :strength, label: "强度", input_html: {class: 'input-mini', max: 5, min: 1} %>
+        </div>
+        <div class="pull-right">
+            <%= link_to_remove_fields "- 删除", f, {class: "trivial"} %>
         </div>
     </div>
-
-    <div class="display_on_focus hide pull-left" style="margin-left: 180px;">
-        <% %w(花香 果香 麦芽香).each do |tag| %>
-            <%= link_to_function tag, '', class: 'tag' %>
-        <% end %>
-    </div>
-    <!--<= f.hidden_field :id unless f.object.new_record? %>-->
 </li>
+
 

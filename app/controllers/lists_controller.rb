@@ -4,7 +4,8 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    @lists = List.page(params[:page]).per(20)
+    @new_lists = List.order("created_at DESC").limit(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +43,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
+        format.html { redirect_to @list, notice: t("lists.list_created") }
         format.json { render json: @list, status: :created, location: @list }
       else
         format.html { render action: "new" }
@@ -55,7 +56,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.update_attributes(params[:list])
-        format.html { redirect_to @list, notice: 'List was successfully updated.' }
+        format.html { redirect_to @list, notice: t("lists.list_updated") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

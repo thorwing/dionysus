@@ -9,7 +9,17 @@
 
             <div class="pull-left ml30 clearfix" style="width: 550px;">
                 <div class="clearfix">
-                    <%= content_tag :h1, @review.title, class: "pull-left" %>
+                    <div class="pull-left">
+                    <%= content_tag :h1, @review.title %>
+                        <% if @review.up_votes > 0 %>
+                            <div>
+                              <% @review.votings.map(&:voter).each do |voter| %>
+                                  <%= link_to voter.nick, voter, class: "trivial mr2" %>
+                              <% end %>
+                              <%= content_tag :span, "等#{@review.up_votes}人认同"  %>
+                            </div>
+                        <% end %>
+                    </div>
                     <div class="pull-right text-center">
                         <%= user_avatar_tag(@review.author) %><br/>
                         <%= link_to @review.author.nick, @review.author %>
@@ -17,46 +27,34 @@
                     <%= content_tag :span, @review.score, class: "pull-right label label-info mr20" %>
                 </div>
 
-                <% if @review.up_votes > 0 %>
-                    <div>
-                        <% @review.votings.map(&:voter).each do |voter| %>
-                            <%= link_to voter.nick, voter, class: "trivial mr2" %>
-                        <% end %>
-                        <%= content_tag :span, "等#{@review.up_votes}人赞同"  %>
-                    </div>
-                <% end %>
+                <%= render "reviews/info", review: @review %>
 
-                <div class="clearfix mt10">
-                    <ul class="unstyled pull-left">
-                        <% %w(Nose Taste Finish Balance).each do |item| %>
-                            <li class="mt5 mb5">
-                                <%= content_tag :span, t("reviews.scores.#{item.downcase}"), class: "mr5" %>
-                                <%= content_tag :span, "#{@review.send "#{item.downcase}_score".to_sym}/25 #{@review.send "#{item.downcase}_list".to_sym}", class: "trivial" %>
-                            </li>
-                        <% end %>
-                        <li class="mt5 mb5">
-                            <%= content_tag :span, t("reviews.foods"), class: "mr5" %>
-                            <%= content_tag :span, @review.food_list, class: "trivial" %>
-                        </li>
-                    </ul>
-                    <%= content_tag :div, "", id: "wheel", data: {flavors: @review.pieces.map{|p| {label: p.flavor, value: p.strength} }}, class: "pull-left ml30", style: "margin-top: -20px; width: 160px;height: 160px;" %>
-                    <%= content_tag :p, @review.pieces.map(&:flavor).join(" "), class: "b" %>
-                </div>
+                <%= content_tag :div, "", id: "wheel", data: {flavors: @review.pieces.map{|p| {label: p.flavor, value: p.strength} }} %>
+                <%= content_tag :p, @review.pieces.map(&:flavor).join(" "), class: "b" %>
 
                 <%= content_tag :p, @review.content, class: "mt20" %>
+
+                <%= link_to t("general.edit"), edit_review_path(@review) if can? :update, @review %>
+                <%= link_to t("general.delete"), @review, method: :delete, confirm: t("general.are_you_sure_to_delete"), class: "mr10"  if can? :destroy, @review %>
             </div>
         </div>
 
-        <div>
-            <%= link_to t("general.edit"), edit_review_path(@review) if can? :update, @review %>
-        </div>
-
-        <div class="mt20">
+        <div class="mt50">
             <%= render "comments/comments", item: @review %>
         </div>
     </div>
 
     <div class="span3">
         <%= render "beverages/sidebar", beverage: @review.beverage %>
+
+        <div class="mt50 box box-shadow p10">
+            <%= content_tag :p, "#{@review.author.nick}的其它酒评 · · · · · ·", class: "jujiu-label" %>
+
+            <ul class="unstyled">
+                <% @other_reviews.each do |review| %>
+                    <%= render "reviews/listed_review", review: review %>
+                <% end %>
+            </ul>
+        </div>
     </div>
 </div>

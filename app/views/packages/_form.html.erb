@@ -1,9 +1,10 @@
 <%= simple_form_for(@package) do |f| %>
     <%= f.error_notification %>
 
+    <%= f.label :list_id, "我的榜单" %>
     <%= f.collection_select :list_id, current_user.lists, :id, :title %>
     <p>
-        <%= link_to t("lists.new_list"), new_list_path %>
+        <%= link_to t("lists.add_list"), new_list_path if can? :create, List %>
     </p>
     <%= f.hidden_field :beverage_id %>
     <%= f.input :remark, as: :text, label: t("packages.remark"), input_html: {rows: '3', class: 'input-xlarge'} %>

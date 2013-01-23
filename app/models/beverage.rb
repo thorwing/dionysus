@@ -48,7 +48,7 @@ class Beverage < ActiveRecord::Base
   end
 
   def reviews_score
-    reviews.first.try(:score) || 98
+    reviews.first.try(:score) || I18n.t("reviews.score_na")
   end
 
   def rating

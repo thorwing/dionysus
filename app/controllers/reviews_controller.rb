@@ -2,7 +2,8 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = Review.page(params[:page]).per(20)
+    @other_reviews = Review.order("up_votes DESC").limit(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show
     @review = Review.find(params[:id])
+
+    @other_reviews = @review.author.reviews.where("id != ?", @review.id).order("up_votes DESC").limit(5)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,7 +53,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to @review, notice: I18n.t("reviews.review_created") }
         format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
@@ -66,7 +69,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @review, notice: I18n.t("reviews.review_updated") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

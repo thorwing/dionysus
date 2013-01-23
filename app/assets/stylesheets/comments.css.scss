@@ -1,3 +1,29 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    width:380px;
+}
+
+.comments #comment_content {
+    width: 335px;
+}
+
+.comments-simple #comment_content {
+    width: 78%;
+}
+
+.nested_comments {
+  margin-left: 40px;
+}
+
+.nested_comments .nested_comments .nested_comments .nested_comments {
+  margin-left: 0;
+}
+
+.gray_comments {
+    background: #EFEFEF
+}

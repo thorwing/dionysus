@@ -1,11 +1,11 @@
 <div class="comments">
+    <%= content_tag :p, "评论 · · · · · ·", class: "jujiu-label" %>
     <div id="comments_container_<%= item.id %>" class="mt10">
         <%= nested_comments(item.comments.arrange(:order => :created_at)) %>
     </div>
 
     <% if can? :create, Comment %>
-        <div class="comment_form visible_comment_form mt10">
-            <%= content_tag :p, "你的评论 · · · · · ·", class: "jujiu-label" %>
+        <div class="comment_form visible_comment_form mt30">
             <%= render "comments/form", comment: item.comments.new %>
         </div>
     <% else %>

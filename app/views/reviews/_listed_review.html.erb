@@ -1,0 +1,5 @@
+<li class="mt5 mb5">
+  <%= link_to review.beverage.full_name, review %><br/>
+  <%= link_to review.title, review, class: "b" %>
+  <%= content_tag :span, "#{review.up_votes}人认同", class: "trivial ml10" if review.up_votes > 0 %>
+</li>

@@ -12,6 +12,16 @@
             <div class="mt10 clearfix">
                 <%= render "beverages/info", beverage: @beverage %>
             </div>
+
+            <div class="mt20">
+                <% if @beverage.author %>
+                    <%= link_to @beverage.author.nick, @beverage.author %><%= content_tag :span, t("beverages.add_it"), class: "mr20" %>
+                <% end %>
+                <% if can? :create, Complain %>
+                    <%= link_to "纠错", "#complainDialog", 'data-toggle' => "modal" %>
+                    <%= render "complains/dialog", complain: @beverage.complains.new %>
+                <% end %>
+            </div>
         </div>
         <div class="span3">
             <div class="score_area">
@@ -35,7 +45,7 @@
                 <p>
                     <div class="clearfix">
                         <%= content_tag :span, "收藏", class: "pull-left" %>
-                        <div id="wishRating" class="pull-left ml10 n-mt5" data-rating="<%= @beverage.rating %>"></div>
+                        <div class="wish_rating pull-left ml10 n-mt5" data-rating="<%= @beverage.rating %>"></div>
                     </div>
                     <ul class="unstyled">
                         <% @rating_hash.each do |rating, percentage| %>
@@ -59,25 +69,20 @@
                 <%= link_to content_tag(:span, '', class: 'icon-gift') + " 我要卖", new_deal_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Deal %>
                 <%= link_to t("general.edit"), edit_beverage_path(@beverage), class: "ml20" if can? :edit, @beverage %>
             </div>
-
-            <div class="mt20">
-                <% if @beverage.author %>
-                    <%= link_to @beverage.author.nick, @beverage.author %><%= content_tag :span, t("beverages.add_it"), class: "mr20" %>
-                <% end %>
-                <% if can? :create, Complain %>
-                    <%= link_to "纠错", "#complainDialog", 'data-toggle' => "modal" %>
-                    <%= render "complains/dialog", complain: @beverage.complains.new %>
-                <% end %>
-            </div>
         <% end %>
     </div>
 
-    <div class="mt20">
-        <%= content_tag :span, "喜欢#{@beverage.full_name}的人也喜欢" %>
+    <div class="mt50">
+        <%= content_tag :span, "喜欢#{@beverage.full_name}的人也喜欢", class: "jujiu-label" %>
         <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
+        <ul>
+            <% @other_beverages.each do |beverage| %>
+                <li><%= link_to beverage.full_name, beverage %></li>
+            <% end %>
+        </ul>
     </div>
 
-    <div class="mt20">
+    <div class="mt50">
         <%= content_tag :span, "酒评", class: "jujiu-label" %>
         <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
         <%= content_tag :span, "(#{@beverage.reviews.size}共篇)", class: "trivial f12" %>
@@ -91,17 +96,24 @@
 
 <div class="span3">
     <div class="box box-shadow p10">
-        <%= content_tag :span, "以下榜单推荐", class: "jujiu-label" %>
-        <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
+        <%= content_tag :span, "以下榜单推荐 · · · · · ·", class: "jujiu-label" %>
+
+        <ul class="unstyled">
+            <% @beverage.lists.limit(3).each do |list| %>
+                <%= render "lists/listed_list", list: list %>
+            <% end %>
+        </ul>
     </div>
 
-    <div class="mt20">
-        <%= content_tag :span, "谁卖这瓶酒", class: "jujiu-label" %>
-        <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
+    <div class="mt50">
+        <%= content_tag :span, "谁卖这瓶酒 · · · · · ·", class: "jujiu-label" %>
+
     </div>
 
-    <div class="mt20">
-        <%= content_tag :span, "谁喝这瓶酒", class: "jujiu-label" %>
-        <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
+    <div class="mt50">
+        <%= content_tag :span, "谁喝这瓶酒 · · · · · ·", class: "jujiu-label" %>
+        <% @beverage.wishes.order("created_at DESC").each do |wish| %>
+            <%= render "wishes/listed_wish", wish: wish %>
+        <% end %>
   </div>
 </div>

@@ -12,4 +12,9 @@
         </div>
         <%= content_tag :p, review.content %>
     </div>
+    <div class="pull-right">
+        <div class="text-center" style="width: 100px;">
+            <%= link_to image_tag(review.beverage.get_picture, class: "small-beverage-frame"), review.beverage %>
+        </div>
+    </div>
 </div>

@@ -1,8 +1,21 @@
 <% title t("reviews.reviews") %>
 
 <div class="span9">
-    <% @reviews.each do |review| %>
+    <% @reviews.each_with_index do |review, index| %>
+        <% if index > 0 %><hr/><% end %>
         <%= render review %>
-        <hr/>
     <% end %>
+    <%= paginate @reviews %>
+</div>
+
+<div class="span3">
+    <div class="box box-shadow p10">
+        <%= content_tag :p, "热门酒评 · · · · · ·", class: "jujiu-label" %>
+
+        <ul class="unstyled">
+            <% @other_reviews.each do |review| %>
+                <%= render "reviews/listed_review", review: review %>
+            <% end %>
+        </ul>
+    </div>
 </div>

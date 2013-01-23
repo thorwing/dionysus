@@ -5,15 +5,16 @@
 
             <%= f.hidden_field :beverage_id %>
             <%= f.input :title, label: t("reviews.title"), input_html: {class: "input-xlarge"} %>
-            <%= f.input :content, label: t("reviews.content"), input_html: {class: "input-xlarge", rows: 5} %>
+            <%= f.input :content, label: t("reviews.content"), input_html: {class: "input-xlarge", rows: 10} %>
             <%= f.input :food_list, label: "#{t("reviews.foods")}#{t("tags.separated_by_commas")}" %>
 
             <div class="mt20 box box-shadow p10">
-                <%= f.input :score, as: :string, label: t("reviews.score"), input_html: {class: "input-mini"} %>
+                <%= content_tag :span, "打分" %><br/>
+                <%= f.input :score, as: :string, label: t("reviews.score"), readonly: true,  input_html: {class: "input-mini"} %>
 
                 <% %w(Nose Taste Finish Balance).each do |item| %>
                     <div class="mb20">
-                        <%= f.input "#{item.downcase}_list".to_sym, label: t("reviews.scores.#{item.downcase}") %>
+                        <%= f.input "#{item.downcase}_list".to_sym, label: t("reviews.scores.#{item.downcase}"), placeholder: t("reviews.hints.#{item.downcase}") %>
 
                         <div class="score_fields clearfix">
                             <div class='slider pull-left' style='width: 150px; margin-left: 180px;'></div>
@@ -27,7 +28,7 @@
             </div>
 
             <div class="box box-shadow p10 mt20">
-                <%= content_tag :span, "芳香轮" %><br/>
+                <%= content_tag :span, "芳香" %><br/>
                 <ul id="flavorPieces" class="unstyled">
                     <%= f.fields_for :pieces  do |builder| %>
                         <%= render "piece_fields", f: builder %>
@@ -39,7 +40,7 @@
 
 
           <div class="mt20 clearfix">
-              <%= f.submit t("general.publish"), class: "pull-right btn btn-primary" %>
+              <%= f.submit f.object.new_record? ? t("general.publish") : t("general.update"), class: "pull-right btn btn-primary" %>
           </div>
       <% end %>
     </div>

@@ -54,6 +54,9 @@ class BeveragesController < ApplicationController
       @rating_hash[rating] = wishes_size == 0 ? 0 : (count.to_f / wishes_size.to_f * 100).to_i
     end
 
+    other_wishes = Wish.where("id != ?", @beverage.id).where(user_id: @beverage.wishes.map(&:user_id))
+    @other_beverages = Beverage.where(id: other_wishes.map(&:beverage_id)).limit(10)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @beverage }

@@ -1,6 +1,24 @@
 <% title t("lists.lists") %>
 
-<% @lists.each do |list| %>
-    <%= render list %>
-    <hr/>
-<% end %>
+<div class="span9">
+    <% @lists.each do |list| %>
+        <%= render list %>
+        <hr/>
+    <% end %>
+</div>
+
+<div class="span3">
+    <p>
+        <%= link_to t("lists.add_list"), new_list_path if can? :create, List %>
+    </p>
+
+    <div class="box box-shadow p10">
+        <%= content_tag :span, "新榜单 · · · · · ·", class: "jujiu-label" %>
+
+        <ul class="unstyled">
+            <% @new_lists.each do |list| %>
+                <%= render "lists/listed_list", list: list %>
+            <% end %>
+        </ul>
+    </div>
+</div>

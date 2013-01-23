@@ -137,20 +137,32 @@ zh-CN:
     add: 添加到收藏
     remark: 简短附注
     iwish: 我%{action}这瓶酒
+    wish_action: "%{action}这瓶酒"
     want: 想喝
     done: 喝过
+    wish_created: 收藏成功
 
   reviews:
     title: 标题
     content: 内容
     foods: 搭配食物
-    score: 分数
+    score: 总分
+    score_na: 暂无
     reviews: 酒评
+    review_created: 成功添加酒评
+    review_updated: 成功更新酒评
     scores:
       nose: 闻起来
       taste: 尝起来
       finish: 余味
       balance: 平衡
+    hints:
+      nose: 如何形容闻起来
+      taste: 如何形容尝起来
+      finish: 如何形容余味
+      balance: 如何形容平衡
+
+
 
   nodes:
     node: 话题节点
@@ -172,11 +184,13 @@ zh-CN:
     new_articles: 新文章
 
   lists:
-    new_list: 新建榜单
+    add_list: +新建榜单
     new: 新榜单
     lists: 榜单
     title: 标题
     description: 描述
+    list_created: 成功添加榜单
+    list_updated: 成功修改榜单
 
   recipes:
     new_recipe: 新鸡尾酒配方
@@ -192,7 +206,7 @@ zh-CN:
 
   packages:
     new_package: 收集到榜单
-    remark: 推荐理由
+    remark: 理由
 
   deals:
     deals: 交易

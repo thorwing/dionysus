@@ -64,7 +64,7 @@
     <div>
         <%= content_tag :span, "年份:", class: 'b' %><br/>
         <% Beverage.vintages.each do |year| %>
-            <%= link_to_function year, "add_filter(this)", data: {filter: "vintage", value: year}, class: "mr10" %>
+            <%= link_to_function year == -1 ? t("beverages.old_vintage", year: 1980) : year, "add_filter(this)", data: {filter: "vintage", value: year}, class: "mr10" %>
         <% end %>
     </div>
 

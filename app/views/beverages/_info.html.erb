@@ -14,25 +14,33 @@
    </p>
 <% end %>
 
-<p>
-    <%= content_tag :span, t("beverages.style"), class: "mr20" %>
-    <%= content_tag :span, t("beverages.styles.#{beverage.type}.#{beverage.style}") %>
-</p>
+<% if beverage.style %>
+    <p>
+        <%= content_tag :span, t("beverages.style"), class: "mr20" %>
+        <%= content_tag :span, t("beverages.styles.#{beverage.type}.#{beverage.style}") %>
+    </p>
+<% end %>
 
-<p>
-    <%= content_tag :span, t("beverages.vintage"), class: "mr20" %>
-    <%= content_tag :span, beverage.vintage %>
-</p>
+<% if beverage.vintage %>
+    <p>
+        <%= content_tag :span, t("beverages.vintage"), class: "mr20" %>
+        <%= content_tag :span, beverage.vintage %>
+    </p>
+<% end %>
 
-<p>
-    <%= content_tag :span, t("beverages.alcohol"), class: "mr20" %>
-    <%= content_tag :span, "#{beverage.alcohol.to_i}%"  %>
-</p>
+<% if beverage.alcohol %>
+    <p>
+        <%= content_tag :span, t("beverages.alcohol"), class: "mr20" %>
+        <%= content_tag :span, "#{beverage.alcohol.to_i}%"  %>
+    </p>
+<% end %>
 
-<p>
-    <%= content_tag :span, t("beverages.volume"), class: "mr20" %>
-    <%= content_tag :span, "#{beverage.volume}ml" %>
-</p>
+<% if beverage.volume %>
+    <p>
+        <%= content_tag :span, t("beverages.volume"), class: "mr20" %>
+        <%= content_tag :span, "#{beverage.volume}ml" %>
+    </p>
+<% end %>
 
 <% case beverage.type %>
     <% when 'Whisky' %>
