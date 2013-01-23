@@ -184,6 +184,8 @@ zh-CN:
   articles:
     articles: 文章
     new_articles: 新文章
+    article_created: 文章添加成功
+    article_updated: 文章修改成功
 
   lists:
     add_list: +新建榜单

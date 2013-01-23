@@ -1,11 +1,7 @@
 <div>
     <%= link_to deal.beverage.full_name, deal, class: "jujiu-label" %>
     <div class="clearfix">
-        <div class="pull-left">
-            <%= link_to deal.seller.nick, deal.seller %><%= content_tag :span, "有#{deal.amount}瓶这种酒出售" %>
-        </div>
-        <div class="pull-right">
-            <%= content_tag :span, "#{format('%.2f', deal.price)}￥", class: "price" %>
-        </div>
+        <%= link_to deal.seller.nick, deal.seller %><%= content_tag :span, "有#{deal.amount}瓶这种酒出售" %>
+        <%= content_tag :span, "#{format('%.2f', deal.price)}￥", class: "price ml20" %>
     </div>
 </div>

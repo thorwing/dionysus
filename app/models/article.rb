@@ -27,7 +27,10 @@ class Article < ActiveRecord::Base
   end
 
   def get_picture
-    doc = Nokogiri::HTML(body)
-    doc.search('img').first['src']
+    begin
+      doc = Nokogiri::HTML(body)
+      doc.search('img').first['src']
+    rescue
+    end
   end
 end

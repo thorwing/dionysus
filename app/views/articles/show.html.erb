@@ -5,6 +5,9 @@
         <%= simple_format(@article.body) %>
     </div>
 
+    <%= link_to t("general.edit"), edit_article_path(@article) if can? :update, @article %>
+    <%= link_to t("general.delete"), @article, method: :delete, class: "ml10" if can? :delete, @article %>
+
     <div class="mt20">
         <%= render "comments/comments", item: @article %>
     </div>
@@ -12,22 +15,21 @@
 
 <div class="span3">
     <%= render "users/user_block", user: @article.author %>
-    <%= link_to t("general.edit"), edit_article_path(@article) if can? :update, @article %>
 
-    <div class="mt20">
-        <%= content_tag :b, "作者的其他文章" %><br/>
+    <div class="box box-shadow p10 mt50">
+        <%= content_tag :span, "作者的其他文章 · · · · · ·", class: "jujiu-label" %>
         <ul>
             <% @article.author.articles.where("id != ?", @article.id).order("created_at").limit(3).each do |article| %>
-                <li><%= link_to article.title, article %></li>
+                <%= render "articles/listed_article", article: article %>
             <% end %>
         </ul>
     </div>
 
-    <div class="mt20">
-        <%= content_tag :b, "主题推荐" %><br/>
+    <div class="box box-shadow p10 mt50">
+        <%= content_tag :span, "推荐文章 · · · · · ·", class: "jujiu-label" %>
         <ul>
             <% Article.where("id != ?", @article.id).order("view_count").limit(3).each do |article| %>
-                <li><%= link_to article.title, article %></li>
+                <%= render "articles/listed_article", article: article %>
             <% end %>
         </ul>
     </div>

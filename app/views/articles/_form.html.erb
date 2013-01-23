@@ -1,10 +1,18 @@
-<%= simple_form_for(@article) do |f| %>
-    <%= f.error_notification %>
+<div class="span9">
+    <%= simple_form_for(@article) do |f| %>
+        <%= f.error_notification %>
 
-    <%= f.input :title, label: false, placeholder: t("general.title"), input_html: {class: "input-xlarge"} %>
-    <%= f.input :body, as: :text, label: false, input_html: { class: "redactor", :rows => 40, :cols => 120 }%>
+        <%= f.input :title, label: t("general.title"), input_html: {class: "input-xlarge"} %>
+        <%= f.input :body, as: :text, label: false, input_html: { class: "redactor", :rows => 40, :cols => 120 }%>
 
-    <div class="actions">
-        <%= f.submit t("general.publish"), class: "btn btn-primary" %>
+        <div class="actions">
+            <%= f.submit t("general.publish"), class: "btn btn-primary" %>
+        </div>
+    <% end %>
+</div>
+
+<div class="span3">
+    <div class="box box-shadow p10">
+        <%= content_tag :span, "编辑须知", class: "jujiu-label" %>
     </div>
-<% end %>
+</div>
