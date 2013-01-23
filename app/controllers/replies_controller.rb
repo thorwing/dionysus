@@ -24,7 +24,7 @@ class RepliesController < ApplicationController
   # GET /replies/new
   # GET /replies/new.json
   def new
-    @reply = Reply.new
+    @reply = Reply.new(topic_id: params[:topic_id])
 
     respond_to do |format|
       format.html # new.html.erb

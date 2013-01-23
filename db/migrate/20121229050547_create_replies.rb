@@ -2,6 +2,7 @@ class CreateReplies < ActiveRecord::Migration
   def change
     create_table :replies do |t|
       t.string :body
+      t.references :topic
 
       t.timestamps
     end

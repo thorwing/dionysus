@@ -1,14 +1,22 @@
-<%= simple_form_for(@topic) do |f| %>
-    <%= f.error_notification %>
+<div class="span9">
+    <%= simple_form_for(@topic) do |f| %>
+        <%= f.error_notification %>
 
-    <%= f.label :node_id, t("nodes.node") %>
-    <%= f.collection_select :node_id, Node.all, :id, :name %>
-    <%= f.input :title, label: t("topics.title") %>
-    <%= f.input :body, label: t("topics.body"), as: :text, input_html: { class: "redactor", :rows => 40, :cols => 120 }%>
+        <%= f.label :node_id, t("nodes.node") %>
+        <%= f.collection_select :node_id, Node.all, :id, :name %>
+        <%= f.input :title, label: t("topics.title") %>
+        <%= f.input :body, label: t("topics.body"), as: :text, input_html: { class: "redactor", :rows => 40, :cols => 120 }%>
 
-    <div class="actions">
-        <%= f.submit t("general.publish"), :class => "btn btn-primary" %>
-        <%= link_to(t("general.cancel"), @topic.id.blank? ? topics_path : topic_path(@topic), class: "btn")%>
+        <div class="actions">
+            <%= f.submit t("general.publish"), :class => "btn btn-primary" %>
+            <%= link_to(t("general.cancel"), @topic.id.blank? ? topics_path : topic_path(@topic), class: "btn")%>
+        </div>
+
+    <% end %>
+</div>
+
+<div class="span3">
+    <div class="box box-shadow p10">
+        <%= content_tag :span, "发帖须知", class: "jujiu-label" %>
     </div>
-
-<% end %>
+</div>

@@ -19,7 +19,7 @@ class TopicsController < ApplicationController
 
     @locked_nodes ||= []
     @unlocked_nodes = locked_node_ids.empty? ? Node.all : Node.where("id NOT IN (?)", locked_node_ids)
-    @topics = criteria.order("last_active_mark DESC")
+    @topics = criteria.order("last_active_mark DESC").page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -61,7 +61,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to @topic, notice: t("topics.topic_created")}
         format.json { render json: @topic, status: :created, location: @topic }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to @topic, notice: t("topics.topic_updated") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

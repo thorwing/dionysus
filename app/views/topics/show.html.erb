@@ -1,14 +1,23 @@
-<% title @topic.title %>
+<% title @topic.title, false %>
 
-<div class="span8">
+<div class="span9">
+    <% if @topic.node %>
+        <%= link_to @topic.node.name, lock_node_path(@topic.node), method: :put %> <%= content_tag :span, ">", class: "ml5 mr5" %>
+    <% end %>
+    <%= content_tag :span, @topic.title, class: "jujiu-label" %>
     <%= raw @topic.body %>
 
-    <div class="mt20">
-        <%= link_to "回应", new_reply_path(topic_id: @topic.id) %>
+    <%= link_to t("general.edit"), edit_topic_path(@topic) if can? :update, @topic %>
+
+    <div class="mt50">
+        <%= content_tag :span, "回应 · · · · · · (#{@topic.replies.size})", class: "jujiu-label" %>
+        <div class="clearfix">
+            <%= link_to "+回应", new_reply_path(topic_id: @topic.id), class: "pull-right" %>
+        </div>
     </div>
 </div>
 
-<div class="span4">
-    <%= link_to t("general.edit"), edit_topic_path(@topic) %>
+<div class="span3">
+    <%= render "users/user_block", user: @topic.author %>
 </div>
 
