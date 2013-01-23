@@ -1,0 +1,21 @@
+$("#unreadSumCounter").text("<%= @sum %>");
+<% if @sum > 0 %>
+    $("#unreadSumCounter").show();
+<% else %>
+    $("#unreadSumCounter").hide();
+<% end %>
+
+$("#newNotificationsCounter").text("<%= @unread_notifications_count %>");
+<% if @unread_notifications_count > 0 %>
+    $("#newNotificationsCounter").show();
+<% else %>
+    $("#newNotificationsCounter").hide();
+<% end %>
+
+$("#newMessagesCounter").text("<%= @new_messages_count %>");
+<% if @new_messages_count > 0 %>
+    $("#newMessagesCounter").show();
+<% else %>
+    $("#newMessagesCounter").hide();
+<% end %>
+

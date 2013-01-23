@@ -73,7 +73,11 @@ Dionysus::Application.routes.draw do
 
   resources :messages
   resources :conversations
-  resources :notifications
+  resources :notifications do
+    collection do
+      get :count
+    end
+  end
 
   resources :complains
 

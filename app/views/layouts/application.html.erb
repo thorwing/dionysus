@@ -67,15 +67,12 @@
 <%= yield :foot if content_for?(:foot) %>
 
 <script type="text/javascript">
-    // now scroll to element with that id
-    //    $('html, body').animate({ scrollTop: $(hash).offset().top });
-
-    <!--< if current_user %>-->
-//        $.getScript('/notifications/count');
-//        setInterval(function(){
-//            $.getScript('/notifications/count');
-//        }, 10000);
-    <!--< end %>-->
+    <% if current_user %>
+        $.getScript('/notifications/count');
+        setInterval(function(){
+            $.getScript('/notifications/count');
+        }, 10000);
+    <% end %>
 </script>
 
 </body>
