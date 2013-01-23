@@ -6,7 +6,7 @@
         <%= link_to t("general.delete"), wish, method: :delete, class: "ml5 trivial" %>
     </p>
     <%= render "wishes/dialog", wish: wish %>
-    <%= content_tag :p, wish.remark if wish.remark.present? %>
+    <%= content_tag :span, wish.remark, class: "trivial" if wish.remark.present? %>
 <% else %>
     <%= link_to t("wishes.want"), "#wishDialog", 'data-toggle' => "modal", class: "btn btn-mini btn-warning" %>
     <%= link_to t("wishes.done"), "#wishDialog", 'data-toggle' => "modal", class: "btn btn-mini btn-danger ml10" %>

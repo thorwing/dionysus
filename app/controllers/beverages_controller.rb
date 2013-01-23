@@ -42,6 +42,18 @@ class BeveragesController < ApplicationController
   def show
     @beverage = Beverage.find(params[:id])
 
+    @rating_hash = {}
+    5.downto(1).each do |rating|
+      @rating_hash[rating] = 0
+    end
+    @beverage.wishes.each do |wish|
+      @rating_hash[wish.rating] += 1
+    end
+    wishes_size = @beverage.wishes.size
+    @rating_hash.each do |rating, count|
+      @rating_hash[rating] = wishes_size == 0 ? 0 : (count.to_f / wishes_size.to_f * 100).to_i
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @beverage }

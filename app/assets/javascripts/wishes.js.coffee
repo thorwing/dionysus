@@ -6,8 +6,11 @@ $ ->
   $('#star').raty
     path: '/assets/'
     scoreName: 'wish[rating]'
+    score: ->
+      return $(this).attr('data-rating')
 
   $('#wishRating').raty
+    readOnly: true
     score: ->
       return $(this).attr('data-rating')
     path: '/assets/'

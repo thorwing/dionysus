@@ -6,7 +6,7 @@
 
     <%= f.input :accomplished, label: false, collection: [[false, "想喝"], [true, "喝过"]], label_method: :last, value_method: :first, as: :radio %>
 
-    <div id='star'></div>
+    <div id='star' data-rating="<%= wish.rating %>"></div>
 
     <%= render "tags/tags_form", f: f, tags: [] %>
 

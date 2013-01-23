@@ -16,6 +16,8 @@
  *= require frames
  *= require icons
  *= require votes
+ *= require reviews
+ *= require beverages
  *= require jquery.ui.slider
  *= require masonary
  *= require redactor-rails

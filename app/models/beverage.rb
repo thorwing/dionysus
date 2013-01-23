@@ -56,8 +56,8 @@ class Beverage < ActiveRecord::Base
   end
 
   #TODO stub
-  def tags
-    []
+  def tags(limit = 3)
+    self.wishes.tag_counts_on(:tags).order("count DESC").limit(limit)
   end
 
   #TODO stub

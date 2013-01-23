@@ -1,3 +1,32 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.score_area {
+  width: 100px;
+  text-align: center;
+
+  .score_header {
+    padding: 2px;
+    background: gray;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    span {
+      color: #ffffff;
+    }
+  }
+
+  .score_block {
+    background: #339999;
+    padding: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+    text-align: center;
+
+    span {color: #ffffff;}
+    span.score_number {font-size: 32px;}
+    .score_reviews {position: relative; bottom: -10px;text-align: center;}
+  }
+}
