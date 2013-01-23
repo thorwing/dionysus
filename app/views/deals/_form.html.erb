@@ -3,8 +3,15 @@
         <%= f.error_notification %>
 
         <%= f.hidden_field :beverage_id %>
-        <%= f.input :price, label: t("deals.price") %>
-        <%= f.input :amount, label: t("deals.amount") %>
+
+        <div class="clearfix">
+            <div class="pull-left">
+                <%= f.input :price, as: :float, label: t("deals.price"), input_html: {class: "input-small"} %>
+            </div>
+            <div class="pull-left ml30">
+                <%= f.input :amount, as: :integer, label: t("deals.amount"), input_html: {class: "input-small"} %>
+            </div>
+        </div>
 
         <%= f.input :remark, as: :text, label: t("deals.remark"), input_html: {rows: 5, class: "input-xlarge"} %>
 

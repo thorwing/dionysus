@@ -1,4 +1,5 @@
 class Deal < ActiveRecord::Base
+  attr_accessible :price, :amount, :remark, :beverage_id
 
   #relationships
   belongs_to :beverage

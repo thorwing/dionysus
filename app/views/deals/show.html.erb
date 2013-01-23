@@ -7,12 +7,15 @@
         </div>
 
         <div class="pull-left ml20">
-            <%= link_to @deal.beverage.full_name, @deal.beverage %><br/>
-            <%= render "beverages/info", beverage: @deal.beverage %>
-            <hr/>
+            <%= link_to @deal.beverage.full_name, @deal.beverage, class: "jujiu-title" %>
+
+            <div class="box box-shadow p10 mt10 mb10">
+                <%= render "beverages/info", beverage: @deal.beverage %>
+            </div>
+
             <p>
                 <%= content_tag :span, t("deals.price"), class: "mr20" %>
-                <%= content_tag :span, @deal.price %>
+                <%= content_tag :span, "#{format('%.2f', @deal.price)}￥", class: "red f15" %>
             </p>
 
             <p>
@@ -23,6 +26,8 @@
             <%= content_tag :p, @deal.remark %>
 
             <%= link_to t("general.edit"), edit_deal_path(@deal) if can? :update, @deal %>
+            <%= link_to t("general.delete"), @deal, method: :delete, confirm: t("general.are_you_sure_to_delete"), class: "ml10"  if can? :destroy, @deal %>
+
             <div class="mt20">
                 <%= link_to "给卖家留言", new_message_path(receiver_id: @deal.seller_id), class: "btn btn-warning" if can?(:create, Message) && @deal.seller != current_user %>
             </div>
@@ -32,21 +37,16 @@
 </div>
 
 <div class="span3">
-    <%= content_tag :p, "卖家:", class: "jujiu-label"  %>
-    <%= user_avatar_tag @deal.seller %>
+    <%= render "users/user_block", user: @deal.seller %>
 
-    <% unless @other_deals.empty? %>
-        <hr/>
-        <%= content_tag :p, "卖家的其他交易" %>
+    <div class="mt50">
+        <%= content_tag :p, "#{@deal.seller.nick}的其他交易 · · · · · ·", class: "jujiu-label" %>
         <ul class="unstyled">
             <% @other_deals.each do |deal| %>
-                <li>
-                    <%= link_to deal.beverage.full_name %>
-                    <%= content_tag :span, @deal.price, class: "ml5" %>
-                </li>
+                <%= render "deals/listed_deal", deal: deal %>
             <% end %>
         </ul>
-    <% end %>
+    </div>
 </div>
 
 

@@ -216,6 +216,8 @@ zh-CN:
     price: 价格
     amount: 存量
     remark: 说明
+    deal_created: 添加交易成功
+    deal_updated: 更新交易成功
 
   admin:
     control_panel: 控制面板

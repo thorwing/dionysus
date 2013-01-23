@@ -9,8 +9,8 @@
         <ul class="mt10">
             <% list.packages.limit(5).each do |package| %>
                 <li>
-                    <%= link_to package.beverage.full_name, package.beverage, class: "jujiu-label" %><br/>
-                    <blockquote>
+                    <%= link_to package.beverage.full_name, package.beverage, class: "jujiu-label" %>
+                    <blockquote class="ml10">
                         <%= content_tag :q, package.remark if package.remark %>
                     </blockquote>
                 </li>

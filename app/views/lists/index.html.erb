@@ -1,6 +1,9 @@
 <% title t("lists.lists") %>
 
 <div class="span9">
+    <div class="clearfix">
+        <%= link_to t("lists.add_list"), new_list_path, class: "pull-right" if can? :create, List %>
+    </div>
     <% @lists.each do |list| %>
         <%= render list %>
         <hr/>
@@ -8,10 +11,6 @@
 </div>
 
 <div class="span3">
-    <p>
-        <%= link_to t("lists.add_list"), new_list_path if can? :create, List %>
-    </p>
-
     <div class="box box-shadow p10">
         <%= content_tag :span, "新榜单 · · · · · ·", class: "jujiu-label" %>
 
