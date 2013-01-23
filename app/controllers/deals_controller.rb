@@ -2,7 +2,9 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.all
+    @deals = Deal.page(params[:page]).per(20)
+    @new_deals = Deal.order("created_at DESC").limit(4)
+    @hot_deals = Deal.order("created_at DESC").limit(4)
 
     respond_to do |format|
       format.html # index.html.erb

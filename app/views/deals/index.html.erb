@@ -1,13 +1,32 @@
 <% title t("deals.deals") %>
 
 <div class="span9">
-    <% @deals.each do |deal| %>
+    <% @deals.each_with_index do |deal, index| %>
+        <% if index > 0 %><hr/><% end %>
         <%= render deal %>
-        <hr/>
     <% end %>
+    <%= paginate @deals %>
 </div>
 
 <div class="span3">
+    <div class="box box-shadow p10">
+        <%= content_tag :span, "新交易 · · · · · ·", class: "jujiu-label" %>
 
+        <ul class="unstyled">
+            <% @new_deals.each do |deal| %>
+                <%= render "deals/listed_deal", deal: deal %>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="box box-shadow p10 mt50">
+        <%= content_tag :span, "热门交易 · · · · · ·", class: "jujiu-label" %>
+
+        <ul class="unstyled">
+            <% @hot_deals.each do |deal| %>
+                <%= render "deals/listed_deal", deal: deal %>
+            <% end %>
+        </ul>
+    </div>
 </div>
 

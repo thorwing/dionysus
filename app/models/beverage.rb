@@ -52,7 +52,7 @@ class Beverage < ActiveRecord::Base
   end
 
   def rating
-    wishes.empty? ? 0 :(wishes.sum(&:rating) / wishes.size)
+    wishes.empty? ? 0 : format('%.1f', wishes.sum(&:rating).to_f / wishes.size.to_f)
   end
 
   #TODO stub

@@ -28,10 +28,18 @@
                 <div class="score_header">
                     <%= content_tag :span, "分数" %>
                 </div>
-                <div class="score_block">
-                    <%= content_tag :span, @beverage.reviews_score, class: "score_number" %>
-                    <div class="score_reviews">
-                        <%= content_tag :span, "#{@beverage.reviews.size}份酒评" %>
+                <div class="clearfix">
+                    <div class="score_block">
+                        <%= content_tag :span, @beverage.reviews_score, class: "score_number" %>
+                        <div class="brief_text">
+                            <%= content_tag :span, "#{@beverage.reviews.size}份酒评" %>
+                        </div>
+                    </div>
+                    <div class="rating_block">
+                        <%= content_tag :span, @beverage.rating, class: "score_number" %>
+                      <div class="brief_text">
+                          <%= content_tag :span, "#{@beverage.wishes.size}人收藏" %>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -107,7 +115,14 @@
 
     <div class="mt50">
         <%= content_tag :span, "谁卖这瓶酒 · · · · · ·", class: "jujiu-label" %>
-
+        <% @sellers.each do |seller| %>
+            <div class="clearfix mt5 mb5">
+                <div class="pull-left">
+                    <%= user_avatar_tag(seller) %>
+                </div>
+                <%= link_to seller.nick, seller, class: "pull-left ml10" %>
+            </div>
+        <% end %>
     </div>
 
     <div class="mt50">

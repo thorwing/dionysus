@@ -57,6 +57,8 @@ class BeveragesController < ApplicationController
     other_wishes = Wish.where("id != ?", @beverage.id).where(user_id: @beverage.wishes.map(&:user_id))
     @other_beverages = Beverage.where(id: other_wishes.map(&:beverage_id)).limit(10)
 
+    @sellers = @beverage.deals.limit(4).map(&:seller)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @beverage }
