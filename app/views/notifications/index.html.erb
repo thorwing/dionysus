@@ -3,20 +3,10 @@
 <div class="span9">
     <%= render "shared/messages_tab", active_box: "notifications" %>
 
-    <table>
-      <tr>
-          <th>标题</th>
-          <th>内容</th>
-          <th></th>
-      </tr>
-
-      <% @notifications.each do |notification| %>
-        <tr>
-          <td><%= notification.subject %></td>
-          <td><%= notification.body %></td>
-        </tr>
-      <% end %>
-    </table>
+    <% @notifications.each do |notification| %>
+        <%= render notification %>
+        <hr/>
+    <% end %>
     <%= paginate @notifications %>
 </div>
 

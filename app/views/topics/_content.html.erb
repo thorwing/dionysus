@@ -1,0 +1,10 @@
+<div class="box box-shadow p10 clearfix">
+    <% if topic.node %>
+      <%= link_to topic.node.name, lock_node_path(topic.node), method: :put, class: "f14" %> <%= content_tag :span, ">", class: "ml5 mr5" %>
+    <% end %>
+    <%= link_to topic.title, topic, class: "jujiu-label" %>
+
+    <%= content_tag :div, raw(topic.body), class: "mt10" %>
+
+    <%= link_to t("general.edit"), edit_topic_path(@topic) if can? :update, @topic %>
+</div>

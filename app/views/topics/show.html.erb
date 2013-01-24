@@ -1,19 +1,18 @@
 <% title @topic.title, false %>
 
 <div class="span9">
-    <% if @topic.node %>
-        <%= link_to @topic.node.name, lock_node_path(@topic.node), method: :put %> <%= content_tag :span, ">", class: "ml5 mr5" %>
-    <% end %>
-    <%= content_tag :span, @topic.title, class: "jujiu-label" %>
-    <%= raw @topic.body %>
-
-    <%= link_to t("general.edit"), edit_topic_path(@topic) if can? :update, @topic %>
+    <%= render "topics/content", topic: @topic %>
 
     <div class="mt50">
-        <%= content_tag :span, "回应 · · · · · · (#{@topic.replies.size})", class: "jujiu-label" %>
         <div class="clearfix">
+            <%= content_tag :span, "回应 · · · · · · (#{@replies.size})", class: "jujiu-label pull-left" %>
             <%= link_to "+回应", new_reply_path(topic_id: @topic.id), class: "pull-right" %>
         </div>
+
+        <% @replies.each do |reply| %>
+            <hr/>
+            <%= render reply %>
+        <% end %>
     </div>
 </div>
 

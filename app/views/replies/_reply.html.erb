@@ -1,0 +1,12 @@
+<div class="clearfix">
+    <div class="pull-left">
+        <%= user_avatar_tag(reply.author) %>
+    </div>
+    <div class="pull-left ml20">
+        <div class="clearfix">
+            <%= link_to reply.author.nick, reply.author, class: "pull-left" %>
+            <%= content_tag :span, t('time.ago', :time => time_ago_in_words(reply.created_at)), class: "pull-left ml20 trivial" %>
+        </div>
+        <%= content_tag :p, reply.body %>
+    </div>
+</div>

@@ -1,5 +1,11 @@
-<p id="notice"><%= notice %></p>
+<% title "回应" %>
 
+<div class="span9">
+    <%= render "topics/content", topic: @reply.topic %>
+    <hr/>
+    <%= render "replies/reply", reply: @reply %>
+</div>
 
-<%= link_to 'Edit', edit_reply_path(@reply) %> |
-<%= link_to 'Back', replies_path %>
+<div class="span3">
+    <%= render "users/user_block", user: @reply.author %>
+</div>

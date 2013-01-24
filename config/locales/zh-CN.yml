@@ -177,6 +177,10 @@ zh-CN:
     topic_created: 主题添加成功
     topic_updated: 主题更新成功
 
+  replies:
+    reply_created: 回应添加成功
+    reply_updated: 回应更新成功
+
   tags:
     form_label: 标签(多个标签用空格分隔)
     separated_by_commas: (多个标签用空格分隔)
@@ -246,7 +250,8 @@ zh-CN:
     new_message: 新私信
 
   notifications:
-    up_vote_review: 酒评%{link}得到了赞同
+    up_vote_review: "%{who}赞同了你的酒评"
+    reply_topic: "%{who}回应了你的主题"
 
   complains:
     complains: 纠错

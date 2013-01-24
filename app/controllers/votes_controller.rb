@@ -14,8 +14,10 @@ class VotesController < ApplicationController
       current_user.up_vote(@item)
       @voted = true
 
-      @receipt = @item.author.notify("fyi", "up vote ur item")
-      #FeedsManager.new(current_user, 'like', @item).generate_for(current_user)
+      case @item.class.name
+        when "Review"
+          @receipt = @item.author.notify(t("notifications.up_vote_review", who: current_user.nick), view_context.link_to(@item.title, @item))
+      end
     end
 
     respond_to do |format|

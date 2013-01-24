@@ -30,6 +30,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @replies = Reply.where(topic_id: @topic.id)
 
     respond_to do |format|
       format.html # show.html.erb

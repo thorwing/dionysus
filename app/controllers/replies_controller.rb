@@ -41,10 +41,13 @@ class RepliesController < ApplicationController
   # POST /replies.json
   def create
     @reply = Reply.new(params[:reply])
+    @reply.author = current_user
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
+        receipt = @reply.topic.author.notify(t("notifications.reply_topic", who: current_user.nick), view_context.link_to(@reply.topic.title, @reply.topic)) unless @reply.topic.author == current_user
+
+        format.html { redirect_to @reply, notice: t("replies.reply_created") }
         format.json { render json: @reply, status: :created, location: @reply }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @reply.update_attributes(params[:reply])
-        format.html { redirect_to @reply, notice: 'Reply was successfully updated.' }
+        format.html { redirect_to @reply, notice: t("replies.reply_updated") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -358,8 +358,9 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
   add_index "regions", ["ancestry"], :name => "index_regions_on_ancestry"
 
   create_table "replies", :force => true do |t|
-    t.string   "body"
+    t.text     "body"
     t.integer  "topic_id"
+    t.integer  "author_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

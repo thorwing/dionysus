@@ -1,5 +1,3 @@
-<%= title "回应 #{@reply.topic.title}" %>
+<% title "回应 #{@reply.topic.title}" %>
 
 <%= render 'form' %>
-
-<%= link_to t("general.cancel"), @reply.topic, class: "btn" %>
