@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to [@user, @location], notice: 'Location was successfully updated.' }
+        format.html { redirect_to [@user, @location], notice: t("locations.location_updated") }
       else
         format.html { render action: "edit" }
       end
@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to [@user, @location], notice: 'Location was successfully created.' }
+        format.html { redirect_to [@user, @location], notice: t("locations.location_created") }
       else
         format.html { render action: "new" }
       end

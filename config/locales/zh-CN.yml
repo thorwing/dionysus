@@ -226,6 +226,10 @@ zh-CN:
     deal_created: 添加交易成功
     deal_updated: 更新交易成功
 
+  locations:
+    location_created: 地址成功添加
+    location_updated: 地址成功更新
+
   admin:
     control_panel: 控制面板
 

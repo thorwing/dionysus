@@ -3,5 +3,5 @@
     <%= f.collection_select :area_id, Area.all.map{|area | [area.code, area.name]}, :first, :last %>
     <%= f.input :address, label: false, placeholder: "详细地址, 如西藏中路268号来福士广场3楼301室", input_html: {class: "input-xxlarge"} %>
 
-    <%= f.submit %>
+    <%= f.submit t("general.confirm"), class: "btn btn-primary" %>
 <% end %>

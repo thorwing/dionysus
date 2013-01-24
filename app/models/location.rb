@@ -9,6 +9,6 @@ class Location < ActiveRecord::Base
   after_validation :geocode
 
   def full_city_address
-    "#{address}"
+    "#{city.name} #{address}"
   end
 end

@@ -48,7 +48,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
+        format.html { redirect_to @deal, notice: t("deals.deal_created") }
         format.json { render json: @deal, status: :created, location: @deal }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.update_attributes(params[:deal])
-        format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
+        format.html { redirect_to @deal, notice: t("deals.deal_updated") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
