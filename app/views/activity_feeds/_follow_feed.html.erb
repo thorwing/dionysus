@@ -1,3 +1,4 @@
 <div class="clearfix">
     <%= content_tag :span, "关注了" %><%= link_to feed.data["follow_nick"], user_path(id: feed.data["follow_id"]) %>
+    <%= content_tag :span, t('time.ago', :time => time_ago_in_words(feed.created_at)), class: "ml20" %>
 </div>

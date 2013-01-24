@@ -14,6 +14,8 @@ class FeedsManager
     case identity[:type]
       when "FollowFeed"
         data = {follow_id: @target.id, follow_nick: @target.nick}
+      when "CreateFeed"
+        data = {item_id: @target.id, item_type: @target.class.name}
     end
 
     identity[:data] = data

@@ -38,6 +38,7 @@
     </p>
 
     <% @user.activity_feeds.each do |activity_feed| %>
+        <hr class="mt10 mb10 dotted"/>
         <%= render "activity_feeds/#{activity_feed.type.underscore}", feed: activity_feed %>
     <% end %>
 </div>

@@ -43,6 +43,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
+        FeedsManager.new(current_user, 'create', @list).generate
         format.html { redirect_to @list, notice: t("lists.list_created") }
         format.json { render json: @list, status: :created, location: @list }
       else

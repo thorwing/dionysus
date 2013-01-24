@@ -53,6 +53,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
+        FeedsManager.new(current_user, 'create', @review).generate
         format.html { redirect_to @review, notice: I18n.t("reviews.review_created") }
         format.json { render json: @review, status: :created, location: @review }
       else

@@ -88,6 +88,8 @@ zh-CN:
     bottler: 灌装商
     style: 类型
     add_it: 添加了这瓶酒
+    beverage_created: 成功添加酒
+    beverage_updated: 成功更新酒
     categories:
       Wine: 葡萄酒
       Whisky: 威士忌

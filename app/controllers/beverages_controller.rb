@@ -91,7 +91,8 @@ class BeveragesController < ApplicationController
 
     respond_to do |format|
       if @beverage.save
-        format.html { redirect_to @beverage, notice: 'Beverage was successfully created.' }
+        FeedsManager.new(current_user, 'create', @beverage).generate
+        format.html { redirect_to @beverage, notice: t("beverages.beverage_created")}
         format.json { render json: @beverage, status: :created, location: @beverage }
       else
         format.html { render action: "new" }
@@ -107,7 +108,7 @@ class BeveragesController < ApplicationController
 
     respond_to do |format|
       if @beverage.update_attributes(params[:beverage])
-        format.html { redirect_to @beverage, notice: 'Beverage was successfully updated.' }
+        format.html { redirect_to @beverage, notice: t("beverages.beverage_updated")}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

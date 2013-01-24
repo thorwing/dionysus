@@ -62,6 +62,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
+        FeedsManager.new(current_user, 'create', @topic).generate
         format.html { redirect_to @topic, notice: t("topics.topic_created")}
         format.json { render json: @topic, status: :created, location: @topic }
       else

@@ -87,6 +87,7 @@ class RecipesController < ApplicationController
     end
 
     if saved
+      FeedsManager.new(current_user, 'create', @recipe).generate
       session[:recipe_stage] =  session[:recipe_params] =  nil
       redirect_to url_for(contriller: "recipes", action: "show", id: @recipe.id, newly_created: true), notice: t("recipes.recipe_created")
     else

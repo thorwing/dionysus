@@ -48,6 +48,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.save
+        FeedsManager.new(current_user, 'create', @deal).generate
         format.html { redirect_to @deal, notice: t("deals.deal_created") }
         format.json { render json: @deal, status: :created, location: @deal }
       else
