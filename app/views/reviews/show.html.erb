@@ -29,8 +29,10 @@
 
                 <%= render "reviews/info", review: @review %>
 
-                <%= content_tag :div, "", id: "wheel", data: {flavors: @review.pieces.map{|p| {label: p.flavor, value: p.strength} }} %>
-                <%= content_tag :p, @review.pieces.map(&:flavor).join(" "), class: "b" %>
+                <% unless @review.pieces.empty? %>
+                    <%= content_tag :div, "", id: "wheel", data: {flavors: @review.pieces.map{|p| {label: p.flavor, value: p.strength} }} %>
+                    <%= content_tag :p, @review.pieces.map(&:flavor).join(" "), class: "b" %>
+                <% end %>
 
                 <%= content_tag :p, @review.content, class: "mt20" %>
 

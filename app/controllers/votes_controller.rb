@@ -16,7 +16,7 @@ class VotesController < ApplicationController
 
       case @item.class.name
         when "Review"
-          @receipt = @item.author.notify(t("notifications.up_vote_review", who: current_user.nick), view_context.link_to(@item.title, @item))
+          @receipt = NotificationsManager.notify(@item.author, t("notifications.up_vote_review", who: current_user.nick), view_context.link_to(@item.title, @item), current_user)
       end
     end
 

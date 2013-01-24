@@ -1,3 +1,5 @@
-<%= content_tag :p, user.location.full_city_address %>
-<%= render "locations/location_small", location: user.location if user.location %><br/>
+<% if user.location %>
+    <%= content_tag :p, user.location.full_city_address %>
+    <%= render "locations/location_small", location: user.location if user.location %><br/>
+<% end %>
 <%= link_to "编辑地址", edit_user_location_path(nil, user_id: user.id)  if user == current_user %>

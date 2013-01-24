@@ -250,8 +250,12 @@ zh-CN:
     new_message: 新私信
 
   notifications:
+    check_out: 查看
     up_vote_review: "%{who}赞同了你的酒评"
     reply_topic: "%{who}回应了你的主题"
+    comment_review: "%{who}评论了你的酒评"
+    comment_comment: "%{who}评论了你的评论"
+    follow_you: "%{who}关注了你"
 
   complains:
     complains: 纠错

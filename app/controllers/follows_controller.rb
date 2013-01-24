@@ -5,8 +5,7 @@ class FollowsController < ApplicationController
     unless current_user.following?(@followable)
       current_user.follow(@followable)
       FeedsManager.new(current_user, 'follow', @followable).generate
-      #
-      #NotificationsManager.new(current_user, 'follow', @followable).generate_for(@followable) if @followable.is_a? User
+      receipt = NotificationsManager.notify(@followable, t("notifications.follow_you", who: current_user.nick), view_context.link_to(current_user.nick, current_user), current_user)
     end
 
     respond_to do |format|

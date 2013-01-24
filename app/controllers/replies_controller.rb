@@ -45,7 +45,7 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @reply.save
-        receipt = @reply.topic.author.notify(t("notifications.reply_topic", who: current_user.nick), view_context.link_to(@reply.topic.title, @reply.topic)) unless @reply.topic.author == current_user
+        receipt = NotificationsManager.notify( @reply.topic.author, t("notifications.reply_topic", who: current_user.nick), view_context.link_to(@reply.topic.title, @reply.topic), current_user)
 
         format.html { redirect_to @reply, notice: t("replies.reply_created") }
         format.json { render json: @reply, status: :created, location: @reply }

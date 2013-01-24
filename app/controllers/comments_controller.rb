@@ -12,7 +12,15 @@ class CommentsController < ApplicationController
       @comment = Comment.create(params[:comment]) do |comment|
         comment.author = current_user
       end
-      @parent = @comment.parent
+      if @comment.parent
+        @parent = @comment.parent
+        receipt = NotificationsManager.notify(@comment.parent.author, t("notifications.comment_comment", who: current_user.nick), view_context.link_to(t("notifications.check_out"), @comment.commentable), current_user)
+      else
+        case @comment.commentable_type
+          when "Review"
+            receipt = NotificationsManager.notify(@comment.commentable.author, t("notifications.comment_review", who: current_user.nick), view_context.link_to(@comment.commentable.title, @comment.commentable), current_user)
+        end
+      end
     end
 
     respond_to do |format|
