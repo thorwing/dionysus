@@ -2,7 +2,8 @@ class CocktailsController < ApplicationController
   # GET /cocktails
   # GET /cocktails.json
   def index
-    @cocktails = Cocktail.all
+    @cocktails = Cocktail.page(params[:page]).per(20)
+    @hot_cocktails = Cocktail.limit(4)
 
     respond_to do |format|
       format.html # index.html.erb

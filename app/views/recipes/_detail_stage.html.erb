@@ -1,5 +1,18 @@
+<%= content_tag :p, f.object.name, class: "jujiu-title" %>
+
 <%= f.hidden_field :name %>
-<%= f.input :picture %>
+<%= f.hidden_field :cocktail_id %>
+
+<% if @similar_recipes && @similar_recipes.size > 0 %>
+    <div class="box box-shadow p10 mb20">
+        <%= content_tag :span, "已经有类似的配方了，确定要再添加一个新的么？" %>
+        <div class="clearfix">
+            <% @similar_recipes.each do |recipe| %>
+                <%= render "recipes/boxed_recipe", recipe: recipe %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
 
 <table id="ingredients">
     <tr>
@@ -16,4 +29,8 @@
     <%= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients, "#ingredients")  %>
 </div>
 
-<%= f.input :remark, as: :text %>
+<div class="mt10">
+    <%= f.input :remark, as: :text, label: "制作方法", input_html: {class: "input-xlarge", rows: 5} %>
+</div>
+
+<%= f.input :picture, label: "上传照片" %>

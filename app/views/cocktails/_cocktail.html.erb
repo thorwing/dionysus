@@ -1,4 +1,12 @@
-<div class="clearfix">
-    <%= link_to cocktail.full_name, cocktail %>
-    <%= content_tag :span, "(#{cocktail.recipes.size})个配方", class: "trivial ml10" %>
+<div>
+    <%= link_to cocktail.full_name, cocktail, class: "jujiu-label" %>
+    <%= content_tag :span, "共#{cocktail.recipes.size}个配方", class: "trivial ml10" %>
+
+    <div class="clearfix mt5">
+        <% cocktail.recipes.limit(4).each do |recipe| %>
+            <div class="pull-left mr10">
+                <%= link_to image_tag(recipe.get_picture, class: "img-square-80"), recipe  %>
+            </div>
+        <% end %>
+    </div>
 </div>

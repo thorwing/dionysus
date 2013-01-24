@@ -1,4 +1,4 @@
-<% title @recipe.first_stage? ? t("recipes.new_recipe") : @recipe.name %>
+<% title t("recipes.add_recipe") %>
 
 <%= simple_form_for @recipe, html: {multipart: true} do |f| %>
     <%= f.error_notification %>
@@ -8,11 +8,11 @@
     </div>
 
     <div class="mt10">
-        <%= f.submit "返回", :name => "back_button", class: "button" unless @recipe.first_stage? %>
+        <%= f.submit "返回", :name => "back_button", class: "btn" unless @recipe.first_stage? %>
         <% if @recipe.last_stage? %>
             <%= f.submit "完成", class: "btn btn-primary", id: "recipe_submit" %>
         <% else %>
-            <%= f.submit "下一步", class: "btn btn-info", id: "recipe_next" %>
+            <%= f.submit "下一步", class: "btn btn-primary", id: "recipe_next" %>
         <% end %>
     </div>
 <% end %>

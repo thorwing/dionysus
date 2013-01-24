@@ -61,6 +61,9 @@
                                     <% if can? :create, List %>
                                         <li><%= link_to "榜单", new_list_path %></li>
                                     <% end %>
+                                    <% if can? :create, Topic %>
+                                        <li><%= link_to "主题", new_topic_path %></li>
+                                    <% end %>
                                 </ul>
                             </li>
 

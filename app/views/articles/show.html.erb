@@ -8,7 +8,7 @@
     <%= link_to t("general.edit"), edit_article_path(@article) if can? :update, @article %>
     <%= link_to t("general.delete"), @article, method: :delete, class: "ml10" if can? :delete, @article %>
 
-    <div class="mt20">
+    <div class="mt50">
         <%= render "comments/comments", item: @article %>
     </div>
 </div>

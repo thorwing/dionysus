@@ -197,10 +197,12 @@ zh-CN:
     list_updated: 成功修改榜单
 
   recipes:
-    new_recipe: 新鸡尾酒配方
+    add_recipe: 添加鸡尾酒配方
     ingredients: 配料
     ingredients_amount: 量
     add_ingredient: +添加配料
+    recipe_created: 添加鸡尾酒配方成功
+    recipe_updated: 修改鸡尾酒配方成功
 
   cocktails:
     cocktails: 鸡尾酒

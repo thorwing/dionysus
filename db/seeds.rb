@@ -80,6 +80,7 @@ records.each do |record|
   recipe = Recipe.new
   recipe.attributes = record.slice(*Recipe.accessible_attributes)
   recipe.cocktail = Cocktail.find_or_create_by_name(recipe.name)
+  recipe.author = User.first(conditions: {role: "user"})
   recipe.save!
 end
 

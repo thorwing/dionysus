@@ -1,5 +1,15 @@
-<p id="notice"><%= notice %></p>
+<% title @cocktail.name %>
 
+<div class="clearfix">
+    <%= link_to "+添加配方", new_recipe_path(cocktail_id: @cocktail.id) if can? :create, Recipe %>
+</div>
 
-<%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
-<%= link_to 'Back', cocktails_path %>
+<div class="mt20">
+    <%= content_tag :span, "该鸡尾酒的所有配方 · · · · · · (#{@cocktail.recipes.size})", class: "jujiu-label" %>
+    <div id="masonryContainer">
+        <% @cocktail.recipes.each do |recipe| %>
+            <%= render recipe %>
+        <% end %>
+    </div>
+</div>
+

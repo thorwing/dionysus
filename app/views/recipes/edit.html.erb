@@ -1,6 +1,15 @@
-<h1>Editing recipe</h1>
+<% title "编辑鸡尾酒配方" %>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @recipe %> |
-<%= link_to 'Back', recipes_path %>
+<%= simple_form_for @recipe, html: {multipart: true} do |f| %>
+    <%= f.error_notification %>
+
+    <div class="clearfix">
+        <%= render "detail_stage", f: f %>
+    </div>
+
+    <div class="mt10">
+        <%= f.submit t("general.cancel"), class: "btn" %>
+        <%= f.submit t("general.update"), class: "btn btn-primary" %>
+    </div>
+<% end %>

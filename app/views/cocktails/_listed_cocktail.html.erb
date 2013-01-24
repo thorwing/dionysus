@@ -1,0 +1,4 @@
+<li>
+    <%= link_to cocktail.full_name, cocktail, class: "jujiu-label" %>
+    <%= content_tag :span, "共#{cocktail.recipes.size}个配方", class: "trivial ml10" %>
+</li>

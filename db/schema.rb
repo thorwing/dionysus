@@ -359,6 +359,7 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
 
   create_table "replies", :force => true do |t|
     t.string   "body"
+    t.integer  "topic_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

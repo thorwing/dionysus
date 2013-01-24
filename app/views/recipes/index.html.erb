@@ -1,13 +1,7 @@
 <% title t("cocktails.cocktails") %>
 
-<% if current_user %>
-    <%= link_to 'New Recipe', new_recipe_path %>
-<% end %>
-
-<br />
-
 <div class="clearfix">
-    <%= link_to "+添加鸡尾酒", new_recipe_path %>
+    <%= link_to "+添加鸡尾酒配方", new_recipe_path if can? :create, Recipe %>
 </div>
 
 <div id="masonryContainer">
