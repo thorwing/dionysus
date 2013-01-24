@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
     role == "merchant"
   end
 
+  def self.text_search(query)
+    where("nick like ?", "%#{query}%")
+  end
+
   #TODO stub
   def get_avatar(version = :thumb)
     "/assets/anonymous_m_#{version.to_s}.png"

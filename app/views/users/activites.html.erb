@@ -1,0 +1,9 @@
+<% title "关注动态" %>
+
+<div class="span9">
+    <% @feeds.each do |feed| %>
+        <%= render "activity_feeds/#{feed.type.underscore}", feed: feed %>
+        <hr/>
+    <% end %>
+    <%= paginate @feeds %>
+</div>

@@ -92,10 +92,19 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.where("nick like ?", "%#{params[:q]}%").where('id != ?', current_user.id)
+    @users = User.text_search(params[:q]).where('id != ?', current_user.id)
 
     respond_to do |format|
       format.json { render json: @users.map { |u| {:id => u.id.to_s, :name => u.nick} } }
     end
+  end
+
+  def activites
+    feeds_criteria = ActivityFeed.scoped
+
+    user_ids = current_user.follows_by_type('User').map(&:followable_id) | [current_user.id]
+    feeds_criteria = feeds_criteria.where("user_id in (:p)", p: user_ids)
+
+    @feeds = feeds_criteria.order('created_at DESC').page(params[:page]).per(30)
   end
 end

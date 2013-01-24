@@ -3,7 +3,7 @@
         <% when "Beverage" %>
             <%= content_tag :span, "添加了酒" %><%= link_to feed.item.full_name, feed.item, class: "ml10" %>
         <% when "List" %>
-            <%= content_tag :span, "添加了榜单" %><%= link_to feed.item.name, feed.item, class: "ml10" %>
+            <%= content_tag :span, "添加了榜单" %><%= link_to feed.item.title, feed.item, class: "ml10" %>
         <% when "Review" %>
             <%= content_tag :span, "添加了酒评" %><%= link_to feed.item.title, feed.item, class: "ml10" %>
         <% when "Recipe" %>

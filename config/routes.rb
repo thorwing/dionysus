@@ -16,6 +16,8 @@ Dionysus::Application.routes.draw do
     end
   end
 
+  match 'activities' => 'users#activites', as: :activities
+
   mount RedactorRails::Engine => '/redactor_rails'
 
   resources :cocktails
