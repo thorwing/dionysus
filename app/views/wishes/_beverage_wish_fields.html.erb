@@ -1,14 +1,16 @@
-<% wish = current_user.get_wish(beverage) %>
-<% if wish %>
-    <p>
-        <%= content_tag :span, t("wishes.iwish", action: wish.accomplished ? t("wishes.done") : t("wishes.want")) %>
-        <%= link_to t("general.modify"), "#wishDialog", 'data-toggle' => "modal", class: "ml5 trivial" %>
-        <%= link_to t("general.delete"), wish, method: :delete, class: "ml5 trivial" %>
-    </p>
-    <%= render "wishes/dialog", wish: wish %>
-    <%= content_tag :span, wish.remark, class: "trivial" if wish.remark.present? %>
-<% else %>
-    <%= link_to t("wishes.want"), "#wishDialog", 'data-toggle' => "modal", class: "btn btn-mini btn-warning" %>
-    <%= link_to t("wishes.done"), "#wishDialog", 'data-toggle' => "modal", class: "btn btn-mini btn-danger ml10" %>
-    <%= render "wishes/dialog", wish: beverage.wishes.build %>
+<% if current_user %>
+    <% wish = current_user.get_wish(beverage) %>
+    <% if wish %>
+        <p>
+            <%= content_tag :span, t("wishes.iwish", action: wish.accomplished ? t("wishes.done") : t("wishes.want")) %>
+            <%= link_to t("general.modify"), "#wishDialog", 'data-toggle' => "modal", class: "ml5 trivial" %>
+            <%= link_to t("general.delete"), wish, method: :delete, class: "ml5 trivial" %>
+        </p>
+        <%= render "wishes/dialog", wish: wish %>
+        <%= content_tag :span, wish.remark, class: "trivial" if wish.remark.present? %>
+    <% else %>
+        <%= link_to t("wishes.want"), "#wishDialog", 'data-toggle' => "modal", class: "btn btn-mini btn-warning" %>
+        <%= link_to t("wishes.done"), "#wishDialog", 'data-toggle' => "modal", class: "btn btn-mini btn-danger ml10" %>
+        <%= render "wishes/dialog", wish: beverage.wishes.build %>
+    <% end %>
 <% end %>
