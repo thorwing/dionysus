@@ -2,6 +2,7 @@
     <div class="pull-left">
         <%= content_tag :b, notification.subject %>
         <%= content_tag :span, raw(notification.body), class: "ml20" %>
+        <%= link_to "知道了", read_notification_path(notification), method: :put, remote: true, class: "trivial ml20", id: "readNotification_#{notification.id}" if notification.is_unread?(current_user) %>
     </div>
     <%= content_tag :span, t("time.ago", time: time_ago_in_words(notification.created_at)), class: "trivial pull-right" %>
 </div>

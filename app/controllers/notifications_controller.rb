@@ -4,14 +4,19 @@ class NotificationsController < ApplicationController
   end
 
   def count
-    @unread_notifications_count = current_user.mailbox.notifications.size
+    @unread_notifications_count = current_user.mailbox.notifications.unread.size
     @new_messages_count = current_user.mailbox.conversations(mailbox_type: "inbox", read: false).size
     @sum = @unread_notifications_count + @new_messages_count
 
     respond_to do |format|
       format.js
     end
+  end
 
+  def read
+    @notification = Notification.find(params[:id])
+    @notification.mark_as_read(current_user)
+    @notification.save
   end
 
 end

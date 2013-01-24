@@ -77,6 +77,9 @@ Dionysus::Application.routes.draw do
     collection do
       get :count
     end
+    member do
+      put :read
+    end
   end
 
   resources :complains
