@@ -10,7 +10,6 @@
     <% unless @reviews.empty? %>
         <p class="mt50">
             <%= content_tag :span, "#{t("reviews.reviews")}  · · · · · · · · · · ", class: 'jujiu-label' %>
-            <%= link_to "(全部)", "" %>
         </p>
         <% @reviews.each do |review| %>
             <%= render review %>
@@ -20,7 +19,6 @@
     <% unless @lists.empty? %>
         <p class="mt50">
             <%= content_tag :span, "#{t("lists.lists")}  · · · · · · · · · · ", class: 'jujiu-label' %>
-            <%= link_to "(全部)", "" %>
         </p>
         <% @lists.each do |list| %>
             <%= render list %>
@@ -37,7 +35,6 @@
 
     <p class="mt50">
         <%= content_tag :span, "#{@user.nick}的广播  · · · · · · · · · · ", class: 'jujiu-label' %>
-        <%= link_to "(全部)", "" %>
     </p>
 
     <% @user.activity_feeds.each do |activity_feed| %>

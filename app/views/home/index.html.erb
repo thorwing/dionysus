@@ -34,33 +34,36 @@
             </ul>
         </div>
 
-        <div class="mt20">
+        <div class="mt50">
             <div class="clearfix">
                 <%= content_tag :span, "Top 10", class: "b pull-left" %>
                 <%= content_tag :span, "一周热门", class: "b f18 pull-right" %>
             </div>
 
             <ol class="mt10">
-                <% Beverage.limit(10).each_with_index do |beverage, index| %>
+                <% @hot_beverages.each_with_index do |beverage, index| %>
                     <li class="mt5 mb5 hover_area">
                         <%= link_to truncate_text(beverage.full_name, 18), beverage, class: "f15 b" %><br/>
                         <div class="display_on_hover <%= 'display' if index == 0 %>">
-                            <%= link_to image_tag(beverage.get_picture, class: "img-square-80"), beverage %>
-                            <%= content_tag :p, "83次点击" %>
+                            <p><%= link_to image_tag(beverage.get_picture, class: "small-beverage-frame"), beverage %></p>
+                            <%= content_tag :p, "#{beverage.reviews.size}份酒评 / #{beverage.wishes.size}人收藏" %>
                         </div>
                     </li>
                 <% end %>
             </ol>
         </div>
 
-        <div class="mt20">
-              <%= content_tag :h3, "热门榜单" %>
-              <ul class="unstyled">
+        <div class="mt50">
+            <div class="clearfix">
+                <%= content_tag :span, "Top 10", class: "b pull-left" %>
+                <%= content_tag :span, "热门榜单", class: "b f18 pull-right" %>
+            </div>
+            <ul class="unstyled">
                   <% @hot_lists.each do |list| %>
                       <%= link_to list.title, list %><br/>
                   <% end %>
-              </ul>
-          </div>
+            </ul>
+        </div>
     </div>
     <div class="span9">
         <div class="ml20">
@@ -69,7 +72,7 @@
                 <%= link_to "全部文章 >>", articles_path, class: "pull-right" %>
             </div>
             <ul class="thumbnails">
-                <% @hot_articles.each do |article| %>
+                <% @new_articles.each do |article| %>
                     <hr/>
                     <%= render article %>
                 <% end %>

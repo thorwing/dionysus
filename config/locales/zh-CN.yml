@@ -195,6 +195,7 @@ zh-CN:
     description: 描述
     list_created: 成功添加榜单
     list_updated: 成功修改榜单
+    list_added: 成功加入到榜单
 
   recipes:
     add_recipe: 添加鸡尾酒配方

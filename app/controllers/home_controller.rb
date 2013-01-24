@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @hot_articles = Article.limit(5)
-    @hot_lists = List.limit(3)
+    @new_articles = Article.order("created_at DESC").limit(10)
+    @hot_lists = List.limit(10)
+    @hot_beverages = Beverage.limit(10)
   end
 end

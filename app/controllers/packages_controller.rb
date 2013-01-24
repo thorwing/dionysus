@@ -8,7 +8,7 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       if @package.save
-        format.html { redirect_to @package.list, notice: 'Article was successfully created.' }
+        format.html { redirect_to @package.list, notice: t("lists.list_added")}
       else
         format.html { render action: "new" }
       end

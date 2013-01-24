@@ -90,9 +90,14 @@
     </div>
 
     <div class="mt50">
-        <%= content_tag :span, "酒评", class: "jujiu-label" %>
-        <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
-        <%= content_tag :span, "(#{@beverage.reviews.size}共篇)", class: "trivial f12" %>
+        <div class="clearfix">
+            <%= content_tag :span, "酒评 · · · · · · (#{@beverage.reviews.size}篇)", class: "jujiu-label pull-left" %>
+            <div class="pull-right">
+                <%= link_to content_tag(:span, '', class: 'icon-pencil') + " 写酒评", new_review_path(beverage_id: @beverage.id) if can? :create, Review %>
+                <%= link_to "按时间", "", class: "label ml10" %>
+                <%= link_to "按热度", "", class: "label ml5" %>
+            </div>
+        </div>
 
         <% @beverage.reviews.each do |review| %>
             <hr/>
