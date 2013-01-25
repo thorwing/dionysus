@@ -49,7 +49,8 @@ zh-CN:
     quick_login: "快速登录："
     sign_up: "注册"
     email: "邮箱地址"
-    login_name: 昵称
+    nick: 昵称
+    current_password: 当前密码
     password: "密码"
     password_confirmation: "确认密码"
     forgot_password: "忘记密码了?"
