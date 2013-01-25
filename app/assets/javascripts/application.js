@@ -19,6 +19,7 @@
 //= require wishes
 //= require jquery.masonry
 //= require redactor-rails
+//= require redactor-rails/langs/zh-cn
 //= require raphael
 //= require morris
 //= require jquery.tokeninput
