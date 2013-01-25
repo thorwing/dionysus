@@ -3,18 +3,8 @@ development:
   encoding: unicode
   database: dionysus_development
   pool: 5
-  username: renaissance
-  password: renaissance
-
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: dionysus_test
-  pool: 5
-  username: postgres
-  password: Youare1hero
-  min_messages: WARNING
-
+  username: dionysus
+  password: dionysus
 
 production:
   adapter: postgresql
