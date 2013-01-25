@@ -1,7 +1,0 @@
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: dionysus_development
-  pool: 5
-  username: dionysus
-  password: dionysus
