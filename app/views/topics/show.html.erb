@@ -6,7 +6,7 @@
     <div class="mt50">
         <div class="clearfix">
             <%= content_tag :span, "回应 · · · · · · (#{@replies.size})", class: "jujiu-label pull-left" %>
-            <%= link_to "+回应", new_reply_path(topic_id: @topic.id), class: "pull-right" %>
+            <%= link_to "+回应", new_reply_path(topic_id: @topic.id), class: "pull-right" if can? :create, Reply %>
         </div>
 
         <% @replies.each do |reply| %>

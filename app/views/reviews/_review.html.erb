@@ -2,7 +2,7 @@
     <div class="pull-left">
         <%= user_avatar_tag(review.author) %>
     </div>
-    <div class="pull-left ml20">
+    <div class="pull-left ml20" style="width: 540px;">
         <%= link_to review.title, review, class: "b f14" %>
         <div>
             <%= link_to review.author.nick, review.author %>
@@ -12,9 +12,7 @@
         </div>
         <%= content_tag :p, review.content %>
     </div>
-    <div class="pull-right">
-        <div class="text-center" style="width: 100px;">
-            <%= link_to image_tag(review.beverage.get_picture, class: "small-beverage-frame"), review.beverage %>
-        </div>
+    <div class="pull-right" style="width: 100px;">
+        <%= link_to image_tag(review.beverage.get_picture, class: "small-beverage-frame"), review.beverage %>
     </div>
 </div>
