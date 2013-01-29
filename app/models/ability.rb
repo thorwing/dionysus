@@ -23,10 +23,14 @@ class Ability
           end
         end
 
-        items = [Package, Review, List, Comment, Topic, Beverage, Recipe]
+        items = [Review, List, Comment, Topic, Beverage, Recipe]
         can :create, items
         can [:update, :destroy], items do |item|
           item.author == user
+        end
+
+        can [:update, :destroy], Package do |package|
+          package.list && package.list.author == user
         end
 
         can :create, Message

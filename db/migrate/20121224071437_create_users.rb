@@ -2,6 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :nick
+      t.string :avatar
       t.string :role
       t.text :bio
       t.string :locked_nodes_list

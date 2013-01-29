@@ -426,6 +426,7 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
 
   create_table "users", :force => true do |t|
     t.string   "nick"
+    t.string   "avatar"
     t.string   "role"
     t.text     "bio"
     t.string   "locked_nodes_list"

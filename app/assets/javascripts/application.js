@@ -14,9 +14,11 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/bootstrap
+//= require users
 //=require reviews
 //= require beverages
 //= require wishes
+//= require jquery.jcrop
 //= require jquery.masonry
 //= require redactor-rails
 //= require redactor-rails/langs/zh-cn

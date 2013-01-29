@@ -19,6 +19,7 @@
  *= require reviews
  *= require beverages
  *= require comments
+ *= require jquery.jcrop
  *= require jquery.ui.slider
  *= require masonary
  *= require redactor-rails

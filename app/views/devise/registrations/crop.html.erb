@@ -1,0 +1,35 @@
+<% title t("settings.#{params[:action]}"), false %>
+
+<div class="box box-shadow">
+    <div class="box-bar-top clearfix p5">
+        <%= content_tag :h1, t("settings.crop"), class: 'jujiu-label ml20' %>
+    </div>
+    <div class="setting-item mt10 p10 clearfix">
+        <div class="pull-left">
+            <h3 class="trivial">原图</h3>
+            <%= image_tag current_user.get_avatar, :id => "cropbox" %>
+        </div>
+
+        <div class="pull-left ml30">
+            <h3 class="trivial">预览(100*100)</h3>
+            <div style="width: 100px; height: 100px; overflow: hidden;">
+                <%= image_tag current_user.get_avatar, :id => "preview" %>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="mt10">
+            <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { method: :put }) do |f| %>
+                <% for attribute in [:crop_x, :crop_y, :crop_h, :crop_w] %>
+                    <%= f.hidden_field attribute, :id => attribute %>
+                <% end %>
+
+                <div class="form-actions">
+                    <%= link_to t("general.cancel"), root_path, :class => "btn" %>
+                    <%= f.submit '保存', :class => "btn btn-primary ml10" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+ </div>

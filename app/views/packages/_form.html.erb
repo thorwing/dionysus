@@ -7,7 +7,7 @@
         <%= link_to t("lists.add_list"), new_list_path if can? :create, List %>
     </p>
     <%= f.hidden_field :beverage_id %>
-    <%= f.input :remark, as: :text, label: t("packages.remark"), input_html: {rows: '3', class: 'input-xlarge'} %>
+    <%= f.input :remark, as: :text, label: t("packages.remark"), placeholder: "简述入榜理由", input_html: {rows: '3', class: 'input-xlarge'} %>
 
     <div class="actions">
         <%= f.submit t("general.confirm"), :class => "btn btn-primary" %>

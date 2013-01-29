@@ -9,6 +9,7 @@ zh-CN:
     are_you_sure_to_delete: 确定要删除吗？
     are_you_sure_to_cancel: 确定要取消吗？
     are_you_sure_to_ignore: 确定要忽略吗？
+    are_you_sure_to_remove: 确定要移除吗？
     add: 添加
     reply: 回复
     follow_user: 关注Ta
@@ -22,6 +23,7 @@ zh-CN:
     edit: 编辑
     modify: 修改
     delete: 删除
+    remove: 移除
     close: 关闭
     ask: 提问
     post: 回应
@@ -72,6 +74,10 @@ zh-CN:
       merchant: 商家
       author: 编辑
       admin: 管理员
+
+  settings:
+    avatar: 修改头像
+    crop: 裁剪头像
 
   beverages:
     beverages: 酒

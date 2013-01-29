@@ -7,7 +7,8 @@ Dionysus::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {registrations: "registrations"}
+
   match "sign_up" => "users#new"
   resources :users do
     resources :locations

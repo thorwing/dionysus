@@ -14,4 +14,14 @@ class PackagesController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @package = Package.find(params[:id])
+    @package.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @package.list }
+      format.json { head :no_content }
+    end
+  end
 end

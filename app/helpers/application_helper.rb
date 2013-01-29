@@ -69,7 +69,7 @@ module ApplicationHelper
   end
 
   def user_avatar_tag(user)
-    link_to image_tag(user.try :get_avatar), user
+    link_to image_tag(user.try(:get_avatar), width: 48, height: 48), user
   end
 
   def get_grapes

@@ -7,6 +7,7 @@
         <%= render "beverages/info", beverage: package.beverage %>
         <blockquote>
             <%= content_tag :q, package.remark if package.remark %>
-        </blockquote>
+        </blockquote><br/>
+        <%= link_to t("general.remove"), package, method: :delete, confirm: t("general.are_you_sure_to_remove") if can? :destroy, package %>
     </div>
 </div>
