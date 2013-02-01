@@ -7,7 +7,9 @@ Dionysus::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {registrations: "registrations"}
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: {registrations: "registrations"} do
+    get "crop", to: "registrations#crop", as: :crop_avatar
+  end
 
   match "sign_up" => "users#new"
   resources :users do

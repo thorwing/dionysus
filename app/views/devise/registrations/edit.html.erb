@@ -8,9 +8,11 @@
         <%= f.input :nick, :required => true, label: t("authentication.nick") %>
 
         <div class="mt10 mb10">
+            <%= f.label :avatar, "头像" %>
             <%= user_avatar_tag current_user %>
             <%= f.file_field :avatar  %>
-            <%= f.hidden_field :avatar_cache %>
+            <%= f.hidden_field :avatar_cache %> <br/>
+            <%= link_to t("settings.crop"), crop_avatar_path if current_user.avatar? %>
         </div>
 
         <%= f.input :password, :autocomplete => "off", :placeholder => "留白，如果您不想修改密码", :required => false, label: t("authentication.password") %>
