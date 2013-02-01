@@ -29,6 +29,7 @@ class Ability
           item.author == user
         end
 
+        can :create, Package
         can [:update, :destroy], Package do |package|
           package.list && package.list.author == user
         end

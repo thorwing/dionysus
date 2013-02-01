@@ -48,6 +48,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [AVATAR_THUMB_WIDTH, AVATAR_THUMB_HEIGHT]
   end
 
+  version :profile do
+    process :manualcrop
+    process :resize_to_fill => [AVATAR_PROFILE_WIDTH, AVATAR_PROFILE_HEIGHT]
+  end
+
   def manualcrop
     manipulate! do |img|
       #File.open(File.join(Rails.root, "/tmp/uploads/test.png"), 'w') do |f|

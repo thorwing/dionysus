@@ -1,8 +1,19 @@
 <%= simple_form_for(@package) do |f| %>
     <%= f.error_notification %>
 
-    <%= f.label :list_id, "我的榜单" %>
-    <%= f.collection_select :list_id, current_user.lists, :id, :title %>
+    <% unless @included_lists.empty? %>
+        <p>
+            <%= content_tag :span, "已经属于我的榜单：" %>
+            <% @included_lists.each do |list| %>
+                <%= link_to list.title, list, class: "ml10" %>
+            <% end %>
+        </p>
+    <% end %>    
+
+    <% unless @to_include_lists.empty? %>
+        <%= f.label :list_id, "我的榜单" %>
+        <%= f.collection_select :list_id, @to_include_lists, :id, :title %>
+    <% end %>
     <p>
         <%= link_to t("lists.add_list"), new_list_path if can? :create, List %>
     </p>
