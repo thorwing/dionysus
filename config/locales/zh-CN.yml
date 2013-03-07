@@ -137,8 +137,9 @@ zh-CN:
         aromachinese: 浓香型
 
   brands:
-  new_brand: 新品牌
-  brands_created: 成功添加品牌
+    new_brand: 新品牌
+    brand_created: 成功添加品牌
+    brand_updated: 成功更新品牌
 
   regions:
     region: 产区

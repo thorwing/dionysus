@@ -22,7 +22,7 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.save
-        format.html { redirect_to @brand, notice: t("brands.brands_created")}
+        format.html { redirect_to @brand, notice: t("brands.brand_created")}
         format.json { render json: @brand, status: :created, location: @beverage }
       else
         format.html { render action: "new" }
@@ -30,4 +30,23 @@ class BrandsController < ApplicationController
       end
     end
   end
+
+  def edit
+    @brand = Brand.find(params[:id])
+  end
+
+  def update
+    @brand = Brand.find(params[:id])
+
+    respond_to do |format|
+      if @brand.update_attributes(params[:brand])
+        format.html { redirect_to @brand, notice: t("brands.brand_updated")}
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @brand.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end

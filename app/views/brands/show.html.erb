@@ -11,6 +11,10 @@
 </div>
 
 <div class="mt20">
+    <%= link_to t("general.edit"), edit_brand_path(@brand), class: "ml20" if can? :edit, @brand %>
+</div>
+
+<div class="mt20">
     <%= content_tag :span, "#{@brand.beverages.size}瓶酒", class: "jujiu-label" %>
     <%= content_tag :span, "· · · · · ·", class: "ml10 mr10" %>
 </div>
