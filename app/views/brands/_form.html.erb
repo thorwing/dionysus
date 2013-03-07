@@ -1,0 +1,18 @@
+<div class="span9">
+    <%= simple_form_for(@brand) do |f| %>
+        <%= f.error_notification %>
+
+        <%= f.input :name, label: t("general.name"), input_html: {class: "input-xlarge"} %>
+        <%= f.input :trans, label: t("general.trans"), input_html: {class: "input-xlarge"} %>
+        <%= f.input :description,  label: t("general.name"), as: :text, label: false, input_html: {class: "input-xlarge", :rows => 10, :cols => 120 }%>
+        <%= f.select :type_list, Brand.type_counts.map{|b| [b.name, b.name]}, label: t("beverages.type"),  include_blank: false %>
+        <%= f.input :picture, label: t("pictures.upload") %>
+
+        <div class="actions">
+            <%= f.submit t("general.publish"), class: "btn btn-primary" %>
+        </div>
+    <% end %>
+</div>
+
+<div class="span3">
+</div>

@@ -58,6 +58,9 @@
                                     <% if can? :create, Article %>
                                         <li><%= link_to '文章', new_article_path %></li>
                                     <% end %>
+                                    <% if can? :create, Brand %>
+                                        <li><%= link_to "品牌", new_brand_path %></li>
+                                    <% end %>
                                     <% if can? :create, List %>
                                         <li><%= link_to "榜单", new_list_path %></li>
                                     <% end %>

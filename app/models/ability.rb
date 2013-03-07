@@ -16,6 +16,8 @@ class Ability
           can [:update, :destroy], Article do |item|
             item.author == user
           end
+          can :create, Brand
+          can [:update, :destroy], Brand
         elsif user.merchant?
           can :create, Deal
           can [:update, :destroy], Deal do |item|

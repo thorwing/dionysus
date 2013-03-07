@@ -1,7 +1,7 @@
 class Brand < ActiveRecord::Base
   include Translatable
   mount_uploader :picture, PictureUploader
-  attr_accessible :name, :trans, :type_list
+  attr_accessible :name, :trans, :description, :picture, :type_list
   acts_as_taggable_on :types
 
   #relationships

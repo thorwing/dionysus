@@ -34,6 +34,9 @@ zh-CN:
     create: 创建
     save: 保存
     title: 标题
+    name: 名称
+    trans: 译名
+    description: 描述
     unfollow: 取消关注
     anonymous_user: 匿名用户
     created_at: 创建于%{time}以前
@@ -132,6 +135,10 @@ zh-CN:
         jiangscent: 酱香型
         ricescent: 米香
         aromachinese: 浓香型
+
+  brands:
+  new_brand: 新品牌
+  brands_created: 成功添加品牌
 
   regions:
     region: 产区

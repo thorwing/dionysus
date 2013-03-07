@@ -1,7 +1,7 @@
 <%= simple_form_for(@beverage) do |f| %>
     <%= f.error_notification %>
     <%= f.hidden_field :type %>
-    <%= f.input :name, label: t("beverages.name") %>
+    <%= f.input :name, label: t("general.name") %>
     <%= f.input :picture, label: t("pictures.upload") %>
     
     <div id="regionFields">
