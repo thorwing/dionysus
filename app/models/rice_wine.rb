@@ -1,0 +1,3 @@
+class RiceWine < Beverage
+
+end

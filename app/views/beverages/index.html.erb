@@ -5,9 +5,12 @@
 <div class="mb50">
     <div class="mb10">
         <div class="clearfix">
-            <% %w(WhiteSpirit RiceWine ChineseLiqueur Whisky Brandy Vodka Tequila Rum Gin Liqueur Wine Beer Sake).each do |type| %>
-                <div class="pull-left text-center mr10" style="width:61px; height:50px;border: 1px dotted; <%= 'background: orange;' if @type == type %>">
-                    <%= link_to t("beverages.categories.#{type}"), "/#{type.downcase}", class: "f14" %>
+            <% %w(WhiteSpirit RiceWine ChineseLiqueur Whisky Brandy Vodka Tequila Rum Gin Liqueur Wine Beer JapaneseSpirit).each do |type| %>
+                <div class="pull-left text-center" style="width:74px;">
+                    <div class="type_block <%= 'selected' if @type == type %>">
+                        <%= link_to t("beverages.categories.#{type}"), "/#{type.downcase}", class: "f14", style: "height:50px; padding: 5px;" %>
+                    </div>
+                    <div class="type_bar <%= 'selected' if @type == type %>"></div>
                 </div>
             <% end %>
         </div>
@@ -15,7 +18,7 @@
         <div class="clearfix mt10">
             <div>
                 <% @regions.each do |region| %>
-                    <%= link_to region.trans, "#{request.env['PATH_INFO']}?filter=country&value=#{region.name}&delta=1", class: "mr10" %>
+                    <%= link_to region.full_name, "#{request.env['PATH_INFO']}?filter=country&value=#{region.name}&delta=1", class: "mr10" %>
                 <% end %>
             </div>
         </div>

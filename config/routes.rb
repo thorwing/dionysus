@@ -60,10 +60,11 @@ Dionysus::Application.routes.draw do
   resources :vodka,  controller: :beverages, type: "Vodka"
   resources :gin,  controller: :beverages, type: "Gin"
   resources :tequila,  controller: :beverages, type: "Tequila"
-  resources :sake,  controller: :beverages, type: "Sake"
+  resources :japanesespirit,  controller: :beverages, type: "JapaneseSpirit"
   resources :liqueur,  controller: :beverages, type: "Liqueur"
-  resources :chinese_liqueur,  controller: :beverages, type: "ChineseLiqueur"
+  resources :chineseliqueur,  controller: :beverages, type: "ChineseLiqueur"
   resources :whitespirit, controller: :beverages, type: "WhiteSpirit"
+  resources :ricewine, controller: :beverages, type: "RiceWine"
 
   resources :ranks
 

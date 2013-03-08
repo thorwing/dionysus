@@ -12,3 +12,31 @@
   color: red;
   font-size: 16px;
 }
+
+.type_block {
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+
+  a {
+    color: gray;
+    text-decoration: none;
+  }
+}
+
+.type_block.selected, .type_block:hover {
+  background: rgba(122, 185, 219, 0.56);
+
+  a {
+    color: #5C5C5C;
+  }
+}
+
+.type_bar {
+  background: rgba(79, 182, 219, 0.56);
+  height: 10px;
+}
+
+.type_bar.selected {
+  background: #93aaff;
+}
