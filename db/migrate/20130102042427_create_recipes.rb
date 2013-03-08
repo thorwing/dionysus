@@ -4,7 +4,6 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :name
       t.string :remark
       t.string :picture
-      t.text :pic_url
 
       t.references :cocktail
       t.integer :author_id

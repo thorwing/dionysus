@@ -1,5 +1,5 @@
 <div class="masonary_item box box-shadow p10 text-center">
-    <%= link_to image_tag(recipe.get_picture), recipe %><br/>
+    <%= link_to image_tag(recipe.picture_url, class: "img-square-80"), recipe if recipe.picture?  %><br/>
     <%= link_to recipe.name, recipe, class: "jujiu-label" %>
 
     <p>

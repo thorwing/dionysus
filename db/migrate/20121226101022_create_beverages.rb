@@ -15,7 +15,6 @@ class CreateBeverages < ActiveRecord::Migration
       t.string :vintage
       t.string :age
       t.string :picture
-      t.text :pic_url
       t.string :grape_list
 
       t.references :region

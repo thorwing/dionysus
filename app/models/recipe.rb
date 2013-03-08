@@ -1,6 +1,6 @@
 class Recipe < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
-  attr_accessible  :name, :remark, :cocktail_id, :picture, :pic_url, :ingredients_attributes
+  attr_accessible  :name, :remark, :cocktail_id, :picture, :ingredients_attributes
 
   #relationships
   belongs_to :author, class_name: "User", foreign_key: 'author_id'
@@ -42,14 +42,5 @@ class Recipe < ActiveRecord::Base
 
   def last_stage?
     current_stage == stages.last
-  end
-
-   #TODO stub
-  def get_picture(version = nil)
-    if picture?
-      picture_url(version)
-    else
-      pic_url
-    end
   end
 end
