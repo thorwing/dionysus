@@ -20,12 +20,13 @@
 
   a {
     color: gray;
+    font-size: 15px;
     text-decoration: none;
   }
 }
 
 .type_block.selected, .type_block:hover {
-  background: rgba(122, 185, 219, 0.56);
+  background: rgba(161, 198, 217, 0.54);
 
   a {
     color: #5C5C5C;
@@ -33,7 +34,7 @@
 }
 
 .type_bar {
-  background: rgba(79, 182, 219, 0.56);
+  background: rgba(144, 206, 217, 0.54);
   height: 10px;
 }
 

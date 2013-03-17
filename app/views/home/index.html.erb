@@ -20,7 +20,7 @@
 
                 <hr class="dotted"/>
 
-                <% %w(Wine Beer Sake).each do |category| %>
+                <% %w(Wine Beer JapaneseSpirit).each do |category| %>
                     <li class="mt5 mb5">
                         <%= link_to t("beverages.categories.#{category}"), "/#{category.downcase}", class: "jujiu-label" %>
                     </li>

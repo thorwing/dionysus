@@ -12,7 +12,7 @@
   region: Médoc
   rank: Premiers Crus
   grape_list: 赤霞珠
-  pic_url: http://www.junfengwines.com/wordpress/wp-content/uploads/2010/04/chateau-margaux%E7%8E%9B%E6%AD%8C%E5%BA%842006.jpg
+  remote_picture_url: http://www.junfengwines.com/wordpress/wp-content/uploads/2010/04/chateau-margaux%E7%8E%9B%E6%AD%8C%E5%BA%842006.jpg
 
 -
   type: Beer
@@ -22,7 +22,7 @@
   style: abt/Quadrupel
   volume: 500
   alcohol: 12
-  pic_url: http://blogfile.ifeng.com/uploadfiles/blog_attachment/0811/56/1041756_e0000e5d71c26ed40bd26b8a4d9eb8db.jpg
+  remote_picture_url: http://blogfile.ifeng.com/uploadfiles/blog_attachment/0811/56/1041756_e0000e5d71c26ed40bd26b8a4d9eb8db.jpg
 
 -
   type: Whisky
@@ -31,7 +31,7 @@
   brand: Chivas
   volume: 700
   alcohol: 40
-  pic_url: http://www.core.form-ula.com/wp-content/uploads/2008/11/chivas_bottle__tin_low.jpg
+  remote_picture_url: http://www.core.form-ula.com/wp-content/uploads/2008/11/chivas_bottle__tin_low.jpg
 
 -
   type: Whisky
@@ -40,7 +40,7 @@
   brand: Chivas
   volume: 700
   alcohol: 40
-  pic_url: http://www.moodiereport.com/Martin/wp-content/chivas-25.JPG
+  remote_picture_url: http://www.moodiereport.com/Martin/wp-content/chivas-25.JPG
 
 -
   type: Whisky
@@ -50,7 +50,7 @@
   regions: Isly
   volume: 700
   alcohol: 54.2
-  pic_url: http://img.thewhiskyexchange.com/270/abgob.non2.jpg
+  remote_picture_url: http://img.thewhiskyexchange.com/270/abgob.non2.jpg
 
 -
   type: Vodka
@@ -59,7 +59,7 @@
   brand: Ultimat
   volume: 700
   alcohol: 40
-  pic_url: http://www.thefiftybest.com/content/spirits/best_vodka_2012/images/ultimat.jpg
+  remote_picture_url: http://www.thefiftybest.com/content/spirits/best_vodka_2012/images/ultimat.jpg
 
 -
   type: Rum
@@ -68,7 +68,7 @@
   brand: Zacapa
   volume: 700
   alcohol: 40
-  pic_url: http://www.thefiftybest.com/content/spirits/aged_rum/images/zacapa_23.jpg
+  remote_picture_url: http://www.thefiftybest.com/content/spirits/aged_rum/images/zacapa_23.jpg
 
 -
   type: Brandy
@@ -77,7 +77,7 @@
   brand: Godet
   volume: 700
   alcohol: 40
-  pic_url: http://www.thefiftybest.com/content/spirits/cognac/images/godet_vs.gif
+  remote_picture_url: http://www.thefiftybest.com/content/spirits/cognac/images/godet_vs.gif
 
 -
   type: Gin
@@ -86,7 +86,7 @@
   brand: Hendrick's
   volume: 500
   alcohol: 40
-  pic_url: http://www.thefiftybest.com/content/spirits/gin/images/hendricks_gin.jpg
+  remote_picture_url: http://www.thefiftybest.com/content/spirits/gin/images/hendricks_gin.jpg
 
 -
   type: Tequila
@@ -95,7 +95,7 @@
   brand: Luna Nueva
   volume: 700
   alcohol: 40
-  pic_url: http://www.thefiftybest.com/content/tequila/tequila_reposado/images/luna_nueva_reposado.jpg
+  remote_picture_url: http://www.thefiftybest.com/content/tequila/tequila_reposado/images/luna_nueva_reposado.jpg
 
 -
   type: Sake
@@ -104,7 +104,7 @@
   brand: 越後杜氏
   volume: 72000
   alcohol: 15.8
-  pic_url: http://image.rakuten.co.jp/sake-gets/cabinet/sake/img56651004.jpg
+  remote_picture_url: http://image.rakuten.co.jp/sake-gets/cabinet/sake/img56651004.jpg
 
 -
   type: Liqueur
@@ -113,7 +113,7 @@
   brand: Prucia
   volume: 700
   alcohol: 15
-  pic_url: http://www.proof66.com/images/Prucia_Plum_liqueur.jpg
+  remote_picture_url: http://www.proof66.com/images/Prucia_Plum_liqueur.jpg
 
 -
   type: JapaneseSpirit
@@ -122,7 +122,7 @@
   brand: 黒木本店
   volume: 720
   alcohol: 40
-  pic_url: http://thumbnail.image.rakuten.co.jp/s/?@0_mall/newyork1989/cabinet/02438720/212000720019.jpg
+  remote_picture_url: http://thumbnail.image.rakuten.co.jp/s/?@0_mall/newyork1989/cabinet/02438720/212000720019.jpg
 
 -
   type: WhiteSpirit
@@ -132,7 +132,7 @@
   region: 
   volume: 750
   alcohol: 48
-  pic_url: http://rs1.in.itc.cn/api_upload/wine_hash/79/10/3b1634c7aea137735409010a7ba8479c_310x310.jpg
+  remote_picture_url: http://rs1.in.itc.cn/api_upload/wine_hash/79/10/3b1634c7aea137735409010a7ba8479c_310x310.jpg
 
 -
   type: ChineseLiqueur
@@ -141,4 +141,4 @@
   volume: 475
   alcohol: 38
   region: 山西
-  pic_url: http://img30.360buyimg.com/erpWareDetail/9L670xNMeioPS8JO.jpg
+  remote_picture_url: http://img30.360buyimg.com/erpWareDetail/9L670xNMeioPS8JO.jpg

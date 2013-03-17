@@ -2,7 +2,7 @@ class Beverage < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   include Translatable
   acts_as_taggable_on :grapes
-  attr_accessible :type, :name, :trans, :brand_id, :region_id, :style, :vintage, :volume, :alcohol, :year, :grape_list, :picture, :bottler, :distillation_method, :barrel_cask, :age, :color, :sweetness, :rank_id
+  attr_accessible :type, :name, :trans, :brand_id, :region_id, :style, :vintage, :volume, :alcohol, :year, :grape_list, :picture, :remote_picture_url, :bottler, :distillation_method, :barrel_cask, :age, :color, :sweetness, :rank_id
 
   #relationships
   belongs_to :region
@@ -65,7 +65,7 @@ class Beverage < ActiveRecord::Base
     if picture?
       picture_url(version)
     else
-      pic_url
+      ''
     end
   end
 

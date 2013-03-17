@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
     t.string   "vintage"
     t.string   "age"
     t.string   "picture"
-    t.text     "pic_url"
     t.string   "grape_list"
     t.integer  "region_id"
     t.integer  "brand_id"
@@ -322,7 +321,6 @@ ActiveRecord::Schema.define(:version => 20130118034043) do
     t.string   "name"
     t.string   "remark"
     t.string   "picture"
-    t.text     "pic_url"
     t.integer  "cocktail_id"
     t.integer  "author_id"
     t.datetime "created_at",  :null => false
