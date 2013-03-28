@@ -65,7 +65,7 @@ class Beverage < ActiveRecord::Base
     if picture?
       picture_url(version)
     else
-      ''
+      'default_beverage.png'
     end
   end
 

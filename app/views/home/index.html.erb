@@ -34,36 +34,39 @@
             </ul>
         </div>
 
-        <div class="mt50">
-            <div class="clearfix">
-                <%= content_tag :span, "Top 10", class: "b pull-left" %>
-                <%= content_tag :span, "一周热门", class: "b f18 pull-right" %>
+        <% if false %>
+            <div class="mt50">
+                <div class="clearfix">
+                    <%= content_tag :span, "Top 10", class: "b pull-left" %>
+                    <%= content_tag :span, "一周热门", class: "b f18 pull-right" %>
+                </div>
+
+                <ol class="mt10">
+                    <% @hot_beverages.each_with_index do |beverage, index| %>
+                        <li class="mt5 mb5 hover_area">
+                            <%= link_to truncate_text(beverage.full_name, 18), beverage, class: "f15 b" %><br/>
+                            <div class="display_on_hover <%= 'display' if index == 0 %>">
+                                <p><%= link_to image_tag(beverage.get_picture, class: "small-beverage-frame"), beverage %></p>
+                                <%= content_tag :p, "#{beverage.reviews.size}份酒评 / #{beverage.wishes.size}人收藏" %>
+                            </div>
+                        </li>
+                    <% end %>
+                </ol>
             </div>
 
-            <ol class="mt10">
-                <% @hot_beverages.each_with_index do |beverage, index| %>
-                    <li class="mt5 mb5 hover_area">
-                        <%= link_to truncate_text(beverage.full_name, 18), beverage, class: "f15 b" %><br/>
-                        <div class="display_on_hover <%= 'display' if index == 0 %>">
-                            <p><%= link_to image_tag(beverage.get_picture, class: "small-beverage-frame"), beverage %></p>
-                            <%= content_tag :p, "#{beverage.reviews.size}份酒评 / #{beverage.wishes.size}人收藏" %>
-                        </div>
-                    </li>
-                <% end %>
-            </ol>
-        </div>
 
-        <div class="mt50">
-            <div class="clearfix">
-                <%= content_tag :span, "Top 10", class: "b pull-left" %>
-                <%= content_tag :span, "热门榜单", class: "b f18 pull-right" %>
+            <div class="mt50">
+                <div class="clearfix">
+                    <%= content_tag :span, "Top 10", class: "b pull-left" %>
+                    <%= content_tag :span, "热门榜单", class: "b f18 pull-right" %>
+                </div>
+                <ul class="unstyled">
+                      <% @hot_lists.each do |list| %>
+                          <%= link_to list.title, list %><br/>
+                      <% end %>
+                </ul>
             </div>
-            <ul class="unstyled">
-                  <% @hot_lists.each do |list| %>
-                      <%= link_to list.title, list %><br/>
-                  <% end %>
-            </ul>
-        </div>
+        <% end %>
     </div>
     <div class="span9">
         <div class="ml20">
