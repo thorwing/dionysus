@@ -1,5 +1,4 @@
 class Article < ActiveRecord::Base
-  mount_uploader :picture, PictureUploader
   attr_accessible :title, :body
 
   scope :unreleased, where(released_at: nil)
