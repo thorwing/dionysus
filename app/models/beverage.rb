@@ -29,7 +29,7 @@ class Beverage < ActiveRecord::Base
       presence: true
   validates_presence_of :type
 
-  TYPES = %w[Wine Whisky Vodka Tequila Rum Brandy Liqueur Gin Beer WhiteSpirit ChineseLiqueur RiceWine Sake]
+  TYPES = %w[Wine Whisky Vodka Tequila Rum Brandy Liqueur Gin Beer WhiteSpirit ChineseLiqueur RiceWine JapaneseSpirit]
 
   def self.styles
     []

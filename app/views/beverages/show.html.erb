@@ -76,6 +76,7 @@
             <%= link_to content_tag(:span, '', class: 'icon-plus') + " 加入榜单", new_package_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Package %>
             <%= link_to content_tag(:span, '', class: 'icon-gift') + " 我要卖", new_deal_path(beverage_id: @beverage.id), class: "ml20" if can? :create, Deal %>
             <%= link_to t("general.edit"), edit_beverage_path(@beverage), class: "ml20" if can? :edit, @beverage %>
+            <%= link_to t("general.delete"), @beverage, method: :delete, confirm: t("general.are_you_sure_to_delete"), class: "ml20" if can? :destroy, @beverage %>
         </div>
     </div>
 

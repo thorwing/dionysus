@@ -1,7 +1,12 @@
 <%= simple_form_for(@beverage) do |f| %>
     <%= f.error_notification %>
-    <%= f.hidden_field :type %>
     <%= f.input :name, label: t("general.name") %>
+    <% if @beverage.new_record? %>
+        <%= f.hidden_field :type %>
+    <% else %>
+        <%= f.label "类型", :type %>
+        <%= f.select :type, Beverage.types.map{|pair| [pair.last, pair.first]}, include_blank: false %>
+    <% end %>
     <%= f.input :picture, label: t("pictures.upload") %>
     
     <div id="regionFields">

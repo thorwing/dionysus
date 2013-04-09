@@ -108,6 +108,12 @@ class BeveragesController < ApplicationController
 
     respond_to do |format|
       if @beverage.update_attributes(params[:beverage])
+        #monkey patch for changing type
+        type = params[params[:type].downcase.to_sym][:type]
+        if(type .present?)
+          @beverage.type = type
+          @beverage.save
+        end
         format.html { redirect_to @beverage, notice: t("beverages.beverage_updated")}
         format.json { head :no_content }
       else
@@ -124,7 +130,7 @@ class BeveragesController < ApplicationController
     @beverage.destroy
 
     respond_to do |format|
-      format.html { redirect_to beverages_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
