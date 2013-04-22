@@ -1,6 +1,7 @@
 <div class="clearfix p10">
     <div class="pull-left">
-        <%= link_to image_tag(article.get_picture, width: 200, height: 160), article %><br/>
+        <% pic_url = article.get_picture %>
+        <%= link_to image_tag(pic_url ? pic_url : "grey.gif", width: 200, height: 160), article %><br/>
         <%= content_tag :span, content_tag(:i, '', class: "icon-user") + " #{article.author.nick}" %><br/>
         <%= content_tag :span, content_tag(:i, '', class: "icon-comment") + " #{article.comments.empty? ? '暂无' : article.comments.size}评论" %><br/>
         <%= content_tag :span, content_tag(:i, '', class: "icon-time") + " #{t("time.ago", time: time_ago_in_words(article.created_at))}" %><br/>
