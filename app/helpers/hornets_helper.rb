@@ -1,0 +1,2 @@
+module HornetsHelper
+end

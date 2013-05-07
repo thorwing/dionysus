@@ -1,0 +1,3449 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = off;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET escape_string_warning = off;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE active_admin_comments (
+    id integer NOT NULL,
+    resource_id character varying(255) NOT NULL,
+    resource_type character varying(255) NOT NULL,
+    author_id integer,
+    author_type character varying(255),
+    body text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    namespace character varying(255)
+);
+
+
+ALTER TABLE public.active_admin_comments OWNER TO dionysus;
+
+--
+-- Name: activity_feeds; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE activity_feeds (
+    id integer NOT NULL,
+    type character varying(255),
+    data text,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.activity_feeds OWNER TO dionysus;
+
+--
+-- Name: activity_feeds_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE activity_feeds_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.activity_feeds_id_seq OWNER TO dionysus;
+
+--
+-- Name: activity_feeds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE activity_feeds_id_seq OWNED BY activity_feeds.id;
+
+
+--
+-- Name: activity_feeds_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('activity_feeds_id_seq', 30, true);
+
+
+--
+-- Name: admin_notes_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE admin_notes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.admin_notes_id_seq OWNER TO dionysus;
+
+--
+-- Name: admin_notes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE admin_notes_id_seq OWNED BY active_admin_comments.id;
+
+
+--
+-- Name: admin_notes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('admin_notes_id_seq', 1, false);
+
+
+--
+-- Name: admin_users; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE admin_users (
+    id integer NOT NULL,
+    email character varying(255) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying(255),
+    last_sign_in_ip character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.admin_users OWNER TO dionysus;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE admin_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.admin_users_id_seq OWNER TO dionysus;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE admin_users_id_seq OWNED BY admin_users.id;
+
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('admin_users_id_seq', 1, true);
+
+
+--
+-- Name: areas; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE areas (
+    code integer,
+    name character varying(255),
+    ancestry character varying(255),
+    city_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.areas OWNER TO dionysus;
+
+--
+-- Name: articles; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE articles (
+    id integer NOT NULL,
+    title character varying(255),
+    body text,
+    released_at timestamp without time zone,
+    view_count integer,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.articles OWNER TO dionysus;
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.articles_id_seq OWNER TO dionysus;
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('articles_id_seq', 8, true);
+
+
+--
+-- Name: beverages; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE beverages (
+    id integer NOT NULL,
+    type character varying(255),
+    name character varying(255),
+    trans character varying(255),
+    alcohol character varying(255),
+    volume character varying(255),
+    bottler character varying(255),
+    distillation_method character varying(255),
+    barrel_cask character varying(255),
+    style character varying(255),
+    color character varying(255),
+    sweetness character varying(255),
+    vintage character varying(255),
+    age character varying(255),
+    picture character varying(255),
+    pic_url text,
+    grape_list character varying(255),
+    region_id integer,
+    brand_id integer,
+    rank_id integer,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.beverages OWNER TO dionysus;
+
+--
+-- Name: beverages_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE beverages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.beverages_id_seq OWNER TO dionysus;
+
+--
+-- Name: beverages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE beverages_id_seq OWNED BY beverages.id;
+
+
+--
+-- Name: beverages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('beverages_id_seq', 32, true);
+
+
+--
+-- Name: brands; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE brands (
+    id integer NOT NULL,
+    name character varying(255),
+    trans character varying(255),
+    description character varying(255),
+    picture character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.brands OWNER TO dionysus;
+
+--
+-- Name: brands_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE brands_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.brands_id_seq OWNER TO dionysus;
+
+--
+-- Name: brands_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE brands_id_seq OWNED BY brands.id;
+
+
+--
+-- Name: brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('brands_id_seq', 92, true);
+
+
+--
+-- Name: checks; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE checks (
+    id integer NOT NULL,
+    remark character varying(255),
+    author_id integer,
+    beverage_id integer,
+    star integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.checks OWNER TO dionysus;
+
+--
+-- Name: checks_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE checks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.checks_id_seq OWNER TO dionysus;
+
+--
+-- Name: checks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE checks_id_seq OWNED BY checks.id;
+
+
+--
+-- Name: checks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('checks_id_seq', 1, false);
+
+
+--
+-- Name: cities; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE cities (
+    code integer,
+    name character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.cities OWNER TO dionysus;
+
+--
+-- Name: cocktails; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE cocktails (
+    id integer NOT NULL,
+    name character varying(255),
+    trans character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.cocktails OWNER TO dionysus;
+
+--
+-- Name: cocktails_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE cocktails_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cocktails_id_seq OWNER TO dionysus;
+
+--
+-- Name: cocktails_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE cocktails_id_seq OWNED BY cocktails.id;
+
+
+--
+-- Name: cocktails_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('cocktails_id_seq', 6, true);
+
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE comments (
+    id integer NOT NULL,
+    content text,
+    ancestry character varying(255),
+    author_id integer,
+    commentable_id integer,
+    commentable_type character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.comments OWNER TO dionysus;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.comments_id_seq OWNER TO dionysus;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('comments_id_seq', 4, true);
+
+
+--
+-- Name: complains; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE complains (
+    id integer NOT NULL,
+    remark character varying(255),
+    is_ignored boolean DEFAULT false,
+    is_solved boolean DEFAULT false,
+    author_id integer,
+    complainable_id integer,
+    complainable_type character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.complains OWNER TO dionysus;
+
+--
+-- Name: complains_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE complains_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.complains_id_seq OWNER TO dionysus;
+
+--
+-- Name: complains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE complains_id_seq OWNED BY complains.id;
+
+
+--
+-- Name: complains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('complains_id_seq', 2, true);
+
+
+--
+-- Name: containers; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE containers (
+    id integer NOT NULL,
+    beverage_id integer,
+    cup_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.containers OWNER TO dionysus;
+
+--
+-- Name: containers_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE containers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.containers_id_seq OWNER TO dionysus;
+
+--
+-- Name: containers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE containers_id_seq OWNED BY containers.id;
+
+
+--
+-- Name: containers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('containers_id_seq', 1, false);
+
+
+--
+-- Name: conversations; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE conversations (
+    id integer NOT NULL,
+    subject character varying(255) DEFAULT ''::character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.conversations OWNER TO dionysus;
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE conversations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.conversations_id_seq OWNER TO dionysus;
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE conversations_id_seq OWNED BY conversations.id;
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('conversations_id_seq', 1, false);
+
+
+--
+-- Name: cups; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE cups (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.cups OWNER TO dionysus;
+
+--
+-- Name: cups_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE cups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cups_id_seq OWNER TO dionysus;
+
+--
+-- Name: cups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE cups_id_seq OWNED BY cups.id;
+
+
+--
+-- Name: cups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('cups_id_seq', 1, false);
+
+
+--
+-- Name: deals; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE deals (
+    id integer NOT NULL,
+    amount integer,
+    price double precision,
+    remark character varying(255),
+    beverage_id integer,
+    seller_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.deals OWNER TO dionysus;
+
+--
+-- Name: deals_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE deals_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.deals_id_seq OWNER TO dionysus;
+
+--
+-- Name: deals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE deals_id_seq OWNED BY deals.id;
+
+
+--
+-- Name: deals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('deals_id_seq', 1, false);
+
+
+--
+-- Name: follows; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE follows (
+    id integer NOT NULL,
+    followable_id integer NOT NULL,
+    followable_type character varying(255) NOT NULL,
+    follower_id integer NOT NULL,
+    follower_type character varying(255) NOT NULL,
+    blocked boolean DEFAULT false NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.follows OWNER TO dionysus;
+
+--
+-- Name: follows_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE follows_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.follows_id_seq OWNER TO dionysus;
+
+--
+-- Name: follows_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE follows_id_seq OWNED BY follows.id;
+
+
+--
+-- Name: follows_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('follows_id_seq', 3, true);
+
+
+--
+-- Name: ingredients; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE ingredients (
+    id integer NOT NULL,
+    name character varying(255),
+    amount character varying(255),
+    recipe_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ingredients OWNER TO dionysus;
+
+--
+-- Name: ingredients_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE ingredients_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ingredients_id_seq OWNER TO dionysus;
+
+--
+-- Name: ingredients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE ingredients_id_seq OWNED BY ingredients.id;
+
+
+--
+-- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('ingredients_id_seq', 18, true);
+
+
+--
+-- Name: lists; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE lists (
+    id integer NOT NULL,
+    title character varying(255),
+    description text,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.lists OWNER TO dionysus;
+
+--
+-- Name: lists_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE lists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.lists_id_seq OWNER TO dionysus;
+
+--
+-- Name: lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE lists_id_seq OWNED BY lists.id;
+
+
+--
+-- Name: lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('lists_id_seq', 1, true);
+
+
+--
+-- Name: locations; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE locations (
+    id integer NOT NULL,
+    address character varying(255),
+    latitude double precision,
+    longitude double precision,
+    city_id integer,
+    area_id integer,
+    locationable_id integer,
+    locationable_type character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.locations OWNER TO dionysus;
+
+--
+-- Name: locations_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE locations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.locations_id_seq OWNER TO dionysus;
+
+--
+-- Name: locations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
+
+
+--
+-- Name: locations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('locations_id_seq', 1, false);
+
+
+--
+-- Name: merchants; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE merchants (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.merchants OWNER TO dionysus;
+
+--
+-- Name: merchants_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE merchants_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.merchants_id_seq OWNER TO dionysus;
+
+--
+-- Name: merchants_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE merchants_id_seq OWNED BY merchants.id;
+
+
+--
+-- Name: merchants_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('merchants_id_seq', 1, false);
+
+
+--
+-- Name: nodes; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE nodes (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.nodes OWNER TO dionysus;
+
+--
+-- Name: nodes_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE nodes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.nodes_id_seq OWNER TO dionysus;
+
+--
+-- Name: nodes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE nodes_id_seq OWNED BY nodes.id;
+
+
+--
+-- Name: nodes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('nodes_id_seq', 2, true);
+
+
+--
+-- Name: notifications; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE notifications (
+    id integer NOT NULL,
+    type character varying(255),
+    body text,
+    subject character varying(255) DEFAULT ''::character varying,
+    sender_id integer,
+    sender_type character varying(255),
+    notified_object_id integer,
+    notified_object_type character varying(255),
+    conversation_id integer,
+    draft boolean DEFAULT false,
+    notification_code character varying(255),
+    attachment character varying(255),
+    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.notifications OWNER TO dionysus;
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.notifications_id_seq OWNER TO dionysus;
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('notifications_id_seq', 8, true);
+
+
+--
+-- Name: packages; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE packages (
+    id integer NOT NULL,
+    list_id integer,
+    beverage_id integer,
+    remark character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.packages OWNER TO dionysus;
+
+--
+-- Name: packages_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE packages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.packages_id_seq OWNER TO dionysus;
+
+--
+-- Name: packages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE packages_id_seq OWNED BY packages.id;
+
+
+--
+-- Name: packages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('packages_id_seq', 1, false);
+
+
+--
+-- Name: pieces; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE pieces (
+    id integer NOT NULL,
+    flavor character varying(255),
+    strength integer,
+    review_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.pieces OWNER TO dionysus;
+
+--
+-- Name: pieces_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE pieces_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pieces_id_seq OWNER TO dionysus;
+
+--
+-- Name: pieces_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE pieces_id_seq OWNED BY pieces.id;
+
+
+--
+-- Name: pieces_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('pieces_id_seq', 3, true);
+
+
+--
+-- Name: products; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE products (
+    id integer NOT NULL,
+    title character varying(255),
+    description text,
+    price double precision,
+    currency integer,
+    source character varying(255),
+    source_id character varying(255),
+    source_url text,
+    beverage_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.products OWNER TO dionysus;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.products_id_seq OWNER TO dionysus;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE products_id_seq OWNED BY products.id;
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('products_id_seq', 1, false);
+
+
+--
+-- Name: ranks; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE ranks (
+    id integer NOT NULL,
+    name character varying(255),
+    trans character varying(255),
+    type_list character varying(255),
+    ancestry character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ranks OWNER TO dionysus;
+
+--
+-- Name: ranks_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE ranks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ranks_id_seq OWNER TO dionysus;
+
+--
+-- Name: ranks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE ranks_id_seq OWNED BY ranks.id;
+
+
+--
+-- Name: ranks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('ranks_id_seq', 1, true);
+
+
+--
+-- Name: receipts; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE receipts (
+    id integer NOT NULL,
+    receiver_id integer,
+    receiver_type character varying(255),
+    notification_id integer NOT NULL,
+    is_read boolean DEFAULT false,
+    trashed boolean DEFAULT false,
+    deleted boolean DEFAULT false,
+    mailbox_type character varying(25),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.receipts OWNER TO dionysus;
+
+--
+-- Name: receipts_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE receipts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.receipts_id_seq OWNER TO dionysus;
+
+--
+-- Name: receipts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE receipts_id_seq OWNED BY receipts.id;
+
+
+--
+-- Name: receipts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('receipts_id_seq', 8, true);
+
+
+--
+-- Name: recipes; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE recipes (
+    id integer NOT NULL,
+    name character varying(255),
+    remark character varying(255),
+    picture character varying(255),
+    pic_url text,
+    cocktail_id integer,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.recipes OWNER TO dionysus;
+
+--
+-- Name: recipes_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE recipes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.recipes_id_seq OWNER TO dionysus;
+
+--
+-- Name: recipes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE recipes_id_seq OWNED BY recipes.id;
+
+
+--
+-- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('recipes_id_seq', 6, true);
+
+
+--
+-- Name: redactor_assets; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE redactor_assets (
+    id integer NOT NULL,
+    user_id integer,
+    data_file_name character varying(255) NOT NULL,
+    data_content_type character varying(255),
+    data_file_size integer,
+    assetable_id integer,
+    assetable_type character varying(30),
+    type character varying(30),
+    width integer,
+    height integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.redactor_assets OWNER TO dionysus;
+
+--
+-- Name: redactor_assets_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE redactor_assets_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.redactor_assets_id_seq OWNER TO dionysus;
+
+--
+-- Name: redactor_assets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE redactor_assets_id_seq OWNED BY redactor_assets.id;
+
+
+--
+-- Name: redactor_assets_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('redactor_assets_id_seq', 1, false);
+
+
+--
+-- Name: regions; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE regions (
+    id integer NOT NULL,
+    name character varying(255),
+    trans character varying(255),
+    ancestry character varying(255),
+    beverage_type character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.regions OWNER TO dionysus;
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE regions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.regions_id_seq OWNER TO dionysus;
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE regions_id_seq OWNED BY regions.id;
+
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('regions_id_seq', 6, true);
+
+
+--
+-- Name: replies; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE replies (
+    id integer NOT NULL,
+    body text,
+    topic_id integer,
+    author_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.replies OWNER TO dionysus;
+
+--
+-- Name: replies_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE replies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.replies_id_seq OWNER TO dionysus;
+
+--
+-- Name: replies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE replies_id_seq OWNED BY replies.id;
+
+
+--
+-- Name: replies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('replies_id_seq', 1, true);
+
+
+--
+-- Name: reviews; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE reviews (
+    id integer NOT NULL,
+    title character varying(255),
+    content text,
+    score integer,
+    nose_score integer,
+    nose_list character varying(255),
+    taste_score integer,
+    taste_list character varying(255),
+    finish_score integer,
+    finish_list character varying(255),
+    balance_score integer,
+    balance_list character varying(255),
+    food_list character varying(255),
+    up_votes integer DEFAULT 0 NOT NULL,
+    down_votes integer DEFAULT 0 NOT NULL,
+    author_id integer,
+    beverage_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.reviews OWNER TO dionysus;
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE reviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.reviews_id_seq OWNER TO dionysus;
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE reviews_id_seq OWNED BY reviews.id;
+
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('reviews_id_seq', 1, true);
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO dionysus;
+
+--
+-- Name: scores; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE scores (
+    id integer NOT NULL,
+    type character varying(255),
+    points character varying(255),
+    review_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.scores OWNER TO dionysus;
+
+--
+-- Name: scores_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE scores_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.scores_id_seq OWNER TO dionysus;
+
+--
+-- Name: scores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE scores_id_seq OWNED BY scores.id;
+
+
+--
+-- Name: scores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('scores_id_seq', 1, false);
+
+
+--
+-- Name: taggings; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE taggings (
+    id integer NOT NULL,
+    tag_id integer,
+    taggable_id integer,
+    taggable_type character varying(255),
+    tagger_id integer,
+    tagger_type character varying(255),
+    context character varying(128),
+    created_at timestamp without time zone
+);
+
+
+ALTER TABLE public.taggings OWNER TO dionysus;
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE taggings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.taggings_id_seq OWNER TO dionysus;
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
+
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('taggings_id_seq', 96, true);
+
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE tags (
+    id integer NOT NULL,
+    name character varying(255)
+);
+
+
+ALTER TABLE public.tags OWNER TO dionysus;
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tags_id_seq OWNER TO dionysus;
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('tags_id_seq', 16, true);
+
+
+--
+-- Name: topics; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE topics (
+    id integer NOT NULL,
+    title character varying(255),
+    body text,
+    replied_at timestamp without time zone,
+    replies_count integer DEFAULT 0,
+    last_active_mark integer,
+    last_reply_id integer,
+    author_id integer,
+    node_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.topics OWNER TO dionysus;
+
+--
+-- Name: topics_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE topics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.topics_id_seq OWNER TO dionysus;
+
+--
+-- Name: topics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE topics_id_seq OWNED BY topics.id;
+
+
+--
+-- Name: topics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('topics_id_seq', 2, true);
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    nick character varying(255),
+    avatar character varying(255),
+    role character varying(255),
+    bio text,
+    locked_nodes_list character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    email character varying(255) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying(255),
+    last_sign_in_ip character varying(255)
+);
+
+
+ALTER TABLE public.users OWNER TO dionysus;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO dionysus;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('users_id_seq', 9, true);
+
+
+--
+-- Name: vinifications; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE vinifications (
+    id integer NOT NULL,
+    beverage_id integer,
+    grape_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.vinifications OWNER TO dionysus;
+
+--
+-- Name: vinifications_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE vinifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.vinifications_id_seq OWNER TO dionysus;
+
+--
+-- Name: vinifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE vinifications_id_seq OWNED BY vinifications.id;
+
+
+--
+-- Name: vinifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('vinifications_id_seq', 1, false);
+
+
+--
+-- Name: votings; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE votings (
+    id integer NOT NULL,
+    voteable_type character varying(255),
+    voteable_id integer,
+    voter_type character varying(255),
+    voter_id integer,
+    up_vote boolean NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.votings OWNER TO dionysus;
+
+--
+-- Name: votings_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE votings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.votings_id_seq OWNER TO dionysus;
+
+--
+-- Name: votings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE votings_id_seq OWNED BY votings.id;
+
+
+--
+-- Name: votings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('votings_id_seq', 6, true);
+
+
+--
+-- Name: wishes; Type: TABLE; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE TABLE wishes (
+    id integer NOT NULL,
+    remark character varying(255),
+    accomplished boolean DEFAULT false,
+    rating integer,
+    user_id integer,
+    beverage_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.wishes OWNER TO dionysus;
+
+--
+-- Name: wishes_id_seq; Type: SEQUENCE; Schema: public; Owner: dionysus
+--
+
+CREATE SEQUENCE wishes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.wishes_id_seq OWNER TO dionysus;
+
+--
+-- Name: wishes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dionysus
+--
+
+ALTER SEQUENCE wishes_id_seq OWNED BY wishes.id;
+
+
+--
+-- Name: wishes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dionysus
+--
+
+SELECT pg_catalog.setval('wishes_id_seq', 3, true);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('admin_notes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY activity_feeds ALTER COLUMN id SET DEFAULT nextval('activity_feeds_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY beverages ALTER COLUMN id SET DEFAULT nextval('beverages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY brands ALTER COLUMN id SET DEFAULT nextval('brands_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY checks ALTER COLUMN id SET DEFAULT nextval('checks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY cocktails ALTER COLUMN id SET DEFAULT nextval('cocktails_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY complains ALTER COLUMN id SET DEFAULT nextval('complains_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY containers ALTER COLUMN id SET DEFAULT nextval('containers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY conversations ALTER COLUMN id SET DEFAULT nextval('conversations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY cups ALTER COLUMN id SET DEFAULT nextval('cups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY deals ALTER COLUMN id SET DEFAULT nextval('deals_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY follows ALTER COLUMN id SET DEFAULT nextval('follows_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY ingredients ALTER COLUMN id SET DEFAULT nextval('ingredients_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY lists ALTER COLUMN id SET DEFAULT nextval('lists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY merchants ALTER COLUMN id SET DEFAULT nextval('merchants_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY nodes ALTER COLUMN id SET DEFAULT nextval('nodes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY packages ALTER COLUMN id SET DEFAULT nextval('packages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY pieces ALTER COLUMN id SET DEFAULT nextval('pieces_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY ranks ALTER COLUMN id SET DEFAULT nextval('ranks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY receipts ALTER COLUMN id SET DEFAULT nextval('receipts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY redactor_assets ALTER COLUMN id SET DEFAULT nextval('redactor_assets_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY regions ALTER COLUMN id SET DEFAULT nextval('regions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY replies ALTER COLUMN id SET DEFAULT nextval('replies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY reviews ALTER COLUMN id SET DEFAULT nextval('reviews_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY scores ALTER COLUMN id SET DEFAULT nextval('scores_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY taggings ALTER COLUMN id SET DEFAULT nextval('taggings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY topics ALTER COLUMN id SET DEFAULT nextval('topics_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY vinifications ALTER COLUMN id SET DEFAULT nextval('vinifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY votings ALTER COLUMN id SET DEFAULT nextval('votings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY wishes ALTER COLUMN id SET DEFAULT nextval('wishes_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_admin_comments; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY active_admin_comments (id, resource_id, resource_type, author_id, author_type, body, created_at, updated_at, namespace) FROM stdin;
+\.
+
+
+--
+-- Data for Name: activity_feeds; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY activity_feeds (id, type, data, user_id, created_at, updated_at) FROM stdin;
+1	CreateFeed	{"item_id":1,"item_type":"Wish"}	6	2013-02-03 09:45:14.258045	2013-02-03 09:45:14.258045
+2	CreateFeed	{"item_id":1,"item_type":"Review"}	6	2013-02-03 09:49:07.96128	2013-02-03 09:49:07.96128
+3	FollowFeed	{"follow_id":2,"follow_nick":"author"}	7	2013-02-19 09:26:22.452842	2013-02-19 09:26:22.452842
+4	CreateFeed	{"item_id":4,"item_type":"Recipe"}	6	2013-03-03 06:01:47.256382	2013-03-03 06:01:47.256382
+5	CreateFeed	{"item_id":5,"item_type":"Recipe"}	6	2013-03-03 07:09:55.180578	2013-03-03 07:09:55.180578
+6	CreateFeed	{"item_id":6,"item_type":"Recipe"}	6	2013-03-03 07:50:36.126587	2013-03-03 07:50:36.126587
+7	CreateFeed	{"item_id":2,"item_type":"Wish"}	6	2013-03-03 08:59:25.066456	2013-03-03 08:59:25.066456
+8	CreateFeed	{"item_id":16,"item_type":"Beverage"}	6	2013-03-03 09:50:04.52565	2013-03-03 09:50:04.52565
+9	CreateFeed	{"item_id":17,"item_type":"Beverage"}	6	2013-03-06 04:55:34.808631	2013-03-06 04:55:34.808631
+10	CreateFeed	{"item_id":3,"item_type":"Wish"}	1	2013-03-14 17:49:49.938405	2013-03-14 17:49:49.938405
+11	CreateFeed	{"item_id":18,"item_type":"Beverage"}	7	2013-03-16 11:35:16.336206	2013-03-16 11:35:16.336206
+12	CreateFeed	{"item_id":19,"item_type":"Beverage"}	7	2013-03-16 11:37:46.045469	2013-03-16 11:37:46.045469
+13	CreateFeed	{"item_id":20,"item_type":"Beverage"}	1	2013-03-30 17:52:02.216545	2013-03-30 17:52:02.216545
+14	CreateFeed	{"item_id":21,"item_type":"Beverage"}	1	2013-03-30 17:55:12.752221	2013-03-30 17:55:12.752221
+15	CreateFeed	{"item_id":22,"item_type":"Beverage"}	1	2013-04-02 09:52:07.518603	2013-04-02 09:52:07.518603
+16	FollowFeed	{"follow_id":3,"follow_nick":"user"}	6	2013-04-03 15:32:21.217087	2013-04-03 15:32:21.217087
+17	CreateFeed	{"item_id":23,"item_type":"Beverage"}	6	2013-04-05 04:25:50.756128	2013-04-05 04:25:50.756128
+18	CreateFeed	{"item_id":24,"item_type":"Beverage"}	1	2013-04-05 04:58:13.248705	2013-04-05 04:58:13.248705
+19	CreateFeed	{"item_id":25,"item_type":"Beverage"}	6	2013-04-05 05:44:10.059873	2013-04-05 05:44:10.059873
+20	CreateFeed	{"item_id":26,"item_type":"Beverage"}	6	2013-04-05 05:44:13.188272	2013-04-05 05:44:13.188272
+21	CreateFeed	{"item_id":27,"item_type":"Beverage"}	6	2013-04-05 05:44:17.707762	2013-04-05 05:44:17.707762
+22	CreateFeed	{"item_id":28,"item_type":"Beverage"}	6	2013-04-05 05:44:19.306706	2013-04-05 05:44:19.306706
+23	CreateFeed	{"item_id":1,"item_type":"Topic"}	1	2013-04-10 05:06:35.342666	2013-04-10 05:06:35.342666
+24	CreateFeed	{"item_id":2,"item_type":"Topic"}	6	2013-04-10 05:07:15.016571	2013-04-10 05:07:15.016571
+25	FollowFeed	{"follow_id":6,"follow_nick":"aerofloyd"}	1	2013-04-10 07:34:56.869544	2013-04-10 07:34:56.869544
+26	CreateFeed	{"item_id":29,"item_type":"Beverage"}	1	2013-04-19 06:34:13.303221	2013-04-19 06:34:13.303221
+27	CreateFeed	{"item_id":30,"item_type":"Beverage"}	1	2013-04-19 06:56:44.273674	2013-04-19 06:56:44.273674
+28	CreateFeed	{"item_id":31,"item_type":"Beverage"}	1	2013-04-19 06:59:11.31797	2013-04-19 06:59:11.31797
+29	CreateFeed	{"item_id":1,"item_type":"List"}	1	2013-04-20 15:12:55.844356	2013-04-20 15:12:55.844356
+30	CreateFeed	{"item_id":32,"item_type":"Beverage"}	1	2013-04-21 10:12:29.092863	2013-04-21 10:12:29.092863
+\.
+
+
+--
+-- Data for Name: admin_users; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY admin_users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
+1	admin@example.com	$2a$10$XBy8P46SO.MpCl777sWmyOm7rJn5jAeyLsPLR1HDAqmpgrS34/NvW	\N	\N	\N	0	\N	\N	\N	\N	2013-02-01 13:47:10.403032	2013-02-01 13:47:10.403032
+\.
+
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY areas (code, name, ancestry, city_id, created_at, updated_at) FROM stdin;
+1	卢湾区	\N	1	2013-02-01 13:47:28.302095	2013-02-01 13:47:28.302095
+835	淮海路	1	1	2013-02-01 13:47:28.310354	2013-02-01 13:47:28.310354
+836	新天地	1	1	2013-02-01 13:47:28.315311	2013-02-01 13:47:28.315311
+2	徐汇区	\N	1	2013-02-01 13:47:28.318544	2013-02-01 13:47:28.318544
+866	万体馆	2	1	2013-02-01 13:47:28.32251	2013-02-01 13:47:28.32251
+13	宝山区	\N	1	2013-02-01 13:47:28.325595	2013-02-01 13:47:28.325595
+831	大华地区	\N	1	2013-02-01 13:47:28.328437	2013-02-01 13:47:28.328437
+14	朝阳区	\N	2	2013-02-01 13:47:28.33664	2013-02-01 13:47:28.33664
+2578	国贸	14	2	2013-02-01 13:47:28.341464	2013-02-01 13:47:28.341464
+\.
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY articles (id, title, body, released_at, view_count, author_id, created_at, updated_at) FROM stdin;
+1	红酒养生法（1）关于心血管疾病	<img src="http://a.36krcnd.com/photo/fd54d82d976cd56e7e0a780ab804279f.jpg" alt=""> <br/> 心血管疾病，又称为循环系统疾病，是一系列涉及人体内运送血液的器官和组织的疾病，主要包括心脏、动脉、静脉、微血管等，可细分为急性和慢性，一般都是与动脉硬化有关，这些疾病都有着相似的病因、病发过程及治疗方法。现代人的饮食结构普遍以高脂肪高热量食物为主，这使得心血管疾病的诱发人群迅速增加，并成为一种难以治愈的常见病。 心血管疾病最有代表性的症状包括高血压、高血脂、高胆固醇。 高血压的成因、发展和危害的论述，在医学著作和网络上可谓连篇累牍。然而，我们发现，大多数人对这类专业描述难以知之甚详，以致莫名所以。因此，我们试图用通俗的大众语言，对高血压做出总结与阐述： 引起高血压的原因很多，有原发性高血压和继发性高血压，主要分为遗传、环境和血液中缺乏负离子三个方面。高血压病人常伴有糖尿病，而糖尿病也较多的伴有高血压。 病理学家在对有高血压病症的患者的尸体解剖时发现，这些受检者的冠状动脉中都明显堆积着一层厚厚的脂肪物质——研究证明，这些脂肪类物质主要源自不合理的饮食习惯和缺乏锻炼所致，我们把这类物质简称为“垃圾”。这些“垃圾”随着摄入食物的日积月累，在人体血管中沉积并逐渐堆积。而高血压的主要成因，就是血液在血管内遇到这些“垃圾”的阻滞，造成血液流通循环不畅，使血管内产生“负压”，迫使血液压力升高——高血压就此引发！ 医学上用于控制高血压的主要手段之一是使用降压药物，它的作用就是降低血压，通过影响交感神经系统、肾素-血管紧张素-醛固酮系统和内皮素系统等，以对血压的控制和生理调节而发挥降压效应。我们知道，是药三分毒！大多数降压药在降低血压的同时，会对人体的肾脏器官造成严重的副伤害。医学发现，长期大剂量服用降压药，可能使肾脏衰竭——一旦肾脏衰竭，唯一面临的，将是换肾或死亡！ 祖国中医理论的经典名言：痛则不通，通则不痛！ 干红葡萄酒的酚类物质中含有大量叫做丹宁的物质，直观感觉就是饮用时口腔那种涩涩的味觉，它存在于葡萄的皮、籽和梗，以葡萄皮中为最优和最丰富。单宁也有好坏，好的单宁在口感上是圆润而平滑顺口的，我们饮酒时可以明显感觉到涩，却不会觉得难以下咽；不好的单宁会让我们觉得粗糙、尖锐而难以下咽，甚至使口腔发麻失去味觉。因此，那种“我们的葡萄酒很涩是因为单宁含量高”的强词，是纯粹的杜撰和毫无根据的狡辩——就象我们平时吃鲜葡萄，完全成熟的葡萄甚至能够带皮食用；不太成熟的葡萄却只会让我们无法愉快地享用。 千万不要小看了单宁对人体的特殊作用，它可以逐渐溶解血管中堆积的“垃圾”，随着血液的循环作用，将这些溶解后的“垃圾”排出体外——其实人们常说的“动脉硬化”，并不是单纯的动脉管壁硬化，而更多的是因为血管壁堆积了太多的沉积物而使血管失去弹性——血管清除了“垃圾”，血管壁恢复了弹性，必然使血液流通循环顺畅；而血管内部血液通畅，必然解除“负压”……于是，人体内因为消除了使血压升高的阻滞，血压自然逐渐恢复正常。 干红葡萄酒的降压作用，得到科学家和医学专家的肯定，更得到无数高血压患者实际效果的论证。	2013-01-25 13:47:30.426273	88	2	2013-02-01 13:47:30.428893	2013-02-01 13:47:30.428893
+2	德富堡突破葡萄酒传统商业模式 实行线上线下无缝对接	<img src="http://a.36krcnd.com/photo/131de6e13f8413d17cf101e2d7d148c0.jpg" alt=""> <br/> 随着消费者消费观念转变，消费水平的不断提高，传统的B2B2C的商业模式已不能满足目前的市场需求。线上与线下同步的销售模式已渐渐崭露头角，并被众多葡萄酒企业所采纳。 马云曾说，21世纪，要么电子商务，要么无商可务。从今年双十二相关数据中可以看出，电子商务是未来企业发展的一种趋势。而与此同时，在全球葡萄酒行业快速增长的同时，中国被称为是全球葡萄酒行业增长速度最快的市场。2011年葡萄酒进口总量为36万吨，其中瓶装酒进口量为24万吨，同比增长65%。国产普通酒与进口瓶装葡萄酒合计140万吨，其中进口瓶装葡萄酒增长速度是国产葡萄酒增长速度的5倍。随着电子商务时代的来临，加上近年来进口葡萄酒的迅猛发展让更多的企业看到了希望。 或许正是由于葡萄酒特殊的商品属性，葡萄酒在玩转电子商务的同时又另加花样。例如，也买酒、酒美网、网酒网也相继开始偿试线下体验，线下的销售渠道渐渐会成为线上渠道的补充。不过德富堡的线下体验店却是别具一格，据了解，它在线下建立高端会所，为高端人群专门打造一对一服务，而且它创造一个国内首家集购酒、品鉴、基金、担保、会员及油画艺术品销售及拍卖为一体的大型葡萄酒体验中心。从这种方式看，它不再是单一的线上线下的关系，而是将更注重客户的体验感，提升客户的生活品质。 总之，无论是哪种商业模式，最终殊途同归。不过针对葡萄酒本身的特殊性，从目前的市场来看，纯粹的电子商务模式并不是一条完美之道，把线上与线下同步销售或许才是王道。	2013-01-11 13:47:30.43607	4	2	2013-02-01 13:47:30.437329	2013-02-01 13:47:30.437329
+3	进口红酒的背标问题( 原创)	<img src="http://a.36krcnd.com/photo/337b120007126eb121d7c7ffbdc261e8.jpg!heading" alt=""> <br/> 刚开始小编还没明白其意图，后来才得知，他是政府里搞采购的，根据领导指示，打算买一批进口红酒用于腐败消费，于是给几个做酒朋友打了电话，随之他们也送去几个样品，样品就如上面两图的内容那样，前面看起来都差不多（因为都看不懂），但是后面的内容相差就大了。小编的这位朋友在进口红酒方面是外行，自己搞不明白，只有请教别人，但是请教那些拿样品酒过来的毕竟不靠谱，哪有自己说自己酒不好的道理，且各自有各自的解释，但是事情紧急，上面催着要，而且毕竟用于腐败消费，都是领导享用的，也不敢怠慢，所以就来找小编我了。	2013-01-18 13:47:30.441603	10	2	2013-02-01 13:47:30.442756	2013-02-01 13:47:30.442756
+4	古代的酒名	<p><p><img src="http://frankanddunya.com/wp-content/uploads/2012/03/Old-Whisky-10-x10.jpg"><br><hr></p><p><span style="line-height: 1.45em;">在酒作为全世界通用的名称之前， 人们给自己喜爱的饮品起了许</span><span style="line-height: 1.45em;">多不同的名称。其中有些名称一直沿用至今。不禁让人忆起它们</span><span style="line-height: 1.45em;">古老的历史。占首位的是</span><span style="line-height: 1.45em;">aqua ardente “</span><span style="line-height: 1.45em;">烈性酒</span><span style="line-height: 1.45em;">”,随后根据这个</span><span style="line-height: 1.45em;">词组又产生了另一个词语</span><span style="line-height: 1.45em;">Vinum Ardens</span><span style="line-height: 1.45em;">， 即 "烈性葡萄酒" 。后</span><span style="line-height: 1.45em;">来出现了更富有诗意的如“精神</span><span style="line-height: 1.45em;">”、“心灵”(spirit)这样的酒名。法语</span><span style="line-height: 1.45em;">Esprit 以及英语Spirit ， 一直到现在这些名字仍然被用来作为酒的标志。炼金术士还用许多其他术语来称呼蒸馏酒。其</span><span style="line-height: 1.45em;">中流传最广的是13世纪出现并沿用至今的"活命水" "生命之</span><span style="line-height: 1.45em;">水</span><span style="line-height: 1.45em;">" </span><span style="line-height: 1.45em;">( 拉丁语是Aqua Vitae ， 法语是Eau de Vie) 。这也是炼金</span><span style="line-height: 1.45em;">术士更喜欢的名称， 因为他们认为酒是长生不老药，甚而建议将</span><span style="line-height: 1.45em;">其放在黄金容器内保存。</span><br></p></p>	\N	\N	1	2013-03-21 07:16:44.216663	2013-03-21 07:16:44.216663
+5	[留言终结者]会发光的鸡尾酒	<p><img src="http://www.thecampuscompanion.com/party-lab/files/2011/10/Aurora.jpg" style=""><br></p><p>网上盛传的图片。</p><p>其实是PS处理的样子。杯子和瓶子里，都是星云的图片拼贴制作而成的效果。</p><p><hr>这款酒的名字叫做Aurora Jungle-Juice，是个配方简单的聚会饮料。</p><p>配方如下：</p><p><ul><li>2 liters Gin or Vodka</li><li>2升金酒或伏特加酒</li></ul><ul><li>9 Liters Tonic Water</li><li>9升汤丽水</li></ul><ul><li>3-4 Bottles Roses Mojito Passion, OR 3-4 Canisters of Pink-Lemonade Concentrate</li><li>3～4瓶Roses Mojito Passion（一款粉红色的预调酒）或者3~4罐Pink-Lemonade Concentrate（粉红色的一种柠檬味糖浆罐头）。这两个东西国内应该都不好买，其实用粉红色的什么代替估计都可以。</li></ul><ul><li>Ice</li><li>冰块</li></ul><ul><li>紫外线灯（这个在英文配方里没有，是笔者自己加的。=v=）</li></ul></p><p>在聚会开始前，把所有东西都倒在一起吧！～随便你用什么装。</p><p>然后冰块在要喝的时候才加进去。</p><p>就这么简单。总的来说就是个粗放的粉色金汤力鸡尾酒。</p><p><br></p><p><hr>那么，这款酒到底会不会发光呢？</p><p>请看下图。</p><p><img src="http://www.thecampuscompanion.com/party-lab/files/2011/10/tonic-glow.jpg" style=""><br></p><p>这就是所谓的发光鸡尾酒中发光的部分，Tonic（汤丽水）。常喝鸡尾酒的朋友应该很熟悉这个玩意儿，著名的鸡尾酒Gin Tonic（金汤力）就有用到它。</p><p>Tonic最早是治疗疟疾的一种药水，里面含有奎宁的成分。而正是奎宁，可以在紫外线灯的照射下，呈荧光状。</p><p><br></p><p>所以，说发光其实不算很确切，是荧光啦……</p><p>最后的效果可能会是这样</p><p><img src="http://www.thecampuscompanion.com/party-lab/files/2011/10/aurora.jpg" style=""><br></p><p>当然，要关了灯，边上放个……</p><p><img src="http://www.mrlighting.cn/110/7205.jpg" style=""><br></p><p><br></p><p>至于酷不酷。你们自己决定啦！～</p>	\N	\N	1	2013-03-22 09:11:38.837185	2013-03-22 09:11:38.837185
+7	如何组织聚会	<p></p><p></p><p></p><div>作者：<a href="http://weibo.com/u/1759307933">@赵行德</a><p></p><p><img src="http://img3.douban.com/view/note/large/public/p167053146-1.jpg"><br></p><br><br>看到有人推荐这个帖子《<a href="http://www.douban.com/note/166489733/">永远别做聚会组织者，那是2B才干的事</a>》，发现组织聚会对很多人是件挺难的事，我想起我曾组织过大学同学母校聚会的经过，写出来给大家分享一下。<br><br>这次聚会需要召集位于全国各地的同学飞赴母校所在地成都，大家都要抽出2-3天，貌似难度颇大。因此虽然之前偶尔有几个同学曾经在QQ群里面提到过，但都没人接手组织。究其原因，应该是觉得人数众多，如果要出面组织可能工作量巨大，并且不知道自己是否有面子能够招呼道足够多的同学从外地长途回奔参加。<br><br>我稍微想了一下，发觉这个组织工作其实是蛮简单的，现在总结一下给大家作为参考。<br><br>1.寻找骨干 <br>先私下跟几个比较有号召的朋友沟通，看他们愿不愿意参加聚会，只要他们愿意就好办了。同学们就不再是冲着你一个人的面子来参加，而是为了一群有号召力的朋友来了。<br><br>2.建立组织 <br>在聚会地安排一个龙头老大，负责确定旅馆、饭馆、玩乐计划，其他地方确定区域联系人。中间有什么问题大家商量着决定。 <br><br>3.公布计划 <br>提前1-2个月给所有同学群发短信，告知聚会计划（一般确定在公共假期），方便大家安排、花费预算（平均每人500），明确已经有多人参与。 <br>从最开始公告的时候，我们就已经找到15人以上明确出席，尤其是找到了绝大多数当年美女出席，吸引力大增。 <br><br>4.分工负责 <br>每个区域指定一个区域负责人，他负责通知、劝说该地区同学出席聚会。当他无法说服时，就由成都的同学轮番打电话劝说，相当有效。<br><br>5.不断宣传，提供有吸引力的活动<br>每周都会群发2-3条短信，告知大家准备近况，明确出席的人数。还有广告宣传语，比如： <br>欢聚母校，重温过去，大学时期暗恋美女同学的人，请把握最后的现场表白机会！现已有25人确定参加！排队表白者高达10人！<br>大恶人xxx将出席聚会，有仇者可现场群殴，现已有8人报名参加群殴！<br>这样频繁的通报和沟通，很快就把聚会炒热了 <br><br>6.安排接待 <br>聚会前3天，明确订房信息，交通图，还有机场接站人员，让大家都觉得很方便不至于临时变卦。 <br><br>7.现场执行 <br>同学到齐后，按事先约定每人先收500元，以后活动由组织者用于支付除酒店住宿外的一切花费。安排全由当地龙头老大安排，对于组织者来说非常省心，事后公布账目。<br><br>最后35个同学，28人出席，结果圆满，大家都很期待有下一次聚会。<br><br>中间有没有出现什么问题呢？<br>当然有，比如其中我们日程调整过一次，把聚会时间推迟了3天，就引起有同学的不满。我们多人轮番打电话劝说，包括班上最漂亮的两个美女同学轮番劝说，都没有说动。<br>最后他真的没来，不过后来听说我们聚会非常愉快，又非常的遗憾。<br><br><br>其实回顾起来，只要有条有理的进行，借助各位朋友的影响力，再加上大家感兴趣的主题，成功是必然的。<br><br>并且，组织聚会和做一个项目很类似，组织者作为项目经理并不需要自己干所有的活，只需要掌握关键信息，做好分工协调，把该做的事分给擅长的人处理就行了。<p><a href=""></a></p><p></p></div><br><p></p>\r\n	\N	\N	1	2013-03-29 04:31:18.619997	2013-04-03 15:25:15.67573
+6	[慎入]Eyeball cocktails——给你的鸡尾酒加个眼球吧！	<p><img src="http://www.instructables.com/files/deriv/FD3/ZV5C/GFRWQSTB/FD3ZV5CGFRWQSTB.LARGE.jpg" style=""><br></p><p>哈……</p><p>很酷的恶趣味鸡尾酒。在鬼节用来吓人更有趣不过了。</p><p>眼珠的材料其实很简单，有两个方子：</p><p><ol><li><span style="line-height: 1.45em;">超市或者菜市场就可以买到的小红萝卜+</span><span style="line-height: 1.45em;">辣椒夹心的盐水橄榄。</span><br></li><li><span style="line-height: 21.75px;">荔枝罐头（或者新鲜荔枝）+蓝莓（越大越好）</span></li></ol></p><p><span style="line-height: 1.45em;">第一种，先把萝卜去皮，适度的刮掉表面的红色部分（最帅的地方就在这里了！把皮去到某种程度的时候，会有很像人眼球血管的红丝付在白色的萝卜肉上！），中间挖个洞，把橄榄塞入，眼珠部分就大功告成。看上去会像个新鲜的，刚挖出来的眼球。</span></p><p><span style="line-height: 1.45em;">另一种，把蓝莓塞到荔枝果肉里，然后放入冰箱的冰格里加一点点水，放进冰箱冷冻。几个小时之后就可以拿出来用啦。会带着一种干瘪的陈腐僵尸眼神。</span></p><p><span style="line-height: 1.45em;"><img src="http://www.instructables.com/files/deriv/FG2/NBPN/GUK0ZRN2/FG2NBPNGUK0ZRN2.MEDIUM.jpg" style=""><br></span></p><p><span style="line-height: 1.45em;"><img src="http://www.instructables.com/files/deriv/FDD/4QOV/GUKAXK4R/FDD4QOVGUKAXK4R.LARGE.jpg" style="cursor: nw-resize; width: 668px; height: 499px;"><br></span></p><p><span style="line-height: 1.45em;">————————</span><br></p><p><img src="http://www.instructables.com/files/deriv/FY2/ZZFK/GFRWMFUA/FY2ZZFKGFRWMFUA.LARGE.jpg" style=""><br></p><p>所有材料大致如上图。</p><p>僵眼马提尼&nbsp;<strong>zombie eyeball martini</strong>:<br>金酒Gin<br>味美思Vermouth<br>小红萝卜Radishes<br>辣椒夹心橄榄Pimento-stuffed olives<br><br>血腥眼珠&nbsp;<strong>bloody eyeball cocktail</strong>:<br>伏特加Vodka<br>橙味利口酒Triple sec<br>柠檬汁Lime juice<br>蔓越莓汁Cranberry juice<br>荔枝罐头Lychees, canned and peeled in a can<br>蔓越莓Cranberries (fresh or dried)——如果买不到，其他深色的，大小能够塞进荔枝果肉的水果问题都不大（当然味道如果怪异，这个就得自己忍受了）<br></p><p><br></p><p><br></p>	\N	\N	1	2013-03-27 04:29:58.919176	2013-04-03 15:26:05.750337
+8	茅台一批价跌破出厂价，大经销商面临亏本经营	<p></p><p>“目前53度飞天茅台的一批价最低已跌至800元，国内茅台酒最大的经销商信心不足，估计800元/瓶的关口也守不住了，可能会到700-750元/瓶。”周三，贵州茅台内部人士透露。而飞天茅台出厂价是819元，这意味着一批价已出现倒挂，大经销商面临亏本经营。</p><p>　　周三上午，大智慧记者来到石景山一茅台酒经销处，经销商说，现在的单瓶批发价最低830元，作为一手批发商已经是最低价了，接下来是否降价还很难说。在北京新发地，两家茅台酒经销商表示，现在的批发价在830-870元，未来的价格不太稳定，如果量大的话，还可以再低一些。海淀区茅台经销商表示，现在的最低价为850元，不可能再低了，出厂价是819元，加上运费、税收，经销商其实已经赚不了什么钱了。</p><p>　　在上周，记者调查的茅台53度飞天酒最低价为920元，一周不到的时间，茅台酒单价下跌13.04%，在2011年，飞天茅台酒单价2200元，至今已下跌64%。</p><p>　　全国范围内，茅台酒下跌幅度不一。周三，江苏南京秦淮区经销商表示，目前飞天茅台酒单价最低1200元；南京鼓楼区经销商表示，最低价格为1100元/瓶；重庆渝中区一经销商，目前的最低价1140元/瓶，如果要得多的话，还可以再商量。</p><p>　　对此，上述贵州茅台内部人士对记者表示，茅台酒价格大幅度下跌历史上出现过两次，一次是1989年计划经济向市场经济转轨时下跌了55%，第二次是在1997年金融危机时下跌了45%。这一轮的下跌刚开始，塑化剂事件时跌幅都没有超过50%，而这一轮的下跌主要对大经销商的影响巨大，一般大经销商库存都高达20吨，并且，这一次的价格大幅度下跌经销商们没有任何的准备，很多经销茅台酒30年的经销商们都没能预料到如此大的下跌幅度。因此，现在价格下跌最大的，更多都是大经销商们。</p><p>　　茅台在2012年至今，曾有过两次针对经销商价格变动的处罚，这两次处罚恰好可以作为茅台价格这一年多来很好的代表符号。在2011年年底至2012年年初，茅台集团曾对恣意涨价的经销商进行处罚：谁涨价，处罚谁。此时的茅台酒最高价格高达2200元/瓶。</p><p>　　而在2013年1月，数家茅台经销商因低价销售被茅台处罚，个别大型经销商甚至被永久性削减三成配额，扣减20%的保证金，处于黄牌警告。两次处罚均因经销商变动价格所致，讽刺的是，一次是涨价，而一次是低价销售。但此处罚措施才过去2个月，几乎全国的茅台酒经销商均已出现跌幅不同的降价措施，对此，一北京经销商对、记者表示，“现在我们的零售价已经是最低了，赚不了钱了，但没有办法，此前库存太多。”</p><p>　　从2012年茅台股份年报显示，茅台酒2012年存货达到96.66亿元，同比增加了34.49%。</p><p></p>\r\n	\N	\N	1	2013-04-10 16:25:16.305353	2013-04-10 16:26:23.534368
+\.
+
+
+--
+-- Data for Name: beverages; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY beverages (id, type, name, trans, alcohol, volume, bottler, distillation_method, barrel_cask, style, color, sweetness, vintage, age, picture, pic_url, grape_list, region_id, brand_id, rank_id, author_id, created_at, updated_at) FROM stdin;
+1	Wine	Château MARGAUX	玛歌庄园	12	500	\N	\N	\N	still_wine	red	dry	1988	\N	\N	http://www.junfengwines.com/wordpress/wp-content/uploads/2010/04/chateau-margaux%E7%8E%9B%E6%AD%8C%E5%BA%842006.jpg	\N	3	2	\N	\N	2013-02-01 13:47:29.145817	2013-02-01 13:47:29.145817
+2	Beer	Westvleteren	维斯特啤酒	12	500	\N	\N	\N	abt/Quadrupel	\N	\N	\N	\N	\N	http://blogfile.ifeng.com/uploadfiles/blog_attachment/0811/56/1041756_e0000e5d71c26ed40bd26b8a4d9eb8db.jpg	\N	\N	3	\N	\N	2013-02-01 13:47:29.30436	2013-02-01 13:47:29.30436
+3	Whisky	Chivas Regal 12Y	芝华士12年	40	700	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://www.core.form-ula.com/wp-content/uploads/2008/11/chivas_bottle__tin_low.jpg	\N	\N	1	\N	\N	2013-02-01 13:47:29.366187	2013-02-01 13:47:29.366187
+4	Whisky	Chivas Regal 25Y	芝华士25年	40	700	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://www.moodiereport.com/Martin/wp-content/chivas-25.JPG	\N	\N	1	\N	\N	2013-02-01 13:47:29.380074	2013-02-01 13:47:29.380074
+5	Whisky	Ardbeg Uigeadail	阿贝 乌干达	54.2	700	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://img.thewhiskyexchange.com/270/abgob.non2.jpg	\N	\N	14	\N	\N	2013-02-01 13:47:29.392109	2013-02-01 13:47:29.392109
+6	Vodka	Ultimat	终极伏特加	40	700	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://www.thefiftybest.com/content/spirits/best_vodka_2012/images/ultimat.jpg	\N	\N	13	\N	\N	2013-02-01 13:47:29.45353	2013-02-01 13:47:29.45353
+7	Rum	Ron Zacapa 23 yr.	扎卡帕 23年	40	700	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://www.thefiftybest.com/content/spirits/aged_rum/images/zacapa_23.jpg	\N	\N	12	\N	\N	2013-02-01 13:47:29.511377	2013-02-01 13:47:29.511377
+8	Brandy	Cuvée Jean Godet（VS de Luxe）	高迪特VS	40	700	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://www.thefiftybest.com/content/spirits/cognac/images/godet_vs.gif	\N	\N	6	\N	\N	2013-02-01 13:47:29.568077	2013-02-01 13:47:29.568077
+9	Gin	Hendrick's	亨利爵士金	40	500	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://www.thefiftybest.com/content/spirits/gin/images/hendricks_gin.jpg	\N	\N	4	\N	\N	2013-02-01 13:47:29.625524	2013-02-01 13:47:29.625524
+10	Tequila	Luna Nueva	露那 努埃瓦	40	700	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://www.thefiftybest.com/content/tequila/tequila_reposado/images/luna_nueva_reposado.jpg	\N	\N	5	\N	\N	2013-02-01 13:47:29.758959	2013-02-01 13:47:29.758959
+11	Sake	越後杜氏の里一斗樽	\N	15.8	72000	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://image.rakuten.co.jp/sake-gets/cabinet/sake/img56651004.jpg	\N	\N	7	\N	\N	2013-02-01 13:47:29.81785	2013-02-01 13:47:29.81785
+12	Liqueur	Prucia	浮乐夏	15	700	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://www.proof66.com/images/Prucia_Plum_liqueur.jpg	\N	\N	8	\N	\N	2013-02-01 13:47:29.882511	2013-02-01 13:47:29.882511
+13	JapaneseSpirit	百年の孤独	百年孤独	40	720	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://thumbnail.image.rakuten.co.jp/s/?@0_mall/newyork1989/cabinet/02438720/212000720019.jpg	\N	\N	9	\N	\N	2013-02-01 13:47:29.948384	2013-02-01 13:47:29.948384
+14	WhiteSpirit	山西[汾酒]汾酒牧童牛清香型48度750ml	\N	48	750	\N	\N	\N	faintscent	\N	\N	\N	\N	\N	http://rs1.in.itc.cn/api_upload/wine_hash/79/10/3b1634c7aea137735409010a7ba8479c_310x310.jpg	\N	\N	\N	\N	\N	2013-02-01 13:47:30.008419	2013-02-01 13:47:30.008419
+15	ChineseLiqueur	竹叶青桶装国宝38度 475ml	\N	38	475	\N	\N	\N	\N	\N	\N	\N	\N	\N	http://img30.360buyimg.com/erpWareDetail/9L670xNMeioPS8JO.jpg	\N	6	\N	\N	\N	2013-02-01 13:47:30.105206	2013-02-01 13:47:30.105206
+16	WhiteSpirit	 30年青花汾酒	\N	53	500	\N	\N	\N		\N	\N	30	\N	\N	\N	\N	\N	10	\N	6	2013-03-03 09:50:04.515443	2013-03-03 09:50:04.515443
+17	Whisky	Ardbeg Corryvreckan 	\N	57.1	750	Distillery Bottling（酒厂装瓶）				\N	\N			Ardbeg_Corryvreckan.jpg	\N	\N	5	14	\N	6	2013-03-06 04:55:34.506559	2013-03-06 04:55:34.506559
+18	Whisky	Chivas Regal 18 Year Old	\N	40	700					\N	\N		18	Chivas_Regal_18_Year_Old.png	\N	\N	4	1	\N	7	2013-03-16 11:35:14.42952	2013-03-16 11:35:14.42952
+19	Whisky	Johnnie Walker Blue Label	\N	40	700					\N	\N			Johnnie_Walker_Blue_Label.png	\N	\N	4	\N	\N	7	2013-03-16 11:37:44.217347	2013-03-16 11:37:44.217347
+20	Rum	15 Year Old Réserve du Domaine	\N	37.5		\N	\N	\N		\N	\N		\N	\N	\N	\N	\N	16	\N	1	2013-03-30 17:52:02.134017	2013-03-30 17:52:02.134017
+21	Rum	Barbancourt 8 Year Réserve Spéciale	\N	37.5		\N	\N	\N		\N	\N		\N	bcourt_8_-fb.jpeg	\N	\N	\N	16	\N	1	2013-03-30 17:55:12.435318	2013-03-30 17:55:12.435318
+22	Rum	Clément 1970	\N	44		\N	\N	\N		\N	\N		\N	clement_1970_-_bottle__box1.jpeg	\N	\N	\N	17	\N	1	2013-04-02 09:52:04.908522	2013-04-02 09:52:04.908522
+23	Liqueur	99 Schnapps Bananas	\N	49.5	1000	\N	\N	\N		\N	\N		\N	30652.jpg	\N	\N	\N	18	\N	6	2013-04-05 04:25:49.890509	2013-04-05 04:25:49.890509
+24	Brandy	Chambord	\N			\N	\N	\N		\N	\N		\N	chambord.jpg	\N	\N	\N	19	\N	1	2013-04-05 04:58:12.572474	2013-04-05 04:58:12.572474
+25	Liqueur	Chambord	\N			\N	\N	\N		\N	\N		\N	chambord.jpg	\N	\N	\N	19	\N	6	2013-04-05 05:44:09.028305	2013-04-05 05:44:09.028305
+26	Liqueur	Chambord	\N			\N	\N	\N		\N	\N		\N	chambord.jpg	\N	\N	\N	19	\N	6	2013-04-05 05:44:12.671779	2013-04-05 05:44:12.671779
+27	Liqueur	Chambord	\N			\N	\N	\N		\N	\N		\N	chambord.jpg	\N	\N	\N	19	\N	6	2013-04-05 05:44:17.178154	2013-04-05 05:44:17.178154
+28	Liqueur	Chambord	\N			\N	\N	\N		\N	\N		\N	chambord.jpg	\N	\N	\N	19	\N	6	2013-04-05 05:44:18.796156	2013-04-05 05:44:18.796156
+29	Rum	Agua Luca	\N	40		\N	\N	\N		\N	\N		\N	agua_luca-ok.jpeg	\N	\N	\N	90	\N	1	2013-04-19 06:34:12.950617	2013-04-19 06:34:12.950617
+30	Rum	Abuelo Centuria	\N	40		\N	\N	\N		\N	\N	30	\N	centuria_bottle__box_ok-use.jpeg	\N	\N	\N	91	\N	1	2013-04-19 06:56:42.847561	2013-04-19 06:56:42.847561
+31	Rum	Abuelo 12 Años Gran Reserva	\N	40		\N	\N	\N		\N	\N		\N	image.tiff	\N	\N	\N	91	\N	1	2013-04-19 06:59:10.968493	2013-04-19 06:59:10.968493
+32	Rum	Angostura 1824	\N	40		\N	\N	\N		\N	\N	12	\N	1824_new_pkg.png	\N	\N	\N	92	\N	1	2013-04-21 10:12:26.413886	2013-04-21 10:12:26.413886
+\.
+
+
+--
+-- Data for Name: brands; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY brands (id, name, trans, description, picture, created_at, updated_at) FROM stdin;
+1	Chivas	芝华士	\N	\N	2013-02-01 13:47:28.728774	2013-02-01 13:47:28.728774
+2	Margaux	玛歌	\N	\N	2013-02-01 13:47:28.764482	2013-02-01 13:47:28.764482
+3	Westvleteren	维斯特	\N	\N	2013-02-01 13:47:28.783511	2013-02-01 13:47:28.783511
+4	Hendrick's	亨利爵士金	\N	\N	2013-02-01 13:47:28.804599	2013-02-01 13:47:28.804599
+5	Luna Nueva	露那 努埃瓦	\N	\N	2013-02-01 13:47:28.826588	2013-02-01 13:47:28.826588
+6	Godet	高迪特	\N	\N	2013-02-01 13:47:28.847761	2013-02-01 13:47:28.847761
+7	越後杜氏	越後杜氏	\N	\N	2013-02-01 13:47:28.868987	2013-02-01 13:47:28.868987
+8	Prucia	浮乐夏	\N	\N	2013-02-01 13:47:28.890606	2013-02-01 13:47:28.890606
+9	黒木本店	黒木本店	\N	\N	2013-02-01 13:47:28.911584	2013-02-01 13:47:28.911584
+10	Fenjiu	汾酒	\N	\N	2013-02-01 13:47:28.931747	2013-02-01 13:47:28.931747
+11	Zhuyeqing	竹叶青	\N	\N	2013-02-01 13:47:28.950825	2013-02-01 13:47:28.950825
+12	Zacapa	扎卡帕	\N	\N	2013-02-01 13:47:28.970875	2013-02-01 13:47:28.970875
+13	Ultimat	终极伏特加	\N	\N	2013-02-01 13:47:28.992913	2013-02-01 13:47:28.992913
+14	Ardbeg	阿德贝哥	\N	\N	2013-02-01 13:47:29.014465	2013-02-01 13:47:29.014465
+16	Barbancourt			___.png	2013-03-30 17:38:16.981384	2013-03-30 17:50:51.937165
+17	Clément			t1.png	2013-04-02 09:50:15.422295	2013-04-02 09:50:15.422295
+20	Crème de cassis 			\N	2013-04-04 17:01:29.283802	2013-04-04 17:01:29.283802
+21	FAIR			\N	2013-04-04 17:01:40.760564	2013-04-04 17:01:40.760564
+22	Guavaberry			\N	2013-04-04 17:01:50.514902	2013-04-04 17:01:50.514902
+23	Hideous 			\N	2013-04-04 17:01:59.147738	2013-04-04 17:01:59.147738
+24	Lakka			\N	2013-04-04 17:02:08.434072	2013-04-04 17:02:08.434072
+25	Lillehammer			\N	2013-04-04 17:02:17.324464	2013-04-04 17:02:17.324464
+26	Żurawinówka			\N	2013-04-04 17:02:26.005198	2013-04-04 17:02:26.005198
+27	Wiśniówka			\N	2013-04-04 17:02:34.494854	2013-04-04 17:02:34.494854
+28	Murtado			\N	2013-04-04 17:02:42.507136	2013-04-04 17:02:42.507136
+29	Polar			\N	2013-04-04 17:02:54.814771	2013-04-04 17:02:54.814771
+30	Prunelle			\N	2013-04-04 17:03:02.565938	2013-04-04 17:03:02.565938
+31	Razzmatazz			\N	2013-04-04 17:03:10.07777	2013-04-04 17:03:10.07777
+32	VeeV 			\N	2013-04-04 17:03:18.016861	2013-04-04 17:03:44.791317
+33	Whidbeys			\N	2013-04-04 17:04:00.266877	2013-04-04 17:04:00.266877
+34	XUXU			\N	2013-04-04 17:04:45.573517	2013-04-04 17:04:45.573517
+35	Allen's Coffee Brandy			\N	2013-04-04 17:05:19.041879	2013-04-04 17:05:19.041879
+36	Afrikoko			\N	2013-04-04 17:05:35.097909	2013-04-04 17:05:35.097909
+37	Ashanti Gold			\N	2013-04-04 17:05:43.405516	2013-04-04 17:05:43.405516
+38	Djangoa			\N	2013-04-04 17:05:52.93921	2013-04-04 17:05:52.93921
+39	Godiva Dark Chocolate			\N	2013-04-04 17:06:02.242187	2013-04-04 17:06:02.242187
+40	Liqueur Fogg			\N	2013-04-04 17:06:08.968264	2013-04-04 17:06:08.968264
+41	Mozart Black			\N	2013-04-04 17:06:16.211284	2013-04-04 17:06:16.211284
+42	Royal Mint			\N	2013-04-04 17:06:27.192871	2013-04-04 17:06:27.192871
+43	Sabra			\N	2013-04-04 17:06:37.207563	2013-04-04 17:06:37.207563
+44	Cadbury			\N	2013-04-04 17:06:57.948008	2013-04-04 17:06:57.948008
+45	Dwersteg's			\N	2013-04-04 17:07:23.084456	2013-04-04 17:07:23.084456
+46	Godiva			\N	2013-04-04 17:07:33.688499	2013-04-04 17:07:33.688499
+47	Florcello			\N	2013-04-04 17:07:45.826817	2013-04-04 17:07:45.826817
+48	Mozart			\N	2013-04-04 17:07:54.365447	2013-04-04 17:07:54.365447
+49	Vana Tallinn			\N	2013-04-04 17:08:05.666374	2013-04-04 17:08:05.666374
+50	Vermeer Dutch			\N	2013-04-04 17:08:15.947513	2013-04-04 17:08:15.947513
+51	Aruba			\N	2013-04-05 02:41:19.964029	2013-04-05 02:41:19.964029
+52	Bahia			\N	2013-04-05 02:41:40.158568	2013-04-05 02:41:40.158568
+53	Bols			\N	2013-04-05 02:41:50.476683	2013-04-05 02:41:50.476683
+54	Café Aztec			\N	2013-04-05 02:50:17.285369	2013-04-05 02:50:17.285369
+55	Café Britt			\N	2013-04-05 02:50:36.763814	2013-04-05 02:50:36.763814
+56	Café Oriental			\N	2013-04-05 02:50:49.643317	2013-04-05 02:50:49.643317
+57	Café Marakesh			\N	2013-04-05 02:51:01.117871	2013-04-05 02:51:01.117871
+58	Café Rica			\N	2013-04-05 02:51:13.139684	2013-04-05 02:51:13.139684
+59	Caffè Borghetti			\N	2013-04-05 02:51:25.29972	2013-04-05 02:51:25.29972
+60	Coloma			\N	2013-04-05 02:51:39.165914	2013-04-05 02:51:39.165914
+61	Copa De Oro			\N	2013-04-05 02:52:03.876539	2013-04-05 02:52:03.876539
+62	Duchalet			\N	2013-04-05 02:52:16.604176	2013-04-05 02:52:16.604176
+63	Dwersteg's Organic			\N	2013-04-05 02:52:50.129451	2013-04-05 02:52:50.129451
+64	FAIR.			\N	2013-04-05 02:55:04.264515	2013-04-05 02:55:04.264515
+65	Galliano			\N	2013-04-05 02:55:20.186141	2013-04-05 02:55:20.186141
+66	illy			\N	2013-04-05 02:55:35.294578	2013-04-05 02:55:35.294578
+67	Jamaica Blue Mountain Mist			\N	2013-04-05 02:55:54.659662	2013-04-05 02:55:54.659662
+68	Kahlúa			\N	2013-04-05 02:56:10.298226	2013-04-05 02:56:10.298226
+69	Kaloré			\N	2013-04-05 02:56:21.473349	2013-04-05 02:56:21.473349
+70	Kamora			\N	2013-04-05 02:56:29.028651	2013-04-05 02:56:29.028651
+71	Kapali			\N	2013-04-05 02:56:35.480472	2013-04-05 02:56:35.480472
+72	Keuck			\N	2013-04-05 02:57:40.333817	2013-04-05 02:57:40.333817
+73	Kona			\N	2013-04-05 03:06:33.497585	2013-04-05 03:06:33.497585
+74	Kosaken			\N	2013-04-05 03:06:42.664488	2013-04-05 03:06:42.664488
+75	De Kuyper	迪凯宝		\N	2013-04-05 03:07:09.746585	2013-04-05 03:07:09.746585
+76	Lauterer Luft			\N	2013-04-05 03:08:24.404164	2013-04-05 03:08:24.404164
+77	Leroux			\N	2013-04-05 03:08:40.944555	2013-04-05 03:08:40.944555
+78	Mokatika			\N	2013-04-05 03:08:49.022055	2013-04-05 03:08:49.022055
+79	Mr. Boston			\N	2013-04-05 03:08:57.546477	2013-04-05 03:08:57.546477
+80	Onyx			\N	2013-04-05 03:09:06.237176	2013-04-05 03:09:06.237176
+81	Patron			\N	2013-04-05 03:09:15.921651	2013-04-05 03:09:15.921651
+82	Sabroso			\N	2013-04-05 03:09:33.55998	2013-04-05 03:09:33.55998
+83	Sheridan's			\N	2013-04-05 03:09:40.877743	2013-04-05 03:09:40.877743
+84	Starbucks			\N	2013-04-05 03:09:54.115701	2013-04-05 03:09:54.115701
+85	Tia Maria			\N	2013-04-05 03:10:02.510547	2013-04-05 03:10:02.510547
+86	Toussaint			\N	2013-04-05 03:10:11.069703	2013-04-05 03:10:11.069703
+87	Vibe Robusta			\N	2013-04-05 03:10:19.11227	2013-04-05 03:10:19.11227
+88	Vok			\N	2013-04-05 03:10:27.304158	2013-04-05 03:10:27.304158
+89	Walders			\N	2013-04-05 03:10:42.203603	2013-04-05 03:10:42.203603
+18	99 			\N	2013-04-03 17:48:39.359023	2013-04-05 04:26:25.727735
+19	Chambord			thCAH7UMIR.jpg	2013-04-03 17:49:06.414583	2013-04-05 04:58:31.021362
+90	Agua Luca	阿瓜鲁卡		\N	2013-04-19 06:32:00.855434	2013-04-19 06:32:00.855434
+91	Abuelo			\N	2013-04-19 06:54:38.358381	2013-04-19 06:57:56.88451
+92	Angostura			\N	2013-04-21 10:10:22.638768	2013-04-21 10:10:22.638768
+\.
+
+
+--
+-- Data for Name: checks; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY checks (id, remark, author_id, beverage_id, star, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY cities (code, name, created_at, updated_at) FROM stdin;
+1	上海	2013-02-01 13:47:28.176143	2013-02-01 13:47:28.176143
+2	北京	2013-02-01 13:47:28.333082	2013-02-01 13:47:28.333082
+\.
+
+
+--
+-- Data for Name: cocktails; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY cocktails (id, name, trans, created_at, updated_at) FROM stdin;
+1	Angel’s Kiss	\N	2013-02-01 13:47:30.302378	2013-02-01 13:47:30.302378
+2	Margartia Cocktail	\N	2013-02-01 13:47:30.339131	2013-02-01 13:47:30.339131
+3	Singapore Sling	\N	2013-02-01 13:47:30.355213	2013-02-01 13:47:30.355213
+4	El Presidente	\N	2013-03-03 06:01:45.649257	2013-03-03 06:01:45.649257
+5	Whiskey Sour	\N	2013-03-03 07:09:53.412732	2013-03-03 07:09:53.412732
+6	Cornerstone	\N	2013-03-03 07:50:36.117973	2013-03-03 07:50:36.117973
+\.
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY comments (id, content, ancestry, author_id, commentable_id, commentable_type, created_at, updated_at) FROM stdin;
+1	asdasdad	\N	6	2	Article	2013-02-03 09:44:38.484197	2013-02-03 09:44:38.484197
+2	asdasda	1	6	2	Article	2013-02-03 09:44:44.045108	2013-02-03 09:44:44.045108
+3	我原来注册的账号好像没有了，貌似重置过了。	1/2	7	2	Article	2013-02-07 13:53:59.220415	2013-02-07 13:53:59.220415
+4	是的，还有很多功能在不断改进和调整。需要重启数据库之类的。	1/2/3	6	2	Article	2013-02-08 11:41:21.532354	2013-02-08 11:41:21.532354
+\.
+
+
+--
+-- Data for Name: complains; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY complains (id, remark, is_ignored, is_solved, author_id, complainable_id, complainable_type, created_at, updated_at) FROM stdin;
+1	ad	f	f	1	20	Beverage	2013-03-30 17:52:21.485127	2013-03-30 17:52:21.485127
+2	不是白兰地	f	f	6	24	Beverage	2013-04-05 05:46:47.92888	2013-04-05 05:46:47.92888
+\.
+
+
+--
+-- Data for Name: containers; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY containers (id, beverage_id, cup_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY conversations (id, subject, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: cups; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY cups (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: deals; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY deals (id, amount, price, remark, beverage_id, seller_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: follows; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY follows (id, followable_id, followable_type, follower_id, follower_type, blocked, created_at, updated_at) FROM stdin;
+1	2	User	7	User	f	2013-02-19 09:26:22.442122	2013-02-19 09:26:22.442122
+2	3	User	6	User	f	2013-04-03 15:32:21.138495	2013-04-03 15:32:21.138495
+3	6	User	1	User	f	2013-04-10 07:34:55.963456	2013-04-10 07:34:55.963456
+\.
+
+
+--
+-- Data for Name: ingredients; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY ingredients (id, name, amount, recipe_id, created_at, updated_at) FROM stdin;
+1	可可甜酒	4/5	1	2013-02-01 13:47:30.327938	2013-02-01 13:47:30.327938
+2	鲜奶油	1/5	1	2013-02-01 13:47:30.331051	2013-02-01 13:47:30.331051
+3	樱桃	1个	1	2013-02-01 13:47:30.332546	2013-02-01 13:47:30.332546
+4	龙舌兰酒	1/2	2	2013-02-01 13:47:30.346939	2013-02-01 13:47:30.346939
+5	白色柑香酒	1/4	2	2013-02-01 13:47:30.348406	2013-02-01 13:47:30.348406
+6	青柠汁	1/4	2	2013-02-01 13:47:30.349729	2013-02-01 13:47:30.349729
+7	金酒	1份	3	2013-02-01 13:47:30.36179	2013-02-01 13:47:30.36179
+8	樱桃白兰地	0.5份	3	2013-02-01 13:47:30.363287	2013-02-01 13:47:30.363287
+9	君度利口酒	0.25份	3	2013-02-01 13:47:30.36473	2013-02-01 13:47:30.36473
+10	Denizen Rum	1.5盎司	4	2013-03-03 06:01:45.659162	2013-03-03 06:01:45.659162
+11	blanc vermouth	0.75盎司	4	2013-03-03 06:01:45.66149	2013-03-03 06:01:45.66149
+12	orange curaçao	0.5盎司	4	2013-03-03 06:01:45.662771	2013-03-03 06:01:45.662771
+13	BG Reynolds Hibiscus	1吧勺	4	2013-03-03 06:01:45.663885	2013-03-03 06:01:45.663885
+14	Bitters	少许	4	2013-03-03 06:01:45.665041	2013-03-03 06:01:45.665041
+15	波本威士忌	2盎司	5	2013-03-03 07:09:53.417934	2013-03-03 07:09:53.417934
+16	鲜柠檬汁	1盎司	5	2013-03-03 07:09:53.419371	2013-03-03 07:09:53.419371
+17	糖浆	0.5盎司	5	2013-03-03 07:09:53.420614	2013-03-03 07:09:53.420614
+18	鸡蛋清	1个	5	2013-03-03 07:09:53.421616	2013-03-03 07:09:53.421616
+\.
+
+
+--
+-- Data for Name: lists; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY lists (id, title, description, author_id, created_at, updated_at) FROM stdin;
+1	最好喝的酒	好喝 	1	2013-04-20 15:12:55.776299	2013-04-20 15:12:55.776299
+\.
+
+
+--
+-- Data for Name: locations; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY locations (id, address, latitude, longitude, city_id, area_id, locationable_id, locationable_type, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: merchants; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY merchants (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: nodes; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY nodes (id, name, created_at, updated_at) FROM stdin;
+1	威士忌小组	2013-02-01 13:47:30.39205	2013-02-01 13:47:30.39205
+2	酒仙小组	2013-02-01 13:47:30.397372	2013-02-01 13:47:30.397372
+\.
+
+
+--
+-- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY notifications (id, type, body, subject, sender_id, sender_type, notified_object_id, notified_object_type, conversation_id, draft, notification_code, attachment, updated_at, created_at) FROM stdin;
+1	\N	<a href="/articles/2">查看</a>	舟逸叶评论了你的评论	\N	\N	\N	\N	\N	f	\N	\N	2013-02-07 13:53:59.283072	2013-02-07 13:53:59.283072
+2	\N	<a href="/articles/2">查看</a>	aerofloyd评论了你的评论	\N	\N	\N	\N	\N	f	\N	\N	2013-02-08 11:41:21.547838	2013-02-08 11:41:21.547838
+3	\N	<a href="/users/7">舟逸叶</a>	舟逸叶关注了你	\N	\N	\N	\N	\N	f	\N	\N	2013-02-19 09:26:22.459063	2013-02-19 09:26:22.459063
+4	\N	<a href="/users/6">aerofloyd</a>	aerofloyd关注了你	\N	\N	\N	\N	\N	f	\N	\N	2013-04-03 15:32:21.356291	2013-04-03 15:32:21.356291
+5	\N	<a href="/users/1">admin</a>	admin关注了你	\N	\N	\N	\N	\N	f	\N	\N	2013-04-10 07:34:57.049305	2013-04-10 07:34:57.049305
+6	\N	<a href="/topics/2">Bowmore（波摩）暴风雨第四版推出，全球限量2000瓶。</a>	admin回应了你的主题	\N	\N	\N	\N	\N	f	\N	\N	2013-04-10 07:37:00.320453	2013-04-10 07:37:00.320453
+7	\N	<a href="/reviews/1">asdasdad</a>	admin赞同了你的酒评	\N	\N	\N	\N	\N	f	\N	\N	2013-04-20 15:09:21.740423	2013-04-20 15:09:21.740423
+8	\N	<a href="/reviews/1">asdasdad</a>	admin赞同了你的酒评	\N	\N	\N	\N	\N	f	\N	\N	2013-04-20 15:09:26.252365	2013-04-20 15:09:26.252365
+\.
+
+
+--
+-- Data for Name: packages; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY packages (id, list_id, beverage_id, remark, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: pieces; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY pieces (id, flavor, strength, review_id, created_at, updated_at) FROM stdin;
+1	泥煤	5	1	2013-02-03 09:49:07.792933	2013-02-03 09:49:07.792933
+2	果香	5	1	2013-02-03 09:49:07.796043	2013-02-03 09:49:07.796043
+3	麦芽	3	1	2013-02-03 09:49:07.797616	2013-02-03 09:49:07.797616
+\.
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY products (id, title, description, price, currency, source, source_id, source_url, beverage_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: ranks; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY ranks (id, name, trans, type_list, ancestry, created_at, updated_at) FROM stdin;
+1	AOC	\N	\N	\N	2013-02-01 13:47:28.485119	2013-02-01 13:47:28.485119
+\.
+
+
+--
+-- Data for Name: receipts; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY receipts (id, receiver_id, receiver_type, notification_id, is_read, trashed, deleted, mailbox_type, created_at, updated_at) FROM stdin;
+1	6	User	1	t	f	f	\N	2013-02-07 13:53:59.287356	2013-02-07 13:53:59.287356
+3	2	User	3	f	f	f	\N	2013-02-19 09:26:22.460962	2013-02-19 09:26:22.460962
+2	7	User	2	t	f	f	\N	2013-02-08 11:41:21.551536	2013-02-08 11:41:21.551536
+4	3	User	4	f	f	f	\N	2013-04-03 15:32:21.415335	2013-04-03 15:32:21.415335
+6	6	User	6	t	f	f	\N	2013-04-10 07:37:00.323594	2013-04-10 07:37:00.323594
+5	6	User	5	t	f	f	\N	2013-04-10 07:34:57.086258	2013-04-10 07:34:57.086258
+7	6	User	7	f	f	f	\N	2013-04-20 15:09:21.753851	2013-04-20 15:09:21.753851
+8	6	User	8	f	f	f	\N	2013-04-20 15:09:26.253945	2013-04-20 15:09:26.253945
+\.
+
+
+--
+-- Data for Name: recipes; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY recipes (id, name, remark, picture, pic_url, cocktail_id, author_id, created_at, updated_at) FROM stdin;
+1	Angel’s Kiss	将可可甜酒倒入利口酒杯中，慢慢倒入鲜奶油，用鸡尾酒针将樱桃串起来，横放在杯口上。	\N	http://i0.sinaimg.cn/lx/2010/0121/S9140T1264068975872.jpg	1	3	2013-02-01 13:47:30.314005	2013-02-01 13:47:30.314005
+2	Margartia Cocktail	将盐以外的材料倒入雪克杯中摇和，将摇和好的酒倒入沾了盐边的香槟酒杯中。	\N	http://i2.sinaimg.cn/lx/taste/wine/2010-01-21/U1205P622T1D55471F15DT20100121160304.jpg	2	3	2013-02-01 13:47:30.345048	2013-02-01 13:47:30.345048
+3	Singapore Sling	将所有的配料倒入摇酒器中与冰块同摇，滤入司令杯中的冰块上，再以菠萝、樱桃作为装饰。	\N	http://i0.sinaimg.cn/lx/2010/0121/S9140T1264069345814.jpg	3	3	2013-02-01 13:47:30.360052	2013-02-01 13:47:30.360052
+4	El Presidente	将这些原料放入加好冰的Mixing Glass中，搅合（Stir）。\r\n\r\nThe El Presidente这款鸡尾酒是1920年在古巴首都哈瓦那被创作出来的。据说这杯酒的名称来源于一位古巴总统，名叫Carmen Menocal。	el-presidente-480x640.jpg	\N	4	6	2013-03-03 06:01:45.655736	2013-03-03 06:01:45.655736
+5	Whiskey Sour	将威士忌，柠檬汁，糖浆放入摇酒器（shaker）中，这时先不加冰块。把鸡蛋的蛋清分离出来，加入到摇酒器中。合紧盖子，用力摇动约20秒，彻底的乳化蛋清。然后加入冰块，用双重过滤（Double strain）的方法，把酒倒入一个冰过的马提尼杯（Martini Cup）里。当然，也可以根据喜好，稍微加入一点苦酒（Bitters）来降低甜度。	whiskey-sour-640x480.jpg	\N	5	6	2013-03-03 07:09:53.416374	2013-03-03 07:09:53.416374
+6	Cornerstone		\N	\N	6	6	2013-03-03 07:50:36.120843	2013-03-03 07:50:36.120843
+\.
+
+
+--
+-- Data for Name: redactor_assets; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY redactor_assets (id, user_id, data_file_name, data_content_type, data_file_size, assetable_id, assetable_type, type, width, height, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: regions; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY regions (id, name, trans, ancestry, beverage_type, created_at, updated_at) FROM stdin;
+1	France	法国	\N	Wine	2013-02-01 13:47:28.369427	2013-02-01 13:47:28.369427
+2	Bordeaux	波尔多	1	Wine	2013-02-01 13:47:28.378183	2013-02-01 13:47:28.378183
+3	Médoc	梅多克	1/2	Wine	2013-02-01 13:47:28.383111	2013-02-01 13:47:28.383111
+4	Scotland	苏格兰	\N	Whisky	2013-02-01 13:47:28.386041	2013-02-01 13:47:28.386041
+5	Isly	艾雷岛	4	Whisky	2013-02-01 13:47:28.390796	2013-02-01 13:47:28.390796
+6	山西	\N	\N	ChineseLiqueur	2013-02-01 13:47:28.393812	2013-02-01 13:47:28.393812
+\.
+
+
+--
+-- Data for Name: replies; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY replies (id, body, topic_id, author_id, created_at, updated_at) FROM stdin;
+1	预览图片，还不能用。希望能调整好。\r\n\r\n以下信息，希望可以在标题的下方一行，靠右对齐显示。\r\n和标题在同行，影响标题的快速阅读。\r\n“aerofloyd • 创建于about 2 hours以前 威士忌小组”	2	1	2013-04-10 07:37:00.090999	2013-04-10 07:37:00.090999
+\.
+
+
+--
+-- Data for Name: reviews; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY reviews (id, title, content, score, nose_score, nose_list, taste_score, taste_list, finish_score, finish_list, balance_score, balance_list, food_list, up_votes, down_votes, author_id, beverage_id, created_at, updated_at) FROM stdin;
+1	asdasdad	asdasd	92	23	\N	24	\N	23	\N	23	\N	\N	1	0	6	5	2013-02-03 09:49:07.788476	2013-04-20 15:09:26.246495
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY schema_migrations (version) FROM stdin;
+20121224071437
+20121224072005
+20121224072253
+20121226032151
+20121226101022
+20121226105235
+20121226110143
+20121226110249
+20121227154506
+20121228082356
+20121228083534
+20121228085325
+20121228111035
+20121228112305
+20121228131253
+20121229043622
+20121229050547
+20121229074838
+20130101080351
+20130102042427
+20130102043505
+20130102075026
+20130102083820
+20130102084807
+20130102092526
+20130104152706
+20130104220406
+20130104220407
+20130104220408
+20130104220409
+20130107143849
+20130108023212
+20130108045805
+20130111074303
+20130113054536
+20130114071659
+20130114082659
+20130114084036
+20130116141156
+20130118034043
+\.
+
+
+--
+-- Data for Name: scores; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY scores (id, type, points, review_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: taggings; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY taggings (id, tag_id, taggable_id, taggable_type, tagger_id, tagger_type, context, created_at) FROM stdin;
+1	1	1	Rank	\N	\N	types	2013-02-01 13:47:28.697034
+2	2	1	Brand	\N	\N	types	2013-02-01 13:47:28.757188
+3	1	2	Brand	\N	\N	types	2013-02-01 13:47:28.777064
+4	3	3	Brand	\N	\N	types	2013-02-01 13:47:28.797806
+5	4	4	Brand	\N	\N	types	2013-02-01 13:47:28.818888
+6	5	5	Brand	\N	\N	types	2013-02-01 13:47:28.841276
+7	6	6	Brand	\N	\N	types	2013-02-01 13:47:28.862272
+8	7	7	Brand	\N	\N	types	2013-02-01 13:47:28.88404
+9	8	8	Brand	\N	\N	types	2013-02-01 13:47:28.904929
+10	9	9	Brand	\N	\N	types	2013-02-01 13:47:28.925946
+11	10	10	Brand	\N	\N	types	2013-02-01 13:47:28.944678
+12	11	11	Brand	\N	\N	types	2013-02-01 13:47:28.964697
+13	12	12	Brand	\N	\N	types	2013-02-01 13:47:28.986492
+14	13	13	Brand	\N	\N	types	2013-02-01 13:47:29.007699
+15	2	14	Brand	\N	\N	types	2013-02-01 13:47:29.02528
+16	14	1	Beverage	\N	\N	grapes	2013-02-01 13:47:29.169415
+17	15	1	Wish	\N	\N	tags	2013-02-03 09:45:14.214596
+18	16	1	Review	\N	\N	foods	2013-02-03 09:49:07.918297
+19	12	16	Brand	\N	\N	types	2013-03-30 17:38:17.729306
+20	12	17	Brand	\N	\N	types	2013-04-02 09:50:16.985041
+21	8	18	Brand	\N	\N	types	2013-04-03 17:48:39.877074
+23	8	20	Brand	\N	\N	types	2013-04-04 17:01:29.488497
+24	8	21	Brand	\N	\N	types	2013-04-04 17:01:40.769288
+25	8	22	Brand	\N	\N	types	2013-04-04 17:01:50.688706
+26	8	23	Brand	\N	\N	types	2013-04-04 17:01:59.158652
+27	8	24	Brand	\N	\N	types	2013-04-04 17:02:08.444543
+28	8	25	Brand	\N	\N	types	2013-04-04 17:02:17.333425
+29	8	26	Brand	\N	\N	types	2013-04-04 17:02:26.013447
+30	8	27	Brand	\N	\N	types	2013-04-04 17:02:34.504044
+31	8	28	Brand	\N	\N	types	2013-04-04 17:02:42.516946
+32	8	29	Brand	\N	\N	types	2013-04-04 17:02:54.823134
+33	8	30	Brand	\N	\N	types	2013-04-04 17:03:02.579193
+34	8	31	Brand	\N	\N	types	2013-04-04 17:03:10.090068
+35	8	32	Brand	\N	\N	types	2013-04-04 17:03:18.025149
+36	8	33	Brand	\N	\N	types	2013-04-04 17:04:00.27796
+37	8	34	Brand	\N	\N	types	2013-04-04 17:04:45.591154
+38	8	35	Brand	\N	\N	types	2013-04-04 17:05:19.051998
+39	8	36	Brand	\N	\N	types	2013-04-04 17:05:35.106724
+40	8	37	Brand	\N	\N	types	2013-04-04 17:05:43.414758
+41	8	38	Brand	\N	\N	types	2013-04-04 17:05:52.949599
+42	8	39	Brand	\N	\N	types	2013-04-04 17:06:02.251856
+43	8	40	Brand	\N	\N	types	2013-04-04 17:06:08.979283
+44	8	41	Brand	\N	\N	types	2013-04-04 17:06:16.219566
+45	8	42	Brand	\N	\N	types	2013-04-04 17:06:27.267729
+46	8	43	Brand	\N	\N	types	2013-04-04 17:06:37.21808
+47	8	44	Brand	\N	\N	types	2013-04-04 17:06:57.957385
+48	8	45	Brand	\N	\N	types	2013-04-04 17:07:23.095126
+49	8	46	Brand	\N	\N	types	2013-04-04 17:07:33.700137
+50	8	47	Brand	\N	\N	types	2013-04-04 17:07:45.836207
+51	8	48	Brand	\N	\N	types	2013-04-04 17:07:54.377652
+52	8	49	Brand	\N	\N	types	2013-04-04 17:08:05.678642
+53	8	50	Brand	\N	\N	types	2013-04-04 17:08:15.955499
+54	8	51	Brand	\N	\N	types	2013-04-05 02:41:20.361184
+55	8	52	Brand	\N	\N	types	2013-04-05 02:41:40.267527
+56	8	53	Brand	\N	\N	types	2013-04-05 02:41:50.486599
+57	8	54	Brand	\N	\N	types	2013-04-05 02:50:17.293953
+58	8	55	Brand	\N	\N	types	2013-04-05 02:50:36.771887
+59	8	56	Brand	\N	\N	types	2013-04-05 02:50:49.652615
+60	8	57	Brand	\N	\N	types	2013-04-05 02:51:01.125823
+61	8	58	Brand	\N	\N	types	2013-04-05 02:51:13.148074
+62	8	59	Brand	\N	\N	types	2013-04-05 02:51:25.310546
+63	8	60	Brand	\N	\N	types	2013-04-05 02:51:39.176358
+64	8	61	Brand	\N	\N	types	2013-04-05 02:52:03.886483
+65	8	62	Brand	\N	\N	types	2013-04-05 02:52:16.612066
+66	8	63	Brand	\N	\N	types	2013-04-05 02:52:50.137974
+67	8	64	Brand	\N	\N	types	2013-04-05 02:55:04.273845
+68	8	65	Brand	\N	\N	types	2013-04-05 02:55:20.195574
+69	8	66	Brand	\N	\N	types	2013-04-05 02:55:35.30464
+70	8	67	Brand	\N	\N	types	2013-04-05 02:55:54.6689
+71	8	68	Brand	\N	\N	types	2013-04-05 02:56:10.306538
+72	8	69	Brand	\N	\N	types	2013-04-05 02:56:21.481659
+73	8	70	Brand	\N	\N	types	2013-04-05 02:56:29.039427
+74	8	71	Brand	\N	\N	types	2013-04-05 02:56:35.489421
+75	8	72	Brand	\N	\N	types	2013-04-05 02:57:40.343814
+76	8	73	Brand	\N	\N	types	2013-04-05 03:06:33.505946
+77	8	74	Brand	\N	\N	types	2013-04-05 03:06:42.674128
+78	8	75	Brand	\N	\N	types	2013-04-05 03:07:09.756416
+79	8	76	Brand	\N	\N	types	2013-04-05 03:08:24.412899
+80	8	77	Brand	\N	\N	types	2013-04-05 03:08:40.953383
+81	8	78	Brand	\N	\N	types	2013-04-05 03:08:49.031044
+82	8	79	Brand	\N	\N	types	2013-04-05 03:08:57.557218
+83	8	80	Brand	\N	\N	types	2013-04-05 03:09:06.245993
+84	8	81	Brand	\N	\N	types	2013-04-05 03:09:15.932947
+85	8	82	Brand	\N	\N	types	2013-04-05 03:09:33.568878
+86	8	83	Brand	\N	\N	types	2013-04-05 03:09:40.886949
+87	8	84	Brand	\N	\N	types	2013-04-05 03:09:54.125206
+88	8	85	Brand	\N	\N	types	2013-04-05 03:10:02.520199
+89	8	86	Brand	\N	\N	types	2013-04-05 03:10:11.078436
+90	8	87	Brand	\N	\N	types	2013-04-05 03:10:19.122017
+91	8	88	Brand	\N	\N	types	2013-04-05 03:10:27.31402
+92	8	89	Brand	\N	\N	types	2013-04-05 03:10:42.211828
+93	8	19	Brand	\N	\N	types	2013-04-05 04:58:31.363391
+94	12	90	Brand	\N	\N	types	2013-04-19 06:32:00.894427
+95	12	91	Brand	\N	\N	types	2013-04-19 06:54:38.378183
+96	12	92	Brand	\N	\N	types	2013-04-21 10:10:22.711453
+\.
+
+
+--
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY tags (id, name) FROM stdin;
+1	Wine
+2	Whisky
+3	Beer
+4	Gin
+5	Tequila
+6	Brandy
+7	Sake
+8	Liqueur
+9	JapaneseSpirit
+10	WhiteSpirit
+11	ChineseLiqueur
+12	Rum
+13	Vodka
+14	赤霞珠
+15	islay
+16	sss
+\.
+
+
+--
+-- Data for Name: topics; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY topics (id, title, body, replied_at, replies_count, last_active_mark, last_reply_id, author_id, node_id, created_at, updated_at) FROM stdin;
+2	Bowmore（波摩）暴风雨第四版推出，全球限量2000瓶。	<p><p>艾雷岛最古老的蒸馏厂，宣布推出备受酒界期待的酒款 - 波摩暴风雨第四批次(Bowmore Tempest 4)，同样也是小批次的单一纯麦威士忌原酒，波摩暴风雨第四批次在first-fill波本桶中熟成了10年，封装了艾雷岛的凛冽及强横的海洋气息。</p><p><img src="http://www.scotchmaltwhisky.co.uk/images/bowmoretempestatch4lrg.jpg"></p><p>调酒师Rachel Barrie形容：「酒精浓度55.1%的酒液中，如同海浪般席捲橙果与海洋系香料，柔顺的香草滋味和烟燻感则是海浪上的波光涟漪。」「乾燥水果与香草的甜美，又像是当你靠近海岸时，阳光拨云见日带来的暖意。」Rachel Barrie补充道。</p><p>波摩暴风雨第四批次，一样延续着波摩威士忌平衡和谐的特质，如果希望让味觉体验更丰富，Barrie推荐可搭配香草冰淇淋撒上少许橄榄油和海盐，开心果或柑橘马卡龙也都相当适合，全球限量2000箱，英国售价为49.99英镑。</p><br></p>	\N	0	1365570435	\N	6	1	2013-04-10 05:07:15.012431	2013-04-10 05:07:15.012431
+1	删除	<p>需要有删帖功能。</p>	\N	0	1365570395	\N	1	1	2013-04-10 05:06:35.196139	2013-04-10 07:33:59.464992
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY users (id, nick, avatar, role, bio, locked_nodes_list, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip) FROM stdin;
+2	author	\N	author	\N	\N	2013-02-01 13:47:27.77794	2013-02-01 13:47:27.77794	author@guanyu9.com	$2a$10$Yrn0cVkaEFgbEETLZR5X1eBZmU1czZ/glUaG8pYAWRIHKWthLRkTi	\N	\N	\N	0	\N	\N	\N	\N
+3	user	\N	user	\N	\N	2013-02-01 13:47:27.961906	2013-02-01 13:47:27.961906	user@guanyu9.com	$2a$10$Kx1Yd9oLvx1HqVF/NEpVJeLg1ZzDGK3lHA1Co1kkfDywtUPLXBJNS	\N	\N	\N	0	\N	\N	\N	\N
+4	merchant	\N	merchant	\N	\N	2013-02-01 13:47:28.144784	2013-02-01 13:47:28.144784	merchant@guanyu9.com	$2a$10$dSELevHvpWJoBAXAqhRNqersZLBLcDr2U08GYP/ovh.BGrz.bnHOW	\N	\N	\N	0	\N	\N	\N	\N
+5	66	\N	\N	\N	\N	2013-02-01 17:41:22.282169	2013-02-01 17:41:22.290693	aerofloyd@qq.com	$2a$10$.Ol39bdk9KB7lcUh.nJaoeGBgKSpj75gklj1kavx1hLDa4qpyO462	\N	\N	\N	1	2013-02-01 17:41:22.288829	2013-02-01 17:41:22.288829	175.165.146.124	175.165.146.124
+6	aerofloyd	\N	\N	\N	1	2013-02-03 05:22:11.764179	2013-04-10 05:07:34.036253	aerofloyd@163.com	$2a$10$TkdLMN1SwbEtB1XYSlpJt.q5eYM5NdqNy0NmEBx9t4XPFoGRGrlG6	\N	\N	\N	45	2013-04-10 04:35:22.909194	2013-04-10 04:22:57.841187	114.83.40.132	114.83.40.132
+8	platoro	\N	\N	\N	\N	2013-02-15 14:22:22.979865	2013-02-15 14:22:22.996045	platoro@foxmail.com	$2a$10$XbPXEptX.oMaNfOYQzZSBe61Eh82d8mkzGS6RCoxakI9RhARLjjA6	\N	\N	\N	1	2013-02-15 14:22:22.994565	2013-02-15 14:22:22.994565	60.23.114.176	60.23.114.176
+1	admin	\N	admin	\N	1	2013-02-01 13:47:27.560262	2013-04-21 10:08:13.919371	admin@guanyu9.com	$2a$10$FomZ7B4mT602ejMmMQSpjuugEsAU3Q4Xj0QWXF1DGVm6zTbJvaZzS	\N	\N	2013-04-10 04:36:27.344769	37	2013-04-21 10:08:13.918618	2013-04-20 15:07:57.379991	114.81.247.4	114.81.247.21
+9	dath	\N	\N	\N	\N	2013-03-30 14:54:59.413471	2013-04-03 07:41:17.21777	dath2000@hotmail.com	$2a$10$l6MLzKC255si5ZsA4p4DuO36tbfSBwy537zGwiSJFwT8Y42JrSlIm	\N	\N	2013-04-03 07:41:17.098788	2	2013-04-03 07:41:17.212749	2013-03-30 14:54:59.77421	180.157.4.31	116.230.194.166
+7	舟逸叶	\N	\N	\N	\N	2013-02-07 13:53:05.100955	2013-03-16 11:30:51.619963	yyzbrian@yahoo.com.cn	$2a$10$UNUYyoiLE0nMgJWowgQuzeKaVl40Lnnsjp1hFyQ0snOCyA3YYJiVO	\N	\N	\N	4	2013-03-16 11:30:51.617796	2013-02-23 12:16:20.342846	101.68.89.61	140.206.78.39
+\.
+
+
+--
+-- Data for Name: vinifications; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY vinifications (id, beverage_id, grape_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: votings; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY votings (id, voteable_type, voteable_id, voter_type, voter_id, up_vote, created_at, updated_at) FROM stdin;
+6	Review	1	User	1	t	2013-04-20 15:09:26.242125	2013-04-20 15:09:26.242125
+\.
+
+
+--
+-- Data for Name: wishes; Type: TABLE DATA; Schema: public; Owner: dionysus
+--
+
+COPY wishes (id, remark, accomplished, rating, user_id, beverage_id, created_at, updated_at) FROM stdin;
+1		f	5	6	5	2013-02-03 09:45:14.085083	2013-02-03 09:45:14.085083
+2		t	5	6	12	2013-03-03 08:59:25.0555	2013-03-03 08:59:25.0555
+3		f	5	1	5	2013-03-14 17:49:49.761355	2013-03-14 17:49:49.761355
+\.
+
+
+--
+-- Name: activity_feeds_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY activity_feeds
+    ADD CONSTRAINT activity_feeds_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY active_admin_comments
+    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY admin_users
+    ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: beverages_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY beverages
+    ADD CONSTRAINT beverages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: brands_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY brands
+    ADD CONSTRAINT brands_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: checks_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY checks
+    ADD CONSTRAINT checks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cocktails_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY cocktails
+    ADD CONSTRAINT cocktails_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: complains_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY complains
+    ADD CONSTRAINT complains_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: containers_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY containers
+    ADD CONSTRAINT containers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: conversations_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY conversations
+    ADD CONSTRAINT conversations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cups_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY cups
+    ADD CONSTRAINT cups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: deals_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY deals
+    ADD CONSTRAINT deals_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: follows_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY follows
+    ADD CONSTRAINT follows_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY ingredients
+    ADD CONSTRAINT ingredients_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lists_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY lists
+    ADD CONSTRAINT lists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: locations_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY locations
+    ADD CONSTRAINT locations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: merchants_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY merchants
+    ADD CONSTRAINT merchants_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nodes_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY nodes
+    ADD CONSTRAINT nodes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: packages_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY packages
+    ADD CONSTRAINT packages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pieces_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY pieces
+    ADD CONSTRAINT pieces_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ranks_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY ranks
+    ADD CONSTRAINT ranks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: receipts_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY receipts
+    ADD CONSTRAINT receipts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY recipes
+    ADD CONSTRAINT recipes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: redactor_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY redactor_assets
+    ADD CONSTRAINT redactor_assets_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: regions_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY regions
+    ADD CONSTRAINT regions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: replies_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY replies
+    ADD CONSTRAINT replies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY reviews
+    ADD CONSTRAINT reviews_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: scores_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY scores
+    ADD CONSTRAINT scores_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY taggings
+    ADD CONSTRAINT taggings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: topics_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY topics
+    ADD CONSTRAINT topics_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vinifications_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY vinifications
+    ADD CONSTRAINT vinifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: votings_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY votings
+    ADD CONSTRAINT votings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: wishes_pkey; Type: CONSTRAINT; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+ALTER TABLE ONLY wishes
+    ADD CONSTRAINT wishes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fk_followables; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX fk_followables ON follows USING btree (followable_id, followable_type);
+
+
+--
+-- Name: fk_follows; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX fk_follows ON follows USING btree (follower_id, follower_type);
+
+
+--
+-- Name: idx_redactor_assetable; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX idx_redactor_assetable ON redactor_assets USING btree (assetable_type, assetable_id);
+
+
+--
+-- Name: idx_redactor_assetable_type; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX idx_redactor_assetable_type ON redactor_assets USING btree (assetable_type, type, assetable_id);
+
+
+--
+-- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON active_admin_comments USING btree (author_type, author_id);
+
+
+--
+-- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments USING btree (namespace);
+
+
+--
+-- Name: index_admin_notes_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_admin_notes_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- Name: index_admin_users_on_email; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_email ON admin_users USING btree (email);
+
+
+--
+-- Name: index_admin_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USING btree (reset_password_token);
+
+
+--
+-- Name: index_areas_on_ancestry; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_areas_on_ancestry ON areas USING btree (ancestry);
+
+
+--
+-- Name: index_comments_on_ancestry; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_ancestry ON comments USING btree (ancestry);
+
+
+--
+-- Name: index_comments_on_commentable_id_and_commentable_type; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_commentable_id_and_commentable_type ON comments USING btree (commentable_id, commentable_type);
+
+
+--
+-- Name: index_complains_on_complainable_id_and_complainable_type; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_complains_on_complainable_id_and_complainable_type ON complains USING btree (complainable_id, complainable_type);
+
+
+--
+-- Name: index_containers_on_beverage_id_and_cup_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_containers_on_beverage_id_and_cup_id ON containers USING btree (beverage_id, cup_id);
+
+
+--
+-- Name: index_containers_on_cup_id_and_beverage_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_containers_on_cup_id_and_beverage_id ON containers USING btree (cup_id, beverage_id);
+
+
+--
+-- Name: index_lists_on_author_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_lists_on_author_id ON lists USING btree (author_id);
+
+
+--
+-- Name: index_locations_on_locationable_id_and_locationable_type; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_locations_on_locationable_id_and_locationable_type ON locations USING btree (locationable_id, locationable_type);
+
+
+--
+-- Name: index_notifications_on_conversation_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_notifications_on_conversation_id ON notifications USING btree (conversation_id);
+
+
+--
+-- Name: index_packages_on_beverage_id_and_list_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_packages_on_beverage_id_and_list_id ON packages USING btree (beverage_id, list_id);
+
+
+--
+-- Name: index_packages_on_list_id_and_beverage_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_packages_on_list_id_and_beverage_id ON packages USING btree (list_id, beverage_id);
+
+
+--
+-- Name: index_receipts_on_notification_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_receipts_on_notification_id ON receipts USING btree (notification_id);
+
+
+--
+-- Name: index_regions_on_ancestry; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_regions_on_ancestry ON regions USING btree (ancestry);
+
+
+--
+-- Name: index_taggings_on_tag_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_taggings_on_tag_id ON taggings USING btree (tag_id);
+
+
+--
+-- Name: index_taggings_on_taggable_id_and_taggable_type_and_context; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_taggings_on_taggable_id_and_taggable_type_and_context ON taggings USING btree (taggable_id, taggable_type, context);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: index_vinifications_on_beverage_id_and_grape_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_vinifications_on_beverage_id_and_grape_id ON vinifications USING btree (beverage_id, grape_id);
+
+
+--
+-- Name: index_vinifications_on_grape_id_and_beverage_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_vinifications_on_grape_id_and_beverage_id ON vinifications USING btree (grape_id, beverage_id);
+
+
+--
+-- Name: index_votings_on_voteable_type_and_voteable_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_votings_on_voteable_type_and_voteable_id ON votings USING btree (voteable_type, voteable_id);
+
+
+--
+-- Name: index_votings_on_voter_type_and_voter_id; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE INDEX index_votings_on_voter_type_and_voter_id ON votings USING btree (voter_type, voter_id);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: unique_voters; Type: INDEX; Schema: public; Owner: dionysus; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_voters ON votings USING btree (voteable_type, voteable_id, voter_type, voter_id);
+
+
+--
+-- Name: notifications_on_conversation_id; Type: FK CONSTRAINT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notifications_on_conversation_id FOREIGN KEY (conversation_id) REFERENCES conversations(id);
+
+
+--
+-- Name: receipts_on_notification_id; Type: FK CONSTRAINT; Schema: public; Owner: dionysus
+--
+
+ALTER TABLE ONLY receipts
+    ADD CONSTRAINT receipts_on_notification_id FOREIGN KEY (notification_id) REFERENCES notifications(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

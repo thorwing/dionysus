@@ -92,6 +92,12 @@ Dionysus::Application.routes.draw do
 
   resources :search
 
+  resources :hornets do
+    collection do
+      get :fetch
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
