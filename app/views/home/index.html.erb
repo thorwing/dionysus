@@ -4,7 +4,7 @@
     <div class="span3">
         <div class="box box-shadow p10" style="background-image: url('logo_big.png')">
             <ul class="unstyled">
-                <% %w(WhiteSpirit RiceWine ChineseLiqueur).each do |category| %>
+                <% %w(White_Spirit Rice_Wine Chinese_Liqueur).each do |category| %>
                     <li class="mt5 mb5">
                         <%= link_to t("beverages.categories.#{category}"), "/#{category.downcase}", class: "jujiu-label" %>
                     </li>
@@ -20,7 +20,7 @@
 
                 <hr class="dotted"/>
 
-                <% %w(Wine Beer JapaneseSpirit).each do |category| %>
+                <% %w(Wine Beer Japanese_Spirit).each do |category| %>
                     <li class="mt5 mb5">
                         <%= link_to t("beverages.categories.#{category}"), "/#{category.downcase}", class: "jujiu-label" %>
                     </li>

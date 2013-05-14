@@ -5,7 +5,7 @@
 <div class="mb50">
     <div class="mb10">
         <div class="clearfix">
-            <% %w(WhiteSpirit RiceWine ChineseLiqueur Whisky Brandy Vodka Tequila Rum Gin Liqueur Wine Beer JapaneseSpirit).each do |type| %>
+            <% %w(White_Spirit Rice_Wine Chinese_Liqueur Whisky Brandy Vodka Tequila Rum Gin Liqueur Wine Beer Japanese_Spirit).each do |type| %>
                 <div class="pull-left text-center" style="width:74px;">
                     <div class="type_block <%= 'selected' if @type == type %>">
                         <%= link_to t("beverages.categories.#{type}"), "/#{type.downcase}", class: "f14", style: "height:50px; padding: 5px;" %>

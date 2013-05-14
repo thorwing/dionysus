@@ -1,19 +1,22 @@
 <div class="clearfix">
-    <% case feed.data["item_type"] %>
-        <% when "Beverage" %>
-            <%= content_tag :span, "添加了酒" %><%= link_to feed.item.full_name, feed.item, class: "ml10" %>
-        <% when "List" %>
-            <%= content_tag :span, "添加了榜单" %><%= link_to feed.item.title, feed.item, class: "ml10" %>
-        <% when "Review" %>
-            <%= content_tag :span, "添加了酒评" %><%= link_to feed.item.title, feed.item, class: "ml10" %>
-        <% when "Recipe" %>
-            <%= content_tag :span, "添加了鸡尾酒配方" %><%= link_to feed.item.name, feed.item, class: "ml10" %>
-        <% when "Topic" %>
-            <%= content_tag :span, "发布了帖子" %><%= link_to feed.item.title, feed.item, class: "ml10" %>
-        <% when "Deal" %>
-            <%= content_tag :span, "添加了交易" %><%= link_to feed.item.beverage.full_name, feed.item, class: "ml10" %>
-        <% when "Wish" %>
-            <%= content_tag :span, "收藏了" %><%= link_to feed.item.beverage.full_name, feed.item.beverage, class: "ml10" %>
+    <% if feed.item %>
+        <% case feed.data["item_type"] %>
+
+            <% when "Beverage" %>
+                <%= content_tag :span, "添加了酒" %><%= link_to feed.item.full_name, feed.item, class: "ml10" %>
+            <% when "List" %>
+                <%= content_tag :span, "添加了榜单" %><%= link_to feed.item.title, feed.item, class: "ml10" %>
+            <% when "Review" %>
+                <%= content_tag :span, "添加了酒评" %><%= link_to feed.item.title, feed.item, class: "ml10" %>
+            <% when "Recipe" %>
+                <%= content_tag :span, "添加了鸡尾酒配方" %><%= link_to feed.item.name, feed.item, class: "ml10" %>
+            <% when "Topic" %>
+                <%= content_tag :span, "发布了帖子" %><%= link_to feed.item.title, feed.item, class: "ml10" %>
+            <% when "Deal" %>
+                <%= content_tag :span, "添加了交易" %><%= link_to feed.item.beverage.full_name, feed.item, class: "ml10" %>
+            <% when "Wish" %>
+                <%= content_tag :span, "收藏了" %><%= link_to feed.item.beverage.full_name, feed.item.beverage, class: "ml10" %>
+        <% end %>
     <% end %>
     <%= content_tag :span, t('time.ago', :time => time_ago_in_words(feed.created_at)), class: "ml20" %>
 </div>

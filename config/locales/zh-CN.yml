@@ -110,9 +110,13 @@ zh-CN:
       Liqueur: 利口酒
       Gin: 杜松子酒
       Beer: 啤酒
+      White_Spirit: 中式烈酒
       WhiteSpirit: 中式烈酒
+      Chinese_Liqueur: 露酒
       ChineseLiqueur: 露酒
+      Rice_Wine: 黄酒
       RiceWine: 黄酒
+      Japanese_Spirit: 清酒
       JapaneseSpirit: 清酒
     sweetness:
       dry: 干
